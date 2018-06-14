@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Driftwood_Example' do
+  pod 'Driftwood', :path => '../'
+
+  target 'Driftwood_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
