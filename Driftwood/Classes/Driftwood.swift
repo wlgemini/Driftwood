@@ -988,6 +988,7 @@ extension UIView {
 
 
 /// UILayoutGuide+Driftwood
+@available(iOS 9.0, *)
 extension UILayoutGuide {
     
     /// driftwood
