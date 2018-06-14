@@ -17,10 +17,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target   = '8.0'
   s.source_files            = 'Driftwood/Classes/**/*'
   s.swift_version           = '4.0'
+  s.frameworks = 'UIKit'
+  
   # s.resource_bundles = {
   #   'Driftwood' => ['Driftwood/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.frameworks = 'UIKit'
+  
 end
