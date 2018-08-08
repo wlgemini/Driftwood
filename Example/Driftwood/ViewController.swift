@@ -52,15 +52,9 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         gd.dw.update.width(200).height(100)
-        
-        
         lbL.dw.remake.right(0, to: gd.dw.left).top(0, to: gd.dw.top).bottom(0, to: gd.dw.bottom).width(100)
-        
-        
         lbT.dw.remove.width()
         lbT.dw.make.width(0, to: gd.dw.width)
-        
-        
         lbR.dw.remake.left(0, to: gd.dw.right).centerY(0).width(50).height(50)
     }
 }
