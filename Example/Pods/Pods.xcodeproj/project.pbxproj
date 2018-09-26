@@ -40,7 +40,7 @@
 /* Begin PBXFileReference section */
 		0BB81521F1D58DB1375ABBF605D589EF /* Pods-Driftwood_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Driftwood_Tests-resources.sh"; sourceTree = "<group>"; };
 		0C555D0D451312EF5A69C94D6BE59E43 /* Pods-Driftwood_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Driftwood_Example-frameworks.sh"; sourceTree = "<group>"; };
-		0EC9F111993341DBD95AD192B6C746FF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		0EC9F111993341DBD95AD192B6C746FF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		13C646562FD09D8765FE47C1E381D2A9 /* Pods-Driftwood_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Driftwood_Example.modulemap"; sourceTree = "<group>"; };
 		210B76C4C01C1BCFCB0F2F52E209AD52 /* Driftwood-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Driftwood-dummy.m"; sourceTree = "<group>"; };
 		31FB1983E3FFC0DCEA0EB0495DC0AED1 /* Pods-Driftwood_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Driftwood_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -55,18 +55,18 @@
 		7FE1555D093D92BD830CB2C0E36F1FB5 /* Pods-Driftwood_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Driftwood_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		89C6581FDF0F4883AAAB50B263119D46 /* Pods-Driftwood_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Driftwood_Tests.modulemap"; sourceTree = "<group>"; };
 		8D8A4E3B7D5CFB44F20C694CC1191B1B /* Pods-Driftwood_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Driftwood_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		910E78120967303E410E34B3974AB2C1 /* Driftwood.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = Driftwood.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		910E78120967303E410E34B3974AB2C1 /* Driftwood.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = Driftwood.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9ADC8FCB7E560B4CF55B6611015943CB /* Pods-Driftwood_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Driftwood_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		AFE3F4DF1609A2573CEFC49CA0C5912C /* Driftwood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Driftwood.framework; path = Driftwood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFE3F4DF1609A2573CEFC49CA0C5912C /* Driftwood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Driftwood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		C5A1257C84881CF9C53E27BBC51239DE /* Pods_Driftwood_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Driftwood_Tests.framework; path = "Pods-Driftwood_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6EBD1E7C17212C34C702946E3EB553E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		C5A1257C84881CF9C53E27BBC51239DE /* Pods_Driftwood_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Driftwood_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6EBD1E7C17212C34C702946E3EB553E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D066664B507AED3D10C74016FDEB8E65 /* Pods-Driftwood_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Driftwood_Tests-dummy.m"; sourceTree = "<group>"; };
 		D0D09F25D3DDF3E634A1D8922305F98B /* Pods-Driftwood_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Driftwood_Example-umbrella.h"; sourceTree = "<group>"; };
 		D4B8F3707580BE39C29406DB5FA31AA0 /* Driftwood.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Driftwood.modulemap; sourceTree = "<group>"; };
 		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DB7C4F3BF4DFF073A4920E5B48962244 /* Pods_Driftwood_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Driftwood_Example.framework; path = "Pods-Driftwood_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB7C4F3BF4DFF073A4920E5B48962244 /* Pods_Driftwood_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Driftwood_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AE8DCE35108987EA218A85612C2C67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE81F9D0F5447CA754E588E96A939EB1 /* Pods-Driftwood_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Driftwood_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		F16EA6952C92C998FD1200D7D5F0A8D4 /* Pods-Driftwood_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Driftwood_Example-dummy.m"; sourceTree = "<group>"; };
@@ -321,7 +321,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
+				TargetAttributes = {
+					D07B0E1A0A3E0D74153312381A94A09D = {
+						LastSwiftMigration = 1000;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -544,7 +549,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -609,7 +614,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -705,6 +710,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

@@ -48,9 +48,12 @@ extension UILayoutGuide: DriftwoodBase {
     public var superview: UIView? { return self.owningView }
 }
 
+/// Attribute
+private typealias Attribute = NSLayoutConstraint.Attribute
+
 
 /// Relation
-public typealias Relation = NSLayoutRelation
+public typealias Relation = NSLayoutConstraint.Relation
 
 
 /// Priority
@@ -399,16 +402,16 @@ public struct ConstraintMaker {
     }
     
     /// make attribute X to superview
-    private func _makeXToSuperview(for attribute: NSLayoutAttribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
+    private func _makeXToSuperview(for attribute: Attribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
         return self._makeX(for: attribute, constant: constant, by: relation, to: .superviewX, priority: priority)
     }
     
     /// make attribute X
-    private func _makeX(for attribute: NSLayoutAttribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> ConstraintMaker {
+    private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> ConstraintMaker {
         // check if attribute belong to X-axis.
         switch attribute {
         case .left, .right, .leading, .trailing, .centerX, .leftMargin, .rightMargin, .leadingMargin, .trailingMargin, .centerXWithinMargins: break
-        default: fatalError("Driftwood ConstraintMaker Error: make attribute \(attribute) is not belong to X-axis!")
+        default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to X-axis!")
         }
         
         // check if there was an attribute already installed.
@@ -417,7 +420,7 @@ public struct ConstraintMaker {
         }
         
         // retrieve item from AttributeX
-        let attrX: NSLayoutAttribute
+        let attrX: Attribute
         let toItem: DriftwoodBase
         
         switch attributeX {
@@ -479,16 +482,16 @@ public struct ConstraintMaker {
     }
     
     /// make attribute Y to superview
-    private func _makeYToSuperview(for attribute: NSLayoutAttribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
+    private func _makeYToSuperview(for attribute: Attribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
         return self._makeY(for: attribute, constant: constant, by: relation, to: .superviewY, priority: priority)
     }
     
     /// make attribute Y
-    private func _makeY(for attribute: NSLayoutAttribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
+    private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
         // check if attribute belong to Y-axis.
         switch attribute {
         case .top, .bottom, .centerY, .lastBaseline, .firstBaseline, .topMargin, .bottomMargin, .centerYWithinMargins: break
-        default: fatalError("Driftwood ConstraintMaker Error: make attribute \(attribute) is not belong to Y-axis!")
+        default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to Y-axis!")
         }
         
         // check if there was an attribute already installed.
@@ -497,7 +500,7 @@ public struct ConstraintMaker {
         }
         
         // retrieve item from AttributeY
-        let attrY: NSLayoutAttribute
+        let attrY: Attribute
         let toItem: DriftwoodBase
         
         switch attributeY {
@@ -551,11 +554,11 @@ public struct ConstraintMaker {
     }
     
     /// make attribute Size
-    private func _makeSize(for attribute: NSLayoutAttribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
+    private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
         // check if attribute belong to size.
         switch attribute {
         case .width, .height: break
-        default: fatalError("Driftwood ConstraintMaker Error: make attribute \(attribute) is not belong to size!")
+        default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to size!")
         }
         
         // check if there was an attribute already installed.
@@ -564,7 +567,7 @@ public struct ConstraintMaker {
         }
         
         // retrieve item from AttributeSize
-        var attrSize: NSLayoutAttribute?
+        var attrSize: Attribute?
         var toItem: DriftwoodBase?
         
         if let _attributeSize = attributeSize {
@@ -746,7 +749,7 @@ public struct ConstraintUpdater {
     }
     
     /// update attribute
-    private func _update(for attribute: NSLayoutAttribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
+    private func _update(for attribute: Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
         guard let con = self._driftwood._constraintsWapper.constraints[attribute] else {
             fatalError("Driftwood ConstraintUpdater Error: \(self._driftwood._base.description) have no \(attribute) constraint!")
         }
@@ -915,7 +918,7 @@ public struct ConstraintRemover {
     }
     
     /// remove attribute
-    private func _remove(for attribute: NSLayoutAttribute) -> ConstraintRemover {
+    private func _remove(for attribute: Attribute) -> ConstraintRemover {
         guard let con = self._driftwood._constraintsWapper.constraints.removeValue(forKey: attribute) else {
             fatalError("Driftwood ConstraintRemover Error: \(self._driftwood._base.description) have no \(attribute) constraint !!!")
         }
@@ -1043,7 +1046,7 @@ public struct Driftwood {
     //
     /// _ConstraintsWrapper
     fileprivate class _ConstraintsWrapper {
-        var constraints: [NSLayoutAttribute: NSLayoutConstraint] = [:]
+        var constraints: [Attribute: NSLayoutConstraint] = [:]
     }
     
     /// init

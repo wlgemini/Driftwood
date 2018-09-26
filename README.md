@@ -6,11 +6,12 @@
 
 A lightweight, pure-Swift library for AutoLayout.
 
-
 ## Requirements
 
-* iOS 8.0+
-* Swift 4.0+
+| Version | Requirements       |
+| ------- | ------------------ |
+| 0.1.1   | iOS 8.0+/Swift 4.1 |
+| 0.1.2   | iOS 8.0+/Swift 4.2 |
 
 ## Usage
 
