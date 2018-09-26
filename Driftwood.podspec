@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name                    = 'Driftwood'
-  s.version                 = '0.1.1'
+  s.version                 = '0.1.2'
   s.summary                 = 'A lightweight, pure-Swift library for AutoLayout.'
   s.homepage                = 'https://github.com/wlgemini/Driftwood'
   s.license                 = { :type => 'MIT', :file => 'LICENSE' }
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.source                  = { :git => 'https://github.com/wlgemini/Driftwood.git', :tag => s.version.to_s }
   s.ios.deployment_target   = '8.0'
   s.source_files            = 'Driftwood/Classes/**/*'
-  s.swift_version           = '4.0'
+  s.swift_version           = '4.2'
   s.frameworks = 'UIKit'
   
   # s.resource_bundles = {
