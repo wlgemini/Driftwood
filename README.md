@@ -8,10 +8,8 @@ A lightweight, pure-Swift library for AutoLayout.
 
 ## Requirements
 
-| Version | Requirements       |
-| ------- | ------------------ |
-| 0.1.1   | iOS 8.0+/Swift 4.1 |
-| 0.1.2   | iOS 8.0+/Swift 4.2 |
+- iOS 8.0+
+- Swift 4.2
 
 ## Usage
 
@@ -66,11 +64,13 @@ view1.dw.make.top(10, to: view2.dw.bottom)
 |`view.dw.height`                 |`NSLayoutAttribute.height`               |
 
 ### Relation & Priority
+
 ```swift
 view.dw.make.width(100, by: .greaterThanOrEqual, priority: .required)
 ```
 
 ### dw.update
+
 you can use the method `dw.update` to updating `constant` and `priority` value of a constraint.
 ```swift
 view1.dw.update.top(200)
@@ -79,12 +79,14 @@ view2.dw.update.left(100, priority: .required)
 ```
 
 ### dw.remake
+
 `dw.remake` is similar to `dw.make`, but will first remove all existing constraints installed by Driftwood.
 ```swift
 view.dw.remake.left(20).top(30).width(20).height(10)
 ```
 
 ### dw.remove
+
 you can use the method `dw.remove` to removing any existing constraints installed by Driftwood.
 ```swift
 view.dw.remove.left().top()
@@ -101,6 +103,10 @@ box.translatesAutoresizingMaskIntoConstraints = false
 superview.addSubview(box)
 box.dw.make.top(0, to: guide.dw.bottom).left(0).right(0).height(10)
 ```
+
+### Cache
+
+all constraints installed by Driftwood will be cached for future reuse.
 
 ## Author
 
