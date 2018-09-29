@@ -25,31 +25,31 @@
 import UIKit
 
 
-/// DriftwoodBase
-public protocol DriftwoodBase: class {
+/// DriftwoodItem
+public protocol DriftwoodItem: class {
     
     /// superview
     var superview: UIView? { get }
     
     /// description
     var description: String { get }
+    
+    /// hashValue
+    var hashValue: Int { get }
 }
 
 
-/// UIView+DriftwoodBase
-extension UIView: DriftwoodBase {}
+/// UIView+DriftwoodItem
+extension UIView: DriftwoodItem {}
 
 
-/// UILayoutGuide+DriftwoodBase
+/// UILayoutGuide+DriftwoodItem
 @available(iOS 9.0, *)
-extension UILayoutGuide: DriftwoodBase {
+extension UILayoutGuide: DriftwoodItem {
     
     /// superview
     public var superview: UIView? { return self.owningView }
 }
-
-/// Attribute
-private typealias Attribute = NSLayoutConstraint.Attribute
 
 
 /// Relation
@@ -65,30 +65,30 @@ public enum AttributeX {
     
     case superviewX
     
-    case left(base: DriftwoodBase)
+    case left(DriftwoodItem)
     
-    case right(base: DriftwoodBase)
+    case right(DriftwoodItem)
     
-    case leading(base: DriftwoodBase)
+    case leading(DriftwoodItem)
     
-    case trailing(base: DriftwoodBase)
+    case trailing(DriftwoodItem)
     
-    case centerX(base: DriftwoodBase)
-    
-    @available(iOS 8.0, *)
-    case leftMargin(base: DriftwoodBase)
+    case centerX(DriftwoodItem)
     
     @available(iOS 8.0, *)
-    case rightMargin(base: DriftwoodBase)
+    case leftMargin(DriftwoodItem)
     
     @available(iOS 8.0, *)
-    case leadingMargin(base: DriftwoodBase)
+    case rightMargin(DriftwoodItem)
     
     @available(iOS 8.0, *)
-    case trailingMargin(base: DriftwoodBase)
+    case leadingMargin(DriftwoodItem)
     
     @available(iOS 8.0, *)
-    case centerXWithinMargins(base: DriftwoodBase)
+    case trailingMargin(DriftwoodItem)
+    
+    @available(iOS 8.0, *)
+    case centerXWithinMargins(DriftwoodItem)
 }
 
 
@@ -97,34 +97,34 @@ public enum AttributeY {
     
     case superviewY
     
-    case top(base: DriftwoodBase)
+    case top(DriftwoodItem)
     
-    case bottom(base: DriftwoodBase)
+    case bottom(DriftwoodItem)
     
-    case centerY(base: DriftwoodBase)
+    case centerY(DriftwoodItem)
     
-    case lastBaseline(base: DriftwoodBase)
-    
-    @available(iOS 8.0, *)
-    case firstBaseline(base: DriftwoodBase)
+    case lastBaseline(DriftwoodItem)
     
     @available(iOS 8.0, *)
-    case topMargin(base: DriftwoodBase)
+    case firstBaseline(DriftwoodItem)
     
     @available(iOS 8.0, *)
-    case bottomMargin(base: DriftwoodBase)
+    case topMargin(DriftwoodItem)
     
     @available(iOS 8.0, *)
-    case centerYWithinMargins(base: DriftwoodBase)
+    case bottomMargin(DriftwoodItem)
+    
+    @available(iOS 8.0, *)
+    case centerYWithinMargins(DriftwoodItem)
 }
 
 
 /// Size attribute
 public enum AttributeSize {
     
-    case width(base: DriftwoodBase)
+    case width(DriftwoodItem)
     
-    case height(base: DriftwoodBase)
+    case height(DriftwoodItem)
 }
 
 
@@ -393,200 +393,245 @@ public struct ConstraintMaker {
     // Private
     //===========================================
     //
-    /// driftwood
-    private let _driftwood: Driftwood
+    /// _item
+    private let _item: DriftwoodItem
     
-    /// Init
-    fileprivate init(driftwood: Driftwood) {
-        self._driftwood = driftwood
+    /// init
+    fileprivate init(item: DriftwoodItem) {
+        self._item = item
     }
     
-    /// make attribute X to superview
-    private func _makeXToSuperview(for attribute: Attribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
+    /// make X-axis's constraint to superview
+    private func _makeXToSuperview(for attribute: _Attribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
         return self._makeX(for: attribute, constant: constant, by: relation, to: .superviewX, priority: priority)
     }
     
-    /// make attribute X
-    private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> ConstraintMaker {
-        // check if attribute belong to X-axis.
+    /// make X-axis's constraint
+    private func _makeX(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> ConstraintMaker {
+        // 0. check if attribute belong to X-axis.
         switch attribute {
         case .left, .right, .leading, .trailing, .centerX, .leftMargin, .rightMargin, .leadingMargin, .trailingMargin, .centerXWithinMargins: break
         default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to X-axis!")
         }
         
-        // check if there was an attribute already installed.
-        guard nil == self._driftwood._constraintsWapper.constraints[attribute] else {
-            fatalError("Driftwood ConstraintMaker Error: \(self._driftwood._base.description) already have \(attribute) constraint!")
+        // 1. check if there was an constraint already installed by driftwood
+        guard nil == self._item._constraintsWapper.activeConstraints[attribute] else {
+            fatalError("Driftwood ConstraintMaker Error: \(self._item.description) already have \(attribute) constraint!")
         }
         
-        // retrieve item from AttributeX
-        let attrX: Attribute
-        let toItem: DriftwoodBase
-        
+        // 2. retrieve (toItem & toAttribute) from AttributeX
+        let toAttribute: _Attribute
+        let toItem: DriftwoodItem
         switch attributeX {
         case .superviewX:
             // check if there is an superview
-            guard let superview = self._driftwood._base.superview else {
-                fatalError("Driftwood ConstraintMaker Error: \(self._driftwood._base.description) have no superview!")
+            guard let superview = self._item.superview else {
+                fatalError("Driftwood ConstraintMaker Error: \(self._item.description) have no superview!")
             }
-            attrX = attribute
+            toAttribute = attribute
             toItem = superview
             
-        case .left(base: let item):
-            attrX = .left
+        case .left(let item):
+            toAttribute = .left
             toItem = item
             
-        case .right(base: let item):
-            attrX = .right
+        case .right(let item):
+            toAttribute = .right
             toItem = item
             
-        case .leading(base: let item):
-            attrX = .leading
+        case .leading(let item):
+            toAttribute = .leading
             toItem = item
             
-        case .trailing(base: let item):
-            attrX = .trailing
+        case .trailing(let item):
+            toAttribute = .trailing
             toItem = item
             
-        case .centerX(base: let item):
-            attrX = .centerX
+        case .centerX(let item):
+            toAttribute = .centerX
             toItem = item
             
-        case .leftMargin(base: let item):
-            attrX = .leftMargin
+        case .leftMargin(let item):
+            toAttribute = .leftMargin
             toItem = item
             
-        case .rightMargin(base: let item):
-            attrX = .rightMargin
+        case .rightMargin(let item):
+            toAttribute = .rightMargin
             toItem = item
             
-        case .leadingMargin(base: let item):
-            attrX = .leadingMargin
+        case .leadingMargin(let item):
+            toAttribute = .leadingMargin
             toItem = item
             
-        case .trailingMargin(base: let item):
-            attrX = .trailingMargin
+        case .trailingMargin(let item):
+            toAttribute = .trailingMargin
             toItem = item
             
-        case .centerXWithinMargins(base: let item):
-            attrX = .centerXWithinMargins
+        case .centerXWithinMargins(let item):
+            toAttribute = .centerXWithinMargins
             toItem = item
         }
         
-        // install constraint
-        let con = NSLayoutConstraint(item: self._driftwood._base, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: attrX, multiplier: 1, constant: constant)
-        con.priority = priority
+        // 3. generate a _ConstraintKey
+        let conKey = _ConstraintKey(attribute: attribute, toItemHashValue: toItem.hashValue, toAttribute: toAttribute, relation: relation, multiply: 1)
+        
+        // 4. retrive an constraint from cache, if any
+        let con: NSLayoutConstraint
+        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey) {
+            // 4.1 have cached
+            con = c
+            con.constant = constant
+            con.priority = priority
+        } else {
+            // 4.2 not cache
+            con = NSLayoutConstraint(item: self._item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: 1, constant: constant)
+            con.priority = priority
+        }
+        
+        // 5. install constraint
         con.isActive = true
-        self._driftwood._constraintsWapper.constraints[attribute] = con
+        self._item._constraintsWapper.activeConstraints[attribute] = con
+        
+        // 6. return self
         return self
     }
     
-    /// make attribute Y to superview
-    private func _makeYToSuperview(for attribute: Attribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
+    /// make Y-axis's constraint to superview
+    private func _makeYToSuperview(for attribute: _Attribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
         return self._makeY(for: attribute, constant: constant, by: relation, to: .superviewY, priority: priority)
     }
     
-    /// make attribute Y
-    private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
-        // check if attribute belong to Y-axis.
+    /// make X-axis's constraint
+    private func _makeY(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
+        // 0. check if attribute belong to Y-axis.
         switch attribute {
         case .top, .bottom, .centerY, .lastBaseline, .firstBaseline, .topMargin, .bottomMargin, .centerYWithinMargins: break
         default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to Y-axis!")
         }
         
-        // check if there was an attribute already installed.
-        guard nil == self._driftwood._constraintsWapper.constraints[attribute] else {
-            fatalError("Driftwood ConstraintMaker Error: \(self._driftwood._base.description) already have \(attribute) constraint!")
+        // 1. check if there was an constraint already installed by driftwood
+        guard nil == self._item._constraintsWapper.activeConstraints[attribute] else {
+            fatalError("Driftwood ConstraintMaker Error: \(self._item.description) already have \(attribute) constraint!")
         }
         
-        // retrieve item from AttributeY
-        let attrY: Attribute
-        let toItem: DriftwoodBase
-        
+        // 2. retrieve (toItem & toAttribute) from AttributeY
+        let toAttribute: _Attribute
+        let toItem: DriftwoodItem
         switch attributeY {
         case .superviewY:
-            // check if there is an superview or not
-            guard let superview = self._driftwood._base.superview else {
-                fatalError("Driftwood ConstraintMaker Error: \(self._driftwood._base.description) have no superview!")
+            // check if there is an superview
+            guard let superview = self._item.superview else {
+                fatalError("Driftwood ConstraintMaker Error: \(self._item.description) have no superview!")
             }
-            attrY = attribute
+            toAttribute = attribute
             toItem = superview
             
-        case .top(base: let item):
-            attrY = .top
+        case .top(let item):
+            toAttribute = .top
             toItem = item
             
-        case .bottom(base: let item):
-            attrY = .bottom
+        case .bottom(let item):
+            toAttribute = .bottom
             toItem = item
             
-        case .centerY(base: let item):
-            attrY = .centerY
+        case .centerY(let item):
+            toAttribute = .centerY
             toItem = item
             
-        case .lastBaseline(base: let item):
-            attrY = .lastBaseline
+        case .lastBaseline(let item):
+            toAttribute = .lastBaseline
             toItem = item
             
-        case .firstBaseline(base: let item):
-            attrY = .firstBaseline
+        case .firstBaseline(let item):
+            toAttribute = .firstBaseline
             toItem = item
             
-        case .topMargin(base: let item):
-            attrY = .topMargin
+        case .topMargin(let item):
+            toAttribute = .topMargin
             toItem = item
             
-        case .bottomMargin(base: let item):
-            attrY = .bottomMargin
+        case .bottomMargin(let item):
+            toAttribute = .bottomMargin
             toItem = item
             
-        case .centerYWithinMargins(base: let item):
-            attrY = .centerYWithinMargins
+        case .centerYWithinMargins(let item):
+            toAttribute = .centerYWithinMargins
             toItem = item
         }
         
-        // install constraint
-        let con = NSLayoutConstraint(item: self._driftwood._base, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: attrY, multiplier: 1, constant: constant)
-        con.priority = priority
+        // 3. generate a _ConstraintKey
+        let conKey = _ConstraintKey(attribute: attribute, toItemHashValue: toItem.hashValue, toAttribute: toAttribute, relation: relation, multiply: 1)
+        
+        // 4. retrive an constraint from cache, if any
+        let con: NSLayoutConstraint
+        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey) {
+            // 4.1 have cached
+            con = c
+            con.constant = constant
+            con.priority = priority
+        } else {
+            // 4.2 not cache
+            con = NSLayoutConstraint(item: self._item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: 1, constant: constant)
+            con.priority = priority
+        }
+        
+        // 5. install constraint
         con.isActive = true
-        self._driftwood._constraintsWapper.constraints[attribute] = con
+        self._item._constraintsWapper.activeConstraints[attribute] = con
+        
+        // 6. return self
         return self
     }
     
-    /// make attribute Size
-    private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
-        // check if attribute belong to size.
+    /// make constraint Size
+    private func _makeSize(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
+        // 0. check if attribute belong to size
         switch attribute {
         case .width, .height: break
         default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to size!")
         }
         
-        // check if there was an attribute already installed.
-        guard nil == self._driftwood._constraintsWapper.constraints[attribute] else {
-            fatalError("Driftwood ConstraintMaker Error: \(self._driftwood._base.description) already have \(attribute) constraint!")
+        // 1. check if there was an constraint already installed by driftwood
+        guard nil == self._item._constraintsWapper.activeConstraints[attribute] else {
+            fatalError("Driftwood ConstraintMaker Error: \(self._item.description) already have \(attribute) constraint!")
         }
         
-        // retrieve item from AttributeSize
-        var attrSize: Attribute?
-        var toItem: DriftwoodBase?
-        
-        if let _attributeSize = attributeSize {
-            switch _attributeSize {
-            case .width(base: let item):
-                attrSize = .width
+        // 2. retrieve (toItem & toAttribute) from AttributeSize
+        var toAttribute: _Attribute?
+        var toItem: DriftwoodItem?
+        if let attrSize = attributeSize {
+            switch attrSize {
+            case .width(let item):
+                toAttribute = .width
                 toItem = item
                 
-            case .height(base: let item):
-                attrSize = .height
+            case .height(let item):
+                toAttribute = .height
                 toItem = item
             }
         }
         
-        // install constraint
-        let con = NSLayoutConstraint(item: self._driftwood._base, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: attrSize ?? .notAnAttribute, multiplier: multiply, constant: constant)
-        con.priority = priority
+        // 3. generate a _ConstraintKey
+        let conKey = _ConstraintKey(attribute: attribute, toItemHashValue: toItem?.hashValue, toAttribute: toAttribute ?? .notAnAttribute, relation: relation, multiply: multiply)
+        
+        // 4. retrive an constraint from cache, if any
+        let con: NSLayoutConstraint
+        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey) {
+            // 4.1 have cached
+            con = c
+            con.constant = constant
+            con.priority = priority
+        } else {
+            // 4.2 not cache
+            con = NSLayoutConstraint(item: self._item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute ?? .notAnAttribute, multiplier: multiply, constant: constant)
+            con.priority = priority
+        }
+        
+        // 5. install constraint
         con.isActive = true
-        self._driftwood._constraintsWapper.constraints[attribute] = con
+        self._item._constraintsWapper.activeConstraints[attribute] = con
+        
+        // 6. return self
         return self
     }
 }
@@ -740,22 +785,22 @@ public struct ConstraintUpdater {
     // Private
     //===========================================
     //
-    /// driftwood
-    private let _driftwood: Driftwood
+    /// _item
+    private let _item: DriftwoodItem
     
-    /// Init
-    fileprivate init(driftwood: Driftwood) {
-        self._driftwood = driftwood
+    /// init
+    fileprivate init(item: DriftwoodItem) {
+        self._item = item
     }
     
-    /// update attribute
-    private func _update(for attribute: Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
-        guard let con = self._driftwood._constraintsWapper.constraints[attribute] else {
-            fatalError("Driftwood ConstraintUpdater Error: \(self._driftwood._base.description) have no \(attribute) constraint!")
+    /// update constraint
+    private func _update(for attribute: _Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
+        guard let con = self._item._constraintsWapper.activeConstraints[attribute] else {
+            fatalError("Driftwood ConstraintUpdater Error: \(self._item.description) have no \(attribute) constraint!")
         }
         
-        if let _constant = constant { con.constant = _constant }
-        if let _priority = priority { con.priority = _priority }
+        if let constant = constant { con.constant = constant }
+        if let priority = priority { con.priority = priority }
         return self
     }
 }
@@ -909,21 +954,29 @@ public struct ConstraintRemover {
     // Private
     //===========================================
     //
-    /// driftwood
-    private let _driftwood: Driftwood
+    /// _item
+    private let _item: DriftwoodItem
     
-    /// Init
-    fileprivate init(driftwood: Driftwood) {
-        self._driftwood = driftwood
+    /// init
+    fileprivate init(item: DriftwoodItem) {
+        self._item = item
     }
     
-    /// remove attribute
-    private func _remove(for attribute: Attribute) -> ConstraintRemover {
-        guard let con = self._driftwood._constraintsWapper.constraints.removeValue(forKey: attribute) else {
-            fatalError("Driftwood ConstraintRemover Error: \(self._driftwood._base.description) have no \(attribute) constraint !!!")
+    /// remove constraint
+    private func _remove(for attribute: _Attribute) -> ConstraintRemover {
+        // 0. remove an constraint installed by driftwood, if any
+        guard let con = self._item._constraintsWapper.activeConstraints.removeValue(forKey: attribute) else {
+            fatalError("Driftwood ConstraintRemover Error: \(self._item.description) have no \(attribute) constraint!")
         }
-        
         con.isActive = false
+        
+        // 1. generate a _ConstraintKey
+        let conKey = _ConstraintKey(attribute: con.firstAttribute, toItemHashValue: con.secondItem?.hashValue, toAttribute: con.secondAttribute, relation: con.relation, multiply: con.multiplier)
+        
+        // 2. cache constraint
+        self._item._constraintsWapper.deactiveConstraints[conKey] = con
+        
+        // 3. return self
         return self
     }
 }
@@ -938,25 +991,30 @@ public struct Driftwood {
     //
     /// make
     public var make: ConstraintMaker {
-        return ConstraintMaker(driftwood: self)
+        return ConstraintMaker(item: _item)
     }
     
     /// update
     public var update: ConstraintUpdater {
-        return ConstraintUpdater(driftwood: self)
+        return ConstraintUpdater(item: _item)
     }
     
     /// remove
     public var remove: ConstraintRemover {
-        return ConstraintRemover(driftwood: self)
+        return ConstraintRemover(item: _item)
     }
     
     /// remake
     public var remake: ConstraintMaker {
-        // remove all constraints from superview
-        self._constraintsWapper.constraints.values.forEach({ $0.isActive = false })
-        self._constraintsWapper.constraints = [:]
-        return ConstraintMaker(driftwood: self)
+        // 0. remove all constraints installed by driftwood
+        for con in self._item._constraintsWapper.activeConstraints.values {
+            con.isActive = false
+            let conKey = _ConstraintKey(attribute: con.firstAttribute, toItemHashValue: con.secondItem?.hashValue, toAttribute: con.secondAttribute, relation: con.relation, multiply: con.multiplier)
+            self._item._constraintsWapper.deactiveConstraints[conKey] = con
+        }
+        self._item._constraintsWapper.activeConstraints = [:]
+        
+        return ConstraintMaker(item: self._item)
     }
     
     //===========================================
@@ -964,107 +1022,91 @@ public struct Driftwood {
     //===========================================
     //
     /// left
-    public var left: AttributeX { return .left(base: _base) }
+    public var left: AttributeX { return .left(_item) }
     
     /// right
-    public var right: AttributeX { return .right(base: _base) }
+    public var right: AttributeX { return .right(_item) }
     
     /// leading
-    public var leading: AttributeX { return .leading(base: _base) }
+    public var leading: AttributeX { return .leading(_item) }
     
     /// trailing
-    public var trailing: AttributeX { return .trailing(base: _base) }
+    public var trailing: AttributeX { return .trailing(_item) }
     
     /// centerX
-    public var centerX: AttributeX { return .centerX(base: _base) }
+    public var centerX: AttributeX { return .centerX(_item) }
     
     /// leftMargin
     @available(iOS 8.0, *)
-    public var leftMargin: AttributeX { return .leftMargin(base: _base) }
+    public var leftMargin: AttributeX { return .leftMargin(_item) }
     
     /// rightMargin
     @available(iOS 8.0, *)
-    public var rightMargin: AttributeX { return .rightMargin(base: _base) }
+    public var rightMargin: AttributeX { return .rightMargin(_item) }
     
     /// leadingMargin
     @available(iOS 8.0, *)
-    public var leadingMargin: AttributeX { return .leadingMargin(base: _base) }
+    public var leadingMargin: AttributeX { return .leadingMargin(_item) }
     
     /// trailingMargin
     @available(iOS 8.0, *)
-    public var trailingMargin: AttributeX { return .trailingMargin(base: _base) }
+    public var trailingMargin: AttributeX { return .trailingMargin(_item) }
     
     /// centerXWithinMargins
     @available(iOS 8.0, *)
-    public var centerXWithinMargins: AttributeX { return .centerXWithinMargins(base: _base) }
+    public var centerXWithinMargins: AttributeX { return .centerXWithinMargins(_item) }
     
     //===========================================
     // AttributeY
     //===========================================
     //
     /// top
-    public var top: AttributeY { return .top(base: _base) }
+    public var top: AttributeY { return .top(_item) }
     
     /// bottom
-    public var bottom: AttributeY { return .bottom(base: _base) }
+    public var bottom: AttributeY { return .bottom(_item) }
     
     /// centerY
-    public var centerY: AttributeY { return .centerY(base: _base) }
+    public var centerY: AttributeY { return .centerY(_item) }
     
     /// lastBaseline
-    public var lastBaseline: AttributeY { return .lastBaseline(base: _base) }
+    public var lastBaseline: AttributeY { return .lastBaseline(_item) }
     
     /// firstBaseline
     @available(iOS 8.0, *)
-    public var firstBaseline: AttributeY { return .firstBaseline(base: _base) }
+    public var firstBaseline: AttributeY { return .firstBaseline(_item) }
     
     /// topMargin
     @available(iOS 8.0, *)
-    public var topMargin: AttributeY { return .topMargin(base: _base) }
+    public var topMargin: AttributeY { return .topMargin(_item) }
     
     /// bottomMargin
     @available(iOS 8.0, *)
-    public var bottomMargin: AttributeY { return .bottomMargin(base: _base) }
+    public var bottomMargin: AttributeY { return .bottomMargin(_item) }
     
     /// centerYWithinMargins
     @available(iOS 8.0, *)
-    public var centerYWithinMargins: AttributeY { return .centerYWithinMargins(base: _base) }
+    public var centerYWithinMargins: AttributeY { return .centerYWithinMargins(_item) }
     
     //===========================================
     // AttributeSize
     //===========================================
     //
     /// width
-    public var width: AttributeSize { return .width(base: _base) }
+    public var width: AttributeSize { return .width(_item) }
     
     /// height
-    public var height: AttributeSize { return .height(base: _base) }
+    public var height: AttributeSize { return .height(_item) }
     
     //===========================================
     // Private
     //===========================================
     //
-    /// _ConstraintsWrapper
-    fileprivate class _ConstraintsWrapper {
-        var constraints: [Attribute: NSLayoutConstraint] = [:]
-    }
-    
     /// init
-    fileprivate init(base: DriftwoodBase) { _base = base }
+    fileprivate init(_ item: DriftwoodItem) { _item = item }
     
-    /// base view
-    fileprivate let _base: DriftwoodBase
-    
-    // constraints wrapper
-    fileprivate var _constraintsWapper: _ConstraintsWrapper {
-        if let cw = objc_getAssociatedObject(self._base, &_constraintsWapperKey) as? _ConstraintsWrapper {
-            return cw
-        } else {
-            let cw = _ConstraintsWrapper()
-            objc_setAssociatedObject(self._base, &_constraintsWapperKey, cw, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            return cw
-        }
-    }
+    /// _item
+    fileprivate let _item: DriftwoodItem
 }
 
 
@@ -1072,7 +1114,7 @@ public struct Driftwood {
 extension UIView {
     
     /// driftwood
-    public var dw: Driftwood { return Driftwood(base: self) }
+    public var dw: Driftwood { return Driftwood(self) }
 }
 
 
@@ -1081,10 +1123,54 @@ extension UIView {
 extension UILayoutGuide {
     
     /// driftwood
-    public var dw: Driftwood { return Driftwood(base: self) }
+    public var dw: Driftwood { return Driftwood(self) }
+}
+
+
+//===========================================
+// Private
+//===========================================
+//
+/// _Attribute
+fileprivate typealias _Attribute = NSLayoutConstraint.Attribute
+
+
+/// _ConstraintKey
+fileprivate struct _ConstraintKey: Hashable {   // Automatic Synthesis Hashable is available in Swift 4.1
+    let attribute: _Attribute
+    let toItemHashValue: Int?
+    let toAttribute: _Attribute
+    let relation: Relation
+    let multiply: CGFloat
+}
+
+
+/// _ConstraintsWrapper
+fileprivate class _ConstraintsWrapper {
+    
+    /// active constraints
+    var activeConstraints: [_Attribute: NSLayoutConstraint] = [:]
+    
+    /// deactive constraints
+    var deactiveConstraints: [_ConstraintKey: NSLayoutConstraint] = [:]
+}
+
+
+/// DriftwoodItem+_ConstraintsWrapper
+extension DriftwoodItem {
+    
+    /// constraints wrapper
+    fileprivate var _constraintsWapper: _ConstraintsWrapper {
+        if let cw = objc_getAssociatedObject(self, &_constraintsWapperKey) as? _ConstraintsWrapper {
+            return cw
+        } else {
+            let cw = _ConstraintsWrapper()
+            objc_setAssociatedObject(self, &_constraintsWapperKey, cw, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            return cw
+        }
+    }
 }
 
 
 /// _constraintsWapper Key
-private var _constraintsWapperKey: Void?
-
+fileprivate var _constraintsWapperKey: Void?
