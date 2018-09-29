@@ -477,7 +477,7 @@ public struct ConstraintMaker {
         
         // 4. retrive an constraint from cache, if any
         let con: NSLayoutConstraint
-        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey) {
+        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey.hashValue) {
             // 4.1 have cached
             con = c
             con.constant = constant
@@ -564,7 +564,7 @@ public struct ConstraintMaker {
         
         // 4. retrive an constraint from cache, if any
         let con: NSLayoutConstraint
-        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey) {
+        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey.hashValue) {
             // 4.1 have cached
             con = c
             con.constant = constant
@@ -616,7 +616,7 @@ public struct ConstraintMaker {
         
         // 4. retrive an constraint from cache, if any
         let con: NSLayoutConstraint
-        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey) {
+        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey.hashValue) {
             // 4.1 have cached
             con = c
             con.constant = constant
@@ -974,7 +974,7 @@ public struct ConstraintRemover {
         let conKey = _ConstraintKey(attribute: con.firstAttribute, toItemHashValue: con.secondItem?.hashValue, toAttribute: con.secondAttribute, relation: con.relation, multiply: con.multiplier)
         
         // 2. cache constraint
-        self._item._constraintsWapper.deactiveConstraints[conKey] = con
+        self._item._constraintsWapper.deactiveConstraints[conKey.hashValue] = con
         
         // 3. return self
         return self
@@ -1010,7 +1010,7 @@ public struct Driftwood {
         for con in self._item._constraintsWapper.activeConstraints.values {
             con.isActive = false
             let conKey = _ConstraintKey(attribute: con.firstAttribute, toItemHashValue: con.secondItem?.hashValue, toAttribute: con.secondAttribute, relation: con.relation, multiply: con.multiplier)
-            self._item._constraintsWapper.deactiveConstraints[conKey] = con
+            self._item._constraintsWapper.deactiveConstraints[conKey.hashValue] = con
         }
         self._item._constraintsWapper.activeConstraints = [:]
         
@@ -1152,7 +1152,7 @@ fileprivate class _ConstraintsWrapper {
     var activeConstraints: [_Attribute: NSLayoutConstraint] = [:]
     
     /// deactive constraints
-    var deactiveConstraints: [_ConstraintKey: NSLayoutConstraint] = [:]
+    var deactiveConstraints: [Int: NSLayoutConstraint] = [:]
 }
 
 
