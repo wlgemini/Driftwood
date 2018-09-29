@@ -501,7 +501,7 @@ public struct ConstraintMaker {
         return self._makeY(for: attribute, constant: constant, by: relation, to: .superviewY, priority: priority)
     }
     
-    /// make X-axis's constraint
+    /// make Y-axis's constraint
     private func _makeY(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to Y-axis.
         switch attribute {
