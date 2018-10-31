@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name                    = 'Driftwood'
-  s.version                 = '4.2.0'
+  s.version                 = '4.2.1'
   s.summary                 = 'A lightweight, pure-Swift library for AutoLayout.'
   s.homepage                = 'https://github.com/wlgemini/Driftwood'
   s.license                 = { :type => 'MIT', :file => 'LICENSE' }

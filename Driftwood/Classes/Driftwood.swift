@@ -63,7 +63,7 @@ public typealias Priority = UILayoutPriority
 /// Horizontal attribute
 public enum AttributeX {
     
-    case superviewX
+    case superview
     
     case left(DriftwoodItem)
     
@@ -95,7 +95,7 @@ public enum AttributeX {
 /// Vertical attribute
 public enum AttributeY {
     
-    case superviewY
+    case superview
     
     case top(DriftwoodItem)
     
@@ -135,22 +135,10 @@ public struct ConstraintMaker {
     // Make AttributeX
     //===========================================
     //
-    /// left to superview
-    @discardableResult
-    public func left(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .left, constant: constant, by: relation, priority: priority)
-    }
-    
     /// left
     @discardableResult
     public func left(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .left, constant: constant, by: relation, to: attribute, priority: priority)
-    }
-    
-    /// right to superview
-    @discardableResult
-    public func right(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .right, constant: constant, by: relation, priority: priority)
     }
     
     /// right
@@ -159,22 +147,10 @@ public struct ConstraintMaker {
         return self._makeX(for: .right, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
-    /// leading to superview
-    @discardableResult
-    public func leading(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .leading, constant: constant, by: relation, priority: priority)
-    }
-    
     /// leading
     @discardableResult
     public func leading(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .leading, constant: constant, by: relation, to: attribute, priority: priority)
-    }
-    
-    /// trailing to superview
-    @discardableResult
-    public func trailing(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .trailing, constant: constant, by: relation, priority: priority)
     }
     
     /// trailing
@@ -183,23 +159,10 @@ public struct ConstraintMaker {
         return self._makeX(for: .trailing, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
-    /// centerX to superview
-    @discardableResult
-    public func centerX(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .centerX, constant: constant, by: relation, priority: priority)
-    }
-    
     /// centerX
     @discardableResult
     public func centerX(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .centerX, constant: constant, by: relation, to: attribute, priority: priority)
-    }
-    
-    /// leftMargin to superview
-    @available(iOS 8.0, *)
-    @discardableResult
-    public func leftMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .leftMargin, constant: constant, by: relation, priority: priority)
     }
     
     /// leftMargin
@@ -209,25 +172,11 @@ public struct ConstraintMaker {
         return self._makeX(for: .leftMargin, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
-    /// rightMargin to superview
-    @available(iOS 8.0, *)
-    @discardableResult
-    public func rightMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .rightMargin, constant: constant, by: relation, priority: priority)
-    }
-    
     /// rightMargin
     @available(iOS 8.0, *)
     @discardableResult
     public func rightMargin(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .rightMargin, constant: constant, by: relation, to: attribute, priority: priority)
-    }
-    
-    /// leadingMargin to superview
-    @available(iOS 8.0, *)
-    @discardableResult
-    public func leadingMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .leadingMargin, constant: constant, by: relation, priority: priority)
     }
     
     /// leadingMargin
@@ -237,25 +186,11 @@ public struct ConstraintMaker {
         return self._makeX(for: .leadingMargin, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
-    /// trailingMargin to superview
-    @available(iOS 8.0, *)
-    @discardableResult
-    public func trailingMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .trailingMargin, constant: constant, by: relation, priority: priority)
-    }
-    
     /// trailingMargin
     @available(iOS 8.0, *)
     @discardableResult
     public func trailingMargin(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .trailingMargin, constant: constant, by: relation, to: attribute, priority: priority)
-    }
-    
-    /// centerXWithinMargins to superview
-    @available(iOS 8.0, *)
-    @discardableResult
-    public func centerXWithinMargins(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeXToSuperview(for: .centerXWithinMargins, constant: constant, by: relation, priority: priority)
     }
     
     /// centerXWithinMargins
@@ -269,22 +204,10 @@ public struct ConstraintMaker {
     // Make AttributeY
     //===========================================
     //
-    /// top to superview
-    @discardableResult
-    public func top(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeYToSuperview(for: .top, constant: constant, by: relation, priority: priority)
-    }
-    
     /// top
     @discardableResult
     public func top(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeY, priority: Priority = .required) -> ConstraintMaker {
         return self._makeY(for: .top, constant: constant, by: relation, to: attribute, priority: priority)
-    }
-    
-    /// bottom to superview
-    @discardableResult
-    public func bottom(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeYToSuperview(for: .bottom, constant: constant, by: relation, priority: priority)
     }
     
     /// bottom
@@ -293,35 +216,16 @@ public struct ConstraintMaker {
         return self._makeY(for: .bottom, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
-    /// centerY to superview
-    @discardableResult
-    public func centerY(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeYToSuperview(for: .centerY, constant: constant, by: relation, priority: priority)
-    }
-    
     /// centerY
     @discardableResult
     public func centerY(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeY, priority: Priority = .required) -> ConstraintMaker {
         return self._makeY(for: .centerY, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
-    /// lastBaseline to superview
-    @discardableResult
-    public func lastBaseline(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeYToSuperview(for: .lastBaseline, constant: constant, by: relation, priority: priority)
-    }
-    
     /// lastBaseline
     @discardableResult
     public func lastBaseline(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeY, priority: Priority = .required) -> ConstraintMaker {
         return self._makeY(for: .lastBaseline, constant: constant, by: relation, to: attribute, priority: priority)
-    }
-    
-    /// firstBaseline to superview
-    @available(iOS 8.0, *)
-    @discardableResult
-    public func firstBaseline(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeYToSuperview(for: .firstBaseline, constant: constant, by: relation, priority: priority)
     }
     
     /// firstBaseline
@@ -331,13 +235,6 @@ public struct ConstraintMaker {
         return self._makeY(for: .firstBaseline, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
-    /// topMargin to superview
-    @available(iOS 8.0, *)
-    @discardableResult
-    public func topMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeYToSuperview(for: .topMargin, constant: constant, by: relation, priority: priority)
-    }
-    
     /// topMargin
     @available(iOS 8.0, *)
     @discardableResult
@@ -345,25 +242,11 @@ public struct ConstraintMaker {
         return self._makeY(for: .topMargin, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
-    /// bottomMargin to superview
-    @available(iOS 8.0, *)
-    @discardableResult
-    public func bottomMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeYToSuperview(for: .bottomMargin, constant: constant, by: relation, priority: priority)
-    }
-    
     /// bottomMargin
     @available(iOS 8.0, *)
     @discardableResult
     public func bottomMargin(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeY, priority: Priority = .required) -> ConstraintMaker {
         return self._makeY(for: .bottomMargin, constant: constant, by: relation, to: attribute, priority: priority)
-    }
-    
-    /// centerYWithinMargins to superview
-    @available(iOS 8.0, *)
-    @discardableResult
-    public func centerYWithinMargins(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
-        return self._makeYToSuperview(for: .centerYWithinMargins, constant: constant, by: relation, priority: priority)
     }
     
     /// centerYWithinMargins
@@ -390,32 +273,19 @@ public struct ConstraintMaker {
     }
     
     //===========================================
-    // Private
+    // Internal
     //===========================================
     //
-    /// _item
-    private let _item: DriftwoodItem
-    
-    /// init
-    fileprivate init(item: DriftwoodItem) {
-        self._item = item
-    }
-    
-    /// make X-axis's constraint to superview
-    private func _makeXToSuperview(for attribute: _Attribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
-        return self._makeX(for: attribute, constant: constant, by: relation, to: .superviewX, priority: priority)
-    }
-    
     /// make X-axis's constraint
-    private func _makeX(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> ConstraintMaker {
+    func _makeX(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to X-axis.
         switch attribute {
         case .left, .right, .leading, .trailing, .centerX, .leftMargin, .rightMargin, .leadingMargin, .trailingMargin, .centerXWithinMargins: break
         default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to X-axis!")
         }
         
-        // 1. check if there was an constraint already installed by driftwood
-        guard nil == self._item._constraintsWapper.activeConstraints[attribute] else {
+        // 1. check if there was a constraint already installed by driftwood
+        guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == false else {
             fatalError("Driftwood ConstraintMaker Error: \(self._item.description) already have \(attribute) constraint!")
         }
         
@@ -423,7 +293,7 @@ public struct ConstraintMaker {
         let toAttribute: _Attribute
         let toItem: DriftwoodItem
         switch attributeX {
-        case .superviewX:
+        case .superview:
             // check if there is an superview
             guard let superview = self._item.superview else {
                 fatalError("Driftwood ConstraintMaker Error: \(self._item.description) have no superview!")
@@ -472,45 +342,26 @@ public struct ConstraintMaker {
             toItem = item
         }
         
-        // 3. generate a _ConstraintKey
-        let conKey = _ConstraintKey(attribute: attribute, toItemHashValue: toItem.hashValue, toAttribute: toAttribute, relation: relation, multiply: 1)
+        // 3. get cached constraint
+        let con = self._item._constraintsWapper.cachedConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
         
-        // 4. retrive an constraint from cache, if any
-        let con: NSLayoutConstraint
-        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey.hashValue) {
-            // 4.1 have cached
-            con = c
-            con.constant = constant
-            con.priority = priority
-        } else {
-            // 4.2 not cache
-            con = NSLayoutConstraint(item: self._item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: 1, constant: constant)
-            con.priority = priority
-        }
+        // 4. activate cached constraint
+        self._item._constraintsWapper.activate(con, for: attribute)
         
-        // 5. install constraint
-        con.isActive = true
-        self._item._constraintsWapper.activeConstraints[attribute] = con
-        
-        // 6. return self
+        // 5. return self
         return self
     }
     
-    /// make Y-axis's constraint to superview
-    private func _makeYToSuperview(for attribute: _Attribute, constant: CGFloat, by relation: Relation, priority: Priority) -> ConstraintMaker {
-        return self._makeY(for: attribute, constant: constant, by: relation, to: .superviewY, priority: priority)
-    }
-    
     /// make Y-axis's constraint
-    private func _makeY(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
+    func _makeY(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to Y-axis.
         switch attribute {
         case .top, .bottom, .centerY, .lastBaseline, .firstBaseline, .topMargin, .bottomMargin, .centerYWithinMargins: break
         default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to Y-axis!")
         }
         
-        // 1. check if there was an constraint already installed by driftwood
-        guard nil == self._item._constraintsWapper.activeConstraints[attribute] else {
+        // 1. check if there was a constraint already installed by driftwood
+        guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == false else {
             fatalError("Driftwood ConstraintMaker Error: \(self._item.description) already have \(attribute) constraint!")
         }
         
@@ -518,7 +369,7 @@ public struct ConstraintMaker {
         let toAttribute: _Attribute
         let toItem: DriftwoodItem
         switch attributeY {
-        case .superviewY:
+        case .superview:
             // check if there is an superview
             guard let superview = self._item.superview else {
                 fatalError("Driftwood ConstraintMaker Error: \(self._item.description) have no superview!")
@@ -559,40 +410,26 @@ public struct ConstraintMaker {
             toItem = item
         }
         
-        // 3. generate a _ConstraintKey
-        let conKey = _ConstraintKey(attribute: attribute, toItemHashValue: toItem.hashValue, toAttribute: toAttribute, relation: relation, multiply: 1)
+        // 3. get cached constraint
+        let con = self._item._constraintsWapper.cachedConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
         
-        // 4. retrive an constraint from cache, if any
-        let con: NSLayoutConstraint
-        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey.hashValue) {
-            // 4.1 have cached
-            con = c
-            con.constant = constant
-            con.priority = priority
-        } else {
-            // 4.2 not cache
-            con = NSLayoutConstraint(item: self._item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: 1, constant: constant)
-            con.priority = priority
-        }
+        // 4. activate cached constraint
+        self._item._constraintsWapper.activate(con, for: attribute)
         
-        // 5. install constraint
-        con.isActive = true
-        self._item._constraintsWapper.activeConstraints[attribute] = con
-        
-        // 6. return self
+        // 5. return self
         return self
     }
     
     /// make constraint Size
-    private func _makeSize(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
+    func _makeSize(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to size
         switch attribute {
         case .width, .height: break
         default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to size!")
         }
         
-        // 1. check if there was an constraint already installed by driftwood
-        guard nil == self._item._constraintsWapper.activeConstraints[attribute] else {
+        // 1. check if there was a constraint already installed by driftwood
+        guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == false else {
             fatalError("Driftwood ConstraintMaker Error: \(self._item.description) already have \(attribute) constraint!")
         }
         
@@ -611,28 +448,26 @@ public struct ConstraintMaker {
             }
         }
         
-        // 3. generate a _ConstraintKey
-        let conKey = _ConstraintKey(attribute: attribute, toItemHashValue: toItem?.hashValue, toAttribute: toAttribute ?? .notAnAttribute, relation: relation, multiply: multiply)
+        // 3. get cached constraint
+        let con = self._item._constraintsWapper.cachedConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
         
-        // 4. retrive an constraint from cache, if any
-        let con: NSLayoutConstraint
-        if let c = self._item._constraintsWapper.deactiveConstraints.removeValue(forKey: conKey.hashValue) {
-            // 4.1 have cached
-            con = c
-            con.constant = constant
-            con.priority = priority
-        } else {
-            // 4.2 not cache
-            con = NSLayoutConstraint(item: self._item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute ?? .notAnAttribute, multiplier: multiply, constant: constant)
-            con.priority = priority
-        }
+        // 4. activate cached constraint
+        self._item._constraintsWapper.activate(con, for: attribute)
         
-        // 5. install constraint
-        con.isActive = true
-        self._item._constraintsWapper.activeConstraints[attribute] = con
-        
-        // 6. return self
+        // 5. return self
         return self
+    }
+    
+    //===========================================
+    // Private
+    //===========================================
+    //
+    /// _item
+    private let _item: DriftwoodItem
+    
+    /// init
+    fileprivate init(item: DriftwoodItem) {
+        self._item = item
     }
 }
 
@@ -782,6 +617,31 @@ public struct ConstraintUpdater {
     }
     
     //===========================================
+    // Internal
+    //===========================================
+    //
+    /// update constraint
+    func _update(for attribute: _Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
+        // 0. check if there was a constraint already installed by driftwood
+        guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == true else {
+            fatalError("Driftwood ConstraintUpdater Error: \(self._item.description) have no \(attribute) constraint!")
+        }
+        
+        // 1. deactivate a constraint already installed by driftwood
+        let con = self._item._constraintsWapper.deactivate(for: attribute)!
+        
+        // 2. update this constraint
+        if let constant = constant { con.constant = constant }
+        if let priority = priority { con.priority = priority }
+        
+        // 3. activate this constraint
+        self._item._constraintsWapper.activate(con, for: attribute)
+        
+        // return self
+        return self
+    }
+    
+    //===========================================
     // Private
     //===========================================
     //
@@ -791,17 +651,6 @@ public struct ConstraintUpdater {
     /// init
     fileprivate init(item: DriftwoodItem) {
         self._item = item
-    }
-    
-    /// update constraint
-    private func _update(for attribute: _Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
-        guard let con = self._item._constraintsWapper.activeConstraints[attribute] else {
-            fatalError("Driftwood ConstraintUpdater Error: \(self._item.description) have no \(attribute) constraint!")
-        }
-        
-        if let constant = constant { con.constant = constant }
-        if let priority = priority { con.priority = priority }
-        return self
     }
 }
 
@@ -951,6 +800,21 @@ public struct ConstraintRemover {
     }
     
     //===========================================
+    // Internal
+    //===========================================
+    //
+    /// remove constraint
+    func _remove(for attribute: _Attribute) -> ConstraintRemover {
+        // 0. deactivate a constraint installed by driftwood, if any
+        guard let _ = self._item._constraintsWapper.deactivate(for: attribute) else {
+            fatalError("Driftwood ConstraintRemover Error: \(self._item.description) have no \(attribute) constraint!")
+        }
+        
+        // 1. return self
+        return self
+    }
+    
+    //===========================================
     // Private
     //===========================================
     //
@@ -960,24 +824,6 @@ public struct ConstraintRemover {
     /// init
     fileprivate init(item: DriftwoodItem) {
         self._item = item
-    }
-    
-    /// remove constraint
-    private func _remove(for attribute: _Attribute) -> ConstraintRemover {
-        // 0. remove an constraint installed by driftwood, if any
-        guard let con = self._item._constraintsWapper.activeConstraints.removeValue(forKey: attribute) else {
-            fatalError("Driftwood ConstraintRemover Error: \(self._item.description) have no \(attribute) constraint!")
-        }
-        con.isActive = false
-        
-        // 1. generate a _ConstraintKey
-        let conKey = _ConstraintKey(attribute: con.firstAttribute, toItemHashValue: con.secondItem?.hashValue, toAttribute: con.secondAttribute, relation: con.relation, multiply: con.multiplier)
-        
-        // 2. cache constraint
-        self._item._constraintsWapper.deactiveConstraints[conKey.hashValue] = con
-        
-        // 3. return self
-        return self
     }
 }
 
@@ -1006,13 +852,7 @@ public struct Driftwood {
     
     /// remake
     public var remake: ConstraintMaker {
-        // 0. remove all constraints installed by driftwood
-        for con in self._item._constraintsWapper.activeConstraints.values {
-            con.isActive = false
-            let conKey = _ConstraintKey(attribute: con.firstAttribute, toItemHashValue: con.secondItem?.hashValue, toAttribute: con.secondAttribute, relation: con.relation, multiply: con.multiplier)
-            self._item._constraintsWapper.deactiveConstraints[conKey.hashValue] = con
-        }
-        self._item._constraintsWapper.activeConstraints = [:]
+        self._item._constraintsWapper.deactivateAll()
         
         return ConstraintMaker(item: self._item)
     }
@@ -1128,31 +968,94 @@ extension UILayoutGuide {
 
 
 //===========================================
-// Private
+// Internal
 //===========================================
 //
 /// _Attribute
-fileprivate typealias _Attribute = NSLayoutConstraint.Attribute
+typealias _Attribute = NSLayoutConstraint.Attribute
 
 
-/// _ConstraintKey
-fileprivate struct _ConstraintKey: Hashable {   // Automatic Synthesis Hashable is available in Swift 4.1
-    let attribute: _Attribute
-    let toItemHashValue: Int?
-    let toAttribute: _Attribute
-    let relation: Relation
-    let multiply: CGFloat
-}
-
-
+//===========================================
+// Private
+//===========================================
+//
 /// _ConstraintsWrapper
 fileprivate class _ConstraintsWrapper {
     
-    /// active constraints
-    var activeConstraints: [_Attribute: NSLayoutConstraint] = [:]
+    //===========================================
+    // Fileprivate
+    //===========================================
+    //
+    /// has an active constraint installed by driftwood
+    func hasActiveConstraint(for key: _Attribute) -> Bool {
+        return self._activeConstraints.keys.contains(key)
+    }
     
-    /// deactive constraints
-    var deactiveConstraints: [Int: NSLayoutConstraint] = [:]
+    /// activate a constraint
+    func activate(_ con: NSLayoutConstraint, for key: _Attribute) {
+        con.isActive = true
+        self._activeConstraints[key] = con
+    }
+    
+    /// deactivate a constraint installed by driftwood
+    @discardableResult
+    func deactivate(for key: _Attribute) -> NSLayoutConstraint? {
+        let con = self._activeConstraints.removeValue(forKey: key)
+        con?.isActive = false
+        return con
+    }
+    
+    /// deactivate all constraints installed by driftwood
+    func deactivateAll() {
+        self._activeConstraints.forEach({ $1.isActive = false })
+        self._activeConstraints = [:]
+    }
+    
+    /// dequeue a constraint cached by driftwood
+    func cachedConstraintFor(item: DriftwoodItem, attribute: _Attribute, relation: Relation, toItem: DriftwoodItem?, toAttribute: _Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> NSLayoutConstraint {
+        // 0. generate a constraint hash value (hash calculation not include first item)
+        var hasher = Hasher()
+        hasher.combine(attribute)
+        hasher.combine(toItem?.hashValue)
+        hasher.combine(toAttribute)
+        hasher.combine(relation)
+        hasher.combine(multiply)
+        let conKey = hasher.finalize()
+        
+        // 1. retrive a constraint from cache, if any
+        let con: NSLayoutConstraint
+        if let c = self._cachedConstraints[conKey] {
+            // 1.1 cached
+            con = c
+            con.constant = constant
+            con.priority = priority
+            
+            print("Cached: \(con)")
+        } else {
+            // 1.2 no cache
+            con = NSLayoutConstraint(item: item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: multiply, constant: constant)
+            con.priority = priority
+            self._cachedConstraints[conKey] = con
+            
+            print("No cache: \(con)")
+        }
+        
+        // check: constraint should be deactive
+        assert(con.isActive == false)
+        
+        // 2. return constraint
+        return con
+    }
+    
+    //===========================================
+    // Private
+    //===========================================
+    //
+    /// active constraints
+    private var _activeConstraints: [_Attribute: NSLayoutConstraint] = [:]
+    
+    /// cached constraints (include active & deactive constraints)
+    private var _cachedConstraints: [Int: NSLayoutConstraint] = [:]
 }
 
 
