@@ -277,6 +277,7 @@ public struct ConstraintMaker {
     //===========================================
     //
     /// make X-axis's constraint
+    @discardableResult
     func _makeX(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to X-axis.
         switch attribute {
@@ -353,6 +354,7 @@ public struct ConstraintMaker {
     }
     
     /// make Y-axis's constraint
+    @discardableResult
     func _makeY(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to Y-axis.
         switch attribute {
@@ -420,7 +422,8 @@ public struct ConstraintMaker {
         return self
     }
     
-    /// make constraint Size
+    /// make Size constraint
+    @discardableResult
     func _makeSize(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to size
         switch attribute {
@@ -621,6 +624,7 @@ public struct ConstraintUpdater {
     //===========================================
     //
     /// update constraint
+    @discardableResult
     func _update(for attribute: _Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
         // 0. check if there was a constraint already installed by driftwood
         guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == true else {
@@ -804,6 +808,7 @@ public struct ConstraintRemover {
     //===========================================
     //
     /// remove constraint
+    @discardableResult
     func _remove(for attribute: _Attribute) -> ConstraintRemover {
         // 0. deactivate a constraint installed by driftwood, if any
         guard let _ = self._item._constraintsWapper.deactivate(for: attribute) else {
@@ -1029,19 +1034,12 @@ fileprivate class _ConstraintsWrapper {
             con = c
             con.constant = constant
             con.priority = priority
-            
-            print("Cached: \(con)")
         } else {
             // 1.2 no cache
             con = NSLayoutConstraint(item: item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: multiply, constant: constant)
             con.priority = priority
             self._cachedConstraints[conKey] = con
-            
-            print("No cache: \(con)")
         }
-        
-        // check: constraint should be deactive
-        assert(con.isActive == false)
         
         // 2. return constraint
         return con

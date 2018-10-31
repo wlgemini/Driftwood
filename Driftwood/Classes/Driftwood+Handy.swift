@@ -151,6 +151,30 @@ extension ConstraintMaker {
     public func centerYWithinMargins(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self._makeY(for: .centerYWithinMargins, constant: constant, by: relation, to: .superview, priority: priority)
     }
+    
+    //===========================================
+    // Make AttributeSize
+    //===========================================
+    //
+    /// width
+    @discardableResult
+    public func widthEqual(to attribute: AttributeSize, by relation: Relation = .equal, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
+        return self._makeSize(for: .width, constant: 0, by: relation, to: attribute, multiply: multiply, priority: priority)
+    }
+    
+    /// height
+    @discardableResult
+    public func heightEqual(to attribute: AttributeSize, by relation: Relation = .equal, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
+        return self._makeSize(for: .height, constant: 0, by: relation, to: attribute, multiply: multiply, priority: priority)
+    }
+    
+    /// height
+    @discardableResult
+    public func sizeEqual(to item: DriftwoodItem, by relation: Relation = .equal, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
+        self._makeSize(for: .width, constant: 0, by: relation, to: AttributeSize.width(item), multiply: multiply, priority: priority)
+        self._makeSize(for: .height, constant: 0, by: relation, to: AttributeSize.height(item), multiply: multiply, priority: priority)
+        return self
+    }
 }
 
 

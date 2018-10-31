@@ -29,10 +29,11 @@ class ViewController: UIViewController {
         self.v3.dw.make.centerX(0).centerY(0).width(100).height(100)
         
         self.v4 = self.view.createSubView()
-        self.v4.dw.make.centerX(50, to: self.v3.dw.centerX).centerY(50, to: self.v3.dw.centerY).width(100).height(100)
+        self.v4.dw.make.centerX(100, to: self.v3.dw.centerX).centerY(100, to: self.v3.dw.centerY).sizeEqual(to: self.v3, multiply: 2)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        self.v3.dw.remove.width().height()
+        self.v3.dw.make.width(200).height(200)
     }
 }
