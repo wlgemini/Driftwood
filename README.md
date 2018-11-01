@@ -93,6 +93,8 @@ view.dw.remove.left().top()
 ```
 
 ### LayoutGuide
+
+Driftwood can work with `UILayoutGuide` easily.
 ```swift 
 let guide = UILayoutGuide()
 superview.addLayoutGuide(guide)
@@ -107,6 +109,10 @@ box.dw.make.top(0, to: guide.dw.bottom).left(0).right(0).height(10)
 ### Cache
 
 all constraints installed by Driftwood will be cached for future reuse.
+
+## Demo
+
+you can download this repo to see some usage.
 
 ## Author
 
