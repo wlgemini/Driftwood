@@ -27,6 +27,7 @@ import UIKit
 
 /// Constraint Maker
 extension ConstraintMaker {
+    
     //===========================================
     // Make AttributeX
     //===========================================
@@ -158,21 +159,61 @@ extension ConstraintMaker {
     //
     /// width
     @discardableResult
-    public func widthEqual(to attribute: AttributeSize, by relation: Relation = .equal, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
+    public func width(by relation: Relation = .equal, to attribute: AttributeSize, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
         return self._makeSize(for: .width, constant: 0, by: relation, to: attribute, multiply: multiply, priority: priority)
     }
     
     /// height
     @discardableResult
-    public func heightEqual(to attribute: AttributeSize, by relation: Relation = .equal, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
+    public func height(by relation: Relation = .equal, to attribute: AttributeSize, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
         return self._makeSize(for: .height, constant: 0, by: relation, to: attribute, multiply: multiply, priority: priority)
     }
     
-    /// height
+    /// size
     @discardableResult
-    public func sizeEqual(to item: DriftwoodItem, by relation: Relation = .equal, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
-        self._makeSize(for: .width, constant: 0, by: relation, to: AttributeSize.width(item), multiply: multiply, priority: priority)
-        self._makeSize(for: .height, constant: 0, by: relation, to: AttributeSize.height(item), multiply: multiply, priority: priority)
+    public func size(by relation: Relation = .equal, to item: DriftwoodItem, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
+        self._makeSize(for: .width, constant: 0, by: relation, to: .width(item), multiply: multiply, priority: priority)
+        self._makeSize(for: .height, constant: 0, by: relation, to: .height(item), multiply: multiply, priority: priority)
+        return self
+    }
+    
+    //===========================================
+    // Make AttributeX & AttributeY
+    //===========================================
+    //
+    /// centerXY to superview
+    @discardableResult
+    public func centerXY(offsets: CGPoint, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
+        self._makeX(for: .centerX, constant: offsets.x, by: relation, to: .superview, priority: priority)
+        self._makeY(for: .centerY, constant: offsets.y, by: relation, to: .superview, priority: priority)
+        return self
+    }
+    
+    /// centerXY
+    @discardableResult
+    public func centerXY(offsets: CGPoint, by relation: Relation = .equal, to item: DriftwoodItem, priority: Priority = .required) -> ConstraintMaker {
+        self._makeX(for: .centerX, constant: offsets.x, by: relation, to: .centerX(item), priority: priority)
+        self._makeY(for: .centerY, constant: offsets.y, by: relation, to: .centerY(item), priority: priority)
+        return self
+    }
+    
+    /// edge to superview
+    @discardableResult
+    public func edge(insets: UIEdgeInsets, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
+        self._makeX(for: .leading, constant: insets.left, by: relation, to: .superview, priority: priority)
+        self._makeX(for: .trailing, constant: -insets.right, by: relation, to: .superview, priority: priority)
+        self._makeY(for: .top, constant: insets.top, by: relation, to: .superview, priority: priority)
+        self._makeY(for: .bottom, constant: -insets.bottom, by: relation, to: .superview, priority: priority)
+        return self
+    }
+    
+    /// edge
+    @discardableResult
+    public func edge(insets: UIEdgeInsets, by relation: Relation = .equal, to item: DriftwoodItem, priority: Priority = .required) -> ConstraintMaker {
+        self._makeX(for: .leading, constant: insets.left, by: relation, to: .leading(item), priority: priority)
+        self._makeX(for: .trailing, constant: -insets.right, by: relation, to: .trailing(item), priority: priority)
+        self._makeY(for: .top, constant: insets.top, by: relation, to: .top(item), priority: priority)
+        self._makeY(for: .bottom, constant: -insets.bottom, by: relation, to: .bottom(item), priority: priority)
         return self
     }
 }
@@ -181,10 +222,64 @@ extension ConstraintMaker {
 /// Constraint Updater
 extension ConstraintUpdater {
     
+    //===========================================
+    // Update AttributeX & AttributeY
+    //===========================================
+    //
+    /// centerXY
+    @discardableResult
+    public func centerXY(offsets: CGPoint? = nil, priority: Priority? = nil) -> ConstraintUpdater {
+        self._update(for: .centerX, constant: offsets?.x, priority: priority)
+        self._update(for: .centerY, constant: offsets?.y, priority: priority)
+        return self
+    }
+    
+    /// edge
+    @discardableResult
+    public func edge(insets: UIEdgeInsets? = nil, priority: Priority? = nil) -> ConstraintUpdater {
+        self._update(for: .leading, constant: insets?.left, priority: priority)
+        self._update(for: .trailing, constant: insets != nil ? -insets!.right : nil, priority: priority)
+        self._update(for: .top, constant: insets?.top, priority: priority)
+        self._update(for: .bottom, constant: insets != nil ? -insets!.bottom : nil, priority: priority)
+        return self
+    }
 }
 
 
 /// Constraint Remover
 extension ConstraintRemover {
     
+    //===========================================
+    // Remove AttributeSize
+    //===========================================
+    //
+    /// size
+    @discardableResult
+    public func size() -> ConstraintRemover {
+        self._remove(for: .width)
+        self._remove(for: .height)
+        return self
+    }
+    
+    //===========================================
+    // Make AttributeX & AttributeY
+    //===========================================
+    //
+    /// centerXY
+    @discardableResult
+    public func centerXY() -> ConstraintRemover {
+        self._remove(for: .centerX)
+        self._remove(for: .centerY)
+        return self
+    }
+    
+    /// edge insets
+    @discardableResult
+    public func edge() -> ConstraintRemover {
+        self._remove(for: .leading)
+        self._remove(for: .trailing)
+        self._remove(for: .top)
+        self._remove(for: .bottom)
+        return self
+    }
 }
