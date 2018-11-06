@@ -171,7 +171,7 @@ extension ConstraintMaker {
     
     /// size
     @discardableResult
-    public func size(by relation: Relation = .equal, to item: DriftwoodItem, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
+    public func size(by relation: Relation = .equal, to item: Item, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
         self._makeSize(for: .width, constant: 0, by: relation, to: .width(item), multiply: multiply, priority: priority)
         self._makeSize(for: .height, constant: 0, by: relation, to: .height(item), multiply: multiply, priority: priority)
         return self
@@ -191,7 +191,7 @@ extension ConstraintMaker {
     
     /// centerXY
     @discardableResult
-    public func centerXY(offsets: CGPoint, by relation: Relation = .equal, to item: DriftwoodItem, priority: Priority = .required) -> ConstraintMaker {
+    public func centerXY(offsets: CGPoint, by relation: Relation = .equal, to item: Item, priority: Priority = .required) -> ConstraintMaker {
         self._makeX(for: .centerX, constant: offsets.x, by: relation, to: .centerX(item), priority: priority)
         self._makeY(for: .centerY, constant: offsets.y, by: relation, to: .centerY(item), priority: priority)
         return self
@@ -209,7 +209,7 @@ extension ConstraintMaker {
     
     /// edge
     @discardableResult
-    public func edge(insets: UIEdgeInsets, by relation: Relation = .equal, to item: DriftwoodItem, priority: Priority = .required) -> ConstraintMaker {
+    public func edge(insets: UIEdgeInsets, by relation: Relation = .equal, to item: Item, priority: Priority = .required) -> ConstraintMaker {
         self._makeX(for: .leading, constant: insets.left, by: relation, to: .leading(item), priority: priority)
         self._makeX(for: .trailing, constant: -insets.right, by: relation, to: .trailing(item), priority: priority)
         self._makeY(for: .top, constant: insets.top, by: relation, to: .top(item), priority: priority)

@@ -25,30 +25,17 @@
 import UIKit
 
 
-/// DriftwoodItem
-public protocol DriftwoodItem: class {
+/// Item
+public protocol Item: class {
     
-    /// superview
-    var superview: UIView? { get }
+    /// dw_superview
+    var dw_superview: Item? { get }
     
-    /// description
-    var description: String { get }
+    /// dw_description
+    var dw_description: String { get }
     
-    /// hashValue
-    var hashValue: Int { get }
-}
-
-
-/// UIView+DriftwoodItem
-extension UIView: DriftwoodItem {}
-
-
-/// UILayoutGuide+DriftwoodItem
-@available(iOS 9.0, *)
-extension UILayoutGuide: DriftwoodItem {
-    
-    /// superview
-    public var superview: UIView? { return self.owningView }
+    /// dw_hashValue
+    var dw_hashValue: Int { get }
 }
 
 
@@ -65,30 +52,30 @@ public enum AttributeX {
     
     case superview
     
-    case left(DriftwoodItem)
+    case left(Item)
     
-    case right(DriftwoodItem)
+    case right(Item)
     
-    case leading(DriftwoodItem)
+    case leading(Item)
     
-    case trailing(DriftwoodItem)
+    case trailing(Item)
     
-    case centerX(DriftwoodItem)
-    
-    @available(iOS 8.0, *)
-    case leftMargin(DriftwoodItem)
+    case centerX(Item)
     
     @available(iOS 8.0, *)
-    case rightMargin(DriftwoodItem)
+    case leftMargin(Item)
     
     @available(iOS 8.0, *)
-    case leadingMargin(DriftwoodItem)
+    case rightMargin(Item)
     
     @available(iOS 8.0, *)
-    case trailingMargin(DriftwoodItem)
+    case leadingMargin(Item)
     
     @available(iOS 8.0, *)
-    case centerXWithinMargins(DriftwoodItem)
+    case trailingMargin(Item)
+    
+    @available(iOS 8.0, *)
+    case centerXWithinMargins(Item)
 }
 
 
@@ -97,34 +84,34 @@ public enum AttributeY {
     
     case superview
     
-    case top(DriftwoodItem)
+    case top(Item)
     
-    case bottom(DriftwoodItem)
+    case bottom(Item)
     
-    case centerY(DriftwoodItem)
+    case centerY(Item)
     
-    case lastBaseline(DriftwoodItem)
-    
-    @available(iOS 8.0, *)
-    case firstBaseline(DriftwoodItem)
+    case lastBaseline(Item)
     
     @available(iOS 8.0, *)
-    case topMargin(DriftwoodItem)
+    case firstBaseline(Item)
     
     @available(iOS 8.0, *)
-    case bottomMargin(DriftwoodItem)
+    case topMargin(Item)
     
     @available(iOS 8.0, *)
-    case centerYWithinMargins(DriftwoodItem)
+    case bottomMargin(Item)
+    
+    @available(iOS 8.0, *)
+    case centerYWithinMargins(Item)
 }
 
 
 /// Size attribute
 public enum AttributeSize {
     
-    case width(DriftwoodItem)
+    case width(Item)
     
-    case height(DriftwoodItem)
+    case height(Item)
 }
 
 
@@ -287,17 +274,17 @@ public struct ConstraintMaker {
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == false else {
-            fatalError("Driftwood ConstraintMaker Error: \(self._item.description) already have \(attribute) constraint!")
+            fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) already have \(attribute) constraint!")
         }
         
         // 2. retrieve (toItem & toAttribute) from AttributeX
         let toAttribute: _Attribute
-        let toItem: DriftwoodItem
+        let toItem: Item
         switch attributeX {
         case .superview:
             // check if there is an superview
-            guard let superview = self._item.superview else {
-                fatalError("Driftwood ConstraintMaker Error: \(self._item.description) have no superview!")
+            guard let superview = self._item.dw_superview else {
+                fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) have no superview!")
             }
             toAttribute = attribute
             toItem = superview
@@ -343,8 +330,8 @@ public struct ConstraintMaker {
             toItem = item
         }
         
-        // 3. get cached constraint
-        let con = self._item._constraintsWapper.cachedConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
+        // 3. dequeue cached constraint
+        let con = self._item._constraintsWapper.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
         
         // 4. activate cached constraint
         self._item._constraintsWapper.activate(con, for: attribute)
@@ -364,17 +351,17 @@ public struct ConstraintMaker {
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == false else {
-            fatalError("Driftwood ConstraintMaker Error: \(self._item.description) already have \(attribute) constraint!")
+            fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) already have \(attribute) constraint!")
         }
         
         // 2. retrieve (toItem & toAttribute) from AttributeY
         let toAttribute: _Attribute
-        let toItem: DriftwoodItem
+        let toItem: Item
         switch attributeY {
         case .superview:
             // check if there is an superview
-            guard let superview = self._item.superview else {
-                fatalError("Driftwood ConstraintMaker Error: \(self._item.description) have no superview!")
+            guard let superview = self._item.dw_superview else {
+                fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) have no superview!")
             }
             toAttribute = attribute
             toItem = superview
@@ -412,8 +399,8 @@ public struct ConstraintMaker {
             toItem = item
         }
         
-        // 3. get cached constraint
-        let con = self._item._constraintsWapper.cachedConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
+        // 3. dequeue cached constraint
+        let con = self._item._constraintsWapper.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
         
         // 4. activate cached constraint
         self._item._constraintsWapper.activate(con, for: attribute)
@@ -433,12 +420,12 @@ public struct ConstraintMaker {
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == false else {
-            fatalError("Driftwood ConstraintMaker Error: \(self._item.description) already have \(attribute) constraint!")
+            fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) already have \(attribute) constraint!")
         }
         
         // 2. retrieve (toItem & toAttribute) from AttributeSize
         var toAttribute: _Attribute?
-        var toItem: DriftwoodItem?
+        var toItem: Item?
         if let attrSize = attributeSize {
             switch attrSize {
             case .width(let item):
@@ -451,8 +438,8 @@ public struct ConstraintMaker {
             }
         }
         
-        // 3. get cached constraint
-        let con = self._item._constraintsWapper.cachedConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
+        // 3. dequeue cached constraint
+        let con = self._item._constraintsWapper.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
         
         // 4. activate cached constraint
         self._item._constraintsWapper.activate(con, for: attribute)
@@ -466,12 +453,10 @@ public struct ConstraintMaker {
     //===========================================
     //
     /// _item
-    private let _item: DriftwoodItem
+    private let _item: Item
     
     /// init
-    fileprivate init(item: DriftwoodItem) {
-        self._item = item
-    }
+    fileprivate init(_ item: Item) { _item = item }
 }
 
 
@@ -628,7 +613,7 @@ public struct ConstraintUpdater {
     func _update(for attribute: _Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
         // 0. check if there was a constraint already installed by driftwood
         guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == true else {
-            fatalError("Driftwood ConstraintUpdater Error: \(self._item.description) have no \(attribute) constraint!")
+            fatalError("Driftwood ConstraintUpdater Error: \(self._item.dw_description) have no \(attribute) constraint!")
         }
         
         // 1. deactivate a constraint already installed by driftwood
@@ -650,12 +635,10 @@ public struct ConstraintUpdater {
     //===========================================
     //
     /// _item
-    private let _item: DriftwoodItem
+    private let _item: Item
     
     /// init
-    fileprivate init(item: DriftwoodItem) {
-        self._item = item
-    }
+    fileprivate init(_ item: Item) { _item = item }
 }
 
 
@@ -812,7 +795,7 @@ public struct ConstraintRemover {
     func _remove(for attribute: _Attribute) -> ConstraintRemover {
         // 0. deactivate a constraint installed by driftwood, if any
         guard let _ = self._item._constraintsWapper.deactivate(for: attribute) else {
-            fatalError("Driftwood ConstraintRemover Error: \(self._item.description) have no \(attribute) constraint!")
+            fatalError("Driftwood ConstraintRemover Error: \(self._item.dw_description) have no \(attribute) constraint!")
         }
         
         // 1. return self
@@ -824,12 +807,10 @@ public struct ConstraintRemover {
     //===========================================
     //
     /// _item
-    private let _item: DriftwoodItem
+    private let _item: Item
     
     /// init
-    fileprivate init(item: DriftwoodItem) {
-        self._item = item
-    }
+    fileprivate init(_ item: Item) { _item = item }
 }
 
 
@@ -842,24 +823,23 @@ public struct Driftwood {
     //
     /// make
     public var make: ConstraintMaker {
-        return ConstraintMaker(item: _item)
+        return ConstraintMaker(_item)
     }
     
     /// update
     public var update: ConstraintUpdater {
-        return ConstraintUpdater(item: _item)
+        return ConstraintUpdater(_item)
     }
     
     /// remove
     public var remove: ConstraintRemover {
-        return ConstraintRemover(item: _item)
+        return ConstraintRemover(_item)
     }
     
     /// remake
     public var remake: ConstraintMaker {
         self._item._constraintsWapper.deactivateAll()
-        
-        return ConstraintMaker(item: self._item)
+        return ConstraintMaker(_item)
     }
     
     //===========================================
@@ -947,11 +927,46 @@ public struct Driftwood {
     // Private
     //===========================================
     //
-    /// init
-    fileprivate init(_ item: DriftwoodItem) { _item = item }
-    
     /// _item
-    fileprivate let _item: DriftwoodItem
+    private let _item: Item
+    
+    /// init
+    fileprivate init(_ item: Item) { _item = item }
+}
+
+
+/// UIView+Item
+extension UIView: Item {
+    
+    public var dw_superview: Item? {
+        return self.superview
+    }
+
+    public var dw_description: String {
+        return self.description
+    }
+
+    public var dw_hashValue: Int {
+        return self.hashValue
+    }
+}
+
+
+/// UILayoutGuide+Item
+@available(iOS 9.0, *)
+extension UILayoutGuide: Item {
+    
+    public var dw_superview: Item? {
+        return self.owningView
+    }
+    
+    public var dw_description: String {
+        return self.description
+    }
+    
+    public var dw_hashValue: Int {
+        return self.hashValue
+    }
 }
 
 
@@ -959,16 +974,20 @@ public struct Driftwood {
 extension UIView {
     
     /// driftwood
-    public var dw: Driftwood { return Driftwood(self) }
+    public var dw: Driftwood {
+        return Driftwood(self)
+    }
 }
 
 
 /// UILayoutGuide+Driftwood
 @available(iOS 9.0, *)
 extension UILayoutGuide {
-    
+
     /// driftwood
-    public var dw: Driftwood { return Driftwood(self) }
+    public var dw: Driftwood {
+        return Driftwood(self)
+    }
 }
 
 
@@ -1017,11 +1036,11 @@ fileprivate class _ConstraintsWrapper {
     }
     
     /// dequeue a constraint cached by driftwood
-    func cachedConstraintFor(item: DriftwoodItem, attribute: _Attribute, relation: Relation, toItem: DriftwoodItem?, toAttribute: _Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> NSLayoutConstraint {
+    func deququeConstraintFor(item: Item, attribute: _Attribute, relation: Relation, toItem: Item?, toAttribute: _Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> NSLayoutConstraint {
         // 0. generate a constraint hash value (hash calculation not include first item)
         var hasher = Hasher()
         hasher.combine(attribute)
-        hasher.combine(toItem?.hashValue)
+        hasher.combine(toItem?.dw_hashValue)
         hasher.combine(toAttribute)
         hasher.combine(relation)
         hasher.combine(multiply)
@@ -1057,8 +1076,8 @@ fileprivate class _ConstraintsWrapper {
 }
 
 
-/// DriftwoodItem+_ConstraintsWrapper
-extension DriftwoodItem {
+/// Item+_ConstraintsWrapper
+extension Item {
     
     /// constraints wrapper
     fileprivate var _constraintsWapper: _ConstraintsWrapper {
