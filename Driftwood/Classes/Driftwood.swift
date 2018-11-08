@@ -273,7 +273,7 @@ public struct ConstraintMaker {
         }
         
         // 1. check if there was a constraint already installed by driftwood
-        guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == false else {
+        guard self._item._storage.hasActiveConstraint(for: attribute) == false else {
             fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) already have \(attribute) constraint!")
         }
         
@@ -331,10 +331,10 @@ public struct ConstraintMaker {
         }
         
         // 3. dequeue cached constraint
-        let con = self._item._constraintsWapper.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
+        let con = self._item._storage.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
         
         // 4. activate cached constraint
-        self._item._constraintsWapper.activate(con, for: attribute)
+        self._item._storage.activate(con, for: attribute)
         
         // 5. return self
         return self
@@ -350,7 +350,7 @@ public struct ConstraintMaker {
         }
         
         // 1. check if there was a constraint already installed by driftwood
-        guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == false else {
+        guard self._item._storage.hasActiveConstraint(for: attribute) == false else {
             fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) already have \(attribute) constraint!")
         }
         
@@ -400,10 +400,10 @@ public struct ConstraintMaker {
         }
         
         // 3. dequeue cached constraint
-        let con = self._item._constraintsWapper.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
+        let con = self._item._storage.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
         
         // 4. activate cached constraint
-        self._item._constraintsWapper.activate(con, for: attribute)
+        self._item._storage.activate(con, for: attribute)
         
         // 5. return self
         return self
@@ -419,7 +419,7 @@ public struct ConstraintMaker {
         }
         
         // 1. check if there was a constraint already installed by driftwood
-        guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == false else {
+        guard self._item._storage.hasActiveConstraint(for: attribute) == false else {
             fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) already have \(attribute) constraint!")
         }
         
@@ -439,10 +439,10 @@ public struct ConstraintMaker {
         }
         
         // 3. dequeue cached constraint
-        let con = self._item._constraintsWapper.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
+        let con = self._item._storage.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
         
         // 4. activate cached constraint
-        self._item._constraintsWapper.activate(con, for: attribute)
+        self._item._storage.activate(con, for: attribute)
         
         // 5. return self
         return self
@@ -612,19 +612,19 @@ public struct ConstraintUpdater {
     @discardableResult
     func _update(for attribute: _Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
         // 0. check if there was a constraint already installed by driftwood
-        guard self._item._constraintsWapper.hasActiveConstraint(for: attribute) == true else {
+        guard self._item._storage.hasActiveConstraint(for: attribute) == true else {
             fatalError("Driftwood ConstraintUpdater Error: \(self._item.dw_description) have no \(attribute) constraint!")
         }
         
         // 1. deactivate a constraint already installed by driftwood
-        let con = self._item._constraintsWapper.deactivate(for: attribute)!
+        let con = self._item._storage.deactivate(for: attribute)!
         
         // 2. update this constraint
         if let constant = constant { con.constant = constant }
         if let priority = priority { con.priority = priority }
         
         // 3. activate this constraint
-        self._item._constraintsWapper.activate(con, for: attribute)
+        self._item._storage.activate(con, for: attribute)
         
         // return self
         return self
@@ -794,7 +794,7 @@ public struct ConstraintRemover {
     @discardableResult
     func _remove(for attribute: _Attribute) -> ConstraintRemover {
         // 0. deactivate a constraint installed by driftwood, if any
-        guard let _ = self._item._constraintsWapper.deactivate(for: attribute) else {
+        guard let _ = self._item._storage.deactivate(for: attribute) else {
             fatalError("Driftwood ConstraintRemover Error: \(self._item.dw_description) have no \(attribute) constraint!")
         }
         
@@ -838,7 +838,7 @@ public struct Driftwood {
     
     /// remake
     public var remake: ConstraintMaker {
-        self._item._constraintsWapper.deactivateAll()
+        self._item._storage.deactivateAll()
         return ConstraintMaker(_item)
     }
     
@@ -1003,8 +1003,8 @@ typealias _Attribute = NSLayoutConstraint.Attribute
 // Private
 //===========================================
 //
-/// _ConstraintsWrapper
-fileprivate class _ConstraintsWrapper {
+/// _Storage
+fileprivate class _Storage {
     
     //===========================================
     // Fileprivate
@@ -1076,21 +1076,21 @@ fileprivate class _ConstraintsWrapper {
 }
 
 
-/// Item+_ConstraintsWrapper
+/// Item+_Storage
 extension Item {
     
-    /// constraints wrapper
-    fileprivate var _constraintsWapper: _ConstraintsWrapper {
-        if let cw = objc_getAssociatedObject(self, &_constraintsWapperKey) as? _ConstraintsWrapper {
-            return cw
+    /// storage
+    fileprivate var _storage: _Storage {
+        if let s = objc_getAssociatedObject(self, &_storageKey) as? _Storage {
+            return s
         } else {
-            let cw = _ConstraintsWrapper()
-            objc_setAssociatedObject(self, &_constraintsWapperKey, cw, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            return cw
+            let s = _Storage()
+            objc_setAssociatedObject(self, &_storageKey, s, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            return s
         }
     }
 }
 
 
-/// _constraintsWapper Key
-fileprivate var _constraintsWapperKey: Void?
+/// _storageKey Key
+fileprivate var _storageKey: Void?
