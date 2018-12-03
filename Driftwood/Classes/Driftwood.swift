@@ -260,21 +260,26 @@ public struct ConstraintMaker {
     }
     
     //===========================================
-    // Internal
+    // Private
     //===========================================
     //
     /// make X-axis's constraint
     @discardableResult
-    func _makeX(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> ConstraintMaker {
-        // 0. check if attribute belong to X-axis.
-        switch attribute {
-        case .left, .right, .leading, .trailing, .centerX, .leftMargin, .rightMargin, .leadingMargin, .trailingMargin, .centerXWithinMargins: break
-        default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to X-axis!")
-        }
+    private func _makeX(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> ConstraintMaker {
+        // 0. check if attribute belong to X-axis. (execute only in debug mode)
+        assert({
+            switch attribute {
+            case .left, .right, .leading, .trailing, .centerX, .leftMargin, .rightMargin, .leadingMargin, .trailingMargin, .centerXWithinMargins:
+                return true
+            default:
+                return false
+            }
+        }(), "Driftwood [dw.make] error: attribute '\(_type(of: attribute))' is not belong to X-axis.")
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item._storage.hasActiveConstraint(for: attribute) == false else {
-            fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) already have \(attribute) constraint!")
+            _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) already have '\(_type(of: attribute))' constraint.")
+            return self
         }
         
         // 2. retrieve (toItem & toAttribute) from AttributeX
@@ -284,7 +289,8 @@ public struct ConstraintMaker {
         case .superview:
             // check if there is an superview
             guard let superview = self._item.dw_superview else {
-                fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) have no superview!")
+                _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) have no superview.")
+                return self
             }
             toAttribute = attribute
             toItem = superview
@@ -342,16 +348,21 @@ public struct ConstraintMaker {
     
     /// make Y-axis's constraint
     @discardableResult
-    func _makeY(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
-        // 0. check if attribute belong to Y-axis.
-        switch attribute {
-        case .top, .bottom, .centerY, .lastBaseline, .firstBaseline, .topMargin, .bottomMargin, .centerYWithinMargins: break
-        default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to Y-axis!")
-        }
+    private func _makeY(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> ConstraintMaker {
+        // 0. check if attribute belong to Y-axis. (execute only in debug mode)
+        assert({
+            switch attribute {
+            case .top, .bottom, .centerY, .lastBaseline, .firstBaseline, .topMargin, .bottomMargin, .centerYWithinMargins:
+                return true
+            default:
+                return false
+            }
+        }(), "Driftwood [dw.make] error: attribute '\(_type(of: attribute))' is not belong to Y-axis.")
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item._storage.hasActiveConstraint(for: attribute) == false else {
-            fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) already have \(attribute) constraint!")
+            _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) already have '\(_type(of: attribute))' constraint.")
+            return self
         }
         
         // 2. retrieve (toItem & toAttribute) from AttributeY
@@ -361,7 +372,8 @@ public struct ConstraintMaker {
         case .superview:
             // check if there is an superview
             guard let superview = self._item.dw_superview else {
-                fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) have no superview!")
+                _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) have no superview.")
+                return self
             }
             toAttribute = attribute
             toItem = superview
@@ -409,18 +421,23 @@ public struct ConstraintMaker {
         return self
     }
     
-    /// make Size constraint
+    /// make Size's constraint
     @discardableResult
-    func _makeSize(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
-        // 0. check if attribute belong to size
-        switch attribute {
-        case .width, .height: break
-        default: fatalError("Driftwood ConstraintMaker Error: attribute \(attribute) is not belong to size!")
-        }
+    private func _makeSize(for attribute: _Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
+        // 0. check if attribute belong to size. (execute only in debug mode)
+        assert({
+            switch attribute {
+            case .width, .height:
+                return true
+            default:
+                return false
+            }
+        }(), "Driftwood [dw.make] error: attribute '\(_type(of: attribute))' is not belong to size.")
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item._storage.hasActiveConstraint(for: attribute) == false else {
-            fatalError("Driftwood ConstraintMaker Error: \(self._item.dw_description) already have \(attribute) constraint!")
+            _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) already have '\(_type(of: attribute))' constraint.")
+            return self
         }
         
         // 2. retrieve (toItem & toAttribute) from AttributeSize
@@ -448,10 +465,6 @@ public struct ConstraintMaker {
         return self
     }
     
-    //===========================================
-    // Private
-    //===========================================
-    //
     /// _item
     private let _item: Item
     
@@ -605,15 +618,16 @@ public struct ConstraintUpdater {
     }
     
     //===========================================
-    // Internal
+    // Private
     //===========================================
     //
     /// update constraint
     @discardableResult
-    func _update(for attribute: _Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
+    private func _update(for attribute: _Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
         // 0. check if there was a constraint already installed by driftwood
         guard self._item._storage.hasActiveConstraint(for: attribute) == true else {
-            fatalError("Driftwood ConstraintUpdater Error: \(self._item.dw_description) have no \(attribute) constraint!")
+            _debugPrint("Driftwood [dw.update] error: \(self._item.dw_description) have no '\(_type(of: attribute))' constraint.")
+            return self
         }
         
         // 1. deactivate a constraint already installed by driftwood
@@ -626,14 +640,10 @@ public struct ConstraintUpdater {
         // 3. activate this constraint
         self._item._storage.activate(con, for: attribute)
         
-        // return self
+        // 4. return self
         return self
     }
     
-    //===========================================
-    // Private
-    //===========================================
-    //
     /// _item
     private let _item: Item
     
@@ -787,25 +797,22 @@ public struct ConstraintRemover {
     }
     
     //===========================================
-    // Internal
+    // Private
     //===========================================
     //
     /// remove constraint
     @discardableResult
-    func _remove(for attribute: _Attribute) -> ConstraintRemover {
-        // 0. deactivate a constraint installed by driftwood, if any
+    private func _remove(for attribute: _Attribute) -> ConstraintRemover {
+        // 0. deactivate a constraint installed by driftwood if any
         guard let _ = self._item._storage.deactivate(for: attribute) else {
-            fatalError("Driftwood ConstraintRemover Error: \(self._item.dw_description) have no \(attribute) constraint!")
+            _debugPrint("Driftwood [dw.remove] error: \(self._item.dw_description) have no '\(_type(of: attribute))' constraint.")
+            return self
         }
         
         // 1. return self
         return self
     }
     
-    //===========================================
-    // Private
-    //===========================================
-    //
     /// _item
     private let _item: Item
     
@@ -924,6 +931,16 @@ public struct Driftwood {
     public var height: AttributeSize { return .height(_item) }
     
     //===========================================
+    // Debug
+    //===========================================
+    //
+    /// attaching a debug-label for current View/LayoutGuide
+    public func labeled(_ lb: String) -> Driftwood {
+        self._item._storage.labeled = lb
+        return self
+    }
+    
+    //===========================================
     // Private
     //===========================================
     //
@@ -943,7 +960,13 @@ extension UIView: Item {
     }
 
     public var dw_description: String {
-        return self.description
+        var desc = "<\(_type(of: self)): \(_pointer(of: self))"
+        if let label = self._storage.labeled {
+            desc += "; Labeled: '\(label)'>"
+        } else {
+            desc += ">"
+        }
+        return desc
     }
 
     public var dw_hashValue: Int {
@@ -961,7 +984,13 @@ extension UILayoutGuide: Item {
     }
     
     public var dw_description: String {
-        return self.description
+        var desc = "<\(_type(of: self)): \(_pointer(of: self))"
+        if let label = self._storage.labeled {
+            desc += "; Labeled: '\(label)'>"
+        } else {
+            desc += ">"
+        }
+        return desc
     }
     
     public var dw_hashValue: Int {
@@ -992,17 +1021,13 @@ extension UILayoutGuide {
 
 
 //===========================================
-// Internal
-//===========================================
-//
-/// _Attribute
-typealias _Attribute = NSLayoutConstraint.Attribute
-
-
-//===========================================
 // Private
 //===========================================
 //
+/// _Attribute
+fileprivate typealias _Attribute = NSLayoutConstraint.Attribute
+
+
 /// _Storage
 fileprivate class _Storage {
     
@@ -1010,6 +1035,9 @@ fileprivate class _Storage {
     // Fileprivate
     //===========================================
     //
+    /// labeled name for current item
+    var labeled: String?
+    
     /// has an active constraint installed by driftwood
     func hasActiveConstraint(for key: _Attribute) -> Bool {
         return self._activeConstraints.keys.contains(key)
@@ -1037,7 +1065,7 @@ fileprivate class _Storage {
     
     /// dequeue a constraint cached by driftwood
     func deququeConstraintFor(item: Item, attribute: _Attribute, relation: Relation, toItem: Item?, toAttribute: _Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> NSLayoutConstraint {
-        // 0. generate a constraint hash value (hash calculation not include first item)
+        // 0. generate a constraint hash value (hash calculation not include item/constant/priority)
         var hasher = Hasher()
         hasher.combine(attribute)
         hasher.combine(toItem?.dw_hashValue)
@@ -1071,7 +1099,7 @@ fileprivate class _Storage {
     /// active constraints
     private var _activeConstraints: [_Attribute: NSLayoutConstraint] = [:]
     
-    /// cached constraints (include active & deactive constraints)
+    /// cached constraints (include active/deactive constraints)
     private var _cachedConstraints: [Int: NSLayoutConstraint] = [:]
 }
 
@@ -1079,7 +1107,7 @@ fileprivate class _Storage {
 /// Item+_Storage
 extension Item {
     
-    /// storage
+    /// _storage
     fileprivate var _storage: _Storage {
         if let s = objc_getAssociatedObject(self, &_storageKey) as? _Storage {
             return s
@@ -1094,3 +1122,75 @@ extension Item {
 
 /// _storage Key
 fileprivate var _storageKey: Void?
+
+
+//===========================================
+// Debug tool
+//===========================================
+//
+/// return a type name of an object
+fileprivate func _type(of anyObject: AnyObject) -> String {
+    return String(describing: type(of: anyObject))
+}
+
+
+/// return an address of an object
+fileprivate func _pointer(of anyObject: AnyObject) -> String {
+    let opaque: UnsafeMutableRawPointer = Unmanaged.passUnretained(anyObject).toOpaque()
+    return String(describing: opaque)
+}
+
+
+/// return a case name of an _Attribute
+fileprivate func _type(of attribute: _Attribute) -> String {
+    switch attribute {
+    case .left:
+        return "left"
+    case .right:
+        return "right"
+    case .top:
+        return "top"
+    case .bottom:
+        return "bottom"
+    case .leading:
+        return "leading"
+    case .trailing:
+        return "trailing"
+    case .width:
+        return "width"
+    case .height:
+        return "height"
+    case .centerX:
+        return "centerX"
+    case .centerY:
+        return "centerY"
+    case .lastBaseline:
+        return "lastBaseline"
+    case .firstBaseline:
+        return "firstBaseline"
+    case .leftMargin:
+        return "leftMargin"
+    case .rightMargin:
+        return "rightMargin"
+    case .topMargin:
+        return "topMargin"
+    case .bottomMargin:
+        return "bottomMargin"
+    case .leadingMargin:
+        return "leadingMargin"
+    case .trailingMargin:
+        return "trailingMargin"
+    case .centerXWithinMargins:
+        return "centerXWithinMargins"
+    case .centerYWithinMargins:
+        return "centerYWithinMargins"
+    case .notAnAttribute:
+        return "notAnAttribute"
+    }
+}
+
+
+/// print only in debug mode
+fileprivate func _debugPrint(_ items: Any) {
+    assert({ print(items); return true }())
+}
