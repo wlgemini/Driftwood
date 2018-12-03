@@ -21,57 +21,88 @@ pod 'Driftwood'
 
 ### Quick Start
 
+Driftwood is easy to use, you can make full constraints satisfication in just a few code.
+
+Let's say we want to layout a box that is constrained to it’s superview’s edges with 20pts of padding.
+
 ```swift
 let box = UIView()
 box.translatesAutoresizingMaskIntoConstraints = false
 superview.addSubview(box)
-box.dw.make.left(10).top(20).width(20).height(10)
+box.dw.make.left(20).top(20).right(-20).bottom(-20)
 ```
-> NOTE: ensuring set `translatesAutoresizingMaskIntoConstraints` to `false` on all appropriate views.
+Or even shorter:
+
+```swift
+let box = UIView()
+box.translatesAutoresizingMaskIntoConstraints = false
+superview.addSubview(box)
+box.dw.make.edge(insets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+```
+
+>   NOTE: ensuring set `translatesAutoresizingMaskIntoConstraints` to `false` on all appropriate views.
 
 ### Attribute
+
+All `NSLayoutAttribute` cases is available in Driftwood.
+
+Let's say `view1` is at the bottom of `view2`, offset with 10pts.
+
 ```swift
 view1.dw.make.top(10, to: view2.dw.bottom)
 ```
 
-|`AttributeX`                     |`NSLayoutAttribute`                      |
-|:---                             |:---                                     |
-|`view.dw.left`                   |`NSLayoutAttribute.left`                 |
-|`view.dw.right`                  |`NSLayoutAttribute.right`                |
-|`view.dw.leading`                |`NSLayoutAttribute.leading`              |
-|`view.dw.trailing`               |`NSLayoutAttribute.trailing`             |
-|`view.dw.centerX`                |`NSLayoutAttribute.centerX`              |
-|`view.dw.leftMargin`             |`NSLayoutAttribute.leftMargin`           |
-|`view.dw.rightMargin`            |`NSLayoutAttribute.rightMargin`          |
-|`view.dw.leadingMargin`          |`NSLayoutAttribute.leadingMargin`        |
-|`view.dw.trailingMargin`         |`NSLayoutAttribute.trailingMargin`       |
-|`view.dw.centerXWithinMargins`   |`NSLayoutAttribute.centerXWithinMargins` |
+Full list of `NSLayoutConstraint.Attribute`:
 
-|`AttributeY`                     |`NSLayoutAttribute`                      |
-|:---                             |:---                                     |
-|`view.dw.top`                    |`NSLayoutAttribute.top`                  |
-|`view.dw.bottom`                 |`NSLayoutAttribute.bottom`               |
-|`view.dw.centerY`                |`NSLayoutAttribute.centerY`              |
-|`view.dw.lastBaseline`           |`NSLayoutAttribute.lastBaseline`         |
-|`view.dw.firstBaseline`          |`NSLayoutAttribute.firstBaseline`        |
-|`view.dw.topMargin`              |`NSLayoutAttribute.topMargin`            |
-|`view.dw.bottomMargin`           |`NSLayoutAttribute.bottomMargin`         |
-|`view.dw.centerYWithinMargins`   |`NSLayoutAttribute.centerYWithinMargins` |
+| `AttributeX property` | `AttributeX func`         | `NSLayoutConstraint.Attribute` |
+| :-------------------- | :------------------------ | :----------------------------- |
+| `dw.left`             | `dw.make.left()`          |`.left`                        |
+| `dw.right`            | `dw.make.right()`         |`.right`                       |
+| `dw.leading`          | `dw.make.leading()`       |`.leading`                     |
+| `dw.trailing`         | `dw.make.trailing()`      |`.trailing`                    |
+| `dw.centerX`          | `dw.make.centerX()`       |`.centerX`                     |
+| `dw.leftMargin`       | `dw.make.leftMargin()`    |`.leftMargin`                  |
+| `dw.rightMargin`      | `dw.make.rightMargin()`   |`.rightMargin`                 |
+| `dw.leadingMargin`    | `dw.make.leadingMargin()` |`.leadingMargin`               |
+| `dw.trailingMargin`   | `dw.make.trailingMargin()`|`.trailingMargin`              |
 
-|`AttributeSize`                  |`NSLayoutAttribute`                      |
-|:---                             |:---                                     |
-|`view.dw.width`                  |`NSLayoutAttribute.width`                |
-|`view.dw.height`                 |`NSLayoutAttribute.height`               |
+| `AttributeY property`     | `AttributeY func`                | `NSLayoutConstraint.Attribute` |
+| :------------------------ | :------------------------------- | :----------------------------- |
+| `dw.top`                  | `dw.make.top()`                  | `.top`                         |
+| `dw.bottom`               | `dw.make.bottom()`               |`.bottom`                      |
+| `dw.centerY`              | `dw.make.centerY()`              |`.centerY`                     |
+| `dw.lastBaseline`         | `dw.make.lastBaseline()`         |`.lastBaseline`                |
+| `dw.firstBaseline`        | `dw.make.firstBaseline()`        |`.firstBaseline`               |
+| `dw.topMargin`            | `dw.make.topMargin()`            |`.topMargin`                   |
+| `dw.bottomMargin`         | `dw.make.bottomMargin()`         |`.bottomMargin`                |
+| `dw.centerYWithinMargins` | `dw.make.centerYWithinMargins()` | `.centerYWithinMargins`        |
 
-### Relation & Priority
+| `AttributeSize property` | `AttributeSize func`  | `NSLayoutConstraint.Attribute` |
+| :--------------------    | :-------------------- | :----------------------------- |
+| `dw.width`               | `dw.make.width()`     | `.width`                       |
+| `dw.height`              | `dw.make.height()`    | `.height`                      |
+
+### Relation & Multiplier & Priority
+
+Relation & Priority are available in `AttributeX func` & `AttributeY func`:
 
 ```swift
-view.dw.make.width(100, by: .greaterThanOrEqual, priority: .required)
+view.dw.make.left(100, by: .greaterThanOrEqual, priority: .defaultLow)
 ```
+
+Relation & Multiplier & Priority are available in `AttributeSize func`:
+
+```swift
+view.dw.make.width(100, by: .greaterThanOrEqual, multiply: 2, priority: .required)
+```
+
+-   Relation: default is `.equal`
+-   Priority: default is `.required`
+-   Multiplier: default is `1`
 
 ### dw.update
 
-you can use the method `dw.update` to updating `constant` and `priority` value of a constraint.
+You can use the method `dw.update` to updating `constant` and `priority` value of a constraint.
 ```swift
 view1.dw.update.top(200)
 
@@ -81,13 +112,14 @@ view2.dw.update.left(100, priority: .required)
 ### dw.remake
 
 `dw.remake` is similar to `dw.make`, but will first remove all existing constraints installed by Driftwood.
+
 ```swift
 view.dw.remake.left(20).top(30).width(20).height(10)
 ```
 
 ### dw.remove
 
-you can use the method `dw.remove` to removing any existing constraints installed by Driftwood.
+You can use the method `dw.remove` to removing any existing constraints installed by Driftwood.
 ```swift
 view.dw.remove.left().top()
 ```
@@ -98,7 +130,7 @@ Driftwood can work with `UILayoutGuide` easily.
 ```swift 
 let guide = UILayoutGuide()
 superview.addLayoutGuide(guide)
-guide.dw.make.left(10).top(64).right(-20).height(10).width(10)
+guide.dw.make.left(10).top(10).height(10).width(10)
 
 let box = UIView()
 box.translatesAutoresizingMaskIntoConstraints = false
@@ -108,11 +140,27 @@ box.dw.make.top(0, to: guide.dw.bottom).left(0).right(0).height(10)
 
 ### Cache
 
-all constraints installed by Driftwood will be cached for future reuse.
+All constraints installed by Driftwood will be cached for future reuse.
+
+### Debug
+
+You can attaching a name to any View or LayoutGuide for debug print.
+
+```swift
+view.dw.labeled("MyView").make.left(0).left(0)
+```
+
+It will be print like this, if an error occurred:
+
+```swift
+Driftwood [dw.make] error: <UIView: 0x00007fc636525da0; Labeled: 'MyView'> already have 'left' constraint.
+```
+
+>   NOTE: In release, Driftwood will not print any debug info.
 
 ## Demo
 
-you can download this repo to see some usage.
+You can download this repo to see more usage.
 
 ## Author
 
