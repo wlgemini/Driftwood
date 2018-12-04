@@ -1190,7 +1190,7 @@ fileprivate func _type(of attribute: _Attribute) -> String {
 }
 
 
-/// print only in debug mode
-fileprivate func _debugPrint(_ items: Any) {
-    assert({ print(items); return true }())
+/// print only in debug mode (execute only in debug mode)
+fileprivate func _debugPrint(_ item: @autoclosure () -> Any) {
+    assert({ print(item()); return true }())
 }
