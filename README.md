@@ -31,7 +31,7 @@ box.translatesAutoresizingMaskIntoConstraints = false
 superview.addSubview(box)
 box.dw.make.left(20).top(20).right(-20).bottom(-20)
 ```
-Or even shorter:
+Or another way:
 
 ```swift
 let box = UIView()
@@ -44,7 +44,7 @@ box.dw.make.edge(insets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
 
 ### Attribute
 
-All `NSLayoutAttribute` cases is available in Driftwood.
+All `NSLayoutAttribute` cases are available in Driftwood.
 
 Let's say `view1` is at the bottom of `view2`, offset with 10pts.
 
@@ -56,29 +56,29 @@ Full list of `NSLayoutConstraint.Attribute`:
 
 | `AttributeX property` | `AttributeX func`         | `NSLayoutConstraint.Attribute` |
 | :-------------------- | :------------------------ | :----------------------------- |
-| `dw.left`             | `dw.make.left()`          |`.left`                        |
-| `dw.right`            | `dw.make.right()`         |`.right`                       |
-| `dw.leading`          | `dw.make.leading()`       |`.leading`                     |
-| `dw.trailing`         | `dw.make.trailing()`      |`.trailing`                    |
-| `dw.centerX`          | `dw.make.centerX()`       |`.centerX`                     |
-| `dw.leftMargin`       | `dw.make.leftMargin()`    |`.leftMargin`                  |
-| `dw.rightMargin`      | `dw.make.rightMargin()`   |`.rightMargin`                 |
-| `dw.leadingMargin`    | `dw.make.leadingMargin()` |`.leadingMargin`               |
-| `dw.trailingMargin`   | `dw.make.trailingMargin()`|`.trailingMargin`              |
+| `dw.left`             | `dw.make.left()`          |`.left`                         |
+| `dw.right`            | `dw.make.right()`         |`.right`                        |
+| `dw.leading`          | `dw.make.leading()`       |`.leading`                      |
+| `dw.trailing`         | `dw.make.trailing()`      |`.trailing`                     |
+| `dw.centerX`          | `dw.make.centerX()`       |`.centerX`                      |
+| `dw.leftMargin`       | `dw.make.leftMargin()`    |`.leftMargin`                   |
+| `dw.rightMargin`      | `dw.make.rightMargin()`   |`.rightMargin`                  |
+| `dw.leadingMargin`    | `dw.make.leadingMargin()` |`.leadingMargin`                |
+| `dw.trailingMargin`   | `dw.make.trailingMargin()`|`.trailingMargin`               |
 
 | `AttributeY property`     | `AttributeY func`                | `NSLayoutConstraint.Attribute` |
 | :------------------------ | :------------------------------- | :----------------------------- |
 | `dw.top`                  | `dw.make.top()`                  | `.top`                         |
-| `dw.bottom`               | `dw.make.bottom()`               |`.bottom`                      |
-| `dw.centerY`              | `dw.make.centerY()`              |`.centerY`                     |
-| `dw.lastBaseline`         | `dw.make.lastBaseline()`         |`.lastBaseline`                |
-| `dw.firstBaseline`        | `dw.make.firstBaseline()`        |`.firstBaseline`               |
-| `dw.topMargin`            | `dw.make.topMargin()`            |`.topMargin`                   |
-| `dw.bottomMargin`         | `dw.make.bottomMargin()`         |`.bottomMargin`                |
+| `dw.bottom`               | `dw.make.bottom()`               |`.bottom`                       |
+| `dw.centerY`              | `dw.make.centerY()`              |`.centerY`                      |
+| `dw.lastBaseline`         | `dw.make.lastBaseline()`         |`.lastBaseline`                 |
+| `dw.firstBaseline`        | `dw.make.firstBaseline()`        |`.firstBaseline`                |
+| `dw.topMargin`            | `dw.make.topMargin()`            |`.topMargin`                    |
+| `dw.bottomMargin`         | `dw.make.bottomMargin()`         |`.bottomMargin`                 |
 | `dw.centerYWithinMargins` | `dw.make.centerYWithinMargins()` | `.centerYWithinMargins`        |
 
 | `AttributeSize property` | `AttributeSize func`  | `NSLayoutConstraint.Attribute` |
-| :--------------------    | :-------------------- | :----------------------------- |
+| :----------------------- | :-------------------- | :----------------------------- |
 | `dw.width`               | `dw.make.width()`     | `.width`                       |
 | `dw.height`              | `dw.make.height()`    | `.height`                      |
 
@@ -126,7 +126,7 @@ view.dw.remove.left().top()
 
 ### LayoutGuide
 
-Driftwood can work with `UILayoutGuide` easily.
+Driftwood can works with `UILayoutGuide` easily.
 ```swift 
 let guide = UILayoutGuide()
 superview.addLayoutGuide(guide)
