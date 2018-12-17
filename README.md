@@ -44,7 +44,7 @@ box.dw.make.edge(insets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
 
 ### Attribute
 
-All `NSLayoutAttribute` cases are available in Driftwood.
+All `NSLayoutConstraint.Attribute` cases are available in Driftwood.
 
 Let's say `view1` is at the bottom of `view2`, offset with 10pts.
 
