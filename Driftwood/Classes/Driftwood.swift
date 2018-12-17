@@ -630,17 +630,10 @@ public struct ConstraintUpdater {
             return self
         }
         
-        // 1. deactivate a constraint already installed by driftwood
-        let con = self._item._storage.deactivate(for: attribute)!
+        // 1. update this constraint
+        self._item._storage.update(constant: constant, priority: priority, for: attribute)
         
-        // 2. update this constraint
-        if let constant = constant { con.constant = constant }
-        if let priority = priority { con.priority = priority }
-        
-        // 3. activate this constraint
-        self._item._storage.activate(con, for: attribute)
-        
-        // 4. return self
+        // 2. return self
         return self
     }
     
@@ -1045,15 +1038,42 @@ fileprivate class _Storage {
     
     /// activate a constraint
     func activate(_ con: NSLayoutConstraint, for key: _Attribute) {
+        // check if constraint is 'active'
+        assert(con.isActive == false, "Driftwood internal error: found 'active' while activate constraint '\(_type(of:key))'.")
+        
         con.isActive = true
         self._activeConstraints[key] = con
+    }
+    
+    /// update an active constraint installed by driftwood
+    func update(constant: CGFloat?, priority: Priority?, for key: _Attribute) {
+        // check if there was an constraint
+        guard let con = self._activeConstraints[key] else {
+            _debugPrint("Driftwood internal error: found nil while update constraint '\(_type(of:key))'.")
+            return
+        }
+        
+        if let constant = constant {
+            con.constant = constant
+        }
+        
+        if let priority = priority {
+            con.isActive = false
+            con.priority = priority
+            con.isActive = true
+        }
     }
     
     /// deactivate a constraint installed by driftwood
     @discardableResult
     func deactivate(for key: _Attribute) -> NSLayoutConstraint? {
-        let con = self._activeConstraints.removeValue(forKey: key)
-        con?.isActive = false
+        // check if there was an constraint
+        guard let con = self._activeConstraints.removeValue(forKey: key) else {
+            _debugPrint("Driftwood internal error: found nil while deactivate constraint '\(_type(of:key))'")
+            return nil
+        }
+        
+        con.isActive = false
         return con
     }
     
@@ -1079,6 +1099,10 @@ fileprivate class _Storage {
         if let c = self._cachedConstraints[conKey] {
             // 1.1 cached
             con = c
+            
+            // check if cached constraint is 'active'
+            assert(con.isActive == false, "Driftwood internal error: found 'active' while dequeue a cached constraint '\(_type(of:attribute))'.")
+            
             con.constant = constant
             con.priority = priority
         } else {
