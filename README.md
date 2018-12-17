@@ -54,19 +54,19 @@ view1.dw.make.top(10, to: view2.dw.bottom)
 
 Full list of `NSLayoutConstraint.Attribute`:
 
-| `AttributeX property` | `AttributeX func`         | `NSLayoutConstraint.Attribute` |
-| :-------------------- | :------------------------ | :----------------------------- |
-| `dw.left`             | `dw.make.left()`          |`.left`                         |
-| `dw.right`            | `dw.make.right()`         |`.right`                        |
-| `dw.leading`          | `dw.make.leading()`       |`.leading`                      |
-| `dw.trailing`         | `dw.make.trailing()`      |`.trailing`                     |
-| `dw.centerX`          | `dw.make.centerX()`       |`.centerX`                      |
-| `dw.leftMargin`       | `dw.make.leftMargin()`    |`.leftMargin`                   |
-| `dw.rightMargin`      | `dw.make.rightMargin()`   |`.rightMargin`                  |
-| `dw.leadingMargin`    | `dw.make.leadingMargin()` |`.leadingMargin`                |
-| `dw.trailingMargin`   | `dw.make.trailingMargin()`|`.trailingMargin`               |
+| `X-axis Attribute property` | `X-axis Attribute function` | `NSLayoutConstraint.Attribute` |
+| :------------------------------------- | :-------------------------------------- | :----------------------------------------- |
+| `dw.left`                                      | `dw.make.left()`                        | `.left`                         |
+| `dw.right`                                    | `dw.make.right()`                      | `.right`                        |
+| `dw.leading`                                | `dw.make.leading()`                  | `.leading`                      |
+| `dw.trailing`                              | `dw.make.trailing()`                | `.trailing`                     |
+| `dw.centerX`                                | `dw.make.centerX()`                  | `.centerX`                      |
+| `dw.leftMargin`                          | `dw.make.leftMargin()`            | `.leftMargin`                   |
+| `dw.rightMargin`                        | `dw.make.rightMargin()`         | `.rightMargin`                  |
+| `dw.leadingMargin`                    | `dw.make.leadingMargin()`     | `.leadingMargin`                |
+| `dw.trailingMargin`                  | `dw.make.trailingMargin()`   | `.trailingMargin`               |
 
-| `AttributeY property`     | `AttributeY func`                | `NSLayoutConstraint.Attribute` |
+| `Y-axis Attribute property`     | `Y-axis Attribute function`                | `NSLayoutConstraint.Attribute` |
 | :------------------------ | :------------------------------- | :----------------------------- |
 | `dw.top`                  | `dw.make.top()`                  | `.top`                         |
 | `dw.bottom`               | `dw.make.bottom()`               |`.bottom`                       |
@@ -77,7 +77,7 @@ Full list of `NSLayoutConstraint.Attribute`:
 | `dw.bottomMargin`         | `dw.make.bottomMargin()`         |`.bottomMargin`                 |
 | `dw.centerYWithinMargins` | `dw.make.centerYWithinMargins()` | `.centerYWithinMargins`        |
 
-| `AttributeSize property` | `AttributeSize func`  | `NSLayoutConstraint.Attribute` |
+| `Size Attribute property` | `Size Attribute function`  | `NSLayoutConstraint.Attribute` |
 | :----------------------- | :-------------------- | :----------------------------- |
 | `dw.width`               | `dw.make.width()`     | `.width`                       |
 | `dw.height`              | `dw.make.height()`    | `.height`                      |
