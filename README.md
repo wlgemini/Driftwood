@@ -40,7 +40,7 @@ superview.addSubview(box)
 box.dw.make.edge(insets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
 ```
 
->   NOTE: ensuring set `translatesAutoresizingMaskIntoConstraints` to `false` on all appropriate views.
+> NOTE: Ensuring set `translatesAutoresizingMaskIntoConstraints` to `false` on all appropriate views.
 
 ### Attribute
 
@@ -144,7 +144,7 @@ All constraints installed by Driftwood will be cached for future reuse.
 
 ### Debug
 
-You can attaching a name to any View or LayoutGuide for debug print.
+You can attaching a name to any View or LayoutGuide for debug.
 
 ```swift
 view.dw.labeled("MyView").make.left(0).left(0)
@@ -152,11 +152,11 @@ view.dw.labeled("MyView").make.left(0).left(0)
 
 It will be print like this, if an error occurred:
 
-```swift
+```
 Driftwood [dw.make] error: <UIView: 0x00007fc636525da0; Labeled: 'MyView'> already have 'left' constraint.
 ```
 
->   NOTE: In release, Driftwood will not print any debug info.
+> NOTE: In release, Driftwood will not print any debug info.
 
 ## Demo
 
