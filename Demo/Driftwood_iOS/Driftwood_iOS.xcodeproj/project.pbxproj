@@ -7,86 +7,86 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A98896974C45F3F58E1C76B /* Pods_Driftwood_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAD3734FF1F2885AEC7F0EA /* Pods_Driftwood_iOS.framework */; };
-		CA3B58F721F575B300323498 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B58F621F575B300323498 /* AppDelegate.swift */; };
-		CA3B58F921F575B300323498 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B58F821F575B300323498 /* ViewController.swift */; };
-		CA3B58FC21F575B300323498 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B58FA21F575B300323498 /* Main.storyboard */; };
-		CA3B58FE21F575B400323498 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA3B58FD21F575B400323498 /* Assets.xcassets */; };
-		CA3B590121F575B400323498 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B58FF21F575B400323498 /* LaunchScreen.storyboard */; };
-		CA3B590B21F5771100323498 /* UIView+Driftwood.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B590A21F5771100323498 /* UIView+Driftwood.swift */; };
+		28BAF40E0BE475F5991FE7B2 /* Pods_Driftwood_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC7C850C667727D69103D4E /* Pods_Driftwood_iOS.framework */; };
+		A043C01C2200407F00788472 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043C01B2200407F00788472 /* AppDelegate.swift */; };
+		A043C01E2200407F00788472 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043C01D2200407F00788472 /* ViewController.swift */; };
+		A043C0212200407F00788472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A043C01F2200407F00788472 /* Main.storyboard */; };
+		A043C0232200407F00788472 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A043C0222200407F00788472 /* Assets.xcassets */; };
+		A043C0262200407F00788472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A043C0242200407F00788472 /* LaunchScreen.storyboard */; };
+		A043C02E220040BE00788472 /* UIView+Driftwood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043C02D220040BD00788472 /* UIView+Driftwood.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B5C594286C017320476E8C96 /* Pods-Driftwood_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Driftwood_iOS.release.xcconfig"; path = "Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS.release.xcconfig"; sourceTree = "<group>"; };
-		CA3B58F321F575B300323498 /* Driftwood_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Driftwood_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA3B58F621F575B300323498 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA3B58F821F575B300323498 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CA3B58FB21F575B300323498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CA3B58FD21F575B400323498 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CA3B590021F575B400323498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CA3B590221F575B400323498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA3B590A21F5771100323498 /* UIView+Driftwood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Driftwood.swift"; sourceTree = "<group>"; };
-		E3CED432D914D15FF54429B6 /* Pods-Driftwood_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Driftwood_iOS.debug.xcconfig"; path = "Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		EDAD3734FF1F2885AEC7F0EA /* Pods_Driftwood_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Driftwood_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42066002237E3CDEEFBB3221 /* Pods-Driftwood_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Driftwood_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		44AAE9D37C1F7251485AA24D /* Pods-Driftwood_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Driftwood_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		5AC7C850C667727D69103D4E /* Pods_Driftwood_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Driftwood_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A043C0182200407F00788472 /* Driftwood_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Driftwood_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A043C01B2200407F00788472 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A043C01D2200407F00788472 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A043C0202200407F00788472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A043C0222200407F00788472 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A043C0252200407F00788472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A043C0272200407F00788472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A043C02D220040BD00788472 /* UIView+Driftwood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Driftwood.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CA3B58F021F575B300323498 /* Frameworks */ = {
+		A043C0152200407F00788472 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A98896974C45F3F58E1C76B /* Pods_Driftwood_iOS.framework in Frameworks */,
+				28BAF40E0BE475F5991FE7B2 /* Pods_Driftwood_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		096E51491E5F20FA95D645B2 /* Frameworks */ = {
+		71412402F3F858BB7033EC34 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EDAD3734FF1F2885AEC7F0EA /* Pods_Driftwood_iOS.framework */,
+				42066002237E3CDEEFBB3221 /* Pods-Driftwood_iOS.debug.xcconfig */,
+				44AAE9D37C1F7251485AA24D /* Pods-Driftwood_iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9AF2952EA71667A993C6DF1D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AC7C850C667727D69103D4E /* Pods_Driftwood_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7798D1AAD6CA3F1539C1BA8E /* Pods */ = {
+		A043C00F2200407F00788472 = {
 			isa = PBXGroup;
 			children = (
-				E3CED432D914D15FF54429B6 /* Pods-Driftwood_iOS.debug.xcconfig */,
-				B5C594286C017320476E8C96 /* Pods-Driftwood_iOS.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		CA3B58EA21F575B300323498 = {
-			isa = PBXGroup;
-			children = (
-				CA3B58F521F575B300323498 /* Driftwood_iOS */,
-				CA3B58F421F575B300323498 /* Products */,
-				7798D1AAD6CA3F1539C1BA8E /* Pods */,
-				096E51491E5F20FA95D645B2 /* Frameworks */,
+				A043C01A2200407F00788472 /* Driftwood_iOS */,
+				A043C0192200407F00788472 /* Products */,
+				71412402F3F858BB7033EC34 /* Pods */,
+				9AF2952EA71667A993C6DF1D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		CA3B58F421F575B300323498 /* Products */ = {
+		A043C0192200407F00788472 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CA3B58F321F575B300323498 /* Driftwood_iOS.app */,
+				A043C0182200407F00788472 /* Driftwood_iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CA3B58F521F575B300323498 /* Driftwood_iOS */ = {
+		A043C01A2200407F00788472 /* Driftwood_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				CA3B58F621F575B300323498 /* AppDelegate.swift */,
-				CA3B590A21F5771100323498 /* UIView+Driftwood.swift */,
-				CA3B58F821F575B300323498 /* ViewController.swift */,
-				CA3B58FA21F575B300323498 /* Main.storyboard */,
-				CA3B58FD21F575B400323498 /* Assets.xcassets */,
-				CA3B58FF21F575B400323498 /* LaunchScreen.storyboard */,
-				CA3B590221F575B400323498 /* Info.plist */,
+				A043C01B2200407F00788472 /* AppDelegate.swift */,
+				A043C02D220040BD00788472 /* UIView+Driftwood.swift */,
+				A043C01D2200407F00788472 /* ViewController.swift */,
+				A043C01F2200407F00788472 /* Main.storyboard */,
+				A043C0222200407F00788472 /* Assets.xcassets */,
+				A043C0242200407F00788472 /* LaunchScreen.storyboard */,
+				A043C0272200407F00788472 /* Info.plist */,
 			);
 			path = Driftwood_iOS;
 			sourceTree = "<group>";
@@ -94,15 +94,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CA3B58F221F575B300323498 /* Driftwood_iOS */ = {
+		A043C0172200407F00788472 /* Driftwood_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA3B590521F575B400323498 /* Build configuration list for PBXNativeTarget "Driftwood_iOS" */;
+			buildConfigurationList = A043C02A2200407F00788472 /* Build configuration list for PBXNativeTarget "Driftwood_iOS" */;
 			buildPhases = (
-				1A37ECE302C158D8629F8CD0 /* [CP] Check Pods Manifest.lock */,
-				CA3B58EF21F575B300323498 /* Sources */,
-				CA3B58F021F575B300323498 /* Frameworks */,
-				CA3B58F121F575B300323498 /* Resources */,
-				5091E98C15CF60435CC4AB4E /* [CP] Embed Pods Frameworks */,
+				CB82F8FCE0BC57E22F4FBF50 /* [CP] Check Pods Manifest.lock */,
+				A043C0142200407F00788472 /* Sources */,
+				A043C0152200407F00788472 /* Frameworks */,
+				A043C0162200407F00788472 /* Resources */,
+				ECEEF90D4E0D429001B169D7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -110,25 +110,25 @@
 			);
 			name = Driftwood_iOS;
 			productName = Driftwood_iOS;
-			productReference = CA3B58F321F575B300323498 /* Driftwood_iOS.app */;
+			productReference = A043C0182200407F00788472 /* Driftwood_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CA3B58EB21F575B300323498 /* Project object */ = {
+		A043C0102200407F00788472 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = wlgemini;
 				TargetAttributes = {
-					CA3B58F221F575B300323498 = {
+					A043C0172200407F00788472 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
-			buildConfigurationList = CA3B58EE21F575B300323498 /* Build configuration list for PBXProject "Driftwood_iOS" */;
+			buildConfigurationList = A043C0132200407F00788472 /* Build configuration list for PBXProject "Driftwood_iOS" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -136,44 +136,40 @@
 				en,
 				Base,
 			);
-			mainGroup = CA3B58EA21F575B300323498;
-			productRefGroup = CA3B58F421F575B300323498 /* Products */;
+			mainGroup = A043C00F2200407F00788472;
+			productRefGroup = A043C0192200407F00788472 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CA3B58F221F575B300323498 /* Driftwood_iOS */,
+				A043C0172200407F00788472 /* Driftwood_iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CA3B58F121F575B300323498 /* Resources */ = {
+		A043C0162200407F00788472 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA3B590121F575B400323498 /* LaunchScreen.storyboard in Resources */,
-				CA3B58FE21F575B400323498 /* Assets.xcassets in Resources */,
-				CA3B58FC21F575B300323498 /* Main.storyboard in Resources */,
+				A043C0262200407F00788472 /* LaunchScreen.storyboard in Resources */,
+				A043C0232200407F00788472 /* Assets.xcassets in Resources */,
+				A043C0212200407F00788472 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A37ECE302C158D8629F8CD0 /* [CP] Check Pods Manifest.lock */ = {
+		CB82F8FCE0BC57E22F4FBF50 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Driftwood_iOS-checkManifestLockResult.txt",
 			);
@@ -182,56 +178,52 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5091E98C15CF60435CC4AB4E /* [CP] Embed Pods Frameworks */ = {
+		ECEEF90D4E0D429001B169D7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Driftwood/Driftwood.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Driftwood.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CA3B58EF21F575B300323498 /* Sources */ = {
+		A043C0142200407F00788472 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA3B590B21F5771100323498 /* UIView+Driftwood.swift in Sources */,
-				CA3B58F921F575B300323498 /* ViewController.swift in Sources */,
-				CA3B58F721F575B300323498 /* AppDelegate.swift in Sources */,
+				A043C02E220040BE00788472 /* UIView+Driftwood.swift in Sources */,
+				A043C01E2200407F00788472 /* ViewController.swift in Sources */,
+				A043C01C2200407F00788472 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CA3B58FA21F575B300323498 /* Main.storyboard */ = {
+		A043C01F2200407F00788472 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CA3B58FB21F575B300323498 /* Base */,
+				A043C0202200407F00788472 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		CA3B58FF21F575B400323498 /* LaunchScreen.storyboard */ = {
+		A043C0242200407F00788472 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CA3B590021F575B400323498 /* Base */,
+				A043C0252200407F00788472 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -239,7 +231,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CA3B590321F575B400323498 /* Debug */ = {
+		A043C0282200407F00788472 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -300,7 +292,7 @@
 			};
 			name = Debug;
 		};
-		CA3B590421F575B400323498 /* Release */ = {
+		A043C0292200407F00788472 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -355,17 +347,14 @@
 			};
 			name = Release;
 		};
-		CA3B590621F575B400323498 /* Debug */ = {
+		A043C02B2200407F00788472 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3CED432D914D15FF54429B6 /* Pods-Driftwood_iOS.debug.xcconfig */;
+			baseConfigurationReference = 42066002237E3CDEEFBB3221 /* Pods-Driftwood_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Driftwood_iOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wlgemini.Driftwood-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -373,17 +362,14 @@
 			};
 			name = Debug;
 		};
-		CA3B590721F575B400323498 /* Release */ = {
+		A043C02C2200407F00788472 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5C594286C017320476E8C96 /* Pods-Driftwood_iOS.release.xcconfig */;
+			baseConfigurationReference = 44AAE9D37C1F7251485AA24D /* Pods-Driftwood_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Driftwood_iOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wlgemini.Driftwood-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -394,25 +380,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CA3B58EE21F575B300323498 /* Build configuration list for PBXProject "Driftwood_iOS" */ = {
+		A043C0132200407F00788472 /* Build configuration list for PBXProject "Driftwood_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CA3B590321F575B400323498 /* Debug */,
-				CA3B590421F575B400323498 /* Release */,
+				A043C0282200407F00788472 /* Debug */,
+				A043C0292200407F00788472 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA3B590521F575B400323498 /* Build configuration list for PBXNativeTarget "Driftwood_iOS" */ = {
+		A043C02A2200407F00788472 /* Build configuration list for PBXNativeTarget "Driftwood_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CA3B590621F575B400323498 /* Debug */,
-				CA3B590721F575B400323498 /* Release */,
+				A043C02B2200407F00788472 /* Debug */,
+				A043C02C2200407F00788472 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CA3B58EB21F575B300323498 /* Project object */;
+	rootObject = A043C0102200407F00788472 /* Project object */;
 }
