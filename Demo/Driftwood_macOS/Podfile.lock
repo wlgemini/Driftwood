@@ -1,0 +1,16 @@
+PODS:
+  - Driftwood (4.2.6)
+
+DEPENDENCIES:
+  - Driftwood (from `../../`)
+
+EXTERNAL SOURCES:
+  Driftwood:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  Driftwood: 23dc2185aa4b54c05a5bde73d01d256ec432bf56
+
+PODFILE CHECKSUM: 90fdc768d8f35344c2f48df4b0b12d9e95b6f049
+
+COCOAPODS: 1.5.3

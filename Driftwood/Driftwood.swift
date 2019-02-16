@@ -22,7 +22,11 @@
 //  SOFTWARE.
 
 
+#if os(iOS) || os(tvOS)
 import UIKit
+#else
+import AppKit
+#endif
 
 
 /// Item
@@ -43,11 +47,16 @@ public protocol Item: class {
 public typealias Relation = NSLayoutConstraint.Relation
 
 
+#if os(iOS) || os(tvOS)
 /// Priority
 public typealias Priority = UILayoutPriority
+#else
+/// Priority
+public typealias Priority = NSLayoutConstraint.Priority
+#endif
 
 
-/// Horizontal attribute
+/// X-axis's attribute
 public enum AttributeX {
     
     case superview
@@ -62,24 +71,21 @@ public enum AttributeX {
     
     case centerX(Item)
     
-    @available(iOS 8.0, *)
+    #if os(iOS) || os(tvOS)
     case leftMargin(Item)
     
-    @available(iOS 8.0, *)
     case rightMargin(Item)
     
-    @available(iOS 8.0, *)
     case leadingMargin(Item)
     
-    @available(iOS 8.0, *)
     case trailingMargin(Item)
     
-    @available(iOS 8.0, *)
     case centerXWithinMargins(Item)
+    #endif
 }
 
 
-/// Vertical attribute
+/// Y-axis's attribute
 public enum AttributeY {
     
     case superview
@@ -92,17 +98,15 @@ public enum AttributeY {
     
     case lastBaseline(Item)
     
-    @available(iOS 8.0, *)
     case firstBaseline(Item)
     
-    @available(iOS 8.0, *)
+    #if os(iOS) || os(tvOS)
     case topMargin(Item)
     
-    @available(iOS 8.0, *)
     case bottomMargin(Item)
     
-    @available(iOS 8.0, *)
     case centerYWithinMargins(Item)
+    #endif
 }
 
 
@@ -152,40 +156,37 @@ public struct ConstraintMaker {
         return self._makeX(for: .centerX, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
+    #if os(iOS) || os(tvOS)
     /// leftMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func leftMargin(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .leftMargin, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
     /// rightMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func rightMargin(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .rightMargin, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
     /// leadingMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func leadingMargin(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .leadingMargin, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
     /// trailingMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func trailingMargin(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .trailingMargin, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
     /// centerXWithinMargins
-    @available(iOS 8.0, *)
     @discardableResult
     public func centerXWithinMargins(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeX, priority: Priority = .required) -> ConstraintMaker {
         return self._makeX(for: .centerXWithinMargins, constant: constant, by: relation, to: attribute, priority: priority)
     }
+    #endif
     
     //===========================================
     // Make AttributeY
@@ -216,32 +217,30 @@ public struct ConstraintMaker {
     }
     
     /// firstBaseline
-    @available(iOS 8.0, *)
     @discardableResult
     public func firstBaseline(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeY, priority: Priority = .required) -> ConstraintMaker {
         return self._makeY(for: .firstBaseline, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
+    #if os(iOS) || os(tvOS)
     /// topMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func topMargin(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeY, priority: Priority = .required) -> ConstraintMaker {
         return self._makeY(for: .topMargin, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
     /// bottomMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func bottomMargin(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeY, priority: Priority = .required) -> ConstraintMaker {
         return self._makeY(for: .bottomMargin, constant: constant, by: relation, to: attribute, priority: priority)
     }
     
     /// centerYWithinMargins
-    @available(iOS 8.0, *)
     @discardableResult
     public func centerYWithinMargins(_ constant: CGFloat, by relation: Relation = .equal, to attribute: AttributeY, priority: Priority = .required) -> ConstraintMaker {
         return self._makeY(for: .centerYWithinMargins, constant: constant, by: relation, to: attribute, priority: priority)
     }
+    #endif
     
     //===========================================
     // Make AttributeSize
@@ -269,10 +268,11 @@ public struct ConstraintMaker {
         // 0. check if attribute belong to X-axis. (execute only in debug mode)
         assert({
             switch attribute {
-            case .left, .right, .leading, .trailing, .centerX, .leftMargin, .rightMargin, .leadingMargin, .trailingMargin, .centerXWithinMargins:
-                return true
-            default:
-                return false
+            case .left, .right, .leading, .trailing, .centerX: return true
+            #if os(iOS) || os(tvOS)
+            case .leftMargin, .rightMargin, .leadingMargin, .trailingMargin, .centerXWithinMargins: return true
+            #endif
+            default: return false
             }
         }(), "Driftwood [dw.make] error: attribute '\(_type(of: attribute))' is not belong to X-axis.")
         
@@ -315,6 +315,7 @@ public struct ConstraintMaker {
             toAttribute = .centerX
             toItem = item
             
+        #if os(iOS) || os(tvOS)
         case .leftMargin(let item):
             toAttribute = .leftMargin
             toItem = item
@@ -334,6 +335,7 @@ public struct ConstraintMaker {
         case .centerXWithinMargins(let item):
             toAttribute = .centerXWithinMargins
             toItem = item
+        #endif
         }
         
         // 3. dequeue cached constraint
@@ -352,10 +354,11 @@ public struct ConstraintMaker {
         // 0. check if attribute belong to Y-axis. (execute only in debug mode)
         assert({
             switch attribute {
-            case .top, .bottom, .centerY, .lastBaseline, .firstBaseline, .topMargin, .bottomMargin, .centerYWithinMargins:
-                return true
-            default:
-                return false
+            case .top, .bottom, .centerY, .lastBaseline, .firstBaseline: return true
+            #if os(iOS) || os(tvOS)
+            case .topMargin, .bottomMargin, .centerYWithinMargins: return true
+            #endif
+            default: return false
             }
         }(), "Driftwood [dw.make] error: attribute '\(_type(of: attribute))' is not belong to Y-axis.")
         
@@ -398,6 +401,7 @@ public struct ConstraintMaker {
             toAttribute = .firstBaseline
             toItem = item
             
+        #if os(iOS) || os(tvOS)
         case .topMargin(let item):
             toAttribute = .topMargin
             toItem = item
@@ -409,6 +413,7 @@ public struct ConstraintMaker {
         case .centerYWithinMargins(let item):
             toAttribute = .centerYWithinMargins
             toItem = item
+        #endif
         }
         
         // 3. dequeue cached constraint
@@ -427,10 +432,8 @@ public struct ConstraintMaker {
         // 0. check if attribute belong to size. (execute only in debug mode)
         assert({
             switch attribute {
-            case .width, .height:
-                return true
-            default:
-                return false
+            case .width, .height: return true
+            default: return false
             }
         }(), "Driftwood [dw.make] error: attribute '\(_type(of: attribute))' is not belong to size.")
         
@@ -510,40 +513,37 @@ public struct ConstraintUpdater {
         return self._update(for: .centerX, constant: constant, priority: priority)
     }
     
+    #if os(iOS) || os(tvOS)
     /// leftMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func leftMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         return self._update(for: .leftMargin, constant: constant, priority: priority)
     }
     
     /// rightMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func rightMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         return self._update(for: .rightMargin, constant: constant, priority: priority)
     }
     
     /// leadingMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func leadingMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         return self._update(for: .leadingMargin, constant: constant, priority: priority)
     }
     
     /// trailingMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func trailingMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         return self._update(for: .trailingMargin, constant: constant, priority: priority)
     }
     
     /// centerXWithinMargins
-    @available(iOS 8.0, *)
     @discardableResult
     public func centerXWithinMargins(_ constant: CGFloat? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         return self._update(for: .centerXWithinMargins, constant: constant, priority: priority)
     }
+    #endif
     
     //===========================================
     // Update AttributeY
@@ -574,32 +574,30 @@ public struct ConstraintUpdater {
     }
     
     /// firstBaseline
-    @available(iOS 8.0, *)
     @discardableResult
     public func firstBaseline(_ constant: CGFloat? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         return self._update(for: .firstBaseline, constant: constant, priority: priority)
     }
     
+    #if os(iOS) || os(tvOS)
     /// topMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func topMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         return self._update(for: .topMargin, constant: constant, priority: priority)
     }
     
     /// bottomMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func bottomMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         return self._update(for: .bottomMargin, constant: constant, priority: priority)
     }
     
     /// centerYWithinMargins
-    @available(iOS 8.0, *)
     @discardableResult
     public func centerYWithinMargins(_ constant: CGFloat? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         return self._update(for: .centerYWithinMargins, constant: constant, priority: priority)
     }
+    #endif
     
     //===========================================
     // Update AttributeSize
@@ -682,40 +680,37 @@ public struct ConstraintRemover {
         return self._remove(for: .centerX)
     }
     
+    #if os(iOS) || os(tvOS)
     /// leftMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func leftMargin() -> ConstraintRemover {
         return self._remove(for: .leftMargin)
     }
     
     /// rightMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func rightMargin() -> ConstraintRemover {
         return self._remove(for: .rightMargin)
     }
     
     /// leadingMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func leadingMargin() -> ConstraintRemover {
         return self._remove(for: .leadingMargin)
     }
     
     /// trailingMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func trailingMargin() -> ConstraintRemover {
         return self._remove(for: .trailingMargin)
     }
     
     /// centerXWithinMargins
-    @available(iOS 8.0, *)
     @discardableResult
     public func centerXWithinMargins() -> ConstraintRemover {
         return self._remove(for: .centerXWithinMargins)
     }
+    #endif
     
     //===========================================
     // Remove AttributeY
@@ -746,32 +741,30 @@ public struct ConstraintRemover {
     }
     
     /// firstBaseline
-    @available(iOS 8.0, *)
     @discardableResult
     public func firstBaseline() -> ConstraintRemover {
         return self._remove(for: .firstBaseline)
     }
     
+    #if os(iOS) || os(tvOS)
     /// topMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func topMargin() -> ConstraintRemover {
         return self._remove(for: .topMargin)
     }
     
     /// bottomMargin
-    @available(iOS 8.0, *)
     @discardableResult
     public func bottomMargin() -> ConstraintRemover {
         return self._remove(for: .bottomMargin)
     }
     
     /// centerYWithinMargins
-    @available(iOS 8.0, *)
     @discardableResult
     public func centerYWithinMargins() -> ConstraintRemover {
         return self._remove(for: .centerYWithinMargins)
     }
+    #endif
     
     //===========================================
     // Remove AttributeSize
@@ -861,25 +854,22 @@ public struct Driftwood {
     /// centerX
     public var centerX: AttributeX { return .centerX(_item) }
     
+    #if os(iOS) || os(tvOS)
     /// leftMargin
-    @available(iOS 8.0, *)
     public var leftMargin: AttributeX { return .leftMargin(_item) }
     
     /// rightMargin
-    @available(iOS 8.0, *)
     public var rightMargin: AttributeX { return .rightMargin(_item) }
     
     /// leadingMargin
-    @available(iOS 8.0, *)
     public var leadingMargin: AttributeX { return .leadingMargin(_item) }
     
     /// trailingMargin
-    @available(iOS 8.0, *)
     public var trailingMargin: AttributeX { return .trailingMargin(_item) }
     
     /// centerXWithinMargins
-    @available(iOS 8.0, *)
     public var centerXWithinMargins: AttributeX { return .centerXWithinMargins(_item) }
+    #endif
     
     //===========================================
     // AttributeY
@@ -898,20 +888,18 @@ public struct Driftwood {
     public var lastBaseline: AttributeY { return .lastBaseline(_item) }
     
     /// firstBaseline
-    @available(iOS 8.0, *)
     public var firstBaseline: AttributeY { return .firstBaseline(_item) }
     
+    #if os(iOS) || os(tvOS)
     /// topMargin
-    @available(iOS 8.0, *)
     public var topMargin: AttributeY { return .topMargin(_item) }
     
     /// bottomMargin
-    @available(iOS 8.0, *)
     public var bottomMargin: AttributeY { return .bottomMargin(_item) }
     
     /// centerYWithinMargins
-    @available(iOS 8.0, *)
     public var centerYWithinMargins: AttributeY { return .centerYWithinMargins(_item) }
+    #endif
     
     //===========================================
     // AttributeSize
@@ -945,13 +933,22 @@ public struct Driftwood {
 }
 
 
-/// UIView+Item
-extension UIView: Item {
+#if os(iOS) || os(tvOS)
+/// View
+public typealias View = UIView
+#else
+/// View
+public typealias View = NSView
+#endif
+
+
+/// View+Item
+extension View: Item {
     
     public var dw_superview: Item? {
         return self.superview
     }
-
+    
     public var dw_description: String {
         var desc = "<\(_type(of: self)): \(_pointer(of: self))"
         if let label = self._storage.labeled {
@@ -961,16 +958,37 @@ extension UIView: Item {
         }
         return desc
     }
-
+    
     public var dw_hashValue: Int {
         return self.hashValue
     }
 }
 
 
-/// UILayoutGuide+Item
+/// View+Driftwood
+extension View {
+    
+    /// driftwood
+    public var dw: Driftwood {
+        return Driftwood(self)
+    }
+}
+
+
+#if os(iOS) || os(tvOS)
+/// LayoutGuide
 @available(iOS 9.0, *)
-extension UILayoutGuide: Item {
+public typealias LayoutGuide = UILayoutGuide
+#else
+/// LayoutGuide
+@available(OSX 10.11, *)
+public typealias LayoutGuide = NSLayoutGuide
+#endif
+
+
+/// LayoutGuide+Item
+@available(iOS 9.0, OSX 10.11, *)
+extension LayoutGuide: Item {
     
     public var dw_superview: Item? {
         return self.owningView
@@ -992,19 +1010,9 @@ extension UILayoutGuide: Item {
 }
 
 
-/// UIView+Driftwood
-extension UIView {
-    
-    /// driftwood
-    public var dw: Driftwood {
-        return Driftwood(self)
-    }
-}
-
-
-/// UILayoutGuide+Driftwood
-@available(iOS 9.0, *)
-extension UILayoutGuide {
+/// LayoutGuide+Driftwood
+@available(iOS 9.0, OSX 10.11, *)
+extension LayoutGuide {
 
     /// driftwood
     public var dw: Driftwood {
@@ -1167,50 +1175,41 @@ fileprivate func _pointer(of anyObject: AnyObject) -> String {
 
 /// return a case name of an _Attribute
 fileprivate func _type(of attribute: _Attribute) -> String {
-    switch attribute {
-    case .left:
-        return "left"
-    case .right:
-        return "right"
-    case .top:
-        return "top"
-    case .bottom:
-        return "bottom"
-    case .leading:
-        return "leading"
-    case .trailing:
-        return "trailing"
-    case .width:
-        return "width"
-    case .height:
-        return "height"
-    case .centerX:
-        return "centerX"
-    case .centerY:
-        return "centerY"
-    case .lastBaseline:
-        return "lastBaseline"
-    case .firstBaseline:
-        return "firstBaseline"
-    case .leftMargin:
-        return "leftMargin"
-    case .rightMargin:
-        return "rightMargin"
-    case .topMargin:
-        return "topMargin"
-    case .bottomMargin:
-        return "bottomMargin"
-    case .leadingMargin:
-        return "leadingMargin"
-    case .trailingMargin:
-        return "trailingMargin"
-    case .centerXWithinMargins:
-        return "centerXWithinMargins"
-    case .centerYWithinMargins:
-        return "centerYWithinMargins"
-    case .notAnAttribute:
-        return "notAnAttribute"
-    }
+    
+        switch attribute {
+        // AttributeX
+        case .left:                 return "left"
+        case .right:                return "right"
+        case .leading:              return "leading"
+        case .trailing:             return "trailing"
+        case .centerX:              return "centerX"
+        #if os(iOS) || os(tvOS)
+        case .leftMargin:           return "leftMargin"
+        case .rightMargin:          return "rightMargin"
+        case .leadingMargin:        return "leadingMargin"
+        case .trailingMargin:       return "trailingMargin"
+        case .centerXWithinMargins: return "centerXWithinMargins"
+        #endif
+            
+        // AttributeY
+        case .top:                  return "top"
+        case .bottom:               return "bottom"
+        case .centerY:              return "centerY"
+        case .lastBaseline:         return "lastBaseline"
+        case .firstBaseline:        return "firstBaseline"
+        #if os(iOS) || os(tvOS)
+        case .topMargin:            return "topMargin"
+        case .bottomMargin:         return "bottomMargin"
+        case .centerYWithinMargins: return "centerYWithinMargins"
+        #endif
+            
+        // AttributeSize
+        case .width:                return "width"
+        case .height:               return "height"
+            
+        // notAnAttribute
+        case .notAnAttribute:       return "notAnAttribute"
+        }
 }
 
 

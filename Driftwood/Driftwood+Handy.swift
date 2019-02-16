@@ -22,7 +22,20 @@
 //  SOFTWARE.
 
 
+#if os(iOS) || os(tvOS)
 import UIKit
+#else
+import AppKit
+#endif
+
+
+#if os(iOS) || os(tvOS)
+/// EdgeInsets
+public typealias EdgeInsets = UIEdgeInsets
+#else
+/// EdgeInsets
+public typealias EdgeInsets = NSEdgeInsets
+#endif
 
 
 /// Constraint Maker
@@ -62,40 +75,37 @@ extension ConstraintMaker {
         return self.centerX(constant, by: relation, to: .superview, priority: priority)
     }
     
+    #if os(iOS) || os(tvOS)
     /// leftMargin to superview
-    @available(iOS 8.0, *)
     @discardableResult
     public func leftMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self.leftMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// rightMargin to superview
-    @available(iOS 8.0, *)
     @discardableResult
     public func rightMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self.rightMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// leadingMargin to superview
-    @available(iOS 8.0, *)
     @discardableResult
     public func leadingMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self.leadingMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// trailingMargin to superview
-    @available(iOS 8.0, *)
     @discardableResult
     public func trailingMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self.trailingMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// centerXWithinMargins to superview
-    @available(iOS 8.0, *)
     @discardableResult
     public func centerXWithinMargins(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self.centerXWithinMargins(constant, by: relation, to: .superview, priority: priority)
     }
+    #endif
     
     //===========================================
     // Make AttributeY
@@ -126,32 +136,30 @@ extension ConstraintMaker {
     }
     
     /// firstBaseline to superview
-    @available(iOS 8.0, *)
     @discardableResult
     public func firstBaseline(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self.firstBaseline(constant, by: relation, to: .superview, priority: priority)
     }
     
+    #if os(iOS) || os(tvOS)
     /// topMargin to superview
-    @available(iOS 8.0, *)
     @discardableResult
     public func topMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self.topMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// bottomMargin to superview
-    @available(iOS 8.0, *)
     @discardableResult
     public func bottomMargin(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self.bottomMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// centerYWithinMargins to superview
-    @available(iOS 8.0, *)
     @discardableResult
     public func centerYWithinMargins(_ constant: CGFloat, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         return self.centerYWithinMargins(constant, by: relation, to: .superview, priority: priority)
     }
+    #endif
     
     //===========================================
     // Make AttributeSize
@@ -199,7 +207,7 @@ extension ConstraintMaker {
     
     /// edge to superview
     @discardableResult
-    public func edge(insets: UIEdgeInsets, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
+    public func edge(insets: EdgeInsets, by relation: Relation = .equal, priority: Priority = .required) -> ConstraintMaker {
         self.leading(insets.left, by: relation, to: .superview, priority: priority)
         self.trailing(-insets.right, by: relation, to: .superview, priority: priority)
         self.top(insets.top, by: relation, to: .superview, priority: priority)
@@ -209,7 +217,7 @@ extension ConstraintMaker {
     
     /// edge
     @discardableResult
-    public func edge(insets: UIEdgeInsets, by relation: Relation = .equal, to item: Item, priority: Priority = .required) -> ConstraintMaker {
+    public func edge(insets: EdgeInsets, by relation: Relation = .equal, to item: Item, priority: Priority = .required) -> ConstraintMaker {
         self.leading(insets.left, by: relation, to: .leading(item), priority: priority)
         self.trailing(-insets.right, by: relation, to: .trailing(item), priority: priority)
         self.top(insets.top, by: relation, to: .top(item), priority: priority)
@@ -236,7 +244,7 @@ extension ConstraintUpdater {
     
     /// edge
     @discardableResult
-    public func edge(insets: UIEdgeInsets? = nil, priority: Priority? = nil) -> ConstraintUpdater {
+    public func edge(insets: EdgeInsets? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         self.leading(insets?.left, priority: priority)
         self.trailing(insets != nil ? -insets!.right : nil, priority: priority)
         self.top(insets?.top, priority: priority)

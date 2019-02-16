@@ -1,4 +1,4 @@
-framework module Pods_Driftwood_iOS {
+module Pods_Driftwood_iOS {
   umbrella header "Pods-Driftwood_iOS-umbrella.h"
 
   export *

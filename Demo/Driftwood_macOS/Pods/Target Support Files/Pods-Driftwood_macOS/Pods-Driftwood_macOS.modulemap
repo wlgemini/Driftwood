@@ -1,0 +1,6 @@
+module Pods_Driftwood_macOS {
+  umbrella header "Pods-Driftwood_macOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

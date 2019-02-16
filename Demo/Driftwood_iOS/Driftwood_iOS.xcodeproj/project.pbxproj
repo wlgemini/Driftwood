@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		28BAF40E0BE475F5991FE7B2 /* Pods_Driftwood_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC7C850C667727D69103D4E /* Pods_Driftwood_iOS.framework */; };
+		16071027F8CA66B2F99234DA /* libPods-Driftwood_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DA1593F84562EEEDACED5F /* libPods-Driftwood_iOS.a */; };
 		A043C01C2200407F00788472 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043C01B2200407F00788472 /* AppDelegate.swift */; };
 		A043C01E2200407F00788472 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043C01D2200407F00788472 /* ViewController.swift */; };
 		A043C0212200407F00788472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A043C01F2200407F00788472 /* Main.storyboard */; };
@@ -19,7 +19,6 @@
 /* Begin PBXFileReference section */
 		42066002237E3CDEEFBB3221 /* Pods-Driftwood_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Driftwood_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		44AAE9D37C1F7251485AA24D /* Pods-Driftwood_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Driftwood_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS.release.xcconfig"; sourceTree = "<group>"; };
-		5AC7C850C667727D69103D4E /* Pods_Driftwood_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Driftwood_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A043C0182200407F00788472 /* Driftwood_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Driftwood_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A043C01B2200407F00788472 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A043C01D2200407F00788472 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +27,7 @@
 		A043C0252200407F00788472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A043C0272200407F00788472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A043C02D220040BD00788472 /* UIView+Driftwood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Driftwood.swift"; sourceTree = "<group>"; };
+		F0DA1593F84562EEEDACED5F /* libPods-Driftwood_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Driftwood_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28BAF40E0BE475F5991FE7B2 /* Pods_Driftwood_iOS.framework in Frameworks */,
+				16071027F8CA66B2F99234DA /* libPods-Driftwood_iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,7 +54,7 @@
 		9AF2952EA71667A993C6DF1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5AC7C850C667727D69103D4E /* Pods_Driftwood_iOS.framework */,
+				F0DA1593F84562EEEDACED5F /* libPods-Driftwood_iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -102,7 +102,6 @@
 				A043C0142200407F00788472 /* Sources */,
 				A043C0152200407F00788472 /* Frameworks */,
 				A043C0162200407F00788472 /* Resources */,
-				ECEEF90D4E0D429001B169D7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -176,24 +175,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ECEEF90D4E0D429001B169D7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Driftwood/Driftwood.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Driftwood.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Driftwood_iOS/Pods-Driftwood_iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
