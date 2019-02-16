@@ -1025,6 +1025,17 @@ extension LayoutGuide {
 // Private
 //===========================================
 //
+/// _LayoutConstraint
+fileprivate class _LayoutConstraint: NSLayoutConstraint {
+    
+    /// description
+    override var description: String {
+        // FIXME: _LayoutConstraint description
+        return ""
+    }
+}
+
+
 /// _Attribute
 fileprivate typealias _Attribute = NSLayoutConstraint.Attribute
 
@@ -1045,7 +1056,7 @@ fileprivate class _Storage {
     }
     
     /// activate a constraint
-    func activate(_ con: NSLayoutConstraint, for key: _Attribute) {
+    func activate(_ con: _LayoutConstraint, for key: _Attribute) {
         // check if constraint is 'active'
         assert(con.isActive == false, "Driftwood internal error: found 'active' while activate constraint '\(_type(of:key))'.")
         
@@ -1074,7 +1085,7 @@ fileprivate class _Storage {
     
     /// deactivate a constraint installed by driftwood
     @discardableResult
-    func deactivate(for key: _Attribute) -> NSLayoutConstraint? {
+    func deactivate(for key: _Attribute) -> _LayoutConstraint? {
         // check if there was an constraint
         guard let con = self._activeConstraints.removeValue(forKey: key) else {
             _debugPrint("Driftwood internal error: found nil while deactivate constraint '\(_type(of:key))'")
@@ -1092,7 +1103,7 @@ fileprivate class _Storage {
     }
     
     /// dequeue a constraint cached by driftwood
-    func deququeConstraintFor(item: Item, attribute: _Attribute, relation: Relation, toItem: Item?, toAttribute: _Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> NSLayoutConstraint {
+    func deququeConstraintFor(item: Item, attribute: _Attribute, relation: Relation, toItem: Item?, toAttribute: _Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> _LayoutConstraint {
         // 0. generate a constraint hash value (hash calculation not include item/constant/priority)
         var hasher = Hasher()
         hasher.combine(attribute)
@@ -1103,7 +1114,7 @@ fileprivate class _Storage {
         let conKey = hasher.finalize()
         
         // 1. retrive a constraint from cache, if any
-        let con: NSLayoutConstraint
+        let con: _LayoutConstraint
         if let c = self._cachedConstraints[conKey] {
             // 1.1 cached
             con = c
@@ -1115,7 +1126,7 @@ fileprivate class _Storage {
             con.priority = priority
         } else {
             // 1.2 no cache
-            con = NSLayoutConstraint(item: item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: multiply, constant: constant)
+            con = _LayoutConstraint(item: item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: multiply, constant: constant)
             con.priority = priority
             self._cachedConstraints[conKey] = con
         }
@@ -1129,10 +1140,10 @@ fileprivate class _Storage {
     //===========================================
     //
     /// active constraints
-    private var _activeConstraints: [_Attribute: NSLayoutConstraint] = [:]
+    private var _activeConstraints: [_Attribute: _LayoutConstraint] = [:]
     
     /// cached constraints (include active/deactive constraints)
-    private var _cachedConstraints: [Int: NSLayoutConstraint] = [:]
+    private var _cachedConstraints: [Int: _LayoutConstraint] = [:]
 }
 
 
