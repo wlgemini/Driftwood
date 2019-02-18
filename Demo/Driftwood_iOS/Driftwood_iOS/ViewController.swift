@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         self.lb1 = self.view.createSubView()
         self.lb1.text = "1"
         self.lb1.textAlignment = .center
-        self.lb1.dw.make.left(0).right(0).top(0, to: self.view.safeAreaLayoutGuide.dw.top).height(50)
+        self.lb1.dw.make().left(0).right(0).top(0, to: self.view.safeAreaLayoutGuide.dw.top).height(50)
         
         self.lb2 = self.view.createSubView()
         self.lb2.text = "2"
