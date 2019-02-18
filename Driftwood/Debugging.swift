@@ -46,38 +46,45 @@
 //func assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = default, file: StaticString = #file, line: UInt = #line)
 
 
+/// Code Location
+struct Location {
+    let file: String
+    let line: UInt
+    
+    init(_ file: String, _ line: UInt) {
+        self.file = file
+        self.line = line
+    }
+}
 
+
+/// constraint operation
+struct Operation {
+    
+    enum `Kind` {
+        case make, update, remove, _activate, _update, _deactivate, _dequque
+    }
+    
+    var kind: Kind
+    
+    var attribute: Attribute
+    
+    init(_ kind: Kind, _ attribute: Attribute) {
+        self.kind = kind
+        self.attribute = attribute
+    }
+}
 
 /// Debug
 struct Debug {
     
-    /// code location
-    struct Location {
-        var file: String
-        var line: UInt
-    }
-    
-    /// constraint operation
-    struct Operation {
-        
-        enum Kind {
-            case make, update, remove, remake, _activate, _update, _deactivate, _dequque
-        }
-        
-        var kind: Kind
-        
-        var attribute: Attribute
-        
-        weak var constraint: LayoutConstraint?
-    }
-    
     /// prefix
-    static func prefix(location: Location?, item: ConstraintItem?, operation: Operation?) -> String {
+    static func prefix(_ location: Location?, _ item: ConstraintItem?, _ operation: Operation?, _ constraint: LayoutConstraint?) -> String {
         // <
         var desc = "<"
         
         // module
-        desc += ".Driftwood"
+        desc += "Driftwood"
         
         // loction
         if let loc = location {
@@ -86,18 +93,18 @@ struct Debug {
         
         // item
         if let it = item {
-            desc += ".<\(self.type(of: it))"
+            desc += ".<\(Swift.type(of: it))"
             if let lb = it.storage.labeled {
                 desc += "('\(lb)')"
             }
-            desc += ":\(self.pointer(of: it))>"
+            desc += ":\(Debug.pointer(of: it))>"
         }
         
         // operation
         if let ope = operation {
-            desc += ".[\(ope.kind).\(self.type(of: ope.attribute))"
-            if let con = ope.constraint {
-                desc += ":\(self.pointer(of: con))"
+            desc += ".[\(ope.kind).\(Debug.type(of: ope.attribute))"
+            if let con = constraint {
+                desc += ":\(Debug.pointer(of: con))"
             }
             desc += "]"
         }
@@ -108,33 +115,29 @@ struct Debug {
         return desc
     }
     
-    /// print
-    static func failure() {
-        assert({ print(item()); return true }())
-        assertionFailure()
-        
-        // Driftwood [dw.make] error: <UIView: 0x00007fc636525da0; Labeled: 'MyView'> already have 'left' constraint.
-        // Driftwood.<UIView('MyView'):0x00007fc636525da0>.[make.left]
-        // "Driftwood internal error: found 'active' while activate constraint '\(_type(of:key))'."
-        
+    /// log
+    static func log(_ location: Location?, _ item: ConstraintItem?, _ operation: Operation?, message: String) {
+        Swift.assert({
+            var desc = self.prefix(location, item, operation, nil)
+            desc += " error: "
+            desc += message
+            print(desc)
+            return true
+        }())
     }
     
-    static func assert() {
-        
+    /// assert
+    static func assert(_ location: Location?, _ item: ConstraintItem?, _ operation: Operation?, condition: @autoclosure () -> Bool, message: String) {
+        Swift.assert(condition(), {
+            var desc = self.prefix(location, item, operation, nil)
+            desc += " error: "
+            desc += message
+            return desc
+        }())
     }
     
-    
-    
-    
-    /// return a type name of an object
-    static func type(of anyObject: AnyObject) -> String {
-        return String(describing: type(of: anyObject))
-    }
-    
-    
-    /// return a case name of an Attribute
+    /// typy of attribute
     static func type(of attribute: Attribute) -> String {
-        
         switch attribute {
         // AttributeX
         case .left:                 return "left"
@@ -173,29 +176,6 @@ struct Debug {
     
     /// return an address of an object
     static func pointer(of anyObject: AnyObject) -> String {
-        let opaque: UnsafeMutableRawPointer = Unmanaged.passUnretained(anyObject).toOpaque()
-        return String(describing: opaque)
+        return String(describing: Unmanaged.passUnretained(anyObject).toOpaque())
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/// print only in debug mode (execute only in debug mode)
-func _debugPrint(_ item: @autoclosure () -> Any) {
-    assert({ print(item()); return true }())
 }

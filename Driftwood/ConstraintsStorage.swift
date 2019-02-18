@@ -30,28 +30,22 @@ class ConstraintsStorage {
     var labeled: String?
     
     // MARK: Constraint add & remove
-    /// has an active constraint installed by driftwood
-    func hasActiveConstraint(for key: Attribute) -> Bool {
-        return self._activeConstraints.keys.contains(key)
+    /// active constraint installed by driftwood
+    func activeConstraint(for key: Attribute) -> LayoutConstraint? {
+        return self._activeConstraints[key]
     }
     
     /// activate a constraint
     func activate(_ con: LayoutConstraint, for key: Attribute) {
         // check if constraint is 'active'
-        assert(con.isActive == false, "Driftwood internal error: found 'active' while activate constraint '\(_type(of:key))'.")
+        Debug.assert(nil, nil, Operation(._activate, key), condition: con.isActive == false, message: "found 'active' while activate constraint.")
         
         con.isActive = true
         self._activeConstraints[key] = con
     }
     
     /// update an active constraint installed by driftwood
-    func update(constant: CGFloat?, priority: Priority?, for key: Attribute) {
-        // check if there was an constraint
-        guard let con = self._activeConstraints[key] else {
-            _debugPrint("Driftwood internal error: found nil while update constraint '\(_type(of:key))'.")
-            return
-        }
-        
+    func update(_ con: LayoutConstraint, constant: CGFloat?, priority: Priority?) {
         if let constant = constant {
             con.constant = constant
         }
@@ -68,7 +62,7 @@ class ConstraintsStorage {
     func deactivate(for key: Attribute) -> LayoutConstraint? {
         // check if there was an constraint
         guard let con = self._activeConstraints.removeValue(forKey: key) else {
-            _debugPrint("Driftwood internal error: found nil while deactivate constraint '\(_type(of:key))'")
+            Debug.log(nil, nil, Operation(._deactivate, key), message: "found nil while deactivate constraint.")
             return nil
         }
         
@@ -100,7 +94,7 @@ class ConstraintsStorage {
             con = c
             
             // check if cached constraint is 'active'
-            assert(con.isActive == false, "Driftwood internal error: found 'active' while dequeue a cached constraint '\(_type(of:attribute))'.")
+            Debug.assert(nil, nil, Operation(._dequque, attribute), condition: con.isActive == false, message: "found 'active' while dequeue a cached constraint.")
             
             con.constant = constant
             con.priority = priority

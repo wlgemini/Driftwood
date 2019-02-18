@@ -46,47 +46,47 @@ extension Driftwood {
     /// make
     @available(*, deprecated:4.2.7, message:"Use `make()` instead.")
     public var make: ConstraintMaker {
-        return ConstraintMaker(item: self._item, location: ("", 0))
+        return ConstraintMaker(item: self._item, location: nil)
     }
     
     /// update
     @available(*, deprecated:4.2.7, message:"Use `update()` instead.")
     public var update: ConstraintUpdater {
-        return ConstraintUpdater(item: self._item, location: ("", 0))
+        return ConstraintUpdater(item: self._item, location: nil)
     }
     
     /// remove
     @available(*, deprecated:4.2.7, message:"Use `remove()` instead.")
     public var remove: ConstraintRemover {
-        return ConstraintRemover(item: self._item, location: ("", 0))
+        return ConstraintRemover(item: self._item, location: nil)
     }
     
     /// remake
     @available(*, deprecated:4.2.7, message:"Use `remake()` instead.")
     public var remake: ConstraintMaker {
         self._item.storage.deactivateAll()
-        return ConstraintMaker(item: self._item, location: ("", 0))
+        return ConstraintMaker(item: self._item, location: nil)
     }
     
     /// make
     public func make(file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        return ConstraintMaker(item: self._item, location: (file, line))
+        return ConstraintMaker(item: self._item, location: Location(file, line))
     }
     
     /// update
     public func update(file: String = #file, line: UInt = #line) -> ConstraintUpdater {
-        return ConstraintUpdater(item: self._item, location: (file, line))
+        return ConstraintUpdater(item: self._item, location: Location(file, line))
     }
     
     /// remove
     public func remove(file: String = #file, line: UInt = #line) -> ConstraintRemover {
-        return ConstraintRemover(item: self._item, location: (file, line))
+        return ConstraintRemover(item: self._item, location: Location(file, line))
     }
     
     /// remake
     public func remake(file: String = #file, line: UInt = #line) -> ConstraintMaker {
         self._item.storage.deactivateAll()
-        return ConstraintMaker(item: self._item, location: (file, line))
+        return ConstraintMaker(item: self._item, location: Location(file, line))
     }
 }
 

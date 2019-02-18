@@ -174,9 +174,9 @@ public struct ConstraintMaker {
     //
     /// make X-axis's constraint
     @discardableResult
-    private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to ConstraintAttributeX: ConstraintAttributeX, priority: Priority) -> ConstraintMaker {
+    private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to constraintAttributeX: ConstraintAttributeX, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to X-axis. (execute only in debug mode)
-        assert({
+        Debug.assert(nil, nil, Operation(.make, attribute), condition: {
             switch attribute {
             case .left, .right, .leading, .trailing, .centerX: return true
                 #if os(iOS) || os(tvOS)
@@ -184,22 +184,22 @@ public struct ConstraintMaker {
                 #endif
             default: return false
             }
-        }(), "Driftwood [dw.make] error: attribute '\(_type(of: attribute))' is not belong to X-axis.")
+        }(), message: "attribute is not belong to X-axis.")
         
         // 1. check if there was a constraint already installed by driftwood
-        guard self._item.storage.hasActiveConstraint(for: attribute) == false else {
-            _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) already have '\(_type(of: attribute))' constraint.")
+        guard self._item.storage.activeConstraint(for: attribute) == nil else {
+            Debug.log(self._location, self._item, Operation(.make, attribute), message: "duplicate constraint.")
             return self
         }
         
         // 2. retrieve (toItem & toAttribute) from ConstraintAttributeX
         let toAttribute: Attribute
         let toItem: ConstraintItem
-        switch ConstraintAttributeX {
+        switch constraintAttributeX {
         case .superview:
             // check if there is an superview
             guard let superview = self._item.dw_superview else {
-                _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) have no superview.")
+                Debug.log(self._location, self._item, Operation(.make, attribute), message: "no superview.")
                 return self
             }
             toAttribute = attribute
@@ -254,15 +254,19 @@ public struct ConstraintMaker {
         // 4. activate cached constraint
         self._item.storage.activate(con, for: attribute)
         
-        // 5. return self
+        // 5. set debug info
+        con.dw_location = self._location
+        con.dw_operation = Operation(.make, attribute)
+        
+        // 6. return self
         return self
     }
     
     /// make Y-axis's constraint
     @discardableResult
-    private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to ConstraintAttributeY: ConstraintAttributeY, priority: Priority) -> ConstraintMaker {
+    private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to constraintAttributeY: ConstraintAttributeY, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to Y-axis. (execute only in debug mode)
-        assert({
+        Debug.assert(nil, nil, Operation(.make, attribute), condition: {
             switch attribute {
             case .top, .bottom, .centerY, .lastBaseline, .firstBaseline: return true
                 #if os(iOS) || os(tvOS)
@@ -270,22 +274,22 @@ public struct ConstraintMaker {
                 #endif
             default: return false
             }
-        }(), "Driftwood [dw.make] error: attribute '\(_type(of: attribute))' is not belong to Y-axis.")
+        }(), message: "attribute is not belong to Y-axis.")
         
         // 1. check if there was a constraint already installed by driftwood
-        guard self._item.storage.hasActiveConstraint(for: attribute) == false else {
-            _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) already have '\(_type(of: attribute))' constraint.")
+        guard self._item.storage.activeConstraint(for: attribute) == nil else {
+            Debug.log(self._location, self._item, Operation(.make, attribute), message: "duplicate constraint.")
             return self
         }
         
         // 2. retrieve (toItem & toAttribute) from ConstraintAttributeY
         let toAttribute: Attribute
         let toItem: ConstraintItem
-        switch ConstraintAttributeY {
+        switch constraintAttributeY {
         case .superview:
             // check if there is an superview
             guard let superview = self._item.dw_superview else {
-                _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) have no superview.")
+                Debug.log(self._location, self._item, Operation(.make, attribute), message: "no superview.")
                 return self
             }
             toAttribute = attribute
@@ -332,31 +336,35 @@ public struct ConstraintMaker {
         // 4. activate cached constraint
         self._item.storage.activate(con, for: attribute)
         
-        // 5. return self
+        // 5. set debug info
+        con.dw_location = self._location
+        con.dw_operation = Operation(.make, attribute)
+        
+        // 6. return self
         return self
     }
     
     /// make Size's constraint
     @discardableResult
-    private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to ConstraintAttributeSize: ConstraintAttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
+    private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to constraintAttributeSize: ConstraintAttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to size. (execute only in debug mode)
-        assert({
+        Debug.assert(nil, nil, Operation(.make, attribute), condition: {
             switch attribute {
             case .width, .height: return true
             default: return false
             }
-        }(), "Driftwood [dw.make] error: attribute '\(_type(of: attribute))' is not belong to size.")
+        }(), message: "attribute is not belong to size.")
         
         // 1. check if there was a constraint already installed by driftwood
-        guard self._item.storage.hasActiveConstraint(for: attribute) == false else {
-            _debugPrint("Driftwood [dw.make] error: \(self._item.dw_description) already have '\(_type(of: attribute))' constraint.")
+        guard self._item.storage.activeConstraint(for: attribute) == nil else {
+            Debug.log(self._location, self._item, Operation(.make, attribute), message: "duplicate constraint.")
             return self
         }
         
         // 2. retrieve (toItem & toAttribute) from ConstraintAttributeSize
         var toAttribute: Attribute?
         var toItem: ConstraintItem?
-        if let attrSize = ConstraintAttributeSize {
+        if let attrSize = constraintAttributeSize {
             switch attrSize {
             case .width(let item):
                 toAttribute = .width
@@ -374,17 +382,22 @@ public struct ConstraintMaker {
         // 4. activate cached constraint
         self._item.storage.activate(con, for: attribute)
         
-        // 5. return self
+        // 5. set debug info
+        con.dw_location = self._location
+        con.dw_operation = Operation(.make, attribute)
+        
+        // 6. return self
         return self
     }
     
     /// item
     private let _item: ConstraintItem
+    
     /// location
-    private let _location: Debug.Location
+    private let _location: Location?
     
     /// init
-    init(item: ConstraintItem, location: Debug.Location) {
+    init(item: ConstraintItem, location: Location?) {
         self._item = item
         self._location = location
     }

@@ -45,16 +45,6 @@ extension View: ConstraintItem {
         return self.superview
     }
     
-    public var dw_description: String {
-        var desc = "<\(_type(of: self)): \(_pointer(of: self))"
-        if let label = self._storage.labeled {
-            desc += "; Labeled: '\(label)'>"
-        } else {
-            desc += ">"
-        }
-        return desc
-    }
-    
     public var dw_hashValue: Int {
         return self.hashValue
     }

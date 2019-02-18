@@ -176,25 +176,29 @@ public struct ConstraintUpdater {
     @discardableResult
     private func _update(for attribute: Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
         // 0. check if there was a constraint already installed by driftwood
-        guard self._item.storage.hasActiveConstraint(for: attribute) == true else {
-            _debugPrint("Driftwood [dw.update] error: \(self._item.dw_description) have no '\(_type(of: attribute))' constraint.")
+        guard let con = self._item.storage.activeConstraint(for: attribute) else {
+            Debug.log(self._location, self._item, Operation(.update, attribute), message: "no constraint.")
             return self
         }
         
         // 1. update this constraint
-        self._item.storage.update(constant: constant, priority: priority, for: attribute)
+        self._item.storage.update(con, constant: constant, priority: priority)
         
-        // 2. return self
+        // 2. set debug info
+        con.dw_location = self._location
+        con.dw_operation = Operation(.update, attribute)
+        
+        // 3. return self
         return self
     }
     
     /// item
     private let _item: ConstraintItem
     /// location
-    private let _location: Debug.Location
+    private let _location: Location?
     
     /// init
-    init(item: ConstraintItem, location: Debug.Location) {
+    init(item: ConstraintItem, location: Location?) {
         self._item = item
         self._location = location
     }

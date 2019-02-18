@@ -32,15 +32,15 @@ import AppKit
 /// LayoutConstraint
 class LayoutConstraint: NSLayoutConstraint {
     
-    var dw_location: Debug.Location?
+    var dw_location: Location?
     
     var dw_item: ConstraintItem? { return self.firstItem as? ConstraintItem }
     
-    var dw_operation: Debug.Operation?
+    var dw_operation: Operation?
     
     /// description
     override var description: String {
-        return Debug.prefix(location: self.dw_location, item: self.dw_item, operation: self.dw_operation)
+        return Debug.prefix(self.dw_location, self.dw_item, self.dw_operation, self)
     }
 }
 

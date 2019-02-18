@@ -28,9 +28,6 @@ public protocol ConstraintItem: AnyObject {
     /// superview
     var dw_superview: ConstraintItem? { get }
     
-    /// description
-    var dw_description: String { get }
-    
     /// hashValue
     var dw_hashValue: Int { get }
 }
