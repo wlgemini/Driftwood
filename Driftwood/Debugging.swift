@@ -22,122 +22,85 @@
 //  SOFTWARE.
 
 
-
-
-
-
-
-// desc
-//        "<Driftwood.@SignUpViewController.swift#311.<UIView('MyView'):0x123124234>.[make.left:0x123124234]>"
-//        "<Driftwood.@SignUpViewController.swift#311.<UIView:0x123124234>.[make.left:0x123124234]>"
-//        "<Driftwood.<UIView:0x123124234>.[make.left:0x123124234]>"
-
-// err
-// <Driftwood.@SignUpViewController.swift#311.<UIView('MyView'):0x00007fc636525da0>.[make.left]> error: duplicate constraint
-
-
-// "Driftwood internal error: found 'active' while activate constraint '\(_type(of:key))'."
-// <Driftwood.@SignUpViewController.swift#311> error: found 'active' while activate constraint '\(_type(of:key))'."
-
-
-
-
-
-//func assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = default, file: StaticString = #file, line: UInt = #line)
-
-
-/// Code Location
-struct Location {
-    let file: String
-    let line: UInt
-    
-    init(_ file: String, _ line: UInt) {
-        self.file = file
-        self.line = line
-    }
-}
-
-
-/// constraint operation
-struct Operation {
-    
-    enum `Kind` {
-        case make, update, remove, _activate, _update, _deactivate, _dequque
-    }
-    
-    var kind: Kind
-    
-    var attribute: Attribute
-    
-    init(_ kind: Kind, _ attribute: Attribute) {
-        self.kind = kind
-        self.attribute = attribute
-    }
-}
-
 /// Debug
 struct Debug {
     
-    /// prefix
-    static func prefix(_ location: Location?, _ item: ConstraintItem?, _ operation: Operation?, _ constraint: LayoutConstraint?) -> String {
-        // <
-        var desc = "<"
-        
-        // module
-        desc += "Driftwood"
-        
-        // loction
-        if let loc = location {
-            desc += ".@\((loc.file as NSString).lastPathComponent)#\(loc.line)"
-        }
-        
-        // item
-        if let it = item {
-            desc += ".<\(Swift.type(of: it))"
-            if let lb = it.storage.labeled {
-                desc += "('\(lb)')"
-            }
-            desc += ":\(Debug.pointer(of: it))>"
-        }
-        
-        // operation
-        if let ope = operation {
-            desc += ".[\(ope.kind).\(Debug.type(of: ope.attribute))"
-            if let con = constraint {
-                desc += ":\(Debug.pointer(of: con))"
-            }
-            desc += "]"
-        }
-        
-        // >
-        desc += ">"
-        
-        return desc
-    }
-    
-    /// log
-    static func log(_ location: Location?, _ item: ConstraintItem?, _ operation: Operation?, message: String) {
+    /// log (execute only in debug mode)
+    ///
+    ///     "<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x000000023)>: "
+    ///
+    static func log(_ location: Location?, _ operation: Operation?, _ item: ConstraintItem?, message: String) {
         Swift.assert({
-            var desc = self.prefix(location, item, operation, nil)
-            desc += " error: "
+            var desc = "<"
+            desc += Debug.prefix(location, operation)
+            if let it = item {
+                desc += ".(\(Debug.description(for: it)))"
+            }
+            desc += ">"
+            desc += ": "
             desc += message
             print(desc)
             return true
         }())
     }
     
-    /// assert
-    static func assert(_ location: Location?, _ item: ConstraintItem?, _ operation: Operation?, condition: @autoclosure () -> Bool, message: String) {
+    /// assert (execute only in debug mode)
+    ///
+    ///     "<Driftwood.@ViewController.swift#23.[make.left]> Error: "
+    ///
+    static func assert(_ location: Location?, _ operation: Operation?, condition: @autoclosure () -> Bool, message: String) {
         Swift.assert(condition(), {
-            var desc = self.prefix(location, item, operation, nil)
-            desc += " error: "
+            var desc = "<"
+            desc += Debug.prefix(location, operation)
+            desc += ">"
+            desc += " Error: "
             desc += message
             return desc
         }())
     }
     
-    /// typy of attribute
-    static func type(of attribute: Attribute) -> String {
+    /// debug prefix
+    ///
+    ///     "Driftwood.@ViewController.swift#23.[make.left]"
+    ///     "Driftwood.[make.left]"
+    ///     "Driftwood"
+    ///
+    static func prefix(_ location: Location?, _ operation: Operation?) -> String {
+        // Driftwood
+        var pre = "Driftwood"
+        
+        // loction
+        if let loc = location {
+            pre += ".\(loc)"
+        }
+        
+        // operation
+        if let ope = operation {
+            pre += ".[\(ope)]"
+        }
+        
+        return pre
+    }
+    
+    /// description of AnyObject
+    ///
+    ///     "UIView`MyView`:0x000000023"
+    ///     "UIView:0x000000023"
+    ///
+    static func description(for obj: AnyObject) -> String {
+        var desc = "\(Swift.type(of: obj))"
+        if let item = obj as? ConstraintItem {
+            // using `storageNullable` instead of `storage`, which avoid new ConstraintsStorage object makes.
+            if let lb = item.storageNullable?.labeled {
+                desc += "`\(lb)`"
+            }
+        }
+        desc += ":\(String(describing: Unmanaged.passUnretained(obj).toOpaque()))"
+        return desc
+    }
+    
+    /// description of Attribute
+    static func description(for attribute: Attribute) -> String {
         switch attribute {
         // AttributeX
         case .left:                 return "left"
@@ -174,8 +137,59 @@ struct Debug {
         }
     }
     
-    /// return an address of an object
-    static func pointer(of anyObject: AnyObject) -> String {
-        return String(describing: Unmanaged.passUnretained(anyObject).toOpaque())
+    /// description of Relation
+    static func description(for relation: Relation) -> String {
+        switch relation {
+        case .equal:                return "=="
+        case .greaterThanOrEqual:   return ">="
+        case .lessThanOrEqual:      return "<="
+        }
+    }
+}
+
+
+extension Debug {
+    
+    /// Location
+    struct Location: CustomStringConvertible {
+        
+        /// file
+        let file: String
+        
+        /// line
+        let line: UInt
+        
+        init(_ file: String, _ line: UInt) {
+            self.file = file
+            self.line = line
+        }
+        
+        /// description
+        var description: String {
+            return "@\((self.file as NSString).lastPathComponent)#\(self.line)"
+        }
+    }
+    
+    
+    /// Operation
+    enum Operation: CustomStringConvertible {
+        
+        case make(Attribute)
+        
+        case update(Attribute)
+        
+        case remove(Attribute)
+        
+        case _dequque(Attribute)
+        
+        /// description
+        var description: String {
+            switch self {
+            case .make(let attribute):          return "make.\(Debug.description(for: attribute))"
+            case .update(let attribute):        return "update.\(Debug.description(for: attribute))"
+            case .remove(let attribute):        return "remove.\(Debug.description(for: attribute))"
+            case ._dequque(let attribute):      return "_dequque.\(Debug.description(for: attribute))"
+            }
+        }
     }
 }
