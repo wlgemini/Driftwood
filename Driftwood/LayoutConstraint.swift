@@ -32,16 +32,68 @@ import AppKit
 /// LayoutConstraint
 class LayoutConstraint: NSLayoutConstraint {
     
-    var dw_location: Location?
+    /// location
+    var location: Debug.Location?
     
-    var dw_item: ConstraintItem? { return self.firstItem as? ConstraintItem }
+    /// operation
+    var operation: Debug.Operation?
     
-    var dw_operation: Operation?
     
     /// description
+    ///
+    ///     "<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x000000023.left == UILabel`MyLabel`:0x000000023.right * 2 - 10 ^1000)>"
+    ///
     override var description: String {
-        return Debug.prefix(self.dw_location, self.dw_item, self.dw_operation, self)
+        // <
+        var desc = "<"
+        
+        // prefix
+        desc += Debug.prefix(self.location, self.operation)
+        
+        // constraint
+        desc += ".("
+        
+        if let fi = self.firstItem {
+            desc += Debug.description(for: fi)
+        }
+        
+        if self.firstAttribute != .notAnAttribute  {
+            desc += ".\(Debug.description(for: self.firstAttribute))"
+        }
+        
+        desc += " \(Debug.description(for: self.relation))"
+        
+        if let si = self.secondItem {
+            desc += " \(Debug.description(for: si))"
+        }
+        
+        if self.secondAttribute != .notAnAttribute {
+            desc += ".\(Debug.description(for: self.secondAttribute))"
+        }
+        
+        if self.multiplier != 1.0 {
+            desc += " * \(self.multiplier)"
+        }
+        
+        if self.secondAttribute == .notAnAttribute {
+            desc += " \(self.constant)"
+        } else {
+            if self.constant > 0.0 {
+                desc += " + \(self.constant)"
+            } else if self.constant < 0.0 {
+                desc += " - \(abs(self.constant))"
+            }
+        }
+        
+        if self.priority.rawValue != 1000.0 {
+            desc += " ^\(self.priority.rawValue)"
+        }
+        
+        desc += ")"
+        
+        // >
+        desc += ">"
+        
+        return desc
     }
 }
-
-
