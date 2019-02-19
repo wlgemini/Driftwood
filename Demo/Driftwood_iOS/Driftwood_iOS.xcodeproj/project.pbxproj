@@ -13,7 +13,7 @@
 		A043C0212200407F00788472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A043C01F2200407F00788472 /* Main.storyboard */; };
 		A043C0232200407F00788472 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A043C0222200407F00788472 /* Assets.xcassets */; };
 		A043C0262200407F00788472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A043C0242200407F00788472 /* LaunchScreen.storyboard */; };
-		A043C02E220040BE00788472 /* UIView+Driftwood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043C02D220040BD00788472 /* UIView+Driftwood.swift */; };
+		A043C02E220040BE00788472 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043C02D220040BD00788472 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 		A043C0222200407F00788472 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A043C0252200407F00788472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A043C0272200407F00788472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A043C02D220040BD00788472 /* UIView+Driftwood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Driftwood.swift"; sourceTree = "<group>"; };
+		A043C02D220040BD00788472 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F0DA1593F84562EEEDACED5F /* libPods-Driftwood_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Driftwood_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				A043C01B2200407F00788472 /* AppDelegate.swift */,
-				A043C02D220040BD00788472 /* UIView+Driftwood.swift */,
+				A043C02D220040BD00788472 /* Utils.swift */,
 				A043C01D2200407F00788472 /* ViewController.swift */,
 				A043C01F2200407F00788472 /* Main.storyboard */,
 				A043C0222200407F00788472 /* Assets.xcassets */,
@@ -184,7 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A043C02E220040BE00788472 /* UIView+Driftwood.swift in Sources */,
+				A043C02E220040BE00788472 /* Utils.swift in Sources */,
 				A043C01E2200407F00788472 /* ViewController.swift in Sources */,
 				A043C01C2200407F00788472 /* AppDelegate.swift in Sources */,
 			);
@@ -335,7 +335,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Driftwood_iOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wlgemini.Driftwood-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -350,7 +353,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Driftwood_iOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wlgemini.Driftwood-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

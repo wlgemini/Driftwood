@@ -2,27 +2,26 @@
 //  ViewController.swift
 //  Driftwood_macOS
 //
-//  Created by Lucas on 2019/2/16.
-//  Copyright © 2019 wlgemini. All rights reserved.
-//
 
-import Cocoa
+import AppKit
 import Driftwood
 
 class ViewController: NSViewController {
-
+    
+    private weak var v1: NSButton!
+    private weak var v2: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.wantsLayer = true
+        
+        self.v1 = self.view.createSubView()
+        self.v1.bezelColor = NSColor.random
+        self.v1.dw.labeled("v1").make().centerX(0).centerY(0).width(50).height(100)
+        
+        self.v2 = self.view.createSubView()
+        self.v1.bezelColor = NSColor.random
+        self.v2.dw.labeled("v2").make().top(10, to: self.v1.dw.bottom).centerX(0, to: self.v1.dw.centerX).width(100).height(to: self.v1.dw.width)
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
-
 }
 

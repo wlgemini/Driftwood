@@ -2,9 +2,6 @@
 //  AppDelegate.swift
 //  Driftwood_tvOS
 //
-//  Created by Lucas on 2019/2/16.
-//  Copyright © 2019 wlgemini. All rights reserved.
-//
 
 import UIKit
 

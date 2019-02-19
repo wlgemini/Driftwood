@@ -2,9 +2,6 @@
 //  ViewController.swift
 //  Driftwood
 //
-//  Created by wlgemini on 06/14/2018.
-//  Copyright (c) 2018 wlgemini. All rights reserved.
-//
 
 import UIKit
 import Driftwood

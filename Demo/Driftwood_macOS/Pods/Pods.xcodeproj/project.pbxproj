@@ -7,145 +7,170 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F42359457DC0F59DC8C16B31A751B37 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF428FC7C7A6555B2B02D8E238C8D8F2 /* Cocoa.framework */; };
-		1D82F500384009F29F91712713448381 /* Driftwood-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F6FEB5A2039016CA255E20B91678E970 /* Driftwood-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2F4109BD6758A654EC418CDFA7E3897F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF428FC7C7A6555B2B02D8E238C8D8F2 /* Cocoa.framework */; };
-		3071D30D86B617AE1BC1675212375354 /* Driftwood-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E33CB69DED8BE9D40A9E249964D951C /* Driftwood-dummy.m */; };
-		49B686607927D503610B53FEC7717F4D /* Driftwood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE1892667E9293F53CF1C870EB0BDE /* Driftwood.swift */; };
-		C994270838D118FECAF0B3D9F518028D /* Pods-Driftwood_macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE193A2E0D2C468790925C0EAC71548 /* Pods-Driftwood_macOS-dummy.m */; };
-		D306F93526B918FE5BEF6F3F3CE92884 /* Driftwood+Handy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA74CE25DA9743540548B74727F351E /* Driftwood+Handy.swift */; };
-		F3B7BD66086565EE6287B2E49262F907 /* Pods-Driftwood_macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AD5ADEAC7ADBC9631945FCF480E70AB /* Pods-Driftwood_macOS-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0CC6E7A95A864CCACEAA6028ECDFC6EB /* ConstraintUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E3FD20597F56719254073A8C223D0 /* ConstraintUpdater.swift */; };
+		324991F1AE18CECA88EC014A99143A96 /* Driftwood-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AFB3737DD37BEF1FB60E65DA91BC80CD /* Driftwood-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		47F86F6F1C7F34E6C421120090266E73 /* Driftwood-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8CB874ACA9CE88D3353C89AD0BE63F /* Driftwood-dummy.m */; };
+		4BE6D0CE0406DA0DA5A7D76FA3576154 /* ConstraintsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7F01C5C09ABA5A423A3FD6F43A772 /* ConstraintsStorage.swift */; };
+		53C7E43CA1C4F7D39C3281D2145BA351 /* Pods-Driftwood_macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4FB98DC23D0E8D9A766EC746FDD068B /* Pods-Driftwood_macOS-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5C7AB8266717E24350E82E1B66967C5C /* ConstraintMaker+Handy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8517B015175F76AB88FAFA3EA8AEEF /* ConstraintMaker+Handy.swift */; };
+		685811402471811FBF396F7918B26C5B /* LayoutGuide+Driftwood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2A4DCF8F8D086AE5BA3EAEB222F87C /* LayoutGuide+Driftwood.swift */; };
+		6FCC48583B4AF2ED23D518906E180129 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123A164DD43D2B06E18E57E18978390 /* ConstraintItem.swift */; };
+		8BCEFCF6B6344AAD25BFBC65ADA1EE9D /* Pods-Driftwood_macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 578191C5EBA7E7B33377CB7C9AD5DFC1 /* Pods-Driftwood_macOS-dummy.m */; };
+		93EAFE8B4A6786AFD0BC2BA140E32D20 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D963EA8D527D32CD95CA5C7833E8 /* Typealiases.swift */; };
+		9BF9F603723DF1EDACF8D3ADA85AC7DE /* ConstraintAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46C20C7D07C39AA778EF12AC6BD899 /* ConstraintAttribute.swift */; };
+		A4523C2D6C0F87D3A9D83375AC2E4AA6 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BE17039778785B50729700736C5D5 /* Debugging.swift */; };
+		B4E01BB0CE315A8AA67F92C5FDC00CA9 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62990DF89FEADBB995EC51586CF08D /* LayoutConstraint.swift */; };
+		D82531558D5D5736750970B13ADE2152 /* ConstraintRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2FFB0CF5B9B373516260245D020DBA /* ConstraintRemover.swift */; };
+		E15354DC27C41FB18EB1FEAC35BD1506 /* ConstraintRemover+Handy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54C1B764300014AC8CB5D272E28D47 /* ConstraintRemover+Handy.swift */; };
+		E253F51A68C762A88613ACBC4E6FBFB3 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561B495B0E17C5C4E10007418E92833 /* ConstraintMaker.swift */; };
+		F9CD358BD0FC54F729B72B0894C6D792 /* Driftwood.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14EEB16B8775CD5144E7B2B05062356 /* Driftwood.swift */; };
+		FA9D13A9E8DF7DD78DB3387A39BC99A5 /* View+Driftwood.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107B7E8B4A4701F3672B35B5020EAA5 /* View+Driftwood.swift */; };
+		FB1B8D80AE1A7A4C7FF0CEF6E2DECC42 /* ConstraintUpdater+Handy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BB4534CBA54CEA6D083D0B9FBE391 /* ConstraintUpdater+Handy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A44653414C9E91E3A807BAE0C6E1B8C1 /* PBXContainerItemProxy */ = {
+		74BD87FE93A899B5B24F852746DB3B22 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6074A25CCABECE759E3E0F4D339A170C;
+			remoteGlobalIDString = 8A4ECA9737FC2F05BCB966ED146CCD83;
 			remoteInfo = Driftwood;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1A5A392605FB109793EDC2E8C2606F79 /* Pods-Driftwood_macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Driftwood_macOS.release.xcconfig"; sourceTree = "<group>"; };
-		2A8A7D3CF7F79B662E2BF2527DC64342 /* Driftwood.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = Driftwood.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		2F740DA789AEDA21E6CBAEE813B4DF31 /* Pods-Driftwood_macOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Driftwood_macOS-acknowledgements.plist"; sourceTree = "<group>"; };
-		3AD5ADEAC7ADBC9631945FCF480E70AB /* Pods-Driftwood_macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Driftwood_macOS-umbrella.h"; sourceTree = "<group>"; };
-		510E88C87FEB884ED1A9F963A8527ECA /* Pods-Driftwood_macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Driftwood_macOS.modulemap"; sourceTree = "<group>"; };
-		589572D8338B7E6052D5F415131F2B77 /* Driftwood.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = Driftwood.modulemap; path = ../../Headers/Public/Driftwood/Driftwood.modulemap; sourceTree = "<group>"; };
+		09A9EBB0BE9CC2F60E378CDF4F8770A3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		0D8BE17039778785B50729700736C5D5 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Driftwood/Debugging.swift; sourceTree = "<group>"; };
+		2E8517B015175F76AB88FAFA3EA8AEEF /* ConstraintMaker+Handy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintMaker+Handy.swift"; path = "Driftwood/ConstraintMaker+Handy.swift"; sourceTree = "<group>"; };
+		3577A3C26C59C63CB06903200D68B2B5 /* Pods-Driftwood_macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Driftwood_macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		4561B495B0E17C5C4E10007418E92833 /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Driftwood/ConstraintMaker.swift; sourceTree = "<group>"; };
+		4F2FFB0CF5B9B373516260245D020DBA /* ConstraintRemover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRemover.swift; path = Driftwood/ConstraintRemover.swift; sourceTree = "<group>"; };
+		548CCC92AD37D1DBB8425C19EE916A14 /* Driftwood.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Driftwood.xcconfig; sourceTree = "<group>"; };
+		578191C5EBA7E7B33377CB7C9AD5DFC1 /* Pods-Driftwood_macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Driftwood_macOS-dummy.m"; sourceTree = "<group>"; };
+		5C54C1B764300014AC8CB5D272E28D47 /* ConstraintRemover+Handy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintRemover+Handy.swift"; path = "Driftwood/ConstraintRemover+Handy.swift"; sourceTree = "<group>"; };
+		5E8CB874ACA9CE88D3353C89AD0BE63F /* Driftwood-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Driftwood-dummy.m"; sourceTree = "<group>"; };
 		5ED96C60D223C0CD169BE63F82C784B4 /* libPods-Driftwood_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Driftwood_macOS.a"; path = "libPods-Driftwood_macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AA74CE25DA9743540548B74727F351E /* Driftwood+Handy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Driftwood+Handy.swift"; path = "Driftwood/Driftwood+Handy.swift"; sourceTree = "<group>"; };
-		71AE1892667E9293F53CF1C870EB0BDE /* Driftwood.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Driftwood.swift; path = Driftwood/Driftwood.swift; sourceTree = "<group>"; };
-		7E33CB69DED8BE9D40A9E249964D951C /* Driftwood-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Driftwood-dummy.m"; sourceTree = "<group>"; };
+		634E3FD20597F56719254073A8C223D0 /* ConstraintUpdater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintUpdater.swift; path = Driftwood/ConstraintUpdater.swift; sourceTree = "<group>"; };
+		6A2A4DCF8F8D086AE5BA3EAEB222F87C /* LayoutGuide+Driftwood.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "LayoutGuide+Driftwood.swift"; path = "Driftwood/LayoutGuide+Driftwood.swift"; sourceTree = "<group>"; };
+		776CFBDDAEB0FE506F7D82CAB6EB0BA1 /* Pods-Driftwood_macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Driftwood_macOS.modulemap"; sourceTree = "<group>"; };
+		7B4BB4534CBA54CEA6D083D0B9FBE391 /* ConstraintUpdater+Handy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintUpdater+Handy.swift"; path = "Driftwood/ConstraintUpdater+Handy.swift"; sourceTree = "<group>"; };
+		7C62990DF89FEADBB995EC51586CF08D /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Driftwood/LayoutConstraint.swift; sourceTree = "<group>"; };
 		82D50DBC1BB6C9EA1651939D3D28ED7F /* libDriftwood.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDriftwood.a; path = libDriftwood.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8410F17FF9894BCF022E421C34D74636 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		88E40E840C16F810B6A0FB53F2BD29F7 /* Pods-Driftwood_macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Driftwood_macOS.debug.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9A1DCBCAE879321EDF66601E15E70F71 /* Pods-Driftwood_macOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Driftwood_macOS-resources.sh"; sourceTree = "<group>"; };
-		9BC13859C9947968F2F4A15A6D016282 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		AD743B5AE763C8D1CF6EFC49AB8C6BF4 /* Driftwood.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Driftwood.xcconfig; sourceTree = "<group>"; };
-		C2D00DB5AC7C61219506195FF3700A50 /* Pods-Driftwood_macOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Driftwood_macOS-frameworks.sh"; sourceTree = "<group>"; };
-		DDE193A2E0D2C468790925C0EAC71548 /* Pods-Driftwood_macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Driftwood_macOS-dummy.m"; sourceTree = "<group>"; };
-		DF428FC7C7A6555B2B02D8E238C8D8F2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		E7D80B1FD04E3DDFD56CFA112035A2C8 /* Pods-Driftwood_macOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Driftwood_macOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F6FEB5A2039016CA255E20B91678E970 /* Driftwood-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Driftwood-umbrella.h"; path = "../../Headers/Public/Driftwood/Driftwood-umbrella.h"; sourceTree = "<group>"; };
-		FA1472729FA4DA46EB624D574604F1D3 /* Driftwood-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Driftwood-prefix.pch"; sourceTree = "<group>"; };
+		9EC5D963EA8D527D32CD95CA5C7833E8 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Driftwood/Typealiases.swift; sourceTree = "<group>"; };
+		A4FB98DC23D0E8D9A766EC746FDD068B /* Pods-Driftwood_macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Driftwood_macOS-umbrella.h"; sourceTree = "<group>"; };
+		AC5A25C351051EF29BE1658DCFA15F60 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		AFB3737DD37BEF1FB60E65DA91BC80CD /* Driftwood-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Driftwood-umbrella.h"; sourceTree = "<group>"; };
+		B29035C87862F1C9D47B153861FA4509 /* Pods-Driftwood_macOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Driftwood_macOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BE9114BDC27244B55504AA1DAD4C0E9A /* Pods-Driftwood_macOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Driftwood_macOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C14EEB16B8775CD5144E7B2B05062356 /* Driftwood.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Driftwood.swift; path = Driftwood/Driftwood.swift; sourceTree = "<group>"; };
+		C18A29A84707321F0BDE9B0924980258 /* Driftwood.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Driftwood.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CB9DCE27A4E90252989390B1C1A2E332 /* Driftwood.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Driftwood.modulemap; sourceTree = "<group>"; };
+		CBE7F01C5C09ABA5A423A3FD6F43A772 /* ConstraintsStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintsStorage.swift; path = Driftwood/ConstraintsStorage.swift; sourceTree = "<group>"; };
+		D73BDB6DE5EF50BA47EDDFD0C5D28C80 /* Pods-Driftwood_macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Driftwood_macOS.release.xcconfig"; sourceTree = "<group>"; };
+		DB46C20C7D07C39AA778EF12AC6BD899 /* ConstraintAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttribute.swift; path = Driftwood/ConstraintAttribute.swift; sourceTree = "<group>"; };
+		E123A164DD43D2B06E18E57E18978390 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Driftwood/ConstraintItem.swift; sourceTree = "<group>"; };
+		EAB636D136F3D0A7BE61FAF6C5615FFC /* Driftwood-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Driftwood-prefix.pch"; sourceTree = "<group>"; };
+		F107B7E8B4A4701F3672B35B5020EAA5 /* View+Driftwood.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "View+Driftwood.swift"; path = "Driftwood/View+Driftwood.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		064339DC974F71CBF0526F496A7662A3 /* Frameworks */ = {
+		31EB28EFDBF38563BC61370C991E62D0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F4109BD6758A654EC418CDFA7E3897F /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AAA45A23C6F11566937C893BD933727B /* Frameworks */ = {
+		B829F88BC7BBF33392ACB2F543F265A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F42359457DC0F59DC8C16B31A751B37 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03E82ABBACB6181D3692CC01FA648CF0 /* Pod */ = {
+		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2A8A7D3CF7F79B662E2BF2527DC64342 /* Driftwood.podspec */,
-				8410F17FF9894BCF022E421C34D74636 /* LICENSE */,
-				9BC13859C9947968F2F4A15A6D016282 /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		045605ABD97D9C46F772E9033435309E /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A05B98D87F32BD1C0F64F9ED0D2EA3C3 /* Driftwood */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FA7AC8429882A95AA0810A9DCDED54FF /* OS X */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5243AA239E8C129D8BA03CF521A10337 /* Support Files */ = {
+		4DC525ABA58529FCD31B22B71E1A3A9D /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				589572D8338B7E6052D5F415131F2B77 /* Driftwood.modulemap */,
-				AD743B5AE763C8D1CF6EFC49AB8C6BF4 /* Driftwood.xcconfig */,
-				7E33CB69DED8BE9D40A9E249964D951C /* Driftwood-dummy.m */,
-				FA1472729FA4DA46EB624D574604F1D3 /* Driftwood-prefix.pch */,
-				F6FEB5A2039016CA255E20B91678E970 /* Driftwood-umbrella.h */,
+				C18A29A84707321F0BDE9B0924980258 /* Driftwood.podspec */,
+				AC5A25C351051EF29BE1658DCFA15F60 /* LICENSE */,
+				09A9EBB0BE9CC2F60E378CDF4F8770A3 /* README.md */,
 			);
-			name = "Support Files";
-			path = "Demo/Driftwood_macOS/Pods/Target Support Files/Driftwood";
+			name = Pod;
 			sourceTree = "<group>";
 		};
-		5BBBDEDB93227FF0C079292D56B247D4 /* Pods-Driftwood_macOS */ = {
+		4EF5CD98FDC3AB5CEF41C4DE0369B1B1 /* Driftwood */ = {
 			isa = PBXGroup;
 			children = (
-				510E88C87FEB884ED1A9F963A8527ECA /* Pods-Driftwood_macOS.modulemap */,
-				E7D80B1FD04E3DDFD56CFA112035A2C8 /* Pods-Driftwood_macOS-acknowledgements.markdown */,
-				2F740DA789AEDA21E6CBAEE813B4DF31 /* Pods-Driftwood_macOS-acknowledgements.plist */,
-				DDE193A2E0D2C468790925C0EAC71548 /* Pods-Driftwood_macOS-dummy.m */,
-				C2D00DB5AC7C61219506195FF3700A50 /* Pods-Driftwood_macOS-frameworks.sh */,
-				9A1DCBCAE879321EDF66601E15E70F71 /* Pods-Driftwood_macOS-resources.sh */,
-				3AD5ADEAC7ADBC9631945FCF480E70AB /* Pods-Driftwood_macOS-umbrella.h */,
-				88E40E840C16F810B6A0FB53F2BD29F7 /* Pods-Driftwood_macOS.debug.xcconfig */,
-				1A5A392605FB109793EDC2E8C2606F79 /* Pods-Driftwood_macOS.release.xcconfig */,
+				DB46C20C7D07C39AA778EF12AC6BD899 /* ConstraintAttribute.swift */,
+				E123A164DD43D2B06E18E57E18978390 /* ConstraintItem.swift */,
+				4561B495B0E17C5C4E10007418E92833 /* ConstraintMaker.swift */,
+				2E8517B015175F76AB88FAFA3EA8AEEF /* ConstraintMaker+Handy.swift */,
+				4F2FFB0CF5B9B373516260245D020DBA /* ConstraintRemover.swift */,
+				5C54C1B764300014AC8CB5D272E28D47 /* ConstraintRemover+Handy.swift */,
+				CBE7F01C5C09ABA5A423A3FD6F43A772 /* ConstraintsStorage.swift */,
+				634E3FD20597F56719254073A8C223D0 /* ConstraintUpdater.swift */,
+				7B4BB4534CBA54CEA6D083D0B9FBE391 /* ConstraintUpdater+Handy.swift */,
+				0D8BE17039778785B50729700736C5D5 /* Debugging.swift */,
+				C14EEB16B8775CD5144E7B2B05062356 /* Driftwood.swift */,
+				7C62990DF89FEADBB995EC51586CF08D /* LayoutConstraint.swift */,
+				6A2A4DCF8F8D086AE5BA3EAEB222F87C /* LayoutGuide+Driftwood.swift */,
+				9EC5D963EA8D527D32CD95CA5C7833E8 /* Typealiases.swift */,
+				F107B7E8B4A4701F3672B35B5020EAA5 /* View+Driftwood.swift */,
+				4DC525ABA58529FCD31B22B71E1A3A9D /* Pod */,
+				8A0E3B10931C8029AC026714D048D89A /* Support Files */,
+			);
+			name = Driftwood;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		70B2525F47EB117ED8F43D5883F323A3 /* Pods-Driftwood_macOS */ = {
+			isa = PBXGroup;
+			children = (
+				776CFBDDAEB0FE506F7D82CAB6EB0BA1 /* Pods-Driftwood_macOS.modulemap */,
+				BE9114BDC27244B55504AA1DAD4C0E9A /* Pods-Driftwood_macOS-acknowledgements.markdown */,
+				B29035C87862F1C9D47B153861FA4509 /* Pods-Driftwood_macOS-acknowledgements.plist */,
+				578191C5EBA7E7B33377CB7C9AD5DFC1 /* Pods-Driftwood_macOS-dummy.m */,
+				A4FB98DC23D0E8D9A766EC746FDD068B /* Pods-Driftwood_macOS-umbrella.h */,
+				3577A3C26C59C63CB06903200D68B2B5 /* Pods-Driftwood_macOS.debug.xcconfig */,
+				D73BDB6DE5EF50BA47EDDFD0C5D28C80 /* Pods-Driftwood_macOS.release.xcconfig */,
 			);
 			name = "Pods-Driftwood_macOS";
 			path = "Target Support Files/Pods-Driftwood_macOS";
 			sourceTree = "<group>";
 		};
-		783E101A30526CE412AEFA0A4B0E8DCF /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5BBBDEDB93227FF0C079292D56B247D4 /* Pods-Driftwood_macOS */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				045605ABD97D9C46F772E9033435309E /* Development Pods */,
-				39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */,
+				B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */,
+				DD201F58B539EA050EB69215FE51218C /* Development Pods */,
+				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
 				9C51003EE44DDB711AEB00A10226B907 /* Products */,
-				783E101A30526CE412AEFA0A4B0E8DCF /* Targets Support Files */,
+				BC574BD8BB6DE94970435C7260B20881 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		8A0E3B10931C8029AC026714D048D89A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB9DCE27A4E90252989390B1C1A2E332 /* Driftwood.modulemap */,
+				548CCC92AD37D1DBB8425C19EE916A14 /* Driftwood.xcconfig */,
+				5E8CB874ACA9CE88D3353C89AD0BE63F /* Driftwood-dummy.m */,
+				EAB636D136F3D0A7BE61FAF6C5615FFC /* Driftwood-prefix.pch */,
+				AFB3737DD37BEF1FB60E65DA91BC80CD /* Driftwood-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Demo/Driftwood_macOS/Pods/Target Support Files/Driftwood";
 			sourceTree = "<group>";
 		};
 		9C51003EE44DDB711AEB00A10226B907 /* Products */ = {
@@ -157,56 +182,52 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A05B98D87F32BD1C0F64F9ED0D2EA3C3 /* Driftwood */ = {
+		BC574BD8BB6DE94970435C7260B20881 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				71AE1892667E9293F53CF1C870EB0BDE /* Driftwood.swift */,
-				6AA74CE25DA9743540548B74727F351E /* Driftwood+Handy.swift */,
-				03E82ABBACB6181D3692CC01FA648CF0 /* Pod */,
-				5243AA239E8C129D8BA03CF521A10337 /* Support Files */,
+				70B2525F47EB117ED8F43D5883F323A3 /* Pods-Driftwood_macOS */,
 			);
-			name = Driftwood;
-			path = ../../..;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		FA7AC8429882A95AA0810A9DCDED54FF /* OS X */ = {
+		DD201F58B539EA050EB69215FE51218C /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DF428FC7C7A6555B2B02D8E238C8D8F2 /* Cocoa.framework */,
+				4EF5CD98FDC3AB5CEF41C4DE0369B1B1 /* Driftwood */,
 			);
-			name = "OS X";
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4AF958BF30434CB31DF82F940A657A41 /* Headers */ = {
+		33DEB0AC121711148D6EBDC53154D3B3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D82F500384009F29F91712713448381 /* Driftwood-umbrella.h in Headers */,
+				324991F1AE18CECA88EC014A99143A96 /* Driftwood-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD7267D1849F8FFE4160E7EC147B2259 /* Headers */ = {
+		6FBC5E691442247E94920A3E9906556E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3B7BD66086565EE6287B2E49262F907 /* Pods-Driftwood_macOS-umbrella.h in Headers */,
+				53C7E43CA1C4F7D39C3281D2145BA351 /* Pods-Driftwood_macOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6074A25CCABECE759E3E0F4D339A170C /* Driftwood */ = {
+		8A4ECA9737FC2F05BCB966ED146CCD83 /* Driftwood */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D46CAF611FDC650B585176323A8E014D /* Build configuration list for PBXNativeTarget "Driftwood" */;
+			buildConfigurationList = 83DA91C2B24479E8A5A87A6992EAD326 /* Build configuration list for PBXNativeTarget "Driftwood" */;
 			buildPhases = (
-				8B3E9E3B64DED4BE2109E9C2E12B5220 /* Sources */,
-				064339DC974F71CBF0526F496A7662A3 /* Frameworks */,
-				4AF958BF30434CB31DF82F940A657A41 /* Headers */,
-				51F72BB719C422C080D5CD3CE95BA0ED /* Copy generated compatibility header */,
+				33DEB0AC121711148D6EBDC53154D3B3 /* Headers */,
+				73AC3E128D1A6DDA5F4BE33F30AD8EE1 /* Sources */,
+				31EB28EFDBF38563BC61370C991E62D0 /* Frameworks */,
+				EA0D92B1539264C22329E7DA0AF95200 /* Copy generated compatibility header */,
 			);
 			buildRules = (
 			);
@@ -217,18 +238,18 @@
 			productReference = 82D50DBC1BB6C9EA1651939D3D28ED7F /* libDriftwood.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		974AEC7D896456D6B02205DD73A7C1AC /* Pods-Driftwood_macOS */ = {
+		E8715E62D3D7E33665C526C4E80BF129 /* Pods-Driftwood_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C84D779D28EA7D6203724FE86A6987AF /* Build configuration list for PBXNativeTarget "Pods-Driftwood_macOS" */;
+			buildConfigurationList = EBF113B495FB7A0F4677B1347A1C5369 /* Build configuration list for PBXNativeTarget "Pods-Driftwood_macOS" */;
 			buildPhases = (
-				4E2F617A3DD377A83230176ED1C7E936 /* Sources */,
-				AAA45A23C6F11566937C893BD933727B /* Frameworks */,
-				AD7267D1849F8FFE4160E7EC147B2259 /* Headers */,
+				6FBC5E691442247E94920A3E9906556E /* Headers */,
+				73CC01BDA0D9DEF8DD28609CA86798D2 /* Sources */,
+				B829F88BC7BBF33392ACB2F543F265A3 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3AC20C6E0FE50E7349C60C0D707BA7E9 /* PBXTargetDependency */,
+				30A2CFF07412EAEBB8EF4E2C93CE89D1 /* PBXTargetDependency */,
 			);
 			name = "Pods-Driftwood_macOS";
 			productName = "Pods-Driftwood_macOS";
@@ -256,17 +277,19 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6074A25CCABECE759E3E0F4D339A170C /* Driftwood */,
-				974AEC7D896456D6B02205DD73A7C1AC /* Pods-Driftwood_macOS */,
+				8A4ECA9737FC2F05BCB966ED146CCD83 /* Driftwood */,
+				E8715E62D3D7E33665C526C4E80BF129 /* Pods-Driftwood_macOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		51F72BB719C422C080D5CD3CE95BA0ED /* Copy generated compatibility header */ = {
+		EA0D92B1539264C22329E7DA0AF95200 /* Copy generated compatibility header */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
@@ -274,6 +297,8 @@
 				"${PODS_ROOT}/Headers/Public/Driftwood/Driftwood-umbrella.h",
 			);
 			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
 				"${BUILT_PRODUCTS_DIR}/Driftwood-umbrella.h",
@@ -287,64 +312,74 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4E2F617A3DD377A83230176ED1C7E936 /* Sources */ = {
+		73AC3E128D1A6DDA5F4BE33F30AD8EE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C994270838D118FECAF0B3D9F518028D /* Pods-Driftwood_macOS-dummy.m in Sources */,
+				9BF9F603723DF1EDACF8D3ADA85AC7DE /* ConstraintAttribute.swift in Sources */,
+				6FCC48583B4AF2ED23D518906E180129 /* ConstraintItem.swift in Sources */,
+				5C7AB8266717E24350E82E1B66967C5C /* ConstraintMaker+Handy.swift in Sources */,
+				E253F51A68C762A88613ACBC4E6FBFB3 /* ConstraintMaker.swift in Sources */,
+				E15354DC27C41FB18EB1FEAC35BD1506 /* ConstraintRemover+Handy.swift in Sources */,
+				D82531558D5D5736750970B13ADE2152 /* ConstraintRemover.swift in Sources */,
+				4BE6D0CE0406DA0DA5A7D76FA3576154 /* ConstraintsStorage.swift in Sources */,
+				FB1B8D80AE1A7A4C7FF0CEF6E2DECC42 /* ConstraintUpdater+Handy.swift in Sources */,
+				0CC6E7A95A864CCACEAA6028ECDFC6EB /* ConstraintUpdater.swift in Sources */,
+				A4523C2D6C0F87D3A9D83375AC2E4AA6 /* Debugging.swift in Sources */,
+				47F86F6F1C7F34E6C421120090266E73 /* Driftwood-dummy.m in Sources */,
+				F9CD358BD0FC54F729B72B0894C6D792 /* Driftwood.swift in Sources */,
+				B4E01BB0CE315A8AA67F92C5FDC00CA9 /* LayoutConstraint.swift in Sources */,
+				685811402471811FBF396F7918B26C5B /* LayoutGuide+Driftwood.swift in Sources */,
+				93EAFE8B4A6786AFD0BC2BA140E32D20 /* Typealiases.swift in Sources */,
+				FA9D13A9E8DF7DD78DB3387A39BC99A5 /* View+Driftwood.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8B3E9E3B64DED4BE2109E9C2E12B5220 /* Sources */ = {
+		73CC01BDA0D9DEF8DD28609CA86798D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D306F93526B918FE5BEF6F3F3CE92884 /* Driftwood+Handy.swift in Sources */,
-				3071D30D86B617AE1BC1675212375354 /* Driftwood-dummy.m in Sources */,
-				49B686607927D503610B53FEC7717F4D /* Driftwood.swift in Sources */,
+				8BCEFCF6B6344AAD25BFBC65ADA1EE9D /* Pods-Driftwood_macOS-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3AC20C6E0FE50E7349C60C0D707BA7E9 /* PBXTargetDependency */ = {
+		30A2CFF07412EAEBB8EF4E2C93CE89D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Driftwood;
-			target = 6074A25CCABECE759E3E0F4D339A170C /* Driftwood */;
-			targetProxy = A44653414C9E91E3A807BAE0C6E1B8C1 /* PBXContainerItemProxy */;
+			target = 8A4ECA9737FC2F05BCB966ED146CCD83 /* Driftwood */;
+			targetProxy = 74BD87FE93A899B5B24F852746DB3B22 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		27CA305A6530A01A70E1049560811C65 /* Debug */ = {
+		18FAA08B899BCE9055867D5BB98B37BF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD743B5AE763C8D1CF6EFC49AB8C6BF4 /* Driftwood.xcconfig */;
+			baseConfigurationReference = D73BDB6DE5EF50BA47EDDFD0C5D28C80 /* Pods-Driftwood_macOS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				EXECUTABLE_PREFIX = lib;
-				GCC_PREFIX_HEADER = "Target Support Files/Driftwood/Driftwood-prefix.pch";
+				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = Headers/Public/Driftwood/Driftwood.modulemap;
+				MODULEMAP_FILE = "Target Support Files/Pods-Driftwood_macOS/Pods-Driftwood_macOS.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Driftwood;
-				PRODUCT_NAME = Driftwood;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
 			};
-			name = Debug;
+			name = Release;
 		};
-		2865D6CA54276FC287AEEA5628D514EE /* Release */ = {
+		22FD8BFC00D0E36CA7F8A9A3C8E7B8C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -376,142 +411,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		36B525A189904A54F74E5C596CE2372C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88E40E840C16F810B6A0FB53F2BD29F7 /* Pods-Driftwood_macOS.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/Pods-Driftwood_macOS/Pods-Driftwood_macOS.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		49B62B3B24678A99BBF960AF499D6487 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD743B5AE763C8D1CF6EFC49AB8C6BF4 /* Driftwood.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
-				GCC_PREFIX_HEADER = "Target Support Files/Driftwood/Driftwood-prefix.pch";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = Headers/Public/Driftwood/Driftwood.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Driftwood;
-				PRODUCT_NAME = Driftwood;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-			};
-			name = Release;
-		};
-		4A9281B044004C94FE16C6E5D176B5C7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A5A392605FB109793EDC2E8C2606F79 /* Pods-Driftwood_macOS.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/Pods-Driftwood_macOS/Pods-Driftwood_macOS.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-			};
-			name = Release;
-		};
-		BE5BFE8D01810C31013EFB6520C87162 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -532,12 +431,153 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		86D267E3085844FA2217177F0D3FF579 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		8B5CEF456FC2CF87954DE857C2B99D75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 548CCC92AD37D1DBB8425C19EE916A14 /* Driftwood.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Driftwood/Driftwood-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = Headers/Public/Driftwood/Driftwood.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Driftwood;
+				PRODUCT_NAME = Driftwood;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		B679E8E6F48AEB80549D34F5489E1482 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 548CCC92AD37D1DBB8425C19EE916A14 /* Driftwood.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Driftwood/Driftwood-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = Headers/Public/Driftwood/Driftwood.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Driftwood;
+				PRODUCT_NAME = Driftwood;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		D850919C179D3692886F50A85DC18994 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3577A3C26C59C63CB06903200D68B2B5 /* Pods-Driftwood_macOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = "Target Support Files/Pods-Driftwood_macOS/Pods-Driftwood_macOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -547,26 +587,26 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BE5BFE8D01810C31013EFB6520C87162 /* Debug */,
-				2865D6CA54276FC287AEEA5628D514EE /* Release */,
+				22FD8BFC00D0E36CA7F8A9A3C8E7B8C7 /* Debug */,
+				86D267E3085844FA2217177F0D3FF579 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C84D779D28EA7D6203724FE86A6987AF /* Build configuration list for PBXNativeTarget "Pods-Driftwood_macOS" */ = {
+		83DA91C2B24479E8A5A87A6992EAD326 /* Build configuration list for PBXNativeTarget "Driftwood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				36B525A189904A54F74E5C596CE2372C /* Debug */,
-				4A9281B044004C94FE16C6E5D176B5C7 /* Release */,
+				8B5CEF456FC2CF87954DE857C2B99D75 /* Debug */,
+				B679E8E6F48AEB80549D34F5489E1482 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D46CAF611FDC650B585176323A8E014D /* Build configuration list for PBXNativeTarget "Driftwood" */ = {
+		EBF113B495FB7A0F4677B1347A1C5369 /* Build configuration list for PBXNativeTarget "Pods-Driftwood_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				27CA305A6530A01A70E1049560811C65 /* Debug */,
-				49B62B3B24678A99BBF960AF499D6487 /* Release */,
+				D850919C179D3692886F50A85DC18994 /* Debug */,
+				18FAA08B899BCE9055867D5BB98B37BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

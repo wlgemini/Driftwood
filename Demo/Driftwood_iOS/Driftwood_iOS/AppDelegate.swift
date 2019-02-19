@@ -2,9 +2,6 @@
 //  AppDelegate.swift
 //  Driftwood_iOS
 //
-//  Created by Lucas on 2019/1/29.
-//  Copyright © 2019 wlgemini. All rights reserved.
-//
 
 import UIKit
 

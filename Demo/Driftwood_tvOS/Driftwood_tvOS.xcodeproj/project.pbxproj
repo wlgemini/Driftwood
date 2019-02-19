@@ -12,6 +12,7 @@
 		A07C0A8022186463008DC5A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07C0A7F22186463008DC5A9 /* ViewController.swift */; };
 		A07C0A8322186463008DC5A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07C0A8122186463008DC5A9 /* Main.storyboard */; };
 		A07C0A8522186464008DC5A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A07C0A8422186464008DC5A9 /* Assets.xcassets */; };
+		CACF0332221C0F3100995B82 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF0331221C0F3000995B82 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A07C0A8422186464008DC5A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A07C0A8622186464008DC5A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A900FF6C06DFE3665C082920 /* libPods-Driftwood_tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Driftwood_tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACF0331221C0F3000995B82 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		A07C0A7C22186463008DC5A9 /* Driftwood_tvOS */ = {
 			isa = PBXGroup;
 			children = (
+				CACF0331221C0F3000995B82 /* Utils.swift */,
 				A07C0A7D22186463008DC5A9 /* AppDelegate.swift */,
 				A07C0A7F22186463008DC5A9 /* ViewController.swift */,
 				A07C0A8122186463008DC5A9 /* Main.storyboard */,
@@ -179,6 +182,7 @@
 			files = (
 				A07C0A8022186463008DC5A9 /* ViewController.swift in Sources */,
 				A07C0A7E22186463008DC5A9 /* AppDelegate.swift in Sources */,
+				CACF0332221C0F3100995B82 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +322,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Driftwood_tvOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wlgemini.Driftwood-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -334,7 +341,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Driftwood_tvOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wlgemini.Driftwood-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

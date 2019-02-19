@@ -12,6 +12,7 @@
 		A07C0A64221858F2008DC5A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07C0A63221858F2008DC5A9 /* ViewController.swift */; };
 		A07C0A66221858F3008DC5A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A07C0A65221858F3008DC5A9 /* Assets.xcassets */; };
 		A07C0A69221858F3008DC5A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07C0A67221858F3008DC5A9 /* Main.storyboard */; };
+		CACF0330221C072700995B82 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF032F221C072700995B82 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		A07C0A68221858F3008DC5A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A07C0A6A221858F3008DC5A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A07C0A6B221858F3008DC5A9 /* Driftwood_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Driftwood_macOS.entitlements; sourceTree = "<group>"; };
+		CACF032F221C072700995B82 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		A07C0A60221858F2008DC5A9 /* Driftwood_macOS */ = {
 			isa = PBXGroup;
 			children = (
+				CACF032F221C072700995B82 /* Utils.swift */,
 				A07C0A61221858F2008DC5A9 /* AppDelegate.swift */,
 				A07C0A63221858F2008DC5A9 /* ViewController.swift */,
 				A07C0A65221858F3008DC5A9 /* Assets.xcassets */,
@@ -179,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACF0330221C072700995B82 /* Utils.swift in Sources */,
 				A07C0A64221858F2008DC5A9 /* ViewController.swift in Sources */,
 				A07C0A62221858F2008DC5A9 /* AppDelegate.swift in Sources */,
 			);
@@ -322,7 +326,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Driftwood_macOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wlgemini.Driftwood-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -338,7 +345,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Driftwood_macOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wlgemini.Driftwood-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

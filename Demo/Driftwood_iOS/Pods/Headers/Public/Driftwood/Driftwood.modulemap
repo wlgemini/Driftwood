@@ -1,6 +1,1 @@
-module Driftwood {
-  umbrella header "Driftwood-umbrella.h"
-
-  export *
-  module * { export * }
-}
+/Users/finup/Documents/Project/Mine/Driftwood/Demo/Driftwood_iOS/Pods/Target Support Files/Driftwood/Driftwood.modulemap
