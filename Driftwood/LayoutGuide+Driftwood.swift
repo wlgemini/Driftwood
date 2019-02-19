@@ -40,7 +40,7 @@ public typealias LayoutGuide = NSLayoutGuide
 #endif
 
 
-/// LayoutGuide+Item
+/// LayoutGuide (ConstraintItem)
 @available(iOS 9.0, OSX 10.11, *)
 extension LayoutGuide: ConstraintItem {
     
@@ -54,7 +54,7 @@ extension LayoutGuide: ConstraintItem {
 }
 
 
-/// LayoutGuide+Driftwood
+/// LayoutGuide (Driftwood)
 @available(iOS 9.0, OSX 10.11, *)
 extension LayoutGuide {
     
