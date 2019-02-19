@@ -27,7 +27,7 @@ struct Debug {
     
     /// log (execute only in debug mode)
     ///
-    ///     "<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x000000023)>: "
+    ///     "<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525111)>: "
     ///
     static func log(_ location: Location?, _ operation: Operation?, _ item: ConstraintItem?, message: String) {
         Swift.assert({
@@ -84,8 +84,8 @@ struct Debug {
     
     /// description of AnyObject
     ///
-    ///     "UIView`MyView`:0x000000023"
-    ///     "UIView:0x000000023"
+    ///     "UIView`MyView`:0x00007fc636525111"
+    ///     "UIView:0x00007fc636525111"
     ///
     static func description(for obj: AnyObject) -> String {
         var desc = "\(Swift.type(of: obj))"
