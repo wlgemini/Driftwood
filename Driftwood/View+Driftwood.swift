@@ -38,7 +38,7 @@ public typealias View = NSView
 #endif
 
 
-/// View+Item
+/// View (ConstraintItem)
 extension View: ConstraintItem {
     
     public var dw_superview: ConstraintItem? {
@@ -51,7 +51,7 @@ extension View: ConstraintItem {
 }
 
 
-/// View+Driftwood
+/// View (Driftwood)
 extension View {
     
     /// driftwood
