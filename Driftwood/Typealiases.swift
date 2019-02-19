@@ -25,23 +25,28 @@
 #if os(iOS) || os(tvOS)
 import UIKit
 
+
 /// Relation
 public typealias Relation = NSLayoutConstraint.Relation
+
 
 /// Priority
 public typealias Priority = UILayoutPriority
 
+
 /// Attribute
 typealias Attribute = NSLayoutConstraint.Attribute
-
 #else
 import AppKit
+
 
 /// Relation
 public typealias Relation = NSLayoutConstraint.Relation
 
+
 /// Priority
 public typealias Priority = NSLayoutConstraint.Priority
+
 
 /// Attribute
 typealias Attribute = NSLayoutConstraint.Attribute
