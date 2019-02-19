@@ -7,6 +7,8 @@ Pod::Spec.new do |s|
   s.author                  = { 'wlgemini' => 'wangluguang@live.com' }
   s.source                  = { :git => 'https://github.com/wlgemini/Driftwood.git', :tag => s.version.to_s }
   
+  s.swift_version           = '4.2'
+
   s.ios.deployment_target   = '8.0'
   s.osx.deployment_target   = '10.11'
   s.tvos.deployment_target  = '9.0'
