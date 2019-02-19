@@ -26,10 +26,10 @@
 class ConstraintsStorage {
     
     // MARK: Debug
-    /// labeled name for current constraint item
+    /// labeled name for current ConstraintItem
     var labeled: String?
     
-    // MARK: Constraint add & remove
+    // MARK: Constraint activate & update & deactivate
     /// active constraint installed by driftwood
     func activeConstraint(for key: Attribute) -> LayoutConstraint? {
         return self._activeConstraints[key]
@@ -38,8 +38,6 @@ class ConstraintsStorage {
     /// activate a constraint
     func activate(_ con: LayoutConstraint, for key: Attribute) {
         // check if constraint is 'active'
-        Debug.assert(nil, nil, Operation(._activate, key), condition: con.isActive == false, message: "found 'active' while activate constraint.")
-        
         con.isActive = true
         self._activeConstraints[key] = con
     }
@@ -60,20 +58,15 @@ class ConstraintsStorage {
     /// deactivate a constraint installed by driftwood
     @discardableResult
     func deactivate(for key: Attribute) -> LayoutConstraint? {
-        // check if there was an constraint
-        guard let con = self._activeConstraints.removeValue(forKey: key) else {
-            Debug.log(nil, nil, Operation(._deactivate, key), message: "found nil while deactivate constraint.")
-            return nil
-        }
-        
-        con.isActive = false
+        let con = self._activeConstraints.removeValue(forKey: key)
+        con?.isActive = false
         return con
     }
     
     /// deactivate all constraints installed by driftwood
     func deactivateAll() {
         self._activeConstraints.forEach({ $1.isActive = false })
-        self._activeConstraints = [:]
+        self._activeConstraints.removeAll()
     }
     
     /// dequeue a constraint cached by driftwood
@@ -94,7 +87,7 @@ class ConstraintsStorage {
             con = c
             
             // check if cached constraint is 'active'
-            Debug.assert(nil, nil, Operation(._dequque, attribute), condition: con.isActive == false, message: "found 'active' while dequeue a cached constraint.")
+            Debug.assert(nil, ._dequque(attribute), condition: con.isActive == false, message: "found 'active' constraint.")
             
             con.constant = constant
             con.priority = priority
