@@ -174,9 +174,9 @@ public struct ConstraintMaker {
     //
     /// make X-axis's constraint
     @discardableResult
-    private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to constraintAttributeX: ConstraintAttributeX, priority: Priority) -> ConstraintMaker {
+    private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeX: ConstraintAttributeX, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to X-axis. (execute only in debug mode)
-        Debug.assert(nil, nil, Operation(.make, attribute), condition: {
+        Debug.assert(self._location, .make(attribute), condition: {
             switch attribute {
             case .left, .right, .leading, .trailing, .centerX: return true
                 #if os(iOS) || os(tvOS)
@@ -188,18 +188,18 @@ public struct ConstraintMaker {
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item.storage.activeConstraint(for: attribute) == nil else {
-            Debug.log(self._location, self._item, Operation(.make, attribute), message: "duplicate constraint.")
+            Debug.log(self._location, .make(attribute), self._item, message: "duplicate constraint.")
             return self
         }
         
         // 2. retrieve (toItem & toAttribute) from ConstraintAttributeX
         let toAttribute: Attribute
         let toItem: ConstraintItem
-        switch constraintAttributeX {
+        switch attributeX {
         case .superview:
             // check if there is an superview
             guard let superview = self._item.dw_superview else {
-                Debug.log(self._location, self._item, Operation(.make, attribute), message: "no superview.")
+                Debug.log(self._location, .make(attribute), self._item, message: "no superview.")
                 return self
             }
             toAttribute = attribute
@@ -255,8 +255,8 @@ public struct ConstraintMaker {
         self._item.storage.activate(con, for: attribute)
         
         // 5. set debug info
-        con.dw_location = self._location
-        con.dw_operation = Operation(.make, attribute)
+        con.location = self._location
+        con.operation = .make(attribute)
         
         // 6. return self
         return self
@@ -264,9 +264,9 @@ public struct ConstraintMaker {
     
     /// make Y-axis's constraint
     @discardableResult
-    private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to constraintAttributeY: ConstraintAttributeY, priority: Priority) -> ConstraintMaker {
+    private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeY: ConstraintAttributeY, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to Y-axis. (execute only in debug mode)
-        Debug.assert(nil, nil, Operation(.make, attribute), condition: {
+        Debug.assert(self._location, .make(attribute), condition: {
             switch attribute {
             case .top, .bottom, .centerY, .lastBaseline, .firstBaseline: return true
                 #if os(iOS) || os(tvOS)
@@ -278,18 +278,18 @@ public struct ConstraintMaker {
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item.storage.activeConstraint(for: attribute) == nil else {
-            Debug.log(self._location, self._item, Operation(.make, attribute), message: "duplicate constraint.")
+            Debug.log(self._location, .make(attribute), self._item, message: "duplicate constraint.")
             return self
         }
         
         // 2. retrieve (toItem & toAttribute) from ConstraintAttributeY
         let toAttribute: Attribute
         let toItem: ConstraintItem
-        switch constraintAttributeY {
+        switch attributeY {
         case .superview:
             // check if there is an superview
             guard let superview = self._item.dw_superview else {
-                Debug.log(self._location, self._item, Operation(.make, attribute), message: "no superview.")
+                Debug.log(self._location, .make(attribute), self._item, message: "no superview.")
                 return self
             }
             toAttribute = attribute
@@ -337,8 +337,8 @@ public struct ConstraintMaker {
         self._item.storage.activate(con, for: attribute)
         
         // 5. set debug info
-        con.dw_location = self._location
-        con.dw_operation = Operation(.make, attribute)
+        con.location = self._location
+        con.operation = .make(attribute)
         
         // 6. return self
         return self
@@ -346,9 +346,9 @@ public struct ConstraintMaker {
     
     /// make Size's constraint
     @discardableResult
-    private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to constraintAttributeSize: ConstraintAttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
+    private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeSize: ConstraintAttributeSize?, multiply: CGFloat, priority: Priority) -> ConstraintMaker {
         // 0. check if attribute belong to size. (execute only in debug mode)
-        Debug.assert(nil, nil, Operation(.make, attribute), condition: {
+        Debug.assert(self._location, .make(attribute), condition: {
             switch attribute {
             case .width, .height: return true
             default: return false
@@ -357,14 +357,14 @@ public struct ConstraintMaker {
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item.storage.activeConstraint(for: attribute) == nil else {
-            Debug.log(self._location, self._item, Operation(.make, attribute), message: "duplicate constraint.")
+            Debug.log(self._location, .make(attribute), self._item, message: "duplicate constraint.")
             return self
         }
         
         // 2. retrieve (toItem & toAttribute) from ConstraintAttributeSize
         var toAttribute: Attribute?
         var toItem: ConstraintItem?
-        if let attrSize = constraintAttributeSize {
+        if let attrSize = attributeSize {
             switch attrSize {
             case .width(let item):
                 toAttribute = .width
@@ -383,8 +383,8 @@ public struct ConstraintMaker {
         self._item.storage.activate(con, for: attribute)
         
         // 5. set debug info
-        con.dw_location = self._location
-        con.dw_operation = Operation(.make, attribute)
+        con.location = self._location
+        con.operation = .make(attribute)
         
         // 6. return self
         return self
@@ -394,10 +394,10 @@ public struct ConstraintMaker {
     private let _item: ConstraintItem
     
     /// location
-    private let _location: Location?
+    private let _location: Debug.Location?
     
     /// init
-    init(item: ConstraintItem, location: Location?) {
+    init(item: ConstraintItem, location: Debug.Location?) {
         self._item = item
         self._location = location
     }
