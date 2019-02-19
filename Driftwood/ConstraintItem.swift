@@ -33,18 +33,24 @@ public protocol ConstraintItem: AnyObject {
 }
 
 
-/// ConstraintItem+ConstraintsStorage
+/// ConstraintItem (ConstraintsStorage)
 extension ConstraintItem {
     
     /// storage
     var storage: ConstraintsStorage {
-        if let s = objc_getAssociatedObject(self, &_constraintsStorageKey) as? ConstraintsStorage {
+        if let s = self.storageNullable {
             return s
         } else {
             let s = ConstraintsStorage()
-            objc_setAssociatedObject(self, &_constraintsStorageKey, s, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            self.storageNullable = s
             return s
         }
+    }
+    
+    /// storageNullable
+    var storageNullable: ConstraintsStorage? {
+        get { return objc_getAssociatedObject(self, &_constraintsStorageKey) as? ConstraintsStorage }
+        set { objc_setAssociatedObject(self, &_constraintsStorageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 }
 
