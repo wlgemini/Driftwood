@@ -22,7 +22,7 @@
 //  SOFTWARE.
 
 
-/// X-axis's attribute
+/// ConstraintAttributeX
 public enum ConstraintAttributeX {
     
     case superview
@@ -51,7 +51,7 @@ public enum ConstraintAttributeX {
 }
 
 
-/// Y-axis's attribute
+/// ConstraintAttributeY
 public enum ConstraintAttributeY {
     
     case superview
@@ -76,7 +76,7 @@ public enum ConstraintAttributeY {
 }
 
 
-/// Size attribute
+/// ConstraintAttributeSize
 public enum ConstraintAttributeSize {
     
     case width(ConstraintItem)
