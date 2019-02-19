@@ -177,7 +177,7 @@ public struct ConstraintUpdater {
     private func _update(for attribute: Attribute, constant: CGFloat?, priority: Priority?) -> ConstraintUpdater {
         // 0. check if there was a constraint already installed by driftwood
         guard let con = self._item.storage.activeConstraint(for: attribute) else {
-            Debug.log(self._location, self._item, Operation(.update, attribute), message: "no constraint.")
+            Debug.log(self._location, .update(attribute), self._item, message: "no constraint.")
             return self
         }
         
@@ -185,8 +185,8 @@ public struct ConstraintUpdater {
         self._item.storage.update(con, constant: constant, priority: priority)
         
         // 2. set debug info
-        con.dw_location = self._location
-        con.dw_operation = Operation(.update, attribute)
+        con.location = self._location
+        con.operation = .update(attribute)
         
         // 3. return self
         return self
@@ -194,11 +194,12 @@ public struct ConstraintUpdater {
     
     /// item
     private let _item: ConstraintItem
+    
     /// location
-    private let _location: Location?
+    private let _location: Debug.Location?
     
     /// init
-    init(item: ConstraintItem, location: Location?) {
+    init(item: ConstraintItem, location: Debug.Location?) {
         self._item = item
         self._location = location
     }
