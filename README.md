@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/Driftwood.svg?style=flat)](https://cocoapods.org/pods/Driftwood)
 [![Platform](https://img.shields.io/cocoapods/p/Driftwood.svg?style=flat)](https://cocoapods.org/pods/Driftwood)
 
-A lightweight, pure-Swift library for AutoLayout.
+A lightweight, Swift library for AutoLayout.
 
 ## Requirements
 
@@ -154,10 +154,10 @@ You can attaching a name to any View or LayoutGuide for debug.
 view.dw.labeled("MyView").make.left(0).left(0)
 ```
 
-It will be logs like this, if an error occurred:
+It will be logs like this:
 
 ```
-<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525da0)>: duplicate constraint.
+<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525da0)>: Duplicated constraint.
 ```
 
 If resulting `Unable to simultaneously satisfy constraints`, it will be logs like this for each constraint installed by Driftwood:

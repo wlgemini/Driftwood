@@ -176,16 +176,12 @@ public struct ConstraintRemover {
     @discardableResult
     private func _remove(for attribute: Attribute) -> ConstraintRemover {
         // 0. deactivate a constraint installed by driftwood if any
-        guard let con = self._item.storage.deactivate(for: attribute) else {
+        guard let _ = self._item.storage.deactivate(for: attribute) else {
             Debug.log(self._location, .remove(attribute), self._item, message: "no constraint.")
             return self
         }
         
-        // 2. set debug info
-        con.location = self._location
-        con.operation = .remove(attribute)
-        
-        // 3. return self
+        // 1. return self
         return self
     }
     

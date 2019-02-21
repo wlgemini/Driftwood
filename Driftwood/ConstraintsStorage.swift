@@ -36,18 +36,30 @@ class ConstraintsStorage {
     }
     
     /// activate a constraint
-    func activate(_ con: LayoutConstraint, for key: Attribute) {
-        // check if constraint is 'active'
+    func activate(_ con: LayoutConstraint, for key: Attribute, location: Debug.Location?, operation: Debug.Operation?) {
+        // set debug info
+        con.location = location
+        con.operation = operation
+        
+        // activate constraint
         con.isActive = true
+        
+        // save constraint
         self._activeConstraints[key] = con
     }
     
     /// update an active constraint installed by driftwood
-    func update(_ con: LayoutConstraint, constant: CGFloat?, priority: Priority?) {
+    func update(_ con: LayoutConstraint, constant: CGFloat?, priority: Priority?, location: Debug.Location?, operation: Debug.Operation?) {
+        // set debug info
+        con.location = location
+        con.operation = operation
+        
+        // update constraint.constant
         if let constant = constant {
             con.constant = constant
         }
         
+        // update constraint.priority
         if let priority = priority {
             con.isActive = false
             con.priority = priority
@@ -58,14 +70,32 @@ class ConstraintsStorage {
     /// deactivate a constraint installed by driftwood
     @discardableResult
     func deactivate(for key: Attribute) -> LayoutConstraint? {
+        // remove constraint
         let con = self._activeConstraints.removeValue(forKey: key)
+        
+        // remove debug info
+        con?.location = nil
+        con?.operation = nil
+        
+        // deactivate constraint
         con?.isActive = false
+        
         return con
     }
     
     /// deactivate all constraints installed by driftwood
     func deactivateAll() {
-        self._activeConstraints.forEach({ $1.isActive = false })
+        // for each constraint
+        self._activeConstraints.forEach {
+            // remove debug info
+            $1.location = nil
+            $1.operation = nil
+            
+            // deactivate constraint
+            $1.isActive = false
+        }
+        
+        // remove all constraint
         self._activeConstraints.removeAll()
     }
     

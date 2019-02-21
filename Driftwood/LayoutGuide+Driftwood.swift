@@ -35,13 +35,13 @@ import AppKit
 public typealias LayoutGuide = UILayoutGuide
 #else
 /// LayoutGuide
-@available(OSX 10.11, *)
+@available(macOS 10.11, *)
 public typealias LayoutGuide = NSLayoutGuide
 #endif
 
 
 /// LayoutGuide (ConstraintItem)
-@available(iOS 9.0, OSX 10.11, *)
+@available(iOS 9.0, macOS 10.11, *)
 extension LayoutGuide: ConstraintItem {
     
     public var dw_superview: ConstraintItem? {
@@ -55,7 +55,7 @@ extension LayoutGuide: ConstraintItem {
 
 
 /// LayoutGuide (Driftwood)
-@available(iOS 9.0, OSX 10.11, *)
+@available(iOS 9.0, macOS 10.11, *)
 extension LayoutGuide {
     
     /// driftwood

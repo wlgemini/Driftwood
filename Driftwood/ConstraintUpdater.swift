@@ -182,13 +182,9 @@ public struct ConstraintUpdater {
         }
         
         // 1. update this constraint
-        self._item.storage.update(con, constant: constant, priority: priority)
+        self._item.storage.update(con, constant: constant, priority: priority, location: self._location, operation: .update(attribute))
         
-        // 2. set debug info
-        con.location = self._location
-        con.operation = .update(attribute)
-        
-        // 3. return self
+        // 2. return self
         return self
     }
     

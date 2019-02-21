@@ -160,14 +160,14 @@ extension ConstraintMaker {
     //
     /// width
     @discardableResult
-    public func width(by relation: Relation = .equal, to attribute: ConstraintAttributeSize, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
-        return self.width(0, by: relation, to: attribute, multiply: multiply, priority: priority)
+    public func width(by relation: Relation = .equal, to attributeSize: ConstraintAttributeSize, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
+        return self.width(0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
     }
     
     /// height
     @discardableResult
-    public func height(by relation: Relation = .equal, to attribute: ConstraintAttributeSize, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
-        return self.height(0, by: relation, to: attribute, multiply: multiply, priority: priority)
+    public func height(by relation: Relation = .equal, to attributeSize: ConstraintAttributeSize, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
+        return self.height(0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
     }
     
     /// size
