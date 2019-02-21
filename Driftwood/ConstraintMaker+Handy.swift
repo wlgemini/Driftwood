@@ -160,21 +160,21 @@ extension ConstraintMaker {
     //
     /// width
     @discardableResult
-    public func width(by relation: Relation = .equal, to attributeSize: ConstraintAttributeSize, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
-        return self.width(0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
+    public func width(by relation: Relation = .equal, to attributeSize: ConstraintAttributeSize, multiply: CGFloat = 1.0, priority: Priority = .required) -> ConstraintMaker {
+        return self.width(0.0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
     }
     
     /// height
     @discardableResult
-    public func height(by relation: Relation = .equal, to attributeSize: ConstraintAttributeSize, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
-        return self.height(0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
+    public func height(by relation: Relation = .equal, to attributeSize: ConstraintAttributeSize, multiply: CGFloat = 1.0, priority: Priority = .required) -> ConstraintMaker {
+        return self.height(0.0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
     }
     
     /// size
     @discardableResult
-    public func size(by relation: Relation = .equal, to item: ConstraintItem, multiply: CGFloat = 1, priority: Priority = .required) -> ConstraintMaker {
-        self.width(0, by: relation, to: .width(item), multiply: multiply, priority: priority)
-        self.height(0, by: relation, to: .height(item), multiply: multiply, priority: priority)
+    public func size(by relation: Relation = .equal, to item: ConstraintItem, multiply: CGFloat = 1.0, priority: Priority = .required) -> ConstraintMaker {
+        self.width(0.0, by: relation, to: .width(item), multiply: multiply, priority: priority)
+        self.height(0.0, by: relation, to: .height(item), multiply: multiply, priority: priority)
         return self
     }
     

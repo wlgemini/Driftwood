@@ -249,7 +249,7 @@ public struct ConstraintMaker {
         }
         
         // 3. dequeue cached constraint
-        let con = self._item.storage.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
+        let con = self._item.storage.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 4. activate cached constraint
         self._item.storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
@@ -327,7 +327,7 @@ public struct ConstraintMaker {
         }
         
         // 3. dequeue cached constraint
-        let con = self._item.storage.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1, constant: constant, priority: priority)
+        let con = self._item.storage.deququeConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 4. activate cached constraint
         self._item.storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
