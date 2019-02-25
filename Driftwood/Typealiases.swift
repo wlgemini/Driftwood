@@ -36,6 +36,10 @@ public typealias Priority = UILayoutPriority
 
 /// Attribute
 typealias Attribute = NSLayoutConstraint.Attribute
+
+
+/// EdgeInsets
+public typealias EdgeInsets = UIEdgeInsets
 #else
 import AppKit
 
@@ -50,4 +54,8 @@ public typealias Priority = NSLayoutConstraint.Priority
 
 /// Attribute
 typealias Attribute = NSLayoutConstraint.Attribute
+
+
+/// EdgeInsets
+public typealias EdgeInsets = NSEdgeInsets
 #endif

@@ -177,7 +177,7 @@ public struct ConstraintRemover {
     private func _remove(for attribute: Attribute) -> ConstraintRemover {
         // 0. deactivate a constraint installed by driftwood if any
         guard let _ = self._item.storage.deactivate(for: attribute) else {
-            Debug.log(self._location, .remove(attribute), self._item, message: "no constraint.")
+            Debug.log(self._location, .remove(attribute), self._item, message: "No constraint.")
             return self
         }
         

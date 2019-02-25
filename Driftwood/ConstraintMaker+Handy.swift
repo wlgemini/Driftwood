@@ -22,15 +22,6 @@
 //  SOFTWARE.
 
 
-#if os(iOS) || os(tvOS)
-/// EdgeInsets
-public typealias EdgeInsets = UIEdgeInsets
-#else
-/// EdgeInsets
-public typealias EdgeInsets = NSEdgeInsets
-#endif
-
-
 /// Constraint Maker (Handy)
 extension ConstraintMaker {
     

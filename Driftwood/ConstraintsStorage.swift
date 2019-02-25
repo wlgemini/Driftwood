@@ -100,7 +100,7 @@ class ConstraintsStorage {
     }
     
     /// dequeue a constraint cached by driftwood
-    func deququeConstraintFor(item: ConstraintItem, attribute: Attribute, relation: Relation, toItem: ConstraintItem?, toAttribute: Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> LayoutConstraint {
+    func dequeueConstraintFor(item: ConstraintItem, attribute: Attribute, relation: Relation, toItem: ConstraintItem?, toAttribute: Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> LayoutConstraint {
         // 0. generate a constraint hash value (hash calculation not include item/constant/priority)
         var hasher = Hasher()
         hasher.combine(attribute)
@@ -117,7 +117,7 @@ class ConstraintsStorage {
             con = c
             
             // check if cached constraint is 'active'
-            Debug.assert(nil, ._dequque(attribute), condition: con.isActive == false, message: "found 'active' constraint.")
+            Debug.assert(nil, ._dequeue(attribute), condition: con.isActive == false, message: "Found 'active' constraint.")
             
             con.constant = constant
             con.priority = priority

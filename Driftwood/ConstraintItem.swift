@@ -38,22 +38,22 @@ extension ConstraintItem {
     
     /// storage
     var storage: ConstraintsStorage {
-        if let s = self.storageNullable {
+        if let s = self._storage {
             return s
         } else {
             let s = ConstraintsStorage()
-            self.storageNullable = s
+            self._storage = s
             return s
         }
     }
     
-    /// storageNullable
-    var storageNullable: ConstraintsStorage? {
-        get { return objc_getAssociatedObject(self, &_constraintsStorageKey) as? ConstraintsStorage }
-        set { objc_setAssociatedObject(self, &_constraintsStorageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    /// _storage
+    var _storage: ConstraintsStorage? {
+        get { return objc_getAssociatedObject(self, &_storageKey) as? ConstraintsStorage }
+        set { objc_setAssociatedObject(self, &_storageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 }
 
 
-/// _constraintsStorage Key
-fileprivate var _constraintsStorageKey: Void?
+/// _storage Key
+fileprivate var _storageKey: Void?

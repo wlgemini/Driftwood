@@ -90,8 +90,8 @@ struct Debug {
     static func description(for obj: AnyObject) -> String {
         var desc = "\(Swift.type(of: obj))"
         if let item = obj as? ConstraintItem {
-            // using `storageNullable` instead of `storage`, which avoid new ConstraintsStorage object makes.
-            if let lb = item.storageNullable?.labeled {
+            // using `_storage` instead of `storage`, which avoid unnecessary ConstraintsStorage object makes.
+            if let lb = item._storage?.labeled {
                 desc += "`\(lb)`"
             }
         }
@@ -180,7 +180,7 @@ extension Debug {
         
         case remove(Attribute)
         
-        case _dequque(Attribute)
+        case _dequeue(Attribute)
         
         /// description
         var description: String {
@@ -188,7 +188,7 @@ extension Debug {
             case .make(let attribute):          return "make.\(Debug.description(for: attribute))"
             case .update(let attribute):        return "update.\(Debug.description(for: attribute))"
             case .remove(let attribute):        return "remove.\(Debug.description(for: attribute))"
-            case ._dequque(let attribute):      return "_dequque.\(Debug.description(for: attribute))"
+            case ._dequeue(let attribute):      return "_dequeue.\(Debug.description(for: attribute))"
             }
         }
     }
