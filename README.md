@@ -151,7 +151,7 @@ All constraints installed by Driftwood will be cached for future reuse.
 You can attaching a name to any View or LayoutGuide for debug.
 
 ```swift
-view.dw.labeled("MyView").make.left(0).left(0)
+view.dw.labeled("MyView").make().left(0).left(0)
 ```
 
 It will be logs like this:
