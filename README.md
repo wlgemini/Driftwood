@@ -9,7 +9,7 @@ A lightweight, Swift library for AutoLayout.
 ## Requirements
 
 - iOS 8.0+/macOS 10.11+/tvOS 9.0+
-- Swift 4.2
+- Swift 4.2+
 
 ## Usage
 
