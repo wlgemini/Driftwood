@@ -463,7 +463,7 @@
 			};
 			name = Release;
 		};
-		741597E9B002B8AA57034105ED2C305E /* Debug */ = {
+		6E0A5FEE140DC6D819325238413D9582 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EC5ADA1C5D95597A4149F3CFEF1BB3FF /* Driftwood.xcconfig */;
 			buildSettings = {
@@ -483,10 +483,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 		A1962E6FF39BBAC201A2E5DDF99557DF /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -548,7 +549,7 @@
 			};
 			name = Release;
 		};
-		B81578284CFBC584C40EC709F2DEF514 /* Release */ = {
+		B6E4480EE6C52A761FE2B14F4CE34EA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EC5ADA1C5D95597A4149F3CFEF1BB3FF /* Driftwood.xcconfig */;
 			buildSettings = {
@@ -568,11 +569,10 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -598,8 +598,8 @@
 		CF06CFCFB2E367D017CF3EDB51C963BD /* Build configuration list for PBXNativeTarget "Driftwood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				741597E9B002B8AA57034105ED2C305E /* Debug */,
-				B81578284CFBC584C40EC709F2DEF514 /* Release */,
+				B6E4480EE6C52A761FE2B14F4CE34EA8 /* Debug */,
+				6E0A5FEE140DC6D819325238413D9582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -44,31 +44,6 @@ public struct Driftwood {
 extension Driftwood {
     
     /// make
-    @available(*, deprecated:4.2, message:"Use `make()` instead.")
-    public var make: ConstraintMaker {
-        return ConstraintMaker(item: self._item, location: nil)
-    }
-    
-    /// update
-    @available(*, deprecated:4.2, message:"Use `update()` instead.")
-    public var update: ConstraintUpdater {
-        return ConstraintUpdater(item: self._item, location: nil)
-    }
-    
-    /// remove
-    @available(*, deprecated:4.2, message:"Use `remove()` instead.")
-    public var remove: ConstraintRemover {
-        return ConstraintRemover(item: self._item, location: nil)
-    }
-    
-    /// remake
-    @available(*, deprecated:4.2, message:"Use `remake()` instead.")
-    public var remake: ConstraintMaker {
-        self._item.storage.deactivateAll()
-        return ConstraintMaker(item: self._item, location: nil)
-    }
-    
-    /// make
     public func make(file: String = #file, line: UInt = #line) -> ConstraintMaker {
         return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
     }
