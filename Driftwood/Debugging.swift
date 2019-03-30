@@ -134,6 +134,9 @@ struct Debug {
             
         // notAnAttribute
         case .notAnAttribute:       return "notAnAttribute"
+            
+        // default
+        @unknown default:           fatalError("New case need handled.")
         }
     }
     
@@ -143,6 +146,7 @@ struct Debug {
         case .equal:                return "=="
         case .greaterThanOrEqual:   return ">="
         case .lessThanOrEqual:      return "<="
+        @unknown default:           fatalError("New case need handled.")
         }
     }
 }
