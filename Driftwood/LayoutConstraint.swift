@@ -38,7 +38,6 @@ class LayoutConstraint: NSLayoutConstraint {
     /// operation
     var operation: Debug.Operation?
     
-    
     /// description
     ///
     ///     "<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525da0.left == UILabel`MyLabel`:0x00007fc636525111.right * 2 - 10 ^1500)>"

@@ -163,6 +163,7 @@ extension Debug {
         /// line
         let line: UInt
         
+        /// init
         init(_ file: String, _ line: UInt) {
             self.file = file
             self.line = line
