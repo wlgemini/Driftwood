@@ -23,7 +23,7 @@
 
 
 /// Constraint Updater (Handy)
-extension ConstraintUpdater {
+public extension ConstraintUpdater {
     
     //===========================================
     // Update AttributeX & AttributeY
@@ -31,7 +31,7 @@ extension ConstraintUpdater {
     //
     /// centerXY
     @discardableResult
-    public func centerXY(offsets: CGPoint? = nil, priority: Priority? = nil) -> ConstraintUpdater {
+    func centerXY(offsets: CGPoint? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         self.centerX(offsets?.x, priority: priority)
         self.centerY(offsets?.y, priority: priority)
         return self
@@ -39,7 +39,7 @@ extension ConstraintUpdater {
     
     /// edge
     @discardableResult
-    public func edge(insets: EdgeInsets? = nil, priority: Priority? = nil) -> ConstraintUpdater {
+    func edge(insets: EdgeInsets? = nil, priority: Priority? = nil) -> ConstraintUpdater {
         self.leading(insets?.left, priority: priority)
         self.trailing(insets != nil ? -insets!.right : nil, priority: priority)
         self.top(insets?.top, priority: priority)

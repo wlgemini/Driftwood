@@ -23,7 +23,7 @@
 
 
 /// Constraint Remover (Handy)
-extension ConstraintRemover {
+public extension ConstraintRemover {
     
     //===========================================
     // Remove AttributeSize
@@ -31,7 +31,7 @@ extension ConstraintRemover {
     //
     /// size
     @discardableResult
-    public func size() -> ConstraintRemover {
+    func size() -> ConstraintRemover {
         self.width()
         self.height()
         return self
@@ -43,7 +43,7 @@ extension ConstraintRemover {
     //
     /// centerXY
     @discardableResult
-    public func centerXY() -> ConstraintRemover {
+    func centerXY() -> ConstraintRemover {
         self.centerX()
         self.centerY()
         return self
@@ -51,7 +51,7 @@ extension ConstraintRemover {
     
     /// edge insets
     @discardableResult
-    public func edge() -> ConstraintRemover {
+    func edge() -> ConstraintRemover {
         self.leading()
         self.trailing()
         self.top()

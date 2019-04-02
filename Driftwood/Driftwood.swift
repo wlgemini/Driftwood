@@ -41,50 +41,50 @@ public struct Driftwood {
 
 
 /// Driftwood (Make, Update, Remove, Remake constraint)
-extension Driftwood {
+public extension Driftwood {
     
     /// make
     @available(*, deprecated, message:"Use `make()` instead.")
-    public var make: ConstraintMaker {
+    var make: ConstraintMaker {
         return ConstraintMaker(item: self._item, location: nil)
     }
     
     /// update
     @available(*, deprecated, message:"Use `update()` instead.")
-    public var update: ConstraintUpdater {
+    var update: ConstraintUpdater {
         return ConstraintUpdater(item: self._item, location: nil)
     }
     
     /// remove
     @available(*, deprecated, message:"Use `remove()` instead.")
-    public var remove: ConstraintRemover {
+    var remove: ConstraintRemover {
         return ConstraintRemover(item: self._item, location: nil)
     }
     
     /// remake
     @available(*, deprecated, message:"Use `remake()` instead.")
-    public var remake: ConstraintMaker {
+    var remake: ConstraintMaker {
         self._item.storage.deactivateAll()
         return ConstraintMaker(item: self._item, location: nil)
     }
     
     /// make
-    public func make(file: String = #file, line: UInt = #line) -> ConstraintMaker {
+    func make(file: String = #file, line: UInt = #line) -> ConstraintMaker {
         return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
     }
     
     /// update
-    public func update(file: String = #file, line: UInt = #line) -> ConstraintUpdater {
+    func update(file: String = #file, line: UInt = #line) -> ConstraintUpdater {
         return ConstraintUpdater(item: self._item, location: Debug.Location(file, line))
     }
     
     /// remove
-    public func remove(file: String = #file, line: UInt = #line) -> ConstraintRemover {
+    func remove(file: String = #file, line: UInt = #line) -> ConstraintRemover {
         return ConstraintRemover(item: self._item, location: Debug.Location(file, line))
     }
     
     /// remake
-    public func remake(file: String = #file, line: UInt = #line) -> ConstraintMaker {
+    func remake(file: String = #file, line: UInt = #line) -> ConstraintMaker {
         self._item.storage.deactivateAll()
         return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
     }
@@ -92,42 +92,42 @@ extension Driftwood {
 
 
 /// Driftwood (ConstraintAttribute)
-extension Driftwood {
+public extension Driftwood {
     
     //===========================================
     // ConstraintAttributeX
     //===========================================
     //
     /// left
-    public var left: ConstraintAttributeX { return .left(self._item) }
+    var left: ConstraintAttributeX { return .left(self._item) }
     
     /// right
-    public var right: ConstraintAttributeX { return .right(self._item) }
+    var right: ConstraintAttributeX { return .right(self._item) }
     
     /// leading
-    public var leading: ConstraintAttributeX { return .leading(self._item) }
+    var leading: ConstraintAttributeX { return .leading(self._item) }
     
     /// trailing
-    public var trailing: ConstraintAttributeX { return .trailing(self._item) }
+    var trailing: ConstraintAttributeX { return .trailing(self._item) }
     
     /// centerX
-    public var centerX: ConstraintAttributeX { return .centerX(self._item) }
+    var centerX: ConstraintAttributeX { return .centerX(self._item) }
     
     #if os(iOS) || os(tvOS)
     /// leftMargin
-    public var leftMargin: ConstraintAttributeX { return .leftMargin(self._item) }
+    var leftMargin: ConstraintAttributeX { return .leftMargin(self._item) }
     
     /// rightMargin
-    public var rightMargin: ConstraintAttributeX { return .rightMargin(self._item) }
+    var rightMargin: ConstraintAttributeX { return .rightMargin(self._item) }
     
     /// leadingMargin
-    public var leadingMargin: ConstraintAttributeX { return .leadingMargin(self._item) }
+    var leadingMargin: ConstraintAttributeX { return .leadingMargin(self._item) }
     
     /// trailingMargin
-    public var trailingMargin: ConstraintAttributeX { return .trailingMargin(self._item) }
+    var trailingMargin: ConstraintAttributeX { return .trailingMargin(self._item) }
     
     /// centerXWithinMargins
-    public var centerXWithinMargins: ConstraintAttributeX { return .centerXWithinMargins(self._item) }
+    var centerXWithinMargins: ConstraintAttributeX { return .centerXWithinMargins(self._item) }
     #endif
     
     //===========================================
@@ -135,29 +135,29 @@ extension Driftwood {
     //===========================================
     //
     /// top
-    public var top: ConstraintAttributeY { return .top(self._item) }
+    var top: ConstraintAttributeY { return .top(self._item) }
     
     /// bottom
-    public var bottom: ConstraintAttributeY { return .bottom(self._item) }
+    var bottom: ConstraintAttributeY { return .bottom(self._item) }
     
     /// centerY
-    public var centerY: ConstraintAttributeY { return .centerY(self._item) }
+    var centerY: ConstraintAttributeY { return .centerY(self._item) }
     
     /// lastBaseline
-    public var lastBaseline: ConstraintAttributeY { return .lastBaseline(self._item) }
+    var lastBaseline: ConstraintAttributeY { return .lastBaseline(self._item) }
     
     /// firstBaseline
-    public var firstBaseline: ConstraintAttributeY { return .firstBaseline(self._item) }
+    var firstBaseline: ConstraintAttributeY { return .firstBaseline(self._item) }
     
     #if os(iOS) || os(tvOS)
     /// topMargin
-    public var topMargin: ConstraintAttributeY { return .topMargin(self._item) }
+    var topMargin: ConstraintAttributeY { return .topMargin(self._item) }
     
     /// bottomMargin
-    public var bottomMargin: ConstraintAttributeY { return .bottomMargin(self._item) }
+    var bottomMargin: ConstraintAttributeY { return .bottomMargin(self._item) }
     
     /// centerYWithinMargins
-    public var centerYWithinMargins: ConstraintAttributeY { return .centerYWithinMargins(self._item) }
+    var centerYWithinMargins: ConstraintAttributeY { return .centerYWithinMargins(self._item) }
     #endif
     
     //===========================================
@@ -165,18 +165,18 @@ extension Driftwood {
     //===========================================
     //
     /// width
-    public var width: ConstraintAttributeSize { return .width(self._item) }
+    var width: ConstraintAttributeSize { return .width(self._item) }
     
     /// height
-    public var height: ConstraintAttributeSize { return .height(self._item) }
+    var height: ConstraintAttributeSize { return .height(self._item) }
 }
 
 
 /// Driftwood (Debugging)
-extension Driftwood {
+public extension Driftwood {
     
     /// attaching a debug-label for current View/LayoutGuide
-    public func labeled(_ lb: String) -> Driftwood {
+    func labeled(_ lb: String) -> Driftwood {
         self._item.storage.labeled = lb
         return self
     }
