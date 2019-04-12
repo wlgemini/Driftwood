@@ -22,24 +22,6 @@
 //  SOFTWARE.
 
 
-#if os(iOS) || os(tvOS)
-import UIKit
-#else
-import AppKit
-#endif
-
-
-#if os(iOS) || os(tvOS)
-/// LayoutGuide
-@available(iOS 9.0, *)
-public typealias LayoutGuide = UILayoutGuide
-#else
-/// LayoutGuide
-@available(macOS 10.11, *)
-public typealias LayoutGuide = NSLayoutGuide
-#endif
-
-
 /// LayoutGuide (ConstraintItem)
 @available(iOS 9.0, macOS 10.11, *)
 extension LayoutGuide: ConstraintItem {

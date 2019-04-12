@@ -169,6 +169,16 @@ public struct ConstraintRemover {
     }
     
     //===========================================
+    // Internal
+    //===========================================
+    //
+    /// init
+    init(item: ConstraintItem, location: Debug.Location?) {
+        self._item = item
+        self._location = location
+    }
+    
+    //===========================================
     // Private
     //===========================================
     //
@@ -190,10 +200,4 @@ public struct ConstraintRemover {
     
     /// location
     private let _location: Debug.Location?
-    
-    /// init
-    init(item: ConstraintItem, location: Debug.Location?) {
-        self._item = item
-        self._location = location
-    }
 }

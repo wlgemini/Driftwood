@@ -26,6 +26,15 @@
 import UIKit
 
 
+/// View
+public typealias View = UIView
+
+
+/// LayoutGuide
+@available(iOS 9.0, *)
+public typealias LayoutGuide = UILayoutGuide
+
+
 /// Relation
 public typealias Relation = NSLayoutConstraint.Relation
 
@@ -42,6 +51,15 @@ typealias Attribute = NSLayoutConstraint.Attribute
 public typealias EdgeInsets = UIEdgeInsets
 #else
 import AppKit
+
+
+/// View
+public typealias View = NSView
+
+
+/// LayoutGuide
+@available(macOS 10.11, *)
+public typealias LayoutGuide = NSLayoutGuide
 
 
 /// Relation

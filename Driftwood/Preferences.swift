@@ -22,24 +22,27 @@
 //  SOFTWARE.
 
 
-/// View (ConstraintItem)
-extension View: ConstraintItem {
+/// Preferences
+public struct Preferences {}
+
+
+/// Preferences (Default settings for View)
+extension Preferences {
     
-    public var dw_superview: ConstraintItem? {
-        return self.superview
-    }
-    
-    public var dw_hashValue: Int {
-        return self.hashValue
-    }
+    /// translatesAutoresizingMaskIntoConstraints for View
+    static let translatesAutoresizingMaskIntoConstraints: Bool = false
 }
 
 
-/// View (Driftwood)
-extension View {
+/// Preferences (Default settings for Constraint)
+public extension Preferences {
     
-    /// driftwood
-    public var dw: Driftwood {
-        return Driftwood(self)
-    }
+    /// relation
+    static let relation: Relation = .equal
+    
+    /// multiply
+    static let multiply: CGFloat = 1.0
+    
+    /// priority (Changeable)
+    static var priority: Priority = .required
 }
