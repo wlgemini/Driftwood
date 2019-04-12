@@ -27,7 +27,6 @@ Let's say we want to layout a box that is constrained to it’s superview’s ed
 
 ```swift
 let box = UIView()
-box.translatesAutoresizingMaskIntoConstraints = false
 superview.addSubview(box)
 box.dw.make().left(20).top(20).right(-20).bottom(-20)
 ```
@@ -35,12 +34,9 @@ Or another way:
 
 ```swift
 let box = UIView()
-box.translatesAutoresizingMaskIntoConstraints = false
 superview.addSubview(box)
 box.dw.make().edge(insets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
 ```
-
-> NOTE: Ensuring set `translatesAutoresizingMaskIntoConstraints` to `false` on all appropriate views.
 
 ### Attribute
 
@@ -137,7 +133,6 @@ superview.addLayoutGuide(guide)
 guide.dw.make().left(10).top(10).height(10).width(10)
 
 let box = UIView()
-box.translatesAutoresizingMaskIntoConstraints = false
 superview.addSubview(box)
 box.dw.make().top(0, to: guide.dw.bottom).left(0).right(0).height(10)
 ```
