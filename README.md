@@ -126,7 +126,7 @@ view.dw.remove().left().top()
 
 ### LayoutGuide
 
-Driftwood can works with `UILayoutGuide` easily.
+Driftwood can works with LayoutGuide easily.
 ```swift 
 let guide = UILayoutGuide()
 superview.addLayoutGuide(guide)
