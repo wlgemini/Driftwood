@@ -27,7 +27,7 @@ public struct Preferences {}
 
 
 /// Preferences (Default settings for View)
-extension Preferences {
+public extension Preferences {
     
     /// translatesAutoresizingMaskIntoConstraints for View
     static let translatesAutoresizingMaskIntoConstraints: Bool = false
