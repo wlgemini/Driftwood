@@ -29,13 +29,11 @@ struct Debug {
     ///
     ///     "<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525111)>: "
     ///
-    static func log(_ location: Location?, _ operation: Operation?, _ item: ConstraintItem?, message: String) {
+    static func log(_ location: Location, _ operation: Operation, _ item: ConstraintItem, message: String) {
         Swift.assert({
             var desc = "<"
             desc += Debug.prefix(location, operation)
-            if let it = item {
-                desc += ".(\(Debug.description(for: it)))"
-            }
+            desc += ".(\(Debug.description(for: item)))"
             desc += ">"
             desc += ": "
             desc += message
@@ -47,8 +45,9 @@ struct Debug {
     /// assert (execute only in debug mode)
     ///
     ///     "<Driftwood.@ViewController.swift#23.[make.left]> Error: "
+    ///     "<Driftwood.[make.left]> Error: "
     ///
-    static func assert(_ location: Location?, _ operation: Operation?, condition: @autoclosure () -> Bool, message: String) {
+    static func assert(_ location: Location?, _ operation: Operation, condition: () -> Bool, message: String) {
         Swift.assert(condition(), {
             var desc = "<"
             desc += Debug.prefix(location, operation)
@@ -63,9 +62,8 @@ struct Debug {
     ///
     ///     "Driftwood.@ViewController.swift#23.[make.left]"
     ///     "Driftwood.[make.left]"
-    ///     "Driftwood"
     ///
-    static func prefix(_ location: Location?, _ operation: Operation?) -> String {
+    static func prefix(_ location: Location?, _ operation: Operation) -> String {
         // Driftwood
         var pre = "Driftwood"
         
@@ -75,9 +73,7 @@ struct Debug {
         }
         
         // operation
-        if let ope = operation {
-            pre += ".[\(ope)]"
-        }
+        pre += ".[\(operation)]"
         
         return pre
     }

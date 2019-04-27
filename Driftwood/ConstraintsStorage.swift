@@ -36,7 +36,7 @@ class ConstraintsStorage {
     }
     
     /// activate a constraint
-    func activate(_ con: LayoutConstraint, for key: Attribute, location: Debug.Location?, operation: Debug.Operation?) {
+    func activate(_ con: LayoutConstraint, for key: Attribute, location: Debug.Location, operation: Debug.Operation) {
         // set debug info
         con.location = location
         con.operation = operation
@@ -49,7 +49,7 @@ class ConstraintsStorage {
     }
     
     /// update an active constraint installed by driftwood
-    func update(_ con: LayoutConstraint, constant: CGFloat?, priority: Priority?, location: Debug.Location?, operation: Debug.Operation?) {
+    func update(_ con: LayoutConstraint, constant: CGFloat?, priority: Priority?, location: Debug.Location, operation: Debug.Operation) {
         // set debug info
         con.location = location
         con.operation = operation
@@ -73,10 +73,6 @@ class ConstraintsStorage {
         // remove constraint
         let con = self._activeConstraints.removeValue(forKey: key)
         
-        // remove debug info
-        con?.location = nil
-        con?.operation = nil
-        
         // deactivate constraint
         con?.isActive = false
         
@@ -87,9 +83,6 @@ class ConstraintsStorage {
     func deactivateAll() {
         // for each constraint
         self._activeConstraints.forEach {
-            // remove debug info
-            $1.location = nil
-            $1.operation = nil
             
             // deactivate constraint
             $1.isActive = false
@@ -117,7 +110,7 @@ class ConstraintsStorage {
             con = c
             
             // check if cached constraint is 'active'
-            Debug.assert(nil, ._dequeue(attribute), condition: con.isActive == false, message: "Found 'active' constraint.")
+            Debug.assert(nil, ._dequeue(attribute), condition: { con.isActive == false }, message: "Found 'active' constraint.")
             
             con.constant = constant
             con.priority = priority

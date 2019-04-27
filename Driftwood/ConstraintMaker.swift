@@ -173,7 +173,7 @@ public struct ConstraintMaker {
     //===========================================
     //
     /// init
-    init(item: ConstraintItem, location: Debug.Location?) {
+    init(item: ConstraintItem, location: Debug.Location) {
         self._item = item
         self._location = location
         
@@ -199,7 +199,7 @@ public struct ConstraintMaker {
                 #endif
             default: return false
             }
-        }(), message: "Attribute is not belong to 'X-axis'.")
+        }, message: "Attribute is not belong to 'X-axis'.")
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item.storage.activeConstraint(for: attribute) == nil else {
@@ -285,7 +285,7 @@ public struct ConstraintMaker {
                 #endif
             default: return false
             }
-        }(), message: "Attribute is not belong to 'Y-axis'.")
+        }, message: "Attribute is not belong to 'Y-axis'.")
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item.storage.activeConstraint(for: attribute) == nil else {
@@ -360,7 +360,7 @@ public struct ConstraintMaker {
             case .width, .height: return true
             default: return false
             }
-        }(), message: "Attribute is not belong to 'Size'.")
+        }, message: "Attribute is not belong to 'Size'.")
         
         // 1. check if there was a constraint already installed by driftwood
         guard self._item.storage.activeConstraint(for: attribute) == nil else {
@@ -397,5 +397,5 @@ public struct ConstraintMaker {
     private let _item: ConstraintItem
     
     /// location
-    private let _location: Debug.Location?
+    private let _location: Debug.Location
 }

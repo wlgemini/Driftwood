@@ -173,7 +173,7 @@ public struct ConstraintRemover {
     //===========================================
     //
     /// init
-    init(item: ConstraintItem, location: Debug.Location?) {
+    init(item: ConstraintItem, location: Debug.Location) {
         self._item = item
         self._location = location
     }
@@ -199,5 +199,5 @@ public struct ConstraintRemover {
     private let _item: ConstraintItem
     
     /// location
-    private let _location: Debug.Location?
+    private let _location: Debug.Location
 }

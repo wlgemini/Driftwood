@@ -32,11 +32,11 @@ import AppKit
 /// LayoutConstraint
 class LayoutConstraint: NSLayoutConstraint {
     
-    /// location
-    var location: Debug.Location?
+    /// location (never nil when used)
+    var location: Debug.Location!
     
-    /// operation
-    var operation: Debug.Operation?
+    /// operation (never nil when used)
+    var operation: Debug.Operation!
     
     /// description
     ///
