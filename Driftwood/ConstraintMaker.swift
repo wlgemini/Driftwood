@@ -394,7 +394,7 @@ public struct ConstraintMaker {
     }
     
     /// item
-    private let _item: ConstraintItem
+    private unowned(safe) let _item: ConstraintItem
     
     /// location
     private let _location: Debug.Location

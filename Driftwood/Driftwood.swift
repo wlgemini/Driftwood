@@ -36,7 +36,7 @@ public struct Driftwood {
     init(_ item: ConstraintItem) { self._item = item }
     
     /// item
-    private let _item: ConstraintItem
+    private unowned(safe) let _item: ConstraintItem
 }
 
 
