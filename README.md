@@ -45,7 +45,7 @@ All `NSLayoutConstraint.Attribute` cases are available in Driftwood.
 Let's say `view1` is at the bottom of `view2`, offset with 10pts.
 
 ```swift
-view1.dw.make.top(10, to: view2.dw.bottom)
+view1.dw.make().top(10, to: view2.dw.bottom)
 ```
 
 Full list of `NSLayoutConstraint.Attribute`:
