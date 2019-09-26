@@ -32,7 +32,7 @@ class ConstraintsStorage {
     // MARK: Constraint activate & update & deactivate
     /// active constraint installed by driftwood
     func activeConstraint(for key: Attribute) -> LayoutConstraint? {
-        return self._activeConstraints[key]
+        self._activeConstraints[key]
     }
     
     /// activate a constraint

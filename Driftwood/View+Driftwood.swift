@@ -25,13 +25,9 @@
 /// View (ConstraintItem)
 extension View: ConstraintItem {
     
-    public var dw_superview: ConstraintItem? {
-        return self.superview
-    }
+    public var dw_superview: ConstraintItem? { self.superview }
     
-    public var dw_hashValue: Int {
-        return self.hashValue
-    }
+    public var dw_hashValue: Int { self.hashValue }
 }
 
 
@@ -39,7 +35,5 @@ extension View: ConstraintItem {
 extension View {
     
     /// driftwood
-    public var dw: Driftwood {
-        return Driftwood(self)
-    }
+    public var dw: Driftwood { Driftwood(self) }
 }

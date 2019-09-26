@@ -38,63 +38,63 @@ public struct ConstraintRemover {
     //
     /// left
     @discardableResult
-    public func left() -> ConstraintRemover {
-        return self._remove(for: .left)
+    public func left() -> Self {
+        self._remove(for: .left)
     }
     
     /// right
     @discardableResult
-    public func right() -> ConstraintRemover {
-        return self._remove(for: .right)
+    public func right() -> Self {
+        self._remove(for: .right)
     }
     
     /// leading
     @discardableResult
-    public func leading() -> ConstraintRemover {
-        return self._remove(for: .leading)
+    public func leading() -> Self {
+        self._remove(for: .leading)
     }
     
     /// trailing
     @discardableResult
-    public func trailing() -> ConstraintRemover {
-        return self._remove(for: .trailing)
+    public func trailing() -> Self {
+        self._remove(for: .trailing)
     }
     
     /// centerX
     @discardableResult
-    public func centerX() -> ConstraintRemover {
-        return self._remove(for: .centerX)
+    public func centerX() -> Self {
+        self._remove(for: .centerX)
     }
     
     #if os(iOS) || os(tvOS)
     /// leftMargin
     @discardableResult
-    public func leftMargin() -> ConstraintRemover {
-        return self._remove(for: .leftMargin)
+    public func leftMargin() -> Self {
+        self._remove(for: .leftMargin)
     }
     
     /// rightMargin
     @discardableResult
-    public func rightMargin() -> ConstraintRemover {
-        return self._remove(for: .rightMargin)
+    public func rightMargin() -> Self {
+        self._remove(for: .rightMargin)
     }
     
     /// leadingMargin
     @discardableResult
-    public func leadingMargin() -> ConstraintRemover {
-        return self._remove(for: .leadingMargin)
+    public func leadingMargin() -> Self {
+        self._remove(for: .leadingMargin)
     }
     
     /// trailingMargin
     @discardableResult
-    public func trailingMargin() -> ConstraintRemover {
-        return self._remove(for: .trailingMargin)
+    public func trailingMargin() -> Self {
+        self._remove(for: .trailingMargin)
     }
     
     /// centerXWithinMargins
     @discardableResult
-    public func centerXWithinMargins() -> ConstraintRemover {
-        return self._remove(for: .centerXWithinMargins)
+    public func centerXWithinMargins() -> Self {
+        self._remove(for: .centerXWithinMargins)
     }
     #endif
     
@@ -104,51 +104,51 @@ public struct ConstraintRemover {
     //
     /// top
     @discardableResult
-    public func top() -> ConstraintRemover {
-        return self._remove(for: .top)
+    public func top() -> Self {
+        self._remove(for: .top)
     }
     
     /// bottom
     @discardableResult
-    public func bottom() -> ConstraintRemover {
-        return self._remove(for: .bottom)
+    public func bottom() -> Self {
+        self._remove(for: .bottom)
     }
     
     /// centerY
     @discardableResult
-    public func centerY() -> ConstraintRemover {
-        return self._remove(for: .centerY)
+    public func centerY() -> Self {
+        self._remove(for: .centerY)
     }
     
     /// lastBaseline
     @discardableResult
-    public func lastBaseline() -> ConstraintRemover {
-        return self._remove(for: .lastBaseline)
+    public func lastBaseline() -> Self {
+        self._remove(for: .lastBaseline)
     }
     
     /// firstBaseline
     @discardableResult
-    public func firstBaseline() -> ConstraintRemover {
-        return self._remove(for: .firstBaseline)
+    public func firstBaseline() -> Self {
+        self._remove(for: .firstBaseline)
     }
     
     #if os(iOS) || os(tvOS)
     /// topMargin
     @discardableResult
-    public func topMargin() -> ConstraintRemover {
-        return self._remove(for: .topMargin)
+    public func topMargin() -> Self {
+        self._remove(for: .topMargin)
     }
     
     /// bottomMargin
     @discardableResult
-    public func bottomMargin() -> ConstraintRemover {
-        return self._remove(for: .bottomMargin)
+    public func bottomMargin() -> Self {
+        self._remove(for: .bottomMargin)
     }
     
     /// centerYWithinMargins
     @discardableResult
-    public func centerYWithinMargins() -> ConstraintRemover {
-        return self._remove(for: .centerYWithinMargins)
+    public func centerYWithinMargins() -> Self {
+        self._remove(for: .centerYWithinMargins)
     }
     #endif
     
@@ -158,14 +158,14 @@ public struct ConstraintRemover {
     //
     /// width
     @discardableResult
-    public func width() -> ConstraintRemover {
-        return self._remove(for: .width)
+    public func width() -> Self {
+        self._remove(for: .width)
     }
     
     /// height
     @discardableResult
-    public func height() -> ConstraintRemover {
-        return self._remove(for: .height)
+    public func height() -> Self {
+        self._remove(for: .height)
     }
     
     //===========================================
@@ -184,7 +184,7 @@ public struct ConstraintRemover {
     //
     /// remove constraint
     @discardableResult
-    private func _remove(for attribute: Attribute) -> ConstraintRemover {
+    private func _remove(for attribute: Attribute) -> Self {
         // 0. deactivate a constraint installed by driftwood if any
         guard let _ = self._item.storage.deactivate(for: attribute) else {
             Debug.log(self._location, .remove(attribute), self._item, message: "No constraint.")

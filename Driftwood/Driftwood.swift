@@ -74,35 +74,35 @@ public extension Driftwood {
     //===========================================
     //
     /// left
-    var left: ConstraintAttributeX { return .left(self._item) }
+    var left: ConstraintAttributeX { .left(self._item) }
     
     /// right
-    var right: ConstraintAttributeX { return .right(self._item) }
+    var right: ConstraintAttributeX { .right(self._item) }
     
     /// leading
-    var leading: ConstraintAttributeX { return .leading(self._item) }
+    var leading: ConstraintAttributeX { .leading(self._item) }
     
     /// trailing
-    var trailing: ConstraintAttributeX { return .trailing(self._item) }
+    var trailing: ConstraintAttributeX { .trailing(self._item) }
     
     /// centerX
-    var centerX: ConstraintAttributeX { return .centerX(self._item) }
+    var centerX: ConstraintAttributeX { .centerX(self._item) }
     
     #if os(iOS) || os(tvOS)
     /// leftMargin
-    var leftMargin: ConstraintAttributeX { return .leftMargin(self._item) }
+    var leftMargin: ConstraintAttributeX { .leftMargin(self._item) }
     
     /// rightMargin
-    var rightMargin: ConstraintAttributeX { return .rightMargin(self._item) }
+    var rightMargin: ConstraintAttributeX { .rightMargin(self._item) }
     
     /// leadingMargin
-    var leadingMargin: ConstraintAttributeX { return .leadingMargin(self._item) }
+    var leadingMargin: ConstraintAttributeX { .leadingMargin(self._item) }
     
     /// trailingMargin
-    var trailingMargin: ConstraintAttributeX { return .trailingMargin(self._item) }
+    var trailingMargin: ConstraintAttributeX { .trailingMargin(self._item) }
     
     /// centerXWithinMargins
-    var centerXWithinMargins: ConstraintAttributeX { return .centerXWithinMargins(self._item) }
+    var centerXWithinMargins: ConstraintAttributeX { .centerXWithinMargins(self._item) }
     #endif
     
     //===========================================
@@ -110,29 +110,29 @@ public extension Driftwood {
     //===========================================
     //
     /// top
-    var top: ConstraintAttributeY { return .top(self._item) }
+    var top: ConstraintAttributeY { .top(self._item) }
     
     /// bottom
-    var bottom: ConstraintAttributeY { return .bottom(self._item) }
+    var bottom: ConstraintAttributeY { .bottom(self._item) }
     
     /// centerY
-    var centerY: ConstraintAttributeY { return .centerY(self._item) }
+    var centerY: ConstraintAttributeY { .centerY(self._item) }
     
     /// lastBaseline
-    var lastBaseline: ConstraintAttributeY { return .lastBaseline(self._item) }
+    var lastBaseline: ConstraintAttributeY { .lastBaseline(self._item) }
     
     /// firstBaseline
-    var firstBaseline: ConstraintAttributeY { return .firstBaseline(self._item) }
+    var firstBaseline: ConstraintAttributeY { .firstBaseline(self._item) }
     
     #if os(iOS) || os(tvOS)
     /// topMargin
-    var topMargin: ConstraintAttributeY { return .topMargin(self._item) }
+    var topMargin: ConstraintAttributeY { .topMargin(self._item) }
     
     /// bottomMargin
-    var bottomMargin: ConstraintAttributeY { return .bottomMargin(self._item) }
+    var bottomMargin: ConstraintAttributeY { .bottomMargin(self._item) }
     
     /// centerYWithinMargins
-    var centerYWithinMargins: ConstraintAttributeY { return .centerYWithinMargins(self._item) }
+    var centerYWithinMargins: ConstraintAttributeY { .centerYWithinMargins(self._item) }
     #endif
     
     //===========================================
@@ -140,10 +140,10 @@ public extension Driftwood {
     //===========================================
     //
     /// width
-    var width: ConstraintAttributeSize { return .width(self._item) }
+    var width: ConstraintAttributeSize { .width(self._item) }
     
     /// height
-    var height: ConstraintAttributeSize { return .height(self._item) }
+    var height: ConstraintAttributeSize { .height(self._item) }
 }
 
 
@@ -152,7 +152,7 @@ public extension Driftwood {
     
     /// attaching a debug-label for current View/LayoutGuide
     @discardableResult
-    func labeled(_ lb: String) -> Driftwood {
+    func labeled(_ lb: String) -> Self {
         self._item.storage.labeled = lb
         return self
     }

@@ -26,13 +26,9 @@
 @available(iOS 9.0, macOS 10.11, *)
 extension LayoutGuide: ConstraintItem {
     
-    public var dw_superview: ConstraintItem? {
-        return self.owningView
-    }
+    public var dw_superview: ConstraintItem? { self.owningView }
     
-    public var dw_hashValue: Int {
-        return self.hashValue
-    }
+    public var dw_hashValue: Int { self.hashValue }
 }
 
 
@@ -41,7 +37,5 @@ extension LayoutGuide: ConstraintItem {
 extension LayoutGuide {
     
     /// driftwood
-    public var dw: Driftwood {
-        return Driftwood(self)
-    }
+    public var dw: Driftwood { Driftwood(self) }
 }

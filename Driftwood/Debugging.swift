@@ -32,8 +32,8 @@ struct Debug {
     static func log(_ location: Location, _ operation: Operation, _ item: ConstraintItem, message: String) {
         Swift.assert({
             var desc = "<"
-            desc += Debug.prefix(location, operation)
-            desc += ".(\(Debug.description(for: item)))"
+            desc += Self.prefix(location, operation)
+            desc += ".(\(Self.description(for: item)))"
             desc += ">"
             desc += ": "
             desc += message
@@ -50,7 +50,7 @@ struct Debug {
     static func assert(_ location: Location?, _ operation: Operation, condition: () -> Bool, message: String) {
         Swift.assert(condition(), {
             var desc = "<"
-            desc += Debug.prefix(location, operation)
+            desc += Self.prefix(location, operation)
             desc += ">"
             desc += " Error: "
             desc += message

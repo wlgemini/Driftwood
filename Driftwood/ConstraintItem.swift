@@ -49,7 +49,7 @@ extension ConstraintItem {
     
     /// _storage
     var _storage: ConstraintsStorage? {
-        get { return objc_getAssociatedObject(self, &_storageKey) as? ConstraintsStorage }
+        get { objc_getAssociatedObject(self, &_storageKey) as? ConstraintsStorage }
         set { objc_setAssociatedObject(self, &_storageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 }
