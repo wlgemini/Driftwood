@@ -166,9 +166,7 @@ extension Debug {
         }
         
         /// description
-        var description: String {
-            return "@\((self.file as NSString).lastPathComponent)#\(self.line)"
-        }
+        var description: String { "@\((self.file as NSString).lastPathComponent)#\(self.line)" }
     }
     
     

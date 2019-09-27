@@ -45,17 +45,17 @@ public extension Driftwood {
     
     /// make
     func make(file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
+        ConstraintMaker(item: self._item, location: Debug.Location(file, line))
     }
     
     /// update
     func update(file: String = #file, line: UInt = #line) -> ConstraintUpdater {
-        return ConstraintUpdater(item: self._item, location: Debug.Location(file, line))
+        ConstraintUpdater(item: self._item, location: Debug.Location(file, line))
     }
     
     /// remove
     func remove(file: String = #file, line: UInt = #line) -> ConstraintRemover {
-        return ConstraintRemover(item: self._item, location: Debug.Location(file, line))
+        ConstraintRemover(item: self._item, location: Debug.Location(file, line))
     }
     
     /// remake
