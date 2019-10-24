@@ -179,7 +179,7 @@ extension Debug {
         
         case remove(Attribute)
         
-        case _dequeue(Attribute)
+        case _cache(Attribute)
         
         /// description
         var description: String {
@@ -187,7 +187,7 @@ extension Debug {
             case .make(let attribute):          return "make.\(Debug.description(for: attribute))"
             case .update(let attribute):        return "update.\(Debug.description(for: attribute))"
             case .remove(let attribute):        return "remove.\(Debug.description(for: attribute))"
-            case ._dequeue(let attribute):      return "_dequeue.\(Debug.description(for: attribute))"
+            case ._cache(let attribute):        return "_cache.\(Debug.description(for: attribute))"
             }
         }
     }

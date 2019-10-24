@@ -20,12 +20,12 @@ class ViewController: UIViewController {
         self.lb1 = self.view.createSubView()
         self.lb1.text = "1"
         self.lb1.textAlignment = .center
-        self.lb1.dw.labeled("label1").make().left(0).right(0).top(0, to: self.view.safeAreaLayoutGuide.dw.top).height(50)
+        self.lb1.dw.labeled("label1").make().leading(0).trailing(0).top(0, to: self.view.safeAreaLayoutGuide.dw.top).height(50)
         
         self.lb2 = self.view.createSubView()
         self.lb2.text = "2"
         self.lb2.textAlignment = .center
-        self.lb2.dw.labeled("label2").make().left(0).right(0).bottom(0, to: self.view.safeAreaLayoutGuide.dw.bottom).height(50)
+        self.lb2.dw.labeled("label2").make().leading(0).trailing(0).bottom(0, to: self.view.safeAreaLayoutGuide.dw.bottom).height(50)
         
         self.lb3 = self.view.createSubView()
         self.lb3.text = "3"
@@ -44,6 +44,10 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.lb1.dw.remake().leading(10).trailing(-10).top(0).bottom(0, to: self.view.safeAreaLayoutGuide.dw.top)
+        
+        self.lb2.dw.remake().leading(10).trailing(-10).bottom(0).top(0, to: self.view.safeAreaLayoutGuide.dw.bottom)
     
         self.lb3.dw.update().centerXY(offsets: CGPoint(x: -50, y: -50))
         

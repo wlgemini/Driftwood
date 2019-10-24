@@ -22,15 +22,8 @@
 //  SOFTWARE.
 
 
-#if os(iOS) || os(tvOS)
-import UIKit
-#else
-import AppKit
-#endif
-
-
-/// LayoutConstraint
-class LayoutConstraint: NSLayoutConstraint {
+/// Constraint
+class Constraint: LayoutConstraint {
     
     /// location (never nil when used)
     var location: Debug.Location!

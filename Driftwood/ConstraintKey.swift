@@ -22,9 +22,34 @@
 //  SOFTWARE.
 
 
-/// LayoutGuide (ConstraintItem)
-@available(iOS 9.0, macOS 10.11, *)
-extension LayoutGuide: ConstraintItem {
+/// ConstraintKey
+struct ConstraintKey: Hashable {
     
-    public var dw_superview: ConstraintItem? { self.owningView }
+    /// attribute
+    let attribute: Attribute
+    
+    /// Using `ObjectIdentifier` to avoid ARC: [Difference between using ObjectIdentifier() and '===' Operator](https://stackoverflow.com/questions/39587027/difference-between-using-objectidentifier-and-operator)
+    let toItem: ObjectIdentifier?
+    
+    /// toAttribute
+    let toAttribute: Attribute
+    
+    /// relation
+    let relation: Relation
+    
+    /// multiply
+    let multiply: CGFloat
+    
+    /// init
+    init(attribute: Attribute, toItem: ConstraintItem?, toAttribute: Attribute, relation: Relation, multiply: CGFloat) {
+        self.attribute = attribute
+        if let toItem = toItem {
+            self.toItem = ObjectIdentifier(toItem)
+        } else {
+            self.toItem = nil
+        }
+        self.toAttribute = toAttribute
+        self.relation = relation
+        self.multiply = multiply
+    }
 }

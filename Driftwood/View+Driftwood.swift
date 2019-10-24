@@ -26,14 +26,4 @@
 extension View: ConstraintItem {
     
     public var dw_superview: ConstraintItem? { self.superview }
-    
-    public var dw_hashValue: Int { self.hashValue }
-}
-
-
-/// View (Driftwood)
-extension View {
-    
-    /// driftwood
-    public var dw: Driftwood { Driftwood(self) }
 }

@@ -22,13 +22,6 @@
 //  SOFTWARE.
 
 
-#if os(iOS) || os(tvOS)
-import UIKit
-#else
-import AppKit
-#endif
-
-
 /// Driftwood
 public struct Driftwood {
     

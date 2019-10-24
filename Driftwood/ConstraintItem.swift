@@ -27,9 +27,14 @@ public protocol ConstraintItem: AnyObject {
     
     /// superview
     var dw_superview: ConstraintItem? { get }
+}
+
+
+/// ConstraintItem (Driftwood)
+public extension ConstraintItem {
     
-    /// hashValue
-    var dw_hashValue: Int { get }
+    /// driftwood
+    var dw: Driftwood { Driftwood(self) }
 }
 
 
@@ -56,4 +61,4 @@ extension ConstraintItem {
 
 
 /// _storage Key
-fileprivate var _storageKey: Void?
+private var _storageKey: Void?

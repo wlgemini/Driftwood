@@ -22,13 +22,6 @@
 //  SOFTWARE.
 
 
-#if os(iOS) || os(tvOS)
-import UIKit
-#else
-import AppKit
-#endif
-
-
 /// Constraint Maker
 public struct ConstraintMaker {
     
@@ -263,8 +256,8 @@ public struct ConstraintMaker {
             #endif
         }
         
-        // 3. dequeue cached constraint
-        let con = self._item.storage.dequeueConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
+        // 3. get cached constraint
+        let con = self._item.storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 4. activate cached constraint
         self._item.storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
@@ -341,8 +334,8 @@ public struct ConstraintMaker {
             #endif
         }
         
-        // 3. dequeue cached constraint
-        let con = self._item.storage.dequeueConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
+        // 3. get cached constraint
+        let con = self._item.storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 4. activate cached constraint
         self._item.storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
@@ -383,8 +376,8 @@ public struct ConstraintMaker {
             }
         }
         
-        // 3. dequeue cached constraint
-        let con = self._item.storage.dequeueConstraintFor(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
+        // 3. get cached constraint
+        let con = self._item.storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
         
         // 4. activate cached constraint
         self._item.storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))

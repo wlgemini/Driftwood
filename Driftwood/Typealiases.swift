@@ -35,6 +35,10 @@ public typealias View = UIView
 public typealias LayoutGuide = UILayoutGuide
 
 
+/// LayoutConstraint
+public typealias LayoutConstraint = NSLayoutConstraint
+
+
 /// Relation
 public typealias Relation = NSLayoutConstraint.Relation
 
@@ -60,6 +64,10 @@ public typealias View = NSView
 /// LayoutGuide
 @available(macOS 10.11, *)
 public typealias LayoutGuide = NSLayoutGuide
+
+
+/// LayoutConstraint
+public typealias LayoutConstraint = NSLayoutConstraint
 
 
 /// Relation

@@ -31,12 +31,12 @@ class ConstraintsStorage {
     
     // MARK: Constraint activate & update & deactivate
     /// active constraint installed by driftwood
-    func activeConstraint(for key: Attribute) -> LayoutConstraint? {
+    func activeConstraint(for key: Attribute) -> Constraint? {
         self._activeConstraints[key]
     }
     
     /// activate a constraint
-    func activate(_ con: LayoutConstraint, for key: Attribute, location: Debug.Location, operation: Debug.Operation) {
+    func activate(_ con: Constraint, for key: Attribute, location: Debug.Location, operation: Debug.Operation) {
         // set debug info
         con.location = location
         con.operation = operation
@@ -49,7 +49,7 @@ class ConstraintsStorage {
     }
     
     /// update an active constraint installed by driftwood
-    func update(_ con: LayoutConstraint, constant: CGFloat?, priority: Priority?, location: Debug.Location, operation: Debug.Operation) {
+    func update(_ con: Constraint, constant: CGFloat?, priority: Priority?, location: Debug.Location, operation: Debug.Operation) {
         // set debug info
         con.location = location
         con.operation = operation
@@ -69,7 +69,7 @@ class ConstraintsStorage {
     
     /// deactivate a constraint installed by driftwood
     @discardableResult
-    func deactivate(for key: Attribute) -> LayoutConstraint? {
+    func deactivate(for key: Attribute) -> Constraint? {
         // remove constraint
         let con = self._activeConstraints.removeValue(forKey: key)
         
@@ -92,31 +92,25 @@ class ConstraintsStorage {
         self._activeConstraints.removeAll()
     }
     
-    /// dequeue a constraint cached by driftwood
-    func dequeueConstraintFor(item: ConstraintItem, attribute: Attribute, relation: Relation, toItem: ConstraintItem?, toAttribute: Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> LayoutConstraint {
-        // 0. generate a constraint hash value (hash calculation not include item/constant/priority)
-        var hasher = Hasher()
-        hasher.combine(attribute)
-        hasher.combine(toItem?.dw_hashValue)
-        hasher.combine(toAttribute)
-        hasher.combine(relation)
-        hasher.combine(multiply)
-        let conKey = hasher.finalize()
+    /// get a constraint cached by driftwood
+    func constraint(item: ConstraintItem, attribute: Attribute, relation: Relation, toItem: ConstraintItem?, toAttribute: Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> Constraint {
+        // 0. generate a constraint key (key calculation not include item/constant/priority)
+        let conKey = ConstraintKey(attribute: attribute, toItem: toItem, toAttribute: toAttribute, relation: relation, multiply: multiply)
         
         // 1. retrive a constraint from cache, if any
-        let con: LayoutConstraint
+        let con: Constraint
         if let c = self._cachedConstraints[conKey] {
             // 1.1 cached
             con = c
             
             // check if cached constraint is 'active'
-            Debug.assert(nil, ._dequeue(attribute), condition: { con.isActive == false }, message: "Found 'active' constraint.")
+            Debug.assert(nil, ._cache(attribute), condition: { con.isActive == false }, message: "Found 'active' constraint.")
             
             con.constant = constant
             con.priority = priority
         } else {
             // 1.2 no cache
-            con = LayoutConstraint(item: item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: multiply, constant: constant)
+            con = Constraint(item: item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: multiply, constant: constant)
             con.priority = priority
             self._cachedConstraints[conKey] = con
         }
@@ -130,8 +124,8 @@ class ConstraintsStorage {
     //===========================================
     //
     /// active constraints
-    private var _activeConstraints: [Attribute: LayoutConstraint] = [:]
+    private var _activeConstraints: [Attribute: Constraint] = [:]
     
     /// cached constraints (include active/deactive constraints)
-    private var _cachedConstraints: [Int: LayoutConstraint] = [:]
+    private var _cachedConstraints: [ConstraintKey: Constraint] = [:]
 }
