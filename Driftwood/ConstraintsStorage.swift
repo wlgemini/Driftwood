@@ -93,7 +93,7 @@ class ConstraintsStorage {
     }
     
     /// get a constraint cached by driftwood
-    func constraint(item: ConstraintItem, attribute: Attribute, relation: Relation, toItem: ConstraintItem?, toAttribute: Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> Constraint {
+    func constraint(item: Item, attribute: Attribute, relation: Relation, toItem: Item?, toAttribute: Attribute, multiply: CGFloat, constant: CGFloat, priority: Priority) -> Constraint {
         // 0. generate a constraint key (key calculation not include item/constant/priority)
         let conKey = ConstraintKey(attribute: attribute, toItem: toItem, toAttribute: toAttribute, relation: relation, multiply: multiply)
         
@@ -124,8 +124,10 @@ class ConstraintsStorage {
     //===========================================
     //
     /// active constraints
-    private var _activeConstraints: [Attribute: Constraint] = [:]
+    ///
+    /// In most case, there will be 4 active constraints on each Item
+    private var _activeConstraints = [Attribute: Constraint](minimumCapacity: 4)
     
     /// cached constraints (include active/deactive constraints)
-    private var _cachedConstraints: [ConstraintKey: Constraint] = [:]
+    private var _cachedConstraints = [ConstraintKey: Constraint](minimumCapacity: 4)
 }

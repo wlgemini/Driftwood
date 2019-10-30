@@ -22,7 +22,7 @@
 //  SOFTWARE.
 
 
-/// Constraint Remover (Handy)
+/// ConstraintRemover (Handy)
 public extension ConstraintRemover {
     
     //===========================================
@@ -49,7 +49,7 @@ public extension ConstraintRemover {
         return self
     }
     
-    /// edge insets
+    /// edge
     @discardableResult
     func edge() -> Self {
         self.leading()

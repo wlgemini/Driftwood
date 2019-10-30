@@ -22,64 +22,9 @@
 //  SOFTWARE.
 
 
-/// ConstraintAttributeX
-public enum ConstraintAttributeX {
+/// LayoutGuide (Item)
+@available(iOS 9.0, macOS 10.11, *)
+extension LayoutGuide: Item {
     
-    case superview
-    
-    case left(ConstraintItem)
-    
-    case right(ConstraintItem)
-    
-    case leading(ConstraintItem)
-    
-    case trailing(ConstraintItem)
-    
-    case centerX(ConstraintItem)
-    
-    #if os(iOS) || os(tvOS)
-    case leftMargin(ConstraintItem)
-    
-    case rightMargin(ConstraintItem)
-    
-    case leadingMargin(ConstraintItem)
-    
-    case trailingMargin(ConstraintItem)
-    
-    case centerXWithinMargins(ConstraintItem)
-    #endif
-}
-
-
-/// ConstraintAttributeY
-public enum ConstraintAttributeY {
-    
-    case superview
-    
-    case top(ConstraintItem)
-    
-    case bottom(ConstraintItem)
-    
-    case centerY(ConstraintItem)
-    
-    case lastBaseline(ConstraintItem)
-    
-    case firstBaseline(ConstraintItem)
-    
-    #if os(iOS) || os(tvOS)
-    case topMargin(ConstraintItem)
-    
-    case bottomMargin(ConstraintItem)
-    
-    case centerYWithinMargins(ConstraintItem)
-    #endif
-}
-
-
-/// ConstraintAttributeSize
-public enum ConstraintAttributeSize {
-    
-    case width(ConstraintItem)
-    
-    case height(ConstraintItem)
+    public var dw_superview: Item? { self.owningView }
 }

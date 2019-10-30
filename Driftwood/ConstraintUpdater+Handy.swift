@@ -22,7 +22,7 @@
 //  SOFTWARE.
 
 
-/// Constraint Updater (Handy)
+/// ConstraintUpdater (Handy)
 public extension ConstraintUpdater {
     
     //===========================================

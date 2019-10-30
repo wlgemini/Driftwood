@@ -29,7 +29,7 @@ struct Debug {
     ///
     ///     "<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525111)>: "
     ///
-    static func log(_ location: Location, _ operation: Operation, _ item: ConstraintItem, message: String) {
+    static func log(_ location: Location, _ operation: Operation, _ item: Item, message: String) {
         Swift.assert({
             var desc = "<"
             desc += Self.prefix(location, operation)
@@ -85,7 +85,7 @@ struct Debug {
     ///
     static func description(for obj: AnyObject) -> String {
         var desc = "\(Swift.type(of: obj))"
-        if let item = obj as? ConstraintItem {
+        if let item = obj as? Item {
             // using `_storage` instead of `storage`, which avoid unnecessary ConstraintsStorage object makes.
             if let lb = item._storage?.labeled {
                 desc += "`\(lb)`"

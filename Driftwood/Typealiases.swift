@@ -36,7 +36,7 @@ public typealias LayoutGuide = UILayoutGuide
 
 
 /// LayoutConstraint
-public typealias LayoutConstraint = NSLayoutConstraint
+typealias LayoutConstraint = NSLayoutConstraint
 
 
 /// Relation
@@ -67,7 +67,7 @@ public typealias LayoutGuide = NSLayoutGuide
 
 
 /// LayoutConstraint
-public typealias LayoutConstraint = NSLayoutConstraint
+typealias LayoutConstraint = NSLayoutConstraint
 
 
 /// Relation

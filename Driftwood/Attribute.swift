@@ -22,8 +22,64 @@
 //  SOFTWARE.
 
 
-/// View (ConstraintItem)
-extension View: ConstraintItem {
+/// AttributeX
+public enum AttributeX {
     
-    public var dw_superview: ConstraintItem? { self.superview }
+    case superview
+    
+    case left(Item)
+    
+    case right(Item)
+    
+    case leading(Item)
+    
+    case trailing(Item)
+    
+    case centerX(Item)
+    
+    #if os(iOS) || os(tvOS)
+    case leftMargin(Item)
+    
+    case rightMargin(Item)
+    
+    case leadingMargin(Item)
+    
+    case trailingMargin(Item)
+    
+    case centerXWithinMargins(Item)
+    #endif
+}
+
+
+/// AttributeY
+public enum AttributeY {
+    
+    case superview
+    
+    case top(Item)
+    
+    case bottom(Item)
+    
+    case centerY(Item)
+    
+    case lastBaseline(Item)
+    
+    case firstBaseline(Item)
+    
+    #if os(iOS) || os(tvOS)
+    case topMargin(Item)
+    
+    case bottomMargin(Item)
+    
+    case centerYWithinMargins(Item)
+    #endif
+}
+
+
+/// AttributeSize
+public enum AttributeSize {
+    
+    case width(Item)
+    
+    case height(Item)
 }

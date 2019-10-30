@@ -26,10 +26,10 @@
 public struct Driftwood {
     
     /// init
-    init(_ item: ConstraintItem) { self._item = item }
+    init(_ item: Item) { self._item = item }
     
     /// item
-    private unowned(safe) let _item: ConstraintItem
+    private unowned(safe) let _item: Item
 }
 
 
@@ -59,84 +59,84 @@ public extension Driftwood {
 }
 
 
-/// Driftwood (ConstraintAttribute)
+/// Driftwood (Attribute)
 public extension Driftwood {
     
     //===========================================
-    // ConstraintAttributeX
+    // AttributeX
     //===========================================
     //
     /// left
-    var left: ConstraintAttributeX { .left(self._item) }
+    var left: AttributeX { .left(self._item) }
     
     /// right
-    var right: ConstraintAttributeX { .right(self._item) }
+    var right: AttributeX { .right(self._item) }
     
     /// leading
-    var leading: ConstraintAttributeX { .leading(self._item) }
+    var leading: AttributeX { .leading(self._item) }
     
     /// trailing
-    var trailing: ConstraintAttributeX { .trailing(self._item) }
+    var trailing: AttributeX { .trailing(self._item) }
     
     /// centerX
-    var centerX: ConstraintAttributeX { .centerX(self._item) }
+    var centerX: AttributeX { .centerX(self._item) }
     
     #if os(iOS) || os(tvOS)
     /// leftMargin
-    var leftMargin: ConstraintAttributeX { .leftMargin(self._item) }
+    var leftMargin: AttributeX { .leftMargin(self._item) }
     
     /// rightMargin
-    var rightMargin: ConstraintAttributeX { .rightMargin(self._item) }
+    var rightMargin: AttributeX { .rightMargin(self._item) }
     
     /// leadingMargin
-    var leadingMargin: ConstraintAttributeX { .leadingMargin(self._item) }
+    var leadingMargin: AttributeX { .leadingMargin(self._item) }
     
     /// trailingMargin
-    var trailingMargin: ConstraintAttributeX { .trailingMargin(self._item) }
+    var trailingMargin: AttributeX { .trailingMargin(self._item) }
     
     /// centerXWithinMargins
-    var centerXWithinMargins: ConstraintAttributeX { .centerXWithinMargins(self._item) }
+    var centerXWithinMargins: AttributeX { .centerXWithinMargins(self._item) }
     #endif
     
     //===========================================
-    // ConstraintAttributeY
+    // AttributeY
     //===========================================
     //
     /// top
-    var top: ConstraintAttributeY { .top(self._item) }
+    var top: AttributeY { .top(self._item) }
     
     /// bottom
-    var bottom: ConstraintAttributeY { .bottom(self._item) }
+    var bottom: AttributeY { .bottom(self._item) }
     
     /// centerY
-    var centerY: ConstraintAttributeY { .centerY(self._item) }
+    var centerY: AttributeY { .centerY(self._item) }
     
     /// lastBaseline
-    var lastBaseline: ConstraintAttributeY { .lastBaseline(self._item) }
+    var lastBaseline: AttributeY { .lastBaseline(self._item) }
     
     /// firstBaseline
-    var firstBaseline: ConstraintAttributeY { .firstBaseline(self._item) }
+    var firstBaseline: AttributeY { .firstBaseline(self._item) }
     
     #if os(iOS) || os(tvOS)
     /// topMargin
-    var topMargin: ConstraintAttributeY { .topMargin(self._item) }
+    var topMargin: AttributeY { .topMargin(self._item) }
     
     /// bottomMargin
-    var bottomMargin: ConstraintAttributeY { .bottomMargin(self._item) }
+    var bottomMargin: AttributeY { .bottomMargin(self._item) }
     
     /// centerYWithinMargins
-    var centerYWithinMargins: ConstraintAttributeY { .centerYWithinMargins(self._item) }
+    var centerYWithinMargins: AttributeY { .centerYWithinMargins(self._item) }
     #endif
     
     //===========================================
-    // ConstraintAttributeSize
+    // AttributeSize
     //===========================================
     //
     /// width
-    var width: ConstraintAttributeSize { .width(self._item) }
+    var width: AttributeSize { .width(self._item) }
     
     /// height
-    var height: ConstraintAttributeSize { .height(self._item) }
+    var height: AttributeSize { .height(self._item) }
 }
 
 

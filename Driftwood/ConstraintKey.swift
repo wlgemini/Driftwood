@@ -41,7 +41,7 @@ struct ConstraintKey: Hashable {
     let multiply: CGFloat
     
     /// init
-    init(attribute: Attribute, toItem: ConstraintItem?, toAttribute: Attribute, relation: Relation, multiply: CGFloat) {
+    init(attribute: Attribute, toItem: Item?, toAttribute: Attribute, relation: Relation, multiply: CGFloat) {
         self.attribute = attribute
         if let toItem = toItem {
             self.toItem = ObjectIdentifier(toItem)

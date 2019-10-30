@@ -22,9 +22,8 @@
 //  SOFTWARE.
 
 
-/// LayoutGuide (ConstraintItem)
-@available(iOS 9.0, macOS 10.11, *)
-extension LayoutGuide: ConstraintItem {
+/// View (Item)
+extension View: Item {
     
-    public var dw_superview: ConstraintItem? { self.owningView }
+    public var dw_superview: Item? { self.superview }
 }

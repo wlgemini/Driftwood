@@ -22,24 +22,24 @@
 //  SOFTWARE.
 
 
-/// ConstraintItem
-public protocol ConstraintItem: AnyObject {
+/// Item
+public protocol Item: AnyObject {
     
     /// superview
-    var dw_superview: ConstraintItem? { get }
+    var dw_superview: Item? { get }
 }
 
 
-/// ConstraintItem (Driftwood)
-public extension ConstraintItem {
+/// Item (Driftwood)
+public extension Item {
     
     /// driftwood
     var dw: Driftwood { Driftwood(self) }
 }
 
 
-/// ConstraintItem (ConstraintsStorage)
-extension ConstraintItem {
+/// Item (ConstraintsStorage)
+extension Item {
     
     /// storage
     var storage: ConstraintsStorage {

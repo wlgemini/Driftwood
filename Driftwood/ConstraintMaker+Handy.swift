@@ -22,11 +22,11 @@
 //  SOFTWARE.
 
 
-/// Constraint Maker (Handy)
+/// ConstraintMaker (Handy)
 public extension ConstraintMaker {
     
     //===========================================
-    // Make ConstraintAttributeX
+    // Make AttributeX
     //===========================================
     //
     /// left to superview
@@ -92,7 +92,7 @@ public extension ConstraintMaker {
     #endif
     
     //===========================================
-    // Make ConstraintAttributeY
+    // Make AttributeY
     //===========================================
     //
     /// top to superview
@@ -146,31 +146,31 @@ public extension ConstraintMaker {
     #endif
     
     //===========================================
-    // Make ConstraintAttributeSize
+    // Make AttributeSize
     //===========================================
     //
     /// width
     @discardableResult
-    func width(by relation: Relation = Preferences.relation, to attributeSize: ConstraintAttributeSize, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
+    func width(by relation: Relation = Preferences.relation, to attributeSize: AttributeSize, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
         self.width(0.0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
     }
     
     /// height
     @discardableResult
-    func height(by relation: Relation = Preferences.relation, to attributeSize: ConstraintAttributeSize, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
+    func height(by relation: Relation = Preferences.relation, to attributeSize: AttributeSize, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
         self.height(0.0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
     }
     
     /// size
     @discardableResult
-    func size(by relation: Relation = Preferences.relation, to item: ConstraintItem, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
+    func size(by relation: Relation = Preferences.relation, to item: Item, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
         self.width(0.0, by: relation, to: .width(item), multiply: multiply, priority: priority)
         self.height(0.0, by: relation, to: .height(item), multiply: multiply, priority: priority)
         return self
     }
     
     //===========================================
-    // Make ConstraintAttributeX & ConstraintAttributeY
+    // Make AttributeX & AttributeY
     //===========================================
     //
     /// centerXY to superview
@@ -183,7 +183,7 @@ public extension ConstraintMaker {
     
     /// centerXY
     @discardableResult
-    func centerXY(offsets: CGPoint, by relation: Relation = Preferences.relation, to item: ConstraintItem, priority: Priority = Preferences.priority) -> Self {
+    func centerXY(offsets: CGPoint, by relation: Relation = Preferences.relation, to item: Item, priority: Priority = Preferences.priority) -> Self {
         self.centerX(offsets.x, by: relation, to: .centerX(item), priority: priority)
         self.centerY(offsets.y, by: relation, to: .centerY(item), priority: priority)
         return self
@@ -201,7 +201,7 @@ public extension ConstraintMaker {
     
     /// edge
     @discardableResult
-    func edge(insets: EdgeInsets, by relation: Relation = Preferences.relation, to item: ConstraintItem, priority: Priority = Preferences.priority) -> Self {
+    func edge(insets: EdgeInsets, by relation: Relation = Preferences.relation, to item: Item, priority: Priority = Preferences.priority) -> Self {
         self.leading(insets.left, by: relation, to: .leading(item), priority: priority)
         self.trailing(-insets.right, by: relation, to: .trailing(item), priority: priority)
         self.top(insets.top, by: relation, to: .top(item), priority: priority)

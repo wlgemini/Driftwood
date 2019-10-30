@@ -22,7 +22,7 @@
 //  SOFTWARE.
 
 
-/// Constraint Updater
+/// ConstraintUpdater
 public struct ConstraintUpdater {
     
     //===========================================
@@ -166,7 +166,7 @@ public struct ConstraintUpdater {
     //===========================================
     //
     /// init
-    init(item: ConstraintItem, location: Debug.Location) {
+    init(item: Item, location: Debug.Location) {
         self._item = item
         self._location = location
     }
@@ -192,7 +192,7 @@ public struct ConstraintUpdater {
     }
     
     /// item
-    private unowned(safe) let _item: ConstraintItem
+    private unowned(safe) let _item: Item
     
     /// location
     private let _location: Debug.Location
