@@ -26,7 +26,7 @@
 class ConstraintsStorage {
     
     // MARK: Debug
-    /// labeled name for current ConstraintItem
+    /// labeled name for current Item
     var labeled: String?
     
     // MARK: Constraint activate & update & deactivate
@@ -125,7 +125,7 @@ class ConstraintsStorage {
     //
     /// active constraints
     ///
-    /// In most case, there will be 4 active constraints on each Item
+    /// In most case, there will be 4 active constraints on current Item
     private var _activeConstraints = [Attribute: Constraint](minimumCapacity: 4)
     
     /// cached constraints (include active/deactive constraints)
