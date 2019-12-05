@@ -37,22 +37,26 @@ public struct ConstraintDSL {
 public extension ConstraintDSL {
     
     /// make
-    func make(file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        ConstraintMaker(item: self._item, location: Debug.Location(file, line))
+    func make(labeled lb: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
+        self._item.storage.labeled = lb
+        return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
     }
     
     /// update
-    func update(file: String = #file, line: UInt = #line) -> ConstraintUpdater {
-        ConstraintUpdater(item: self._item, location: Debug.Location(file, line))
+    func update(labeled lb: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintUpdater {
+        self._item.storage.labeled = lb
+        return ConstraintUpdater(item: self._item, location: Debug.Location(file, line))
     }
     
     /// remove
-    func remove(file: String = #file, line: UInt = #line) -> ConstraintRemover {
-        ConstraintRemover(item: self._item, location: Debug.Location(file, line))
+    func remove(labeled lb: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintRemover {
+        self._item.storage.labeled = lb
+        return ConstraintRemover(item: self._item, location: Debug.Location(file, line))
     }
     
     /// remake
-    func remake(file: String = #file, line: UInt = #line) -> ConstraintMaker {
+    func remake(labeled lb: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
+        self._item.storage.labeled = lb
         self._item.storage.deactivateAll()
         return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
     }
@@ -137,16 +141,4 @@ public extension ConstraintDSL {
     
     /// height
     var height: AttributeSize { .height(self._item) }
-}
-
-
-/// ConstraintDSL (Debugging)
-public extension ConstraintDSL {
-    
-    /// attaching a debug-label for current View/LayoutGuide
-    @discardableResult
-    func labeled(_ lb: String) -> Self {
-        self._item.storage.labeled = lb
-        return self
-    }
 }

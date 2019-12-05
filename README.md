@@ -80,21 +80,21 @@ Full list of `NSLayoutConstraint.Attribute`:
 
 ### Relation & Multiplier & Priority
 
-Relation & Priority are available in `X-axis Attribute function` & `Y-axis Attribute function`:
+`Relation` & `Priority` are available in `X-axis Attribute function` & `Y-axis Attribute function`:
 
 ```swift
 view.dw.make().left(100, by: .greaterThanOrEqual, priority: .defaultLow)
 ```
 
-Relation & Multiplier & Priority are available in `Size Attribute function`:
+`Relation` & `Multiplier` & `Priority` are available in `Size Attribute function`:
 
 ```swift
 view.dw.make().width(100, by: .greaterThanOrEqual, multiply: 2, priority: .required)
 ```
 
--   Relation: default is `.equal`
--   Priority: default is `.required`
--   Multiplier: default is `1`
+-   `Relation`: default is `.equal`
+-   `Multiplier`: default is `1`
+-   `Priority`: default is `.required`
 
 ### dw.make()
 
@@ -102,7 +102,7 @@ As you see above, you can use `dw.make()` to make full constraints easily.
 
 ### dw.update()
 
-You can use the method `dw.update()` to updating `constant` and `priority` value of a constraint.
+You can use `dw.update()` to updating `constant` and `priority` value of a constraint.
 ```swift
 view1.dw.update().top(200)
 
@@ -119,14 +119,14 @@ view.dw.remake().left(20).top(30).width(20).height(10)
 
 ### dw.remove()
 
-You can use the method `dw.remove()` to removing any existing constraints installed by Driftwood.
+You can use `dw.remove()` to removing any existing constraints installed by Driftwood.
 ```swift
 view.dw.remove().left().top()
 ```
 
 ### LayoutGuide
 
-Driftwood can works with LayoutGuide easily.
+Driftwood can works with `LayoutGuide` easily.
 ```swift 
 let guide = UILayoutGuide()
 superview.addLayoutGuide(guide)
@@ -143,10 +143,10 @@ All constraints installed by Driftwood will be cached for future reuse.
 
 ### Debug
 
-You can attaching a name to any View or LayoutGuide for debug.
+You can labeled with a name to any `View` or `LayoutGuide` for debug.
 
 ```swift
-view.dw.labeled("MyView").make().left(0).left(0)
+view.dw.make(labeled: "MyView").left(0).left(0)
 ```
 
 It will be logs like this:
