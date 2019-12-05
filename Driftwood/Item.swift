@@ -30,11 +30,11 @@ public protocol Item: AnyObject {
 }
 
 
-/// Item (Driftwood)
+/// Item (ConstraintDSL)
 public extension Item {
     
-    /// driftwood
-    var dw: Driftwood { Driftwood(self) }
+    /// dw
+    var dw: ConstraintDSL { ConstraintDSL(self) }
 }
 
 

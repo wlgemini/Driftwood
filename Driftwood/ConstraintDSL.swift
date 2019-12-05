@@ -22,8 +22,8 @@
 //  SOFTWARE.
 
 
-/// Driftwood
-public struct Driftwood {
+/// ConstraintDSL
+public struct ConstraintDSL {
     
     /// init
     init(_ item: Item) { self._item = item }
@@ -33,8 +33,8 @@ public struct Driftwood {
 }
 
 
-/// Driftwood (Make, Update, Remove, Remake constraint)
-public extension Driftwood {
+/// ConstraintDSL (Make, Update, Remove, Remake constraint)
+public extension ConstraintDSL {
     
     /// make
     func make(file: String = #file, line: UInt = #line) -> ConstraintMaker {
@@ -59,8 +59,8 @@ public extension Driftwood {
 }
 
 
-/// Driftwood (Attribute)
-public extension Driftwood {
+/// ConstraintDSL (Attribute)
+public extension ConstraintDSL {
     
     //===========================================
     // AttributeX
@@ -140,8 +140,8 @@ public extension Driftwood {
 }
 
 
-/// Driftwood (Debugging)
-public extension Driftwood {
+/// ConstraintDSL (Debugging)
+public extension ConstraintDSL {
     
     /// attaching a debug-label for current View/LayoutGuide
     @discardableResult
