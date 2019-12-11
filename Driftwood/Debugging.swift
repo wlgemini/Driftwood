@@ -86,9 +86,9 @@ struct Debug {
     static func description(for obj: AnyObject) -> String {
         var desc = "\(Swift.type(of: obj))"
         if let item = obj as? Item {
-            // using `_storage` instead of `storage`, which avoid unnecessary ConstraintsStorage object makes.
-            if let lb = item._storage?.labeled {
-                desc += "`\(lb)`"
+            // using `_storage` instead of `storage`, which avoid unnecessary `Storage` object makes.
+            if let labeledName = item._storage?.labeledName {
+                desc += "`\(labeledName)`"
             }
         }
         desc += ":\(String(describing: Unmanaged.passUnretained(obj).toOpaque()))"

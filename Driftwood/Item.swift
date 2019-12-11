@@ -38,23 +38,23 @@ public extension Item {
 }
 
 
-/// Item (ConstraintsStorage)
+/// Item (Storage)
 extension Item {
     
     /// storage
-    var storage: ConstraintsStorage {
+    var storage: Storage {
         if let s = self._storage {
             return s
         } else {
-            let s = ConstraintsStorage()
+            let s = Storage()
             self._storage = s
             return s
         }
     }
     
     /// _storage
-    var _storage: ConstraintsStorage? {
-        get { objc_getAssociatedObject(self, &_storageKey) as? ConstraintsStorage }
+    var _storage: Storage? {
+        get { objc_getAssociatedObject(self, &_storageKey) as? Storage }
         set { objc_setAssociatedObject(self, &_storageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 }

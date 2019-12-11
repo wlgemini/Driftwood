@@ -37,26 +37,26 @@ public struct ConstraintDSL {
 public extension ConstraintDSL {
     
     /// make
-    func make(labeled lb: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        self._item.storage.labeled = lb
+    func make(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
+        self._item.storage.labeledName = name
         return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
     }
     
     /// update
-    func update(labeled lb: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintUpdater {
-        self._item.storage.labeled = lb
+    func update(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintUpdater {
+        self._item.storage.labeledName = name
         return ConstraintUpdater(item: self._item, location: Debug.Location(file, line))
     }
     
     /// remove
-    func remove(labeled lb: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintRemover {
-        self._item.storage.labeled = lb
+    func remove(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintRemover {
+        self._item.storage.labeledName = name
         return ConstraintRemover(item: self._item, location: Debug.Location(file, line))
     }
     
     /// remake
-    func remake(labeled lb: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        self._item.storage.labeled = lb
+    func remake(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
+        self._item.storage.labeledName = name
         self._item.storage.deactivateAll()
         return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
     }

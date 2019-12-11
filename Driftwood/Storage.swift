@@ -22,12 +22,12 @@
 //  SOFTWARE.
 
 
-/// ConstraintsStorage
-class ConstraintsStorage {
+/// Storage
+class Storage {
     
     // MARK: Debug
     /// labeled name for current Item
-    var labeled: String?
+    var labeledName: String?
     
     // MARK: Constraint activate & update & deactivate
     /// active constraint installed by driftwood
