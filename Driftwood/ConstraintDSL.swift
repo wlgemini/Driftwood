@@ -38,27 +38,23 @@ public extension ConstraintDSL {
     
     /// make
     func make(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        self._item.storage.labeledName = name
-        return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
+        ConstraintMaker(item: self._item, location: Debug.Location(file, line), labeled: name)
     }
     
     /// update
     func update(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintUpdater {
-        self._item.storage.labeledName = name
-        return ConstraintUpdater(item: self._item, location: Debug.Location(file, line))
+        ConstraintUpdater(item: self._item, location: Debug.Location(file, line), labeled: name)
     }
     
     /// remove
     func remove(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintRemover {
-        self._item.storage.labeledName = name
-        return ConstraintRemover(item: self._item, location: Debug.Location(file, line))
+        ConstraintRemover(item: self._item, location: Debug.Location(file, line), labeled: name)
     }
     
     /// remake
     func remake(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        self._item.storage.labeledName = name
         self._item.storage.deactivateAll()
-        return ConstraintMaker(item: self._item, location: Debug.Location(file, line))
+        return ConstraintMaker(item: self._item, location: Debug.Location(file, line), labeled: name)
     }
 }
 
