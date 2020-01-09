@@ -2,13 +2,9 @@
 # * https://www.objc.io/issues/6-build-tools/travis-ci/
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode11.3
 language: swift
-# cache: cocoapods
-# podfile: Example/Podfile
-# before_install:
-# - gem install cocoapods # Since Travis is not always on latest version
-# - pod install --project-directory=Example
-script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/Driftwood.xcworkspace -scheme Driftwood-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+xcode_workspace: Demo/Driftwood_iOS/Driftwood_iOS.xcworkspace
+xcode_scheme: Driftwood_iOS
+xcode_destination: platform=iOS Simulator,OS=13.1,name=iPhone 11
+podfile: Demo/Driftwood_iOS/Podfile
+
