@@ -2,25 +2,47 @@ name: Driftwood CI
 on: push
 
 jobs:
-  iOS_test: # job id
-    name: An iOS demo test # job name
-    runs-on: macos-latest  # operating system
-    
-    steps: # actions need to do.
-      - name: Checkout
-        uses: actions/checkout@v2
-      
-      - name: Install Pods Dependences
-        run: | # A multi-line command use '|'
-          pod repo update
+  macOS:
+    name: Test macOS 
+    runs-on: macOS-latest
+    env: 
+      DEVELOPER_DIR: /Applications/Xcode_11.1.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v2    
+      - name: macOS
+        run: |
           pod install
-        working-directory: Demo/Driftwood_iOS # shell's working driectory
-        shell: bash # use `bash` shell, which is default
-      
-      - name: CocoaPods Action
-        uses: ty0x2333/cocoapods-action@master
-        with:
-          workspace: Demo/Driftwood_iOS/Driftwood_iOS.xcworkspace
-          scheme: Driftwood_iOS
-          additional_build_params: -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.0'
-          additional_lint_params: --private
+          xcodebuild -workspace "Driftwood_macOS.xcworkspace" -scheme "Driftwood_macOS" -destination "platform=macOS" clean test | xcpretty
+        working-directory: Demo/Driftwood_macOS
+            
+  iOS:
+    name: Test iOS 
+    runs-on: macOS-latest
+    env: 
+      DEVELOPER_DIR: /Applications/Xcode_11.1.app/Contents/Developer
+    strategy:
+      matrix:
+        destination: ["OS=13.1,name=iPhone 11 Pro"] #, "OS=12.4,name=iPhone XS", "OS=11.4,name=iPhone X", "OS=10.3.1,name=iPhone SE"]
+    steps:
+      - uses: actions/checkout@v2            
+      - name: iOS
+        run: |
+          pod install
+          xcodebuild -workspace "Driftwood_iOS.xcworkspace" -scheme "Driftwood_iOS" -destination "platform=iOS" clean test | xcpretty
+        working-directory: Demo/Driftwood_iOS
+        
+  tvOS:
+    name: Test tvOS 
+    runs-on: macOS-latest
+    env: 
+      DEVELOPER_DIR: /Applications/Xcode_11.1.app/Contents/Developer
+    strategy:
+      matrix:
+        destination: ["OS=13.0,name=Apple TV 4K"] #, "OS=11.4,name=Apple TV 4K", "OS=10.2,name=Apple TV 1080p"]
+    steps:
+      - uses: actions/checkout@v2            
+      - name: tvOS
+        run: |
+          pod install
+          xcodebuild -workspace "Driftwood_tvOS.xcworkspace" -scheme "Driftwood_tvOS" -destination "platform=tvOS" clean test | xcpretty
+        working-directory: Demo/Driftwood_tvOS
