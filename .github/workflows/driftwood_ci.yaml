@@ -1,0 +1,23 @@
+name: Driftwood CI
+on: push
+
+jobs:
+  iOS_test: # job id
+    name: An iOS demo test # job name
+    runs-on: macos-latest  # operating system
+    steps: # actions need to do.
+      - uses: actions/checkout@v2
+      
+      - name: Install Pods Dependences
+        run: |
+          cd Demo/Driftwood_iOS
+          pod reop update
+          pod install
+        shell: bash
+      
+      - name: CocoaPods Action
+        uses: ty0x2333/cocoapods-action@0.2.0
+        with:
+          workspace: Demo/Driftwood_iOS/Driftwood_iOS.xcworkspace
+          scheme: Driftwood_iOS
+          additional_build_params: -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.0'
