@@ -1,5 +1,10 @@
 name: Driftwood CI
-on: push
+on: 
+  push:
+    paths: 
+      - '**.swift'
+      - '**.podspec'
+      - 'Demo/**'
 
 jobs:
   macOS:
