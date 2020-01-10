@@ -11,7 +11,7 @@ jobs:
       - name: Install Pods Dependences
         run: |
           cd Demo/Driftwood_iOS
-          pod reop update
+          pod repo update
           pod install
         shell: bash
       
