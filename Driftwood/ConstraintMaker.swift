@@ -166,9 +166,13 @@ public struct ConstraintMaker {
     //===========================================
     //
     /// init
-    init(item: Item, location: Debug.Location) {
+    init(item: Item, location: Debug.Location, labeled name: String?) {
         self._item = item
+        self._storage = item.storage
         self._location = location
+        if let nm = name {
+            self._storage.labeledName = nm
+        }
         
         // set translatesAutoresizingMaskIntoConstraints on View.
         if let view = self._item as? View {
@@ -195,7 +199,7 @@ public struct ConstraintMaker {
         }, message: "Attribute is not belong to 'X-axis'.")
         
         // 1. check if there was a constraint already installed by driftwood
-        guard self._item.storage.activeConstraint(for: attribute) == nil else {
+        guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(self._location, .make(attribute), self._item, message: "Duplicated constraint.")
             return self
         }
@@ -257,10 +261,10 @@ public struct ConstraintMaker {
         }
         
         // 3. get cached constraint
-        let con = self._item.storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
+        let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 4. activate cached constraint
-        self._item.storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
+        self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
         
         // 5. return self
         return self
@@ -281,7 +285,7 @@ public struct ConstraintMaker {
         }, message: "Attribute is not belong to 'Y-axis'.")
         
         // 1. check if there was a constraint already installed by driftwood
-        guard self._item.storage.activeConstraint(for: attribute) == nil else {
+        guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(self._location, .make(attribute), self._item, message: "Duplicated constraint.")
             return self
         }
@@ -335,10 +339,10 @@ public struct ConstraintMaker {
         }
         
         // 3. get cached constraint
-        let con = self._item.storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
+        let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 4. activate cached constraint
-        self._item.storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
+        self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
         
         // 5. return self
         return self
@@ -356,7 +360,7 @@ public struct ConstraintMaker {
         }, message: "Attribute is not belong to 'Size'.")
         
         // 1. check if there was a constraint already installed by driftwood
-        guard self._item.storage.activeConstraint(for: attribute) == nil else {
+        guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(self._location, .make(attribute), self._item, message: "Duplicated constraint.")
             return self
         }
@@ -377,10 +381,10 @@ public struct ConstraintMaker {
         }
         
         // 3. get cached constraint
-        let con = self._item.storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
+        let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
         
         // 4. activate cached constraint
-        self._item.storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
+        self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
         
         // 5. return self
         return self
@@ -388,6 +392,9 @@ public struct ConstraintMaker {
     
     /// item
     private unowned(safe) let _item: Item
+    
+    /// storage
+    private unowned(safe) let _storage: Storage
     
     /// location
     private let _location: Debug.Location

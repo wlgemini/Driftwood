@@ -166,9 +166,13 @@ public struct ConstraintRemover {
     //===========================================
     //
     /// init
-    init(item: Item, location: Debug.Location) {
+    init(item: Item, location: Debug.Location, labeled name: String?) {
         self._item = item
+        self._storage = item.storage
         self._location = location
+        if let nm = name {
+            self._storage.labeledName = nm
+        }
     }
     
     //===========================================
@@ -179,7 +183,7 @@ public struct ConstraintRemover {
     @discardableResult
     private func _remove(for attribute: Attribute) -> Self {
         // 0. deactivate a constraint installed by driftwood if any
-        guard let _ = self._item.storage.deactivate(for: attribute) else {
+        guard let _ = self._storage.deactivate(for: attribute) else {
             Debug.log(self._location, .remove(attribute), self._item, message: "No constraint.")
             return self
         }
@@ -190,6 +194,9 @@ public struct ConstraintRemover {
     
     /// item
     private unowned(safe) let _item: Item
+    
+    /// storage
+    private unowned(safe) let _storage: Storage
     
     /// location
     private let _location: Debug.Location
