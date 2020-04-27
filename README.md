@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/Driftwood.svg?style=flat)](https://cocoapods.org/pods/Driftwood)
 [![Platform](https://img.shields.io/cocoapods/p/Driftwood.svg?style=flat)](https://cocoapods.org/pods/Driftwood)
 
-English|[中文](README_zh.md)
+English|[中文](README_ZH.md)
 
 A lightweight, Swift library for AutoLayout.
 
