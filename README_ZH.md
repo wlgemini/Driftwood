@@ -170,7 +170,7 @@ view.dw.make(labeled: "MyView").left(0).left(0) // 给"MyView"添加了重复的
 
 ## Demo
 
-你可以下载这个仓库来查看更多的用法。
+你可以下载这个仓库来查看更多的使用方法。
 
 ## Author
 
