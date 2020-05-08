@@ -14,7 +14,7 @@ A lightweight, Swift library for AutoLayout.
 - iOS 8.0+/macOS 10.11+/tvOS 9.0+
 - Swift 4.2+
 
-## Usage
+## Installation
 
 Driftwood is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
 
@@ -22,7 +22,7 @@ Driftwood is available through [CocoaPods](https://cocoapods.org). To install it
 pod 'Driftwood'
 ```
 
-### Quick Start
+## Usage
 
 Driftwood is easy to use, you can make full constraints satisfication in just a few code.
 
