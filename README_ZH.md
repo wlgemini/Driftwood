@@ -25,12 +25,12 @@ pod 'Driftwood'
 
 Driftwood的使用很简单，你只需要简单几行代码就能完整的设置好约束。
 
-比如，一个`box`相对于`superview`的边距为20pt，代码如下：
+比如，一个`box`相对于`superview`的边距为0pt，代码如下：
 
 ```swift
 let box = UIView()
 superview.addSubview(box) // 先添加到superview上，才能再添加约束。
-box.dw.make().left(20).top(20).right(-20).bottom(-20)
+box.dw.make().left(0).top(0).right(0).bottom(0)
 ```
 
 或者另外一种写法：
@@ -38,7 +38,7 @@ box.dw.make().left(20).top(20).right(-20).bottom(-20)
 ```swift
 let box = UIView()
 superview.addSubview(box) // 先添加到superview上，才能再添加约束。
-box.dw.make().edge(insets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+box.dw.make().edge(insets: .zero)
 ```
 
 ### Attribute
