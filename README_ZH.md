@@ -14,14 +14,14 @@
 - iOS 8.0+/macOS 10.11+/tvOS 9.0+
 - Swift 4.2+
 
-## Usage
+## Installation
 
 Driftwood可以用 [CocoaPods](https://cocoapods.org)接入，需要在你的Podfile文件中加入：
 ```ruby
 pod 'Driftwood'
 ```
 
-### Quick Start
+## Usage
 
 Driftwood的使用很简单，你只需要简单几行代码就能完整的设置好约束。
 
