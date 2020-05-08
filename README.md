@@ -7,7 +7,7 @@
 
 English|[中文](README_ZH.md)
 
-A lightweight, Swift library for AutoLayout.
+Driftwood is a DSL to make Auto Layout easy on iOS, tvOS and macOS.
 
 ## Requirements
 
