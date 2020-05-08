@@ -26,19 +26,19 @@ pod 'Driftwood'
 
 Driftwood is easy to use, you can make full constraints satisfication in just a few code.
 
-Let's say we want to layout a box that is constrained to it’s superview’s edges with 20pts of padding.
+Let's say we want to layout a box that is constrained to it’s superview’s edges with 0pts of padding.
 
 ```swift
 let box = UIView()
 superview.addSubview(box)
-box.dw.make().left(20).top(20).right(-20).bottom(-20)
+box.dw.make().left(0).top(0).right(0).bottom(0)
 ```
 Or another way:
 
 ```swift
 let box = UIView()
 superview.addSubview(box)
-box.dw.make().edge(insets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+box.dw.make().edge(insets: .zero)
 ```
 
 ### Attribute
