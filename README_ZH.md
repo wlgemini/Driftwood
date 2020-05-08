@@ -7,7 +7,7 @@
 
 [English](README.md)|中文
 
-一个轻量的Swift自动布局框架。
+Driftwood is a DSL to make Auto Layout easy on iOS, tvOS and macOS.
 
 ## Requirements
 
