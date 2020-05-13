@@ -187,24 +187,13 @@ public struct ConstraintMaker {
     /// make X-axis's constraint
     @discardableResult
     private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> Self {
-        // 0. check if attribute belong to X-axis. (execute only in debug mode)
-        Debug.assert(self._location, .make(attribute), condition: {
-            switch attribute {
-            case .left, .right, .leading, .trailing, .centerX: return true
-                #if os(iOS) || os(tvOS)
-            case .leftMargin, .rightMargin, .leadingMargin, .trailingMargin, .centerXWithinMargins: return true
-                #endif
-            default: return false
-            }
-        }, message: "Attribute is not belong to 'X-axis'.")
-        
-        // 1. check if there was a constraint already installed by driftwood
+        // 0. check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(self._location, .make(attribute), self._item, message: "Duplicated constraint.")
             return self
         }
         
-        // 2. retrieve (toItem & toAttribute) from attributeX
+        // 1. retrieve (toItem & toAttribute) from attributeX
         let toAttribute: Attribute
         let toItem: Item
         switch attributeX {
@@ -260,37 +249,26 @@ public struct ConstraintMaker {
             #endif
         }
         
-        // 3. get cached constraint
+        // 2. get cached constraint
         let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
-        // 4. activate cached constraint
+        // 3. activate cached constraint
         self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
         
-        // 5. return self
+        // 4. return self
         return self
     }
     
     /// make Y-axis's constraint
     @discardableResult
     private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> Self {
-        // 0. check if attribute belong to Y-axis. (execute only in debug mode)
-        Debug.assert(self._location, .make(attribute), condition: {
-            switch attribute {
-            case .top, .bottom, .centerY, .lastBaseline, .firstBaseline: return true
-                #if os(iOS) || os(tvOS)
-            case .topMargin, .bottomMargin, .centerYWithinMargins: return true
-                #endif
-            default: return false
-            }
-        }, message: "Attribute is not belong to 'Y-axis'.")
-        
-        // 1. check if there was a constraint already installed by driftwood
+        // 0. check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(self._location, .make(attribute), self._item, message: "Duplicated constraint.")
             return self
         }
         
-        // 2. retrieve (toItem & toAttribute) from attributeY
+        // 1. retrieve (toItem & toAttribute) from attributeY
         let toAttribute: Attribute
         let toItem: Item
         switch attributeY {
@@ -338,34 +316,26 @@ public struct ConstraintMaker {
             #endif
         }
         
-        // 3. get cached constraint
+        // 2. get cached constraint
         let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
-        // 4. activate cached constraint
+        // 3. activate cached constraint
         self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
         
-        // 5. return self
+        // 4. return self
         return self
     }
     
     /// make Size's constraint
     @discardableResult
     private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> Self {
-        // 0. check if attribute belong to size. (execute only in debug mode)
-        Debug.assert(self._location, .make(attribute), condition: {
-            switch attribute {
-            case .width, .height: return true
-            default: return false
-            }
-        }, message: "Attribute is not belong to 'Size'.")
-        
-        // 1. check if there was a constraint already installed by driftwood
+        // 0. check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(self._location, .make(attribute), self._item, message: "Duplicated constraint.")
             return self
         }
         
-        // 2. retrieve (toItem & toAttribute) from attributeSize
+        // 1. retrieve (toItem & toAttribute) from attributeSize
         var toAttribute: Attribute?
         var toItem: Item?
         if let attrSize = attributeSize {
@@ -380,13 +350,13 @@ public struct ConstraintMaker {
             }
         }
         
-        // 3. get cached constraint
+        // 2. get cached constraint
         let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
         
-        // 4. activate cached constraint
+        // 3. activate cached constraint
         self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
         
-        // 5. return self
+        // 4. return self
         return self
     }
     
