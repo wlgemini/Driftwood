@@ -23,7 +23,7 @@
 
 
 /// Storage
-class Storage {
+final class Storage {
     
     // MARK: Debug
     /// labeled name for current Item
@@ -102,10 +102,6 @@ class Storage {
         if let c = self._cachedConstraints[conKey] {
             // 1.1 cached
             con = c
-            
-            // check if cached constraint is 'active'
-            Debug.assert(nil, ._cache(attribute), condition: { con.isActive == false }, message: "Found 'active' constraint.")
-            
             con.constant = constant
             con.priority = priority
         } else {

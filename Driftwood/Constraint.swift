@@ -23,7 +23,7 @@
 
 
 /// Constraint
-class Constraint: LayoutConstraint {
+final class Constraint: LayoutConstraint {
     
     /// location (never nil when used)
     var location: Debug.Location!

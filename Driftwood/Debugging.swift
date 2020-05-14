@@ -42,22 +42,6 @@ struct Debug {
         }())
     }
     
-    /// assert (execute only in debug mode)
-    ///
-    ///     "<Driftwood.@ViewController.swift#23.[make.left]> Error: "
-    ///     "<Driftwood.[make.left]> Error: "
-    ///
-    static func assert(_ location: Location?, _ operation: Operation, condition: () -> Bool, message: String) {
-        Swift.assert(condition(), {
-            var desc = "<"
-            desc += Self.prefix(location, operation)
-            desc += ">"
-            desc += " Error: "
-            desc += message
-            return desc
-        }())
-    }
-    
     /// debug prefix
     ///
     ///     "Driftwood.@ViewController.swift#23.[make.left]"
@@ -166,7 +150,10 @@ extension Debug {
         }
         
         /// description
-        var description: String { "@\((self.file as NSString).lastPathComponent)#\(self.line)" }
+        var description: String {
+            let fileName = self.file.components(separatedBy: "/").last ?? ""
+            return "@\(fileName)#\(self.line)"
+        }
     }
     
     
@@ -179,15 +166,12 @@ extension Debug {
         
         case remove(Attribute)
         
-        case _cache(Attribute)
-        
         /// description
         var description: String {
             switch self {
             case .make(let attribute):          return "make.\(Debug.description(for: attribute))"
             case .update(let attribute):        return "update.\(Debug.description(for: attribute))"
             case .remove(let attribute):        return "remove.\(Debug.description(for: attribute))"
-            case ._cache(let attribute):        return "_cache.\(Debug.description(for: attribute))"
             }
         }
     }

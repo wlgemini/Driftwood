@@ -30,6 +30,7 @@ public extension ConstraintUpdater {
     //===========================================
     //
     /// centerXY
+    @inlinable
     @discardableResult
     func centerXY(offsets: CGPoint? = nil, priority: Priority? = nil) -> Self {
         self.centerX(offsets?.x, priority: priority)
@@ -38,6 +39,7 @@ public extension ConstraintUpdater {
     }
     
     /// edge
+    @inlinable
     @discardableResult
     func edge(insets: EdgeInsets? = nil, priority: Priority? = nil) -> Self {
         self.leading(insets?.left, priority: priority)

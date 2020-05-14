@@ -185,7 +185,6 @@ public struct ConstraintMaker {
     //===========================================
     //
     /// make X-axis's constraint
-    @discardableResult
     private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> Self {
         // 0. check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
@@ -260,7 +259,6 @@ public struct ConstraintMaker {
     }
     
     /// make Y-axis's constraint
-    @discardableResult
     private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> Self {
         // 0. check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
@@ -327,7 +325,6 @@ public struct ConstraintMaker {
     }
     
     /// make Size's constraint
-    @discardableResult
     private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> Self {
         // 0. check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {

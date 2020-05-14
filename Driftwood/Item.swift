@@ -34,7 +34,7 @@ public protocol Item: AnyObject {
 public extension Item {
     
     /// dw
-    var dw: ConstraintDSL { ConstraintDSL(self) }
+    var dw: ConstraintDSL<Self> { ConstraintDSL(item: self) }
 }
 
 

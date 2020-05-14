@@ -30,30 +30,35 @@ public extension ConstraintMaker {
     //===========================================
     //
     /// left to superview
+    @inlinable
     @discardableResult
     func left(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.left(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// right to superview
+    @inlinable
     @discardableResult
     func right(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.right(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// leading to superview
+    @inlinable
     @discardableResult
     func leading(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.leading(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// trailing to superview
+    @inlinable
     @discardableResult
     func trailing(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.trailing(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// centerX to superview
+    @inlinable
     @discardableResult
     func centerX(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.centerX(constant, by: relation, to: .superview, priority: priority)
@@ -61,30 +66,35 @@ public extension ConstraintMaker {
     
     #if os(iOS) || os(tvOS)
     /// leftMargin to superview
+    @inlinable
     @discardableResult
     func leftMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.leftMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// rightMargin to superview
+    @inlinable
     @discardableResult
     func rightMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.rightMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// leadingMargin to superview
+    @inlinable
     @discardableResult
     func leadingMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.leadingMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// trailingMargin to superview
+    @inlinable
     @discardableResult
     func trailingMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.trailingMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// centerXWithinMargins to superview
+    @inlinable
     @discardableResult
     func centerXWithinMargins(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.centerXWithinMargins(constant, by: relation, to: .superview, priority: priority)
@@ -96,30 +106,35 @@ public extension ConstraintMaker {
     //===========================================
     //
     /// top to superview
+    @inlinable
     @discardableResult
     func top(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.top(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// bottom to superview
+    @inlinable
     @discardableResult
     func bottom(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.bottom(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// centerY to superview
+    @inlinable
     @discardableResult
     func centerY(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.centerY(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// lastBaseline to superview
+    @inlinable
     @discardableResult
     func lastBaseline(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.lastBaseline(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// firstBaseline to superview
+    @inlinable
     @discardableResult
     func firstBaseline(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.firstBaseline(constant, by: relation, to: .superview, priority: priority)
@@ -127,18 +142,21 @@ public extension ConstraintMaker {
     
     #if os(iOS) || os(tvOS)
     /// topMargin to superview
+    @inlinable
     @discardableResult
     func topMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.topMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// bottomMargin to superview
+    @inlinable
     @discardableResult
     func bottomMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.bottomMargin(constant, by: relation, to: .superview, priority: priority)
     }
     
     /// centerYWithinMargins to superview
+    @inlinable
     @discardableResult
     func centerYWithinMargins(_ constant: CGFloat, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.centerYWithinMargins(constant, by: relation, to: .superview, priority: priority)
@@ -150,18 +168,21 @@ public extension ConstraintMaker {
     //===========================================
     //
     /// width
+    @inlinable
     @discardableResult
     func width(by relation: Relation = Preferences.relation, to attributeSize: AttributeSize, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
         self.width(0.0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
     }
     
     /// height
+    @inlinable
     @discardableResult
     func height(by relation: Relation = Preferences.relation, to attributeSize: AttributeSize, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
         self.height(0.0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
     }
     
     /// size
+    @inlinable
     @discardableResult
     func size(by relation: Relation = Preferences.relation, to item: Item, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
         self.width(0.0, by: relation, to: .width(item), multiply: multiply, priority: priority)
@@ -174,6 +195,7 @@ public extension ConstraintMaker {
     //===========================================
     //
     /// centerXY to superview
+    @inlinable
     @discardableResult
     func centerXY(offsets: CGPoint, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.centerX(offsets.x, by: relation, to: .superview, priority: priority)
@@ -182,6 +204,7 @@ public extension ConstraintMaker {
     }
     
     /// centerXY
+    @inlinable
     @discardableResult
     func centerXY(offsets: CGPoint, by relation: Relation = Preferences.relation, to item: Item, priority: Priority = Preferences.priority) -> Self {
         self.centerX(offsets.x, by: relation, to: .centerX(item), priority: priority)
@@ -190,6 +213,7 @@ public extension ConstraintMaker {
     }
     
     /// edge to superview
+    @inlinable
     @discardableResult
     func edge(insets: EdgeInsets, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
         self.leading(insets.left, by: relation, to: .superview, priority: priority)
@@ -200,6 +224,7 @@ public extension ConstraintMaker {
     }
     
     /// edge
+    @inlinable
     @discardableResult
     func edge(insets: EdgeInsets, by relation: Relation = Preferences.relation, to item: Item, priority: Priority = Preferences.priority) -> Self {
         self.leading(insets.left, by: relation, to: .leading(item), priority: priority)

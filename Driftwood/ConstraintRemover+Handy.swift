@@ -30,6 +30,7 @@ public extension ConstraintRemover {
     //===========================================
     //
     /// size
+    @inlinable
     @discardableResult
     func size() -> Self {
         self.width()
@@ -42,6 +43,7 @@ public extension ConstraintRemover {
     //===========================================
     //
     /// centerXY
+    @inlinable
     @discardableResult
     func centerXY() -> Self {
         self.centerX()
@@ -50,6 +52,7 @@ public extension ConstraintRemover {
     }
     
     /// edge
+    @inlinable
     @discardableResult
     func edge() -> Self {
         self.leading()

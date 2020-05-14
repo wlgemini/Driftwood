@@ -23,13 +23,10 @@
 
 
 /// ConstraintDSL
-public struct ConstraintDSL {
-    
-    /// init
-    init(_ item: Item) { self._item = item }
+public struct ConstraintDSL<T: Item> {
     
     /// item
-    private unowned(safe) let _item: Item
+    public unowned(safe) let item: T
 }
 
 
@@ -38,23 +35,23 @@ public extension ConstraintDSL {
     
     /// make
     func make(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        ConstraintMaker(item: self._item, location: Debug.Location(file, line), labeled: name)
+        ConstraintMaker(item: self.item, location: Debug.Location(file, line), labeled: name)
     }
     
     /// update
     func update(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintUpdater {
-        ConstraintUpdater(item: self._item, location: Debug.Location(file, line), labeled: name)
+        ConstraintUpdater(item: self.item, location: Debug.Location(file, line), labeled: name)
     }
     
     /// remove
     func remove(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintRemover {
-        ConstraintRemover(item: self._item, location: Debug.Location(file, line), labeled: name)
+        ConstraintRemover(item: self.item, location: Debug.Location(file, line), labeled: name)
     }
     
     /// remake
     func remake(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        self._item.storage.deactivateAll()
-        return ConstraintMaker(item: self._item, location: Debug.Location(file, line), labeled: name)
+        self.item.storage.deactivateAll()
+        return ConstraintMaker(item: self.item, location: Debug.Location(file, line), labeled: name)
     }
 }
 
@@ -67,35 +64,45 @@ public extension ConstraintDSL {
     //===========================================
     //
     /// left
-    var left: AttributeX { .left(self._item) }
+    @inlinable
+    var left: AttributeX { .left(self.item) }
     
     /// right
-    var right: AttributeX { .right(self._item) }
+    @inlinable
+    var right: AttributeX { .right(self.item) }
     
     /// leading
-    var leading: AttributeX { .leading(self._item) }
+    @inlinable
+    var leading: AttributeX { .leading(self.item) }
     
     /// trailing
-    var trailing: AttributeX { .trailing(self._item) }
+    @inlinable
+    var trailing: AttributeX { .trailing(self.item) }
     
     /// centerX
-    var centerX: AttributeX { .centerX(self._item) }
+    @inlinable
+    var centerX: AttributeX { .centerX(self.item) }
     
     #if os(iOS) || os(tvOS)
     /// leftMargin
-    var leftMargin: AttributeX { .leftMargin(self._item) }
+    @inlinable
+    var leftMargin: AttributeX { .leftMargin(self.item) }
     
     /// rightMargin
-    var rightMargin: AttributeX { .rightMargin(self._item) }
+    @inlinable
+    var rightMargin: AttributeX { .rightMargin(self.item) }
     
     /// leadingMargin
-    var leadingMargin: AttributeX { .leadingMargin(self._item) }
+    @inlinable
+    var leadingMargin: AttributeX { .leadingMargin(self.item) }
     
     /// trailingMargin
-    var trailingMargin: AttributeX { .trailingMargin(self._item) }
+    @inlinable
+    var trailingMargin: AttributeX { .trailingMargin(self.item) }
     
     /// centerXWithinMargins
-    var centerXWithinMargins: AttributeX { .centerXWithinMargins(self._item) }
+    @inlinable
+    var centerXWithinMargins: AttributeX { .centerXWithinMargins(self.item) }
     #endif
     
     //===========================================
@@ -103,29 +110,37 @@ public extension ConstraintDSL {
     //===========================================
     //
     /// top
-    var top: AttributeY { .top(self._item) }
+    @inlinable
+    var top: AttributeY { .top(self.item) }
     
     /// bottom
-    var bottom: AttributeY { .bottom(self._item) }
+    @inlinable
+    var bottom: AttributeY { .bottom(self.item) }
     
     /// centerY
-    var centerY: AttributeY { .centerY(self._item) }
+    @inlinable
+    var centerY: AttributeY { .centerY(self.item) }
     
     /// lastBaseline
-    var lastBaseline: AttributeY { .lastBaseline(self._item) }
+    @inlinable
+    var lastBaseline: AttributeY { .lastBaseline(self.item) }
     
     /// firstBaseline
-    var firstBaseline: AttributeY { .firstBaseline(self._item) }
+    @inlinable
+    var firstBaseline: AttributeY { .firstBaseline(self.item) }
     
     #if os(iOS) || os(tvOS)
     /// topMargin
-    var topMargin: AttributeY { .topMargin(self._item) }
+    @inlinable
+    var topMargin: AttributeY { .topMargin(self.item) }
     
     /// bottomMargin
-    var bottomMargin: AttributeY { .bottomMargin(self._item) }
+    @inlinable
+    var bottomMargin: AttributeY { .bottomMargin(self.item) }
     
     /// centerYWithinMargins
-    var centerYWithinMargins: AttributeY { .centerYWithinMargins(self._item) }
+    @inlinable
+    var centerYWithinMargins: AttributeY { .centerYWithinMargins(self.item) }
     #endif
     
     //===========================================
@@ -133,8 +148,10 @@ public extension ConstraintDSL {
     //===========================================
     //
     /// width
-    var width: AttributeSize { .width(self._item) }
+    @inlinable
+    var width: AttributeSize { .width(self.item) }
     
     /// height
-    var height: AttributeSize { .height(self._item) }
+    @inlinable
+    var height: AttributeSize { .height(self.item) }
 }
