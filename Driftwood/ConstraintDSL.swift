@@ -30,7 +30,7 @@ public struct ConstraintDSL<T: Item> {
 }
 
 
-/// ConstraintDSL (Make, Update, Remove, Remake constraint)
+/// ConstraintDSL (Make, Update, Remove constraint)
 public extension ConstraintDSL {
     
     /// make
@@ -46,12 +46,6 @@ public extension ConstraintDSL {
     /// remove
     func remove(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintRemover {
         ConstraintRemover(item: self.item, location: Debug.Location(file, line), labeled: name)
-    }
-    
-    /// remake
-    func remake(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        self.item.storage.deactivateAll()
-        return ConstraintMaker(item: self.item, location: Debug.Location(file, line), labeled: name)
     }
 }
 
