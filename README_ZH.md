@@ -129,6 +129,14 @@ view.dw.remake().left(20).top(30).width(20).height(10) // 先移除view的相关
 view.dw.remove().left().top()
 ```
 
+### dw.removeAll()
+
+有时候，你可能只想移除之前设置的所有约束，你可以使用 `dw.removeAll()`来移除当前view上通过Driftwood设置的所有约束。
+
+```swift
+view.dw.removeAll()
+```
+
 ### LayoutGuide
 
 Driftwood可以很方便的对LayoutGuide应用约束。
