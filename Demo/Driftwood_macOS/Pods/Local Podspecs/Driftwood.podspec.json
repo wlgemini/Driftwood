@@ -1,6 +1,6 @@
 {
   "name": "Driftwood",
-  "version": "5.1.5",
+  "version": "5.2.2",
   "summary": "A lightweight, Swift library for AutoLayout.",
   "homepage": "https://github.com/wlgemini/Driftwood",
   "license": {
@@ -12,14 +12,17 @@
   },
   "source": {
     "git": "https://github.com/wlgemini/Driftwood.git",
-    "tag": "5.1.5"
+    "tag": "5.2.2"
   },
-  "swift_versions": "5.1",
+  "swift_versions": [
+    "5.1",
+    "5.2"
+  ],
   "platforms": {
     "ios": "8.0",
     "osx": "10.11",
     "tvos": "9.0"
   },
   "source_files": "Driftwood/*.swift",
-  "swift_version": "5.1"
+  "swift_version": "5.2"
 }
