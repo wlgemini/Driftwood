@@ -1,5 +1,5 @@
 PODS:
-  - Driftwood (5.2.1)
+  - Driftwood (5.2.2)
 
 DEPENDENCIES:
   - Driftwood (from `../../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  Driftwood: 5056f8b72e0a6adfec153a2badc57c7aab647de5
+  Driftwood: 0980cdefdf43f1cf88892921e0a8b22038d9ca1d
 
 PODFILE CHECKSUM: 2576c40cdb93abafef768f43323c2486df8bc558
 

@@ -25,5 +25,5 @@
 /// View (Item)
 extension View: Item {
     
-    public var dw_superview: Item? { self.superview }
+    public var dw: ConstraintDSL { ConstraintDSL(item: self, superitem: self.superview) }
 }

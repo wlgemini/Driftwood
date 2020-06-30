@@ -25,7 +25,7 @@
 /// AttributeX
 public enum AttributeX {
     
-    case superview
+    case superitem
     
     case left(Item)
     
@@ -54,7 +54,7 @@ public enum AttributeX {
 /// AttributeY
 public enum AttributeY {
     
-    case superview
+    case superitem
     
     case top(Item)
     

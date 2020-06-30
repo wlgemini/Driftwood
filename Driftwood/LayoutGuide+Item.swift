@@ -26,5 +26,5 @@
 @available(iOS 9.0, macOS 10.11, *)
 extension LayoutGuide: Item {
     
-    public var dw_superview: Item? { self.owningView }
+    public var dw: ConstraintDSL { ConstraintDSL(item: self, superitem: self.owningView) }
 }

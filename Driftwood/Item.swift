@@ -25,16 +25,8 @@
 /// Item
 public protocol Item: AnyObject {
     
-    /// superview
-    var dw_superview: Item? { get }
-}
-
-
-/// Item (ConstraintDSL)
-public extension Item {
-    
     /// dw
-    var dw: ConstraintDSL<Self> { ConstraintDSL(item: self) }
+    var dw: ConstraintDSL { get }
 }
 
 

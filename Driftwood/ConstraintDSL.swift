@@ -23,10 +23,13 @@
 
 
 /// ConstraintDSL
-public struct ConstraintDSL<T: Item> {
+public struct ConstraintDSL {
     
     /// item
-    public unowned(safe) let item: T
+    public unowned(safe) let item: Item
+
+    /// superitem
+    public unowned(safe) let superitem: Item?
 }
 
 
@@ -35,17 +38,17 @@ public extension ConstraintDSL {
     
     /// make
     func make(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        ConstraintMaker(item: self.item, location: Debug.Location(file, line), labeled: name)
+        ConstraintMaker(dsl: self, location: Debug.Location(file, line), labeled: name)
     }
     
     /// update
     func update(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintUpdater {
-        ConstraintUpdater(item: self.item, location: Debug.Location(file, line), labeled: name)
+        ConstraintUpdater(dsl: self, location: Debug.Location(file, line), labeled: name)
     }
     
     /// remove
     func remove(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintRemover {
-        ConstraintRemover(item: self.item, location: Debug.Location(file, line), labeled: name)
+        ConstraintRemover(dsl: self, location: Debug.Location(file, line), labeled: name)
     }
 }
 

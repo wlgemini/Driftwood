@@ -28,7 +28,7 @@ public extension ConstraintDSL {
     /// remake
     func remake(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
         self.item.storage.deactivateAll()
-        return ConstraintMaker(item: self.item, location: Debug.Location(file, line), labeled: name)
+        return ConstraintMaker(dsl: self, location: Debug.Location(file, line), labeled: name)
     }
     
     /// remove all

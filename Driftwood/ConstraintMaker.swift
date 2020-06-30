@@ -166,16 +166,16 @@ public struct ConstraintMaker {
     //===========================================
     //
     /// init
-    init(item: Item, location: Debug.Location, labeled name: String?) {
-        self._item = item
-        self._storage = item.storage
+    init(dsl: ConstraintDSL, location: Debug.Location, labeled name: String?) {
+        self._dsl = dsl
+        self._storage = dsl.item.storage
         self._location = location
         if let nm = name {
             self._storage.labeledName = nm
         }
         
         // set translatesAutoresizingMaskIntoConstraints on View.
-        if let view = self._item as? View {
+        if let view = self._dsl.item as? View {
             view.translatesAutoresizingMaskIntoConstraints = Preferences.translatesAutoresizingMaskIntoConstraints
         }
     }
@@ -188,7 +188,7 @@ public struct ConstraintMaker {
     private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> Self {
         // 0. check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
-            Debug.log(self._location, .make(attribute), self._item, message: "Duplicated constraint.")
+            Debug.log(self._location, .make(attribute), self._dsl.item, message: "Duplicated constraint.")
             return self
         }
         
@@ -196,14 +196,14 @@ public struct ConstraintMaker {
         let toAttribute: Attribute
         let toItem: Item
         switch attributeX {
-        case .superview:
-            // check if there is an superview
-            guard let superview = self._item.dw_superview else {
-                Debug.log(self._location, .make(attribute), self._item, message: "No superview.")
+        case .superitem:
+            // check if there is an superview/owningView
+            guard let superitem = self._dsl.superitem else {
+                Debug.log(self._location, .make(attribute), self._dsl.item, message: "No superview/owningView.")
                 return self
             }
             toAttribute = attribute
-            toItem = superview
+            toItem = superitem
             
         case .left(let item):
             toAttribute = .left
@@ -249,7 +249,7 @@ public struct ConstraintMaker {
         }
         
         // 2. get cached constraint
-        let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
+        let con = self._storage.constraint(item: self._dsl.item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 3. activate cached constraint
         self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
@@ -262,7 +262,7 @@ public struct ConstraintMaker {
     private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> Self {
         // 0. check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
-            Debug.log(self._location, .make(attribute), self._item, message: "Duplicated constraint.")
+            Debug.log(self._location, .make(attribute), self._dsl.item, message: "Duplicated constraint.")
             return self
         }
         
@@ -270,14 +270,14 @@ public struct ConstraintMaker {
         let toAttribute: Attribute
         let toItem: Item
         switch attributeY {
-        case .superview:
-            // check if there is an superview
-            guard let superview = self._item.dw_superview else {
-                Debug.log(self._location, .make(attribute), self._item, message: "No superview.")
+        case .superitem:
+            // check if there is an superview/owningView
+            guard let superitem = self._dsl.superitem else {
+                Debug.log(self._location, .make(attribute), self._dsl.item, message: "No superview/owningView.")
                 return self
             }
             toAttribute = attribute
-            toItem = superview
+            toItem = superitem
             
         case .top(let item):
             toAttribute = .top
@@ -315,7 +315,7 @@ public struct ConstraintMaker {
         }
         
         // 2. get cached constraint
-        let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
+        let con = self._storage.constraint(item: self._dsl.item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 3. activate cached constraint
         self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
@@ -328,7 +328,7 @@ public struct ConstraintMaker {
     private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> Self {
         // 0. check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
-            Debug.log(self._location, .make(attribute), self._item, message: "Duplicated constraint.")
+            Debug.log(self._location, .make(attribute), self._dsl.item, message: "Duplicated constraint.")
             return self
         }
         
@@ -348,7 +348,7 @@ public struct ConstraintMaker {
         }
         
         // 2. get cached constraint
-        let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
+        let con = self._storage.constraint(item: self._dsl.item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
         
         // 3. activate cached constraint
         self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
@@ -357,8 +357,8 @@ public struct ConstraintMaker {
         return self
     }
     
-    /// item
-    private unowned(safe) let _item: Item
+    /// dsl
+    private let _dsl: ConstraintDSL
     
     /// storage
     private unowned(safe) let _storage: Storage

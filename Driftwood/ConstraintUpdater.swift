@@ -166,9 +166,9 @@ public struct ConstraintUpdater {
     //===========================================
     //
     /// init
-    init(item: Item, location: Debug.Location, labeled name: String?) {
-        self._item = item
-        self._storage = item.storage
+    init(dsl: ConstraintDSL, location: Debug.Location, labeled name: String?) {
+        self._dsl = dsl
+        self._storage = dsl.item.storage
         self._location = location
         if let nm = name {
             self._storage.labeledName = nm
@@ -184,7 +184,7 @@ public struct ConstraintUpdater {
     private func _update(for attribute: Attribute, constant: CGFloat?, priority: Priority?) -> Self {
         // 0. check if there was a constraint already installed by driftwood
         guard let con = self._storage.activeConstraint(for: attribute) else {
-            Debug.log(self._location, .update(attribute), self._item, message: "No constraint.")
+            Debug.log(self._location, .update(attribute), self._dsl.item, message: "No constraint.")
             return self
         }
         
@@ -195,8 +195,8 @@ public struct ConstraintUpdater {
         return self
     }
     
-    /// item
-    private unowned(safe) let _item: Item
+    /// dsl
+    private let _dsl: ConstraintDSL
     
     /// storage
     private unowned(safe) let _storage: Storage
