@@ -61,9 +61,7 @@ final class Storage {
         
         // update constraint.priority
         if let priority = priority {
-            con.isActive = false
             con.priority = priority
-            con.isActive = true
         }
     }
     
@@ -99,7 +97,7 @@ final class Storage {
         
         // 1. retrive a constraint from cache, if any
         let con: Constraint
-        if let c = self._cachedConstraints[conKey] {
+        if let c = self._cachedConstraints[conKey], Priority.isSafeToUpdatePriority(from: c.priority, to: priority) {
             // 1.1 cached
             con = c
             con.constant = constant

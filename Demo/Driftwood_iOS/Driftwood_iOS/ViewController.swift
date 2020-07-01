@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Preferences.priority = .required
+        
         self.vTop = self.view.createSubView()
         self.vTop.dw.make(labeled: "Top").bottom(0, to: self.view.safeAreaLayoutGuide.dw.top).top(0).leading(0).trailing(0)
         
@@ -35,8 +37,8 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
-        self.vCenter.dw.update().centerXY(offsets: CGPoint(x: 0, y: 100))
-        self.vLeading.dw.update().height(150)
+        self.vCenter.dw.remake().centerX(0, priority: .defaultLow).centerY(100, priority: .defaultLow).width(200, priority: .defaultHigh).height(300, priority: .defaultHigh)
+        self.vLeading.dw.update().height(150, priority: .defaultHigh)
         self.vTrailing.dw.update().height(200)
     }
 }

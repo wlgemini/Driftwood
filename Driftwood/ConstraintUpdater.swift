@@ -188,10 +188,18 @@ public struct ConstraintUpdater {
             return self
         }
         
-        // 1. update this constraint
+        // 1. check is safe to update priority
+        if let priority = priority {
+            guard Priority.isSafeToUpdatePriority(from: con.priority, to: priority) else {
+                Debug.log(self._location, .update(attribute), self._dsl.item, message: "The priority change from/to required is not allowed.")
+                return self
+            }
+        }
+        
+        // 2. update this constraint
         self._storage.update(con, constant: constant, priority: priority, location: self._location, operation: .update(attribute))
         
-        // 2. return self
+        // 3. return self
         return self
     }
     

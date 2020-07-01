@@ -23,7 +23,7 @@
 
 
 /// Preferences
-public struct Preferences {}
+public enum Preferences {}
 
 
 /// Preferences (Default settings for View)
@@ -44,5 +44,5 @@ public extension Preferences {
     static let multiply: CGFloat = 1.0
     
     /// priority (Changeable)
-    static var priority: Priority = .required
+    static var priority: Priority = Priority.required.lower
 }
