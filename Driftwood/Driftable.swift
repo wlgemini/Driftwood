@@ -22,44 +22,23 @@
 //  SOFTWARE.
 
 
-/// ItemPair
-public struct ItemPair {
+/// Protocol describing the `dw` extension points for Driftwood extended types.
+public protocol Driftable {
     
-    /// item
-    public unowned(unsafe) let item: Item
-
-    /// superitem
-    public unowned(unsafe) let superitem: Item?
+    /// Subject
+    associatedtype Subject
     
-    
+    /// `dw` prefix
+    var dw: Wood<Subject> { get }
 }
 
 
-/// Item
-public protocol Item: AnyObject {}
+/// Driftable (`dw`)
+public extension Driftable {
 
-
-/// Item (Storage)
-extension Item {
-    
-    /// storage
-    var storage: Storage {
-        if let s = self._storage {
-            return s
-        } else {
-            let s = Storage()
-            self._storage = s
-            return s
-        }
-    }
-    
-    /// _storage
-    var _storage: Storage? {
-        get { objc_getAssociatedObject(self, &_storageKey) as? Storage }
-        set { objc_setAssociatedObject(self, &_storageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
-    }
+    /// `dw` prefix
+    var dw: Wood<Self> { Wood(self) }
 }
 
 
-/// _storage Key
-private var _storageKey: Void?
+

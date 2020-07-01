@@ -22,44 +22,14 @@
 //  SOFTWARE.
 
 
-/// ItemPair
-public struct ItemPair {
+/// Wood
+public struct Wood<Subject> {
     
-    /// item
-    public unowned(unsafe) let item: Item
+    /// subject
+    public private(set) var subject: Subject
 
-    /// superitem
-    public unowned(unsafe) let superitem: Item?
-    
-    
-}
-
-
-/// Item
-public protocol Item: AnyObject {}
-
-
-/// Item (Storage)
-extension Item {
-    
-    /// storage
-    var storage: Storage {
-        if let s = self._storage {
-            return s
-        } else {
-            let s = Storage()
-            self._storage = s
-            return s
-        }
-    }
-    
-    /// _storage
-    var _storage: Storage? {
-        get { objc_getAssociatedObject(self, &_storageKey) as? Storage }
-        set { objc_setAssociatedObject(self, &_storageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    /// init
+    public init(_ subject: Subject) {
+        self.subject = subject
     }
 }
-
-
-/// _storage Key
-private var _storageKey: Void?
