@@ -26,10 +26,10 @@
 public struct ConstraintDSL {
     
     /// item
-    public unowned(safe) let item: Item
+    public unowned(unsafe) let item: Item
 
     /// superitem
-    public unowned(safe) let superitem: Item?
+    public unowned(unsafe) let superitem: Item?
 }
 
 

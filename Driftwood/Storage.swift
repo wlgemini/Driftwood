@@ -97,7 +97,7 @@ final class Storage {
         
         // 1. retrive a constraint from cache, if any
         let con: Constraint
-        if let c = self._cachedConstraints[conKey], Priority.isSafeToUpdatePriority(from: c.priority, to: priority) {
+        if let c = self._cachedConstraints[conKey], Priority.isSafeToChangePriority(from: c.priority, to: priority) {
             // 1.1 cached
             con = c
             con.constant = constant

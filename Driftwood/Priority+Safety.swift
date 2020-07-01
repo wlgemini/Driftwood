@@ -22,11 +22,17 @@
 //  SOFTWARE.
 
 
-/// Priority (Safer)
+/// Priority (Safety)
 extension Priority {
     
+    /// Min optional priority
+    static let minOptional: Priority = Priority(rawValue: 1)
+    
+    /// Max optional priority
+    static let maxOptional: Priority = Priority(rawValue: Priority.required.rawValue - 1)
+    
     /// Get a lower priority (aka: `current - 1`), min to `1`
-    public var lower: Priority {
+    var lower: Priority {
         if self.rawValue <= Priority.minOptional.rawValue {
             return Priority.minOptional
         } else {
@@ -35,7 +41,7 @@ extension Priority {
     }
     
     /// Get a higher priority (aka: `current + 1`), max to `required - 1`
-    public var higher: Priority {
+    var higher: Priority {
         if self.rawValue >= Priority.maxOptional.rawValue {
             return Priority.maxOptional
         } else {
@@ -43,25 +49,24 @@ extension Priority {
         }
     }
     
-    // MARK: - Internal
-    /// Min optional priority
-    static let minOptional: Priority = Priority(rawValue: 1)
+    /// Check is valid priority
+    ///
+    /// Priority can not lower than 1 or higher than required
+    static func isValidPriority(_ priority: Priority) -> Bool {
+        priority.rawValue >= Priority.minOptional.rawValue && priority.rawValue <= Priority.required.rawValue
+    }
     
-    /// Max optional priority
-    static let maxOptional: Priority = Priority(rawValue: Priority.required.rawValue - 1)
-    
-    /// Check priority update is
+    /// Check is safe to change priority
     ///
     /// Constraint's priority may only be modified as part of initial set up or when optional.
     /// After a constraint has been added to a view, an exception will be thrown if the priority is changed from/to Priority.required.
-    static func isSafeToUpdatePriority(from: Priority, to: Priority) -> Bool {
-        // `from` && `to` is optional
-        let isOptional = from.rawValue < Priority.required.rawValue && to.rawValue < Priority.required.rawValue
-        
-        // `to` is valid
-        let isValid = to.rawValue >= Priority.minOptional.rawValue
-        
-        // isOptional && isValid
-        return isOptional && isValid
+    static func isSafeToChangePriority(from: Priority, to: Priority) -> Bool {
+        if from.rawValue == to.rawValue {
+            // same priority has no effect, so it's safe
+            return true
+        } else {
+            // it's safe when `from` && `to` is optional
+            return from.rawValue < Priority.required.rawValue && to.rawValue < Priority.required.rawValue
+        }
     }
 }

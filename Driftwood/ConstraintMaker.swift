@@ -186,7 +186,13 @@ public struct ConstraintMaker {
     //
     /// make X-axis's constraint
     private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> Self {
-        // 0. check if there was a constraint already installed by driftwood
+        // 0.0 check is valid priority
+        guard Priority.isValidPriority(priority) else {
+            Debug.log(self._location, .make(attribute), self._dsl.item, message: "Invalid priority with value (\(priority.rawValue)).")
+            return self
+        }
+        
+        // 0.1 check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(self._location, .make(attribute), self._dsl.item, message: "Duplicated constraint.")
             return self
@@ -260,7 +266,13 @@ public struct ConstraintMaker {
     
     /// make Y-axis's constraint
     private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> Self {
-        // 0. check if there was a constraint already installed by driftwood
+        // 0.0 check is valid priority
+        guard Priority.isValidPriority(priority) else {
+            Debug.log(self._location, .make(attribute), self._dsl.item, message: "Invalid priority with value (\(priority.rawValue)).")
+            return self
+        }
+        
+        // 0.1 check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(self._location, .make(attribute), self._dsl.item, message: "Duplicated constraint.")
             return self
@@ -326,7 +338,13 @@ public struct ConstraintMaker {
     
     /// make Size's constraint
     private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> Self {
-        // 0. check if there was a constraint already installed by driftwood
+        // 0.0 check is valid priority
+        guard Priority.isValidPriority(priority) else {
+            Debug.log(self._location, .make(attribute), self._dsl.item, message: "Invalid priority with value (\(priority.rawValue)).")
+            return self
+        }
+        
+        // 0.1 check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(self._location, .make(attribute), self._dsl.item, message: "Duplicated constraint.")
             return self
@@ -361,7 +379,7 @@ public struct ConstraintMaker {
     private let _dsl: ConstraintDSL
     
     /// storage
-    private unowned(safe) let _storage: Storage
+    private unowned(unsafe) let _storage: Storage
     
     /// location
     private let _location: Debug.Location

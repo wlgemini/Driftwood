@@ -182,24 +182,31 @@ public struct ConstraintUpdater {
     /// update constraint
     @discardableResult
     private func _update(for attribute: Attribute, constant: CGFloat?, priority: Priority?) -> Self {
-        // 0. check if there was a constraint already installed by driftwood
+        // 0.0 check if there was a constraint already installed by driftwood
         guard let con = self._storage.activeConstraint(for: attribute) else {
             Debug.log(self._location, .update(attribute), self._dsl.item, message: "No constraint.")
             return self
         }
         
-        // 1. check is safe to update priority
+        // 0.1 check priority
         if let priority = priority {
-            guard Priority.isSafeToUpdatePriority(from: con.priority, to: priority) else {
-                Debug.log(self._location, .update(attribute), self._dsl.item, message: "The priority change from/to required is not allowed.")
+            // is valid
+            guard Priority.isValidPriority(priority) else {
+                Debug.log(self._location, .update(attribute), self._dsl.item, message: "Invalid priority with value (\(priority.rawValue)).")
+                return self
+            }
+            
+            // is safe to change
+            guard Priority.isSafeToChangePriority(from: con.priority, to: priority) else {
+                Debug.log(self._location, .update(attribute), self._dsl.item, message: "The priority change from/to `required` is not allowed.")
                 return self
             }
         }
         
-        // 2. update this constraint
+        // 1. update this constraint
         self._storage.update(con, constant: constant, priority: priority, location: self._location, operation: .update(attribute))
         
-        // 3. return self
+        // 2. return self
         return self
     }
     
@@ -207,7 +214,7 @@ public struct ConstraintUpdater {
     private let _dsl: ConstraintDSL
     
     /// storage
-    private unowned(safe) let _storage: Storage
+    private unowned(unsafe) let _storage: Storage
     
     /// location
     private let _location: Debug.Location

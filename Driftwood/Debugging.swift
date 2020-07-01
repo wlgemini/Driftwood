@@ -23,7 +23,7 @@
 
 
 /// Debug
-struct Debug {
+enum Debug {
     
     /// log (execute only in debug mode)
     ///
