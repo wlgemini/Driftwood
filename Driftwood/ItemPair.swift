@@ -31,35 +31,40 @@ public struct ItemPair {
     /// superitem
     public unowned(unsafe) let superitem: Item?
     
+    // MARK: - Internal
+    /// Backstore for item if any
+    var anyStorage: Storage? {
+        ItemPair.anyStorage(for: self.item)
+    }
     
-}
-
-
-/// Item
-public protocol Item: AnyObject {}
-
-
-/// Item (Storage)
-extension Item {
-    
-    /// storage
+    /// Backstore for item
     var storage: Storage {
-        if let s = self._storage {
+        ItemPair.storage(for: self.item)
+    }
+    
+    /// Backstore for item if any
+    static func anyStorage(for item: AnyObject) -> Storage? {
+        objc_getAssociatedObject(item, &ItemPair._storageKey) as? Storage
+    }
+    
+    /// Backstore for item
+    static func storage(for item: AnyObject) -> Storage {
+        if let s = self.anyStorage(for: item) {
             return s
         } else {
             let s = Storage()
-            self._storage = s
+            objc_setAssociatedObject(item, &ItemPair._storageKey, s, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return s
         }
     }
     
-    /// _storage
-    var _storage: Storage? {
-        get { objc_getAssociatedObject(self, &_storageKey) as? Storage }
-        set { objc_setAssociatedObject(self, &_storageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    /// init
+    init(item: Item, superitem: Item?) {
+        self.item = item
+        self.superitem = superitem
     }
+    
+    // MARK: - Private
+    /// _storage Key
+    private static var _storageKey: Void?
 }
-
-
-/// _storage Key
-private var _storageKey: Void?

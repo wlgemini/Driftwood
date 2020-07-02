@@ -22,39 +22,39 @@
 //  SOFTWARE.
 
 
-/// ConstraintDSL
-public struct ConstraintDSL {
-    
-    /// item
-    public unowned(unsafe) let item: Item
-
-    /// superitem
-    public unowned(unsafe) let superitem: Item?
-}
-
-
-/// ConstraintDSL (Make, Update, Remove constraint)
-public extension ConstraintDSL {
+/// Wood (Make, Update, Remove constraint)
+public extension Wood where Subject == ItemPair {
     
     /// make
     func make(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        ConstraintMaker(dsl: self, location: Debug.Location(file, line), labeled: name)
+        ConstraintMaker(self.subject, location: Debug.Location(file, line), labeled: name)
     }
     
     /// update
     func update(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintUpdater {
-        ConstraintUpdater(dsl: self, location: Debug.Location(file, line), labeled: name)
+        ConstraintUpdater(self.subject, location: Debug.Location(file, line), labeled: name)
     }
     
     /// remove
     func remove(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintRemover {
-        ConstraintRemover(dsl: self, location: Debug.Location(file, line), labeled: name)
+        ConstraintRemover(self.subject, location: Debug.Location(file, line), labeled: name)
+    }
+    
+    /// remake
+    func remake(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
+        ItemPair.anyStorage(for: self.subject.item)?.deactivateAll()
+        return ConstraintMaker(self.subject, location: Debug.Location(file, line), labeled: name)
+    }
+    
+    /// remove all
+    func removeAll() {
+        ItemPair.anyStorage(for: self.subject.item)?.deactivateAll()
     }
 }
 
 
-/// ConstraintDSL (Attribute)
-public extension ConstraintDSL {
+/// Wood (Attribute)
+public extension Wood where Subject == ItemPair {
     
     //===========================================
     // AttributeX
@@ -62,44 +62,44 @@ public extension ConstraintDSL {
     //
     /// left
     @inlinable
-    var left: AttributeX { .left(self.item) }
+    var left: AttributeX { .left(self.subject.item) }
     
     /// right
     @inlinable
-    var right: AttributeX { .right(self.item) }
+    var right: AttributeX { .right(self.subject.item) }
     
     /// leading
     @inlinable
-    var leading: AttributeX { .leading(self.item) }
+    var leading: AttributeX { .leading(self.subject.item) }
     
     /// trailing
     @inlinable
-    var trailing: AttributeX { .trailing(self.item) }
+    var trailing: AttributeX { .trailing(self.subject.item) }
     
     /// centerX
     @inlinable
-    var centerX: AttributeX { .centerX(self.item) }
+    var centerX: AttributeX { .centerX(self.subject.item) }
     
     #if os(iOS) || os(tvOS)
     /// leftMargin
     @inlinable
-    var leftMargin: AttributeX { .leftMargin(self.item) }
+    var leftMargin: AttributeX { .leftMargin(self.subject.item) }
     
     /// rightMargin
     @inlinable
-    var rightMargin: AttributeX { .rightMargin(self.item) }
+    var rightMargin: AttributeX { .rightMargin(self.subject.item) }
     
     /// leadingMargin
     @inlinable
-    var leadingMargin: AttributeX { .leadingMargin(self.item) }
+    var leadingMargin: AttributeX { .leadingMargin(self.subject.item) }
     
     /// trailingMargin
     @inlinable
-    var trailingMargin: AttributeX { .trailingMargin(self.item) }
+    var trailingMargin: AttributeX { .trailingMargin(self.subject.item) }
     
     /// centerXWithinMargins
     @inlinable
-    var centerXWithinMargins: AttributeX { .centerXWithinMargins(self.item) }
+    var centerXWithinMargins: AttributeX { .centerXWithinMargins(self.subject.item) }
     #endif
     
     //===========================================
@@ -108,36 +108,36 @@ public extension ConstraintDSL {
     //
     /// top
     @inlinable
-    var top: AttributeY { .top(self.item) }
+    var top: AttributeY { .top(self.subject.item) }
     
     /// bottom
     @inlinable
-    var bottom: AttributeY { .bottom(self.item) }
+    var bottom: AttributeY { .bottom(self.subject.item) }
     
     /// centerY
     @inlinable
-    var centerY: AttributeY { .centerY(self.item) }
+    var centerY: AttributeY { .centerY(self.subject.item) }
     
     /// lastBaseline
     @inlinable
-    var lastBaseline: AttributeY { .lastBaseline(self.item) }
+    var lastBaseline: AttributeY { .lastBaseline(self.subject.item) }
     
     /// firstBaseline
     @inlinable
-    var firstBaseline: AttributeY { .firstBaseline(self.item) }
+    var firstBaseline: AttributeY { .firstBaseline(self.subject.item) }
     
     #if os(iOS) || os(tvOS)
     /// topMargin
     @inlinable
-    var topMargin: AttributeY { .topMargin(self.item) }
+    var topMargin: AttributeY { .topMargin(self.subject.item) }
     
     /// bottomMargin
     @inlinable
-    var bottomMargin: AttributeY { .bottomMargin(self.item) }
+    var bottomMargin: AttributeY { .bottomMargin(self.subject.item) }
     
     /// centerYWithinMargins
     @inlinable
-    var centerYWithinMargins: AttributeY { .centerYWithinMargins(self.item) }
+    var centerYWithinMargins: AttributeY { .centerYWithinMargins(self.subject.item) }
     #endif
     
     //===========================================
@@ -146,9 +146,9 @@ public extension ConstraintDSL {
     //
     /// width
     @inlinable
-    var width: AttributeSize { .width(self.item) }
+    var width: AttributeSize { .width(self.subject.item) }
     
     /// height
     @inlinable
-    var height: AttributeSize { .height(self.item) }
+    var height: AttributeSize { .height(self.subject.item) }
 }

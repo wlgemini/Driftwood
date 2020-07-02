@@ -31,24 +31,6 @@ extension Priority {
     /// Max optional priority
     static let maxOptional: Priority = Priority(rawValue: Priority.required.rawValue - 1)
     
-    /// Get a lower priority (aka: `current - 1`), min to `1`
-    var lower: Priority {
-        if self.rawValue <= Priority.minOptional.rawValue {
-            return Priority.minOptional
-        } else {
-            return Priority(rawValue: self.rawValue - 1)
-        }
-    }
-    
-    /// Get a higher priority (aka: `current + 1`), max to `required - 1`
-    var higher: Priority {
-        if self.rawValue >= Priority.maxOptional.rawValue {
-            return Priority.maxOptional
-        } else {
-            return Priority(rawValue: self.rawValue + 1)
-        }
-    }
-    
     /// Check is valid priority
     ///
     /// Priority can not lower than 1 or higher than required

@@ -31,14 +31,3 @@ public protocol Driftable {
     /// `dw` prefix
     var dw: Wood<Subject> { get }
 }
-
-
-/// Driftable (`dw`)
-public extension Driftable {
-
-    /// `dw` prefix
-    var dw: Wood<Self> { Wood(self) }
-}
-
-
-

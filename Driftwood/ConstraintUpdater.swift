@@ -166,10 +166,12 @@ public struct ConstraintUpdater {
     //===========================================
     //
     /// init
-    init(dsl: ConstraintDSL, location: Debug.Location, labeled name: String?) {
-        self._dsl = dsl
-        self._storage = dsl.item.storage
+    init(_ ip: ItemPair, location: Debug.Location, labeled name: String?) {
+        self._ip = ip
+        self._storage = ip.storage
         self._location = location
+        
+        // set label
         if let nm = name {
             self._storage.labeledName = nm
         }
@@ -184,7 +186,7 @@ public struct ConstraintUpdater {
     private func _update(for attribute: Attribute, constant: CGFloat?, priority: Priority?) -> Self {
         // 0.0 check if there was a constraint already installed by driftwood
         guard let con = self._storage.activeConstraint(for: attribute) else {
-            Debug.log(self._location, .update(attribute), self._dsl.item, message: "No constraint.")
+            Debug.log(self._location, .update(attribute), self._ip.item, message: "No constraint.")
             return self
         }
         
@@ -192,13 +194,13 @@ public struct ConstraintUpdater {
         if let priority = priority {
             // is valid
             guard Priority.isValidPriority(priority) else {
-                Debug.log(self._location, .update(attribute), self._dsl.item, message: "Invalid priority with value (\(priority.rawValue)).")
+                Debug.log(self._location, .update(attribute), self._ip.item, message: "Invalid priority with value (\(priority.rawValue)).")
                 return self
             }
             
             // is safe to change
             guard Priority.isSafeToChangePriority(from: con.priority, to: priority) else {
-                Debug.log(self._location, .update(attribute), self._dsl.item, message: "The priority change from/to `required` is not allowed.")
+                Debug.log(self._location, .update(attribute), self._ip.item, message: "The priority change from/to `required` is not allowed.")
                 return self
             }
         }
@@ -210,8 +212,8 @@ public struct ConstraintUpdater {
         return self
     }
     
-    /// dsl
-    private let _dsl: ConstraintDSL
+    /// ip
+    private let _ip: ItemPair
     
     /// storage
     private unowned(unsafe) let _storage: Storage

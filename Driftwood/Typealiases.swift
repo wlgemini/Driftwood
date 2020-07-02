@@ -85,3 +85,7 @@ typealias Attribute = NSLayoutConstraint.Attribute
 /// EdgeInsets
 public typealias EdgeInsets = NSEdgeInsets
 #endif
+
+
+/// Item
+public typealias Item = AnyObject

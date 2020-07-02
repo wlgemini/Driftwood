@@ -22,9 +22,34 @@
 //  SOFTWARE.
 
 
-/// LayoutGuide (Item)
-@available(iOS 9.0, macOS 10.11, *)
-extension LayoutGuide: Item {
+/// Wood (Priority)
+extension Wood where Subject == Priority {
     
-    public var dw: ConstraintDSL { ConstraintDSL(item: self, superitem: self.owningView) }
+    /// Get a lower priority (aka: `current - 1`), min to `1`
+    @inlinable
+    public var lower: Priority { self.lower(1) }
+    
+    /// Get a higher priority (aka: `current + 1`), max to `required - 1`
+    @inlinable
+    public var higher: Priority { self.higher(1) }
+    
+    /// Get a lower priority (aka: `current - value`), min to `1`
+    public func lower(_ value: Float) -> Priority {
+        let targetValue = self.subject.rawValue - abs(value)
+        if targetValue <= Priority.minOptional.rawValue {
+            return Priority.minOptional
+        } else {
+            return Priority(rawValue: targetValue)
+        }
+    }
+    
+    /// Get a higher priority (aka: `current + value`), max to `required - 1`
+    public func higher(_ value: Float) -> Priority {
+        let targetValue = self.subject.rawValue + abs(value)
+        if targetValue >= Priority.maxOptional.rawValue {
+            return Priority.maxOptional
+        } else {
+            return Priority(rawValue: targetValue)
+        }
+    }
 }

@@ -21,15 +21,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 /// Wood
+///
+/// For `dw` prefix wrapper
 public struct Wood<Subject> {
     
     /// subject
     public private(set) var subject: Subject
 
+    // MARK: - Internal
     /// init
-    public init(_ subject: Subject) {
+    init(_ subject: Subject) {
         self.subject = subject
     }
 }

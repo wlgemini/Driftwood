@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Preferences.priority = .required
+        Preferences.priority = UILayoutPriority.required.dw.lower
         
         self.vTop = self.view.createSubView()
         self.vTop.dw.make(labeled: "Top").bottom(0, to: self.view.safeAreaLayoutGuide.dw.top).top(0).leading(0).trailing(0)

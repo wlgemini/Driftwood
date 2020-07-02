@@ -22,8 +22,23 @@
 //  SOFTWARE.
 
 
-/// View (Item)
-extension View: Item {
+/// View (Driftable)
+extension View: Driftable {
     
-    public var dw: ConstraintDSL { ConstraintDSL(item: self, superitem: self.superview) }
+    public var dw: Wood<ItemPair> { Wood(ItemPair(item: self, superitem: self.superview)) }
+}
+
+
+/// LayoutGuide (Driftable)
+@available(iOS 9.0, macOS 10.11, *)
+extension LayoutGuide: Driftable {
+    
+    public var dw: Wood<ItemPair> { Wood(ItemPair(item: self, superitem: self.owningView)) }
+}
+
+
+/// Priority (Driftable)
+extension Priority: Driftable {
+
+    public var dw: Wood<Priority> { Wood(self) }
 }

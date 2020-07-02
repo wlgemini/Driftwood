@@ -95,15 +95,15 @@ final class Storage {
         // 0. generate a constraint key (key calculation not include item/constant/priority)
         let conKey = ConstraintKey(attribute: attribute, toItem: toItem, toAttribute: toAttribute, relation: relation, multiply: multiply)
         
-        // 1. retrive a constraint from cache, if any
+        // 1. retrive a constraint from cache, and check is safe to change constraint's priority
         let con: Constraint
         if let c = self._cachedConstraints[conKey], Priority.isSafeToChangePriority(from: c.priority, to: priority) {
-            // 1.1 cached
+            // 1.1 cached and is safe to change constraint's priority
             con = c
             con.constant = constant
             con.priority = priority
         } else {
-            // 1.2 no cache
+            // 1.2 no cache or is not safe to change constraint's priority, may replace cached constraint
             con = Constraint(item: item, attribute: attribute, relatedBy: relation, toItem: toItem, attribute: toAttribute, multiplier: multiply, constant: constant)
             con.priority = priority
             self._cachedConstraints[conKey] = con
