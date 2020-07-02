@@ -43,6 +43,6 @@ public extension Preferences {
     /// multiply
     static let multiply: CGFloat = 1.0
     
-    /// priority (Changeable)
-    static var priority: Priority = Priority.required.dw.lower
+    /// priority
+    static let priority: Priority = Priority.required
 }
