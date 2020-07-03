@@ -163,13 +163,13 @@ view.dw.make(labeled: "MyView").left(0).left(0)
 It will be logs like this:
 
 ```
-<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525da0)>: Duplicated constraint.
+<Driftwood.@ViewController#23.[make left].(UIView`MyView`:0x00007fc636525da0)>: Duplicated constraint.
 ```
 
 If resulting `Unable to simultaneously satisfy constraints`, it will be logs like this for each constraint installed by Driftwood:
 
 ```
-<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525da0.left == UIView:0x00007fc636525111.right)>
+<Driftwood.@ViewController#23.[make left].(UIView`MyView`:0x00007fc636525da0.left == UIView:0x00007fc636525111.right)>
 ```
 
 > NOTE: In release, Driftwood will not log debug info.

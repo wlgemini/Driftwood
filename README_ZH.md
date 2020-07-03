@@ -166,13 +166,13 @@ view.dw.make(labeled: "MyView").left(0).left(0) // 给"MyView"添加了重复的
 如果出现错误的话，会有如下样式的打印：
 
 ```
-<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525da0)>: Duplicated constraint.
+<Driftwood.@ViewController#23.[make left].(UIView`MyView`:0x00007fc636525da0)>: Duplicated constraint.
 ```
 
 如果遇到 `Unable to simultaneously satisfy constraints` 这种约束错误，则会对每一个通过Driftwood设置的约束有如下样式的打印：
 
 ```
-<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525da0.left == UIView:0x00007fc636525111.right)>
+<Driftwood.@ViewController#23.[make left].(UIView`MyView`:0x00007fc636525da0.left == UIView:0x00007fc636525111.right)>
 ```
 
 > 注意：在release下，Driftwood不会打印debug信息。
