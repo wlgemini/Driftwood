@@ -53,7 +53,7 @@ view1.dw.make().top(10, to: view2.dw.bottom)
 
 Full list of `NSLayoutConstraint.Attribute`:
 
-| `X-axis Attribute property` | `X-axis Attribute function`  | `NSLayoutConstraint.Attribute` |
+| `Horizontal attribute property` | `Horizontal attribute function`  | `NSLayoutConstraint.Attribute` |
 | :-------------------------- | :--------------------------- | :----------------------------- |
 | `dw.left`                   | `dw.make().left()`           | `.left`                        |
 | `dw.right`                  | `dw.make().right()`          | `.right`                       |
@@ -65,7 +65,7 @@ Full list of `NSLayoutConstraint.Attribute`:
 | `dw.leadingMargin`          | `dw.make().leadingMargin()`  | `.leadingMargin`               |
 | `dw.trailingMargin`         | `dw.make().trailingMargin()` | `.trailingMargin`              |
 
-| `Y-axis Attribute property` | `Y-axis Attribute function`        | `NSLayoutConstraint.Attribute` |
+| `Vertical attribute property` | `Vertical attribute function`        | `NSLayoutConstraint.Attribute` |
 | :-------------------------- | :--------------------------------- | :----------------------------- |
 | `dw.top`                    | `dw.make().top()`                  | `.top`                         |
 | `dw.bottom`                 | `dw.make().bottom()`               | `.bottom`                      |
@@ -76,20 +76,20 @@ Full list of `NSLayoutConstraint.Attribute`:
 | `dw.bottomMargin`           | `dw.make().bottomMargin()`         | `.bottomMargin`                |
 | `dw.centerYWithinMargins`   | `dw.make().centerYWithinMargins()` | `.centerYWithinMargins`        |
 
-| `Size Attribute property` | `Size Attribute function` | `NSLayoutConstraint.Attribute` |
+| `Size attribute property` | `Size attribute function` | `NSLayoutConstraint.Attribute` |
 | :------------------------ | :------------------------ | :----------------------------- |
 | `dw.width`                | `dw.make().width()`       | `.width`                       |
 | `dw.height`               | `dw.make().height()`      | `.height`                      |
 
 ### Relation & Multiplier & Priority
 
-`Relation` & `Priority` are available in `X-axis Attribute function` & `Y-axis Attribute function`:
+`Relation` & `Priority` are available in `Horizontal attribute function` & `Vertical attribute function` :
 
 ```swift
 view.dw.make().left(100, by: .greaterThanOrEqual, priority: .defaultLow)
 ```
 
-`Relation` & `Multiplier` & `Priority` are available in `Size Attribute function`:
+`Relation` & `Multiplier` & `Priority` are available in `Size attribute function`:
 
 ```swift
 view.dw.make().width(100, by: .greaterThanOrEqual, multiply: 2, priority: .required)

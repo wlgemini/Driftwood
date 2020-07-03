@@ -26,29 +26,29 @@
 extension Priority {
     
     /// Min optional priority
-    static let minOptional: Priority = Priority(rawValue: 1)
+    static let minOptional: Self = Self(rawValue: 1)
     
     /// Max optional priority
-    static let maxOptional: Priority = Priority(rawValue: Priority.required.rawValue - 1)
+    static let maxOptional: Self = Self(rawValue: Self.required.rawValue - 1)
     
     /// Check is valid priority
     ///
     /// Priority can not lower than 1 or higher than required
-    static func isValidPriority(_ priority: Priority) -> Bool {
-        priority.rawValue >= Priority.minOptional.rawValue && priority.rawValue <= Priority.required.rawValue
+    static func isValidPriority(_ priority: Self) -> Bool {
+        priority.rawValue >= Self.minOptional.rawValue && priority.rawValue <= Self.required.rawValue
     }
     
     /// Check is safe to change priority
     ///
     /// Constraint's priority may only be modified as part of initial set up or when optional.
     /// After a constraint has been added to a view, an exception will be thrown if the priority is changed from/to Priority.required.
-    static func isSafeToChangePriority(from: Priority, to: Priority) -> Bool {
+    static func isSafeToChangePriority(from: Self, to: Self) -> Bool {
         if from.rawValue == to.rawValue {
             // same priority has no effect, so it's safe
             return true
         } else {
             // it's safe when `from` && `to` is optional
-            return from.rawValue < Priority.required.rawValue && to.rawValue < Priority.required.rawValue
+            return from.rawValue < Self.required.rawValue && to.rawValue < Self.required.rawValue
         }
     }
 }

@@ -40,15 +40,15 @@ public extension Wood where Subject == ItemPair {
         ConstraintRemover(self.subject, location: Debug.Location(file, line), labeled: name)
     }
     
-    /// remake
-    func remake(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
-        ItemPair.anyStorage(for: self.subject.item)?.deactivateAll()
-        return ConstraintMaker(self.subject, location: Debug.Location(file, line), labeled: name)
-    }
-    
     /// remove all
     func removeAll() {
         ItemPair.anyStorage(for: self.subject.item)?.deactivateAll()
+    }
+    
+    /// remake
+    func remake(labeled name: String? = nil, file: String = #file, line: UInt = #line) -> ConstraintMaker {
+        self.removeAll()
+        return ConstraintMaker(self.subject, location: Debug.Location(file, line), labeled: name)
     }
 }
 
@@ -56,99 +56,93 @@ public extension Wood where Subject == ItemPair {
 /// Wood (Attribute)
 public extension Wood where Subject == ItemPair {
     
-    //===========================================
-    // AttributeX
-    //===========================================
-    //
+    // MARK: -
+    // MARK: HAttribute
     /// left
     @inlinable
-    var left: AttributeX { .left(self.subject.item) }
+    var left: HAttribute { .left(self.subject.item) }
     
     /// right
     @inlinable
-    var right: AttributeX { .right(self.subject.item) }
+    var right: HAttribute { .right(self.subject.item) }
     
     /// leading
     @inlinable
-    var leading: AttributeX { .leading(self.subject.item) }
+    var leading: HAttribute { .leading(self.subject.item) }
     
     /// trailing
     @inlinable
-    var trailing: AttributeX { .trailing(self.subject.item) }
+    var trailing: HAttribute { .trailing(self.subject.item) }
     
     /// centerX
     @inlinable
-    var centerX: AttributeX { .centerX(self.subject.item) }
+    var centerX: HAttribute { .centerX(self.subject.item) }
     
     #if os(iOS) || os(tvOS)
     /// leftMargin
     @inlinable
-    var leftMargin: AttributeX { .leftMargin(self.subject.item) }
+    var leftMargin: HAttribute { .leftMargin(self.subject.item) }
     
     /// rightMargin
     @inlinable
-    var rightMargin: AttributeX { .rightMargin(self.subject.item) }
+    var rightMargin: HAttribute { .rightMargin(self.subject.item) }
     
     /// leadingMargin
     @inlinable
-    var leadingMargin: AttributeX { .leadingMargin(self.subject.item) }
+    var leadingMargin: HAttribute { .leadingMargin(self.subject.item) }
     
     /// trailingMargin
     @inlinable
-    var trailingMargin: AttributeX { .trailingMargin(self.subject.item) }
+    var trailingMargin: HAttribute { .trailingMargin(self.subject.item) }
     
     /// centerXWithinMargins
     @inlinable
-    var centerXWithinMargins: AttributeX { .centerXWithinMargins(self.subject.item) }
+    var centerXWithinMargins: HAttribute { .centerXWithinMargins(self.subject.item) }
     #endif
     
-    //===========================================
-    // AttributeY
-    //===========================================
-    //
+    // MARK: -
+    // MARK: VAttribute
     /// top
     @inlinable
-    var top: AttributeY { .top(self.subject.item) }
+    var top: VAttribute { .top(self.subject.item) }
     
     /// bottom
     @inlinable
-    var bottom: AttributeY { .bottom(self.subject.item) }
+    var bottom: VAttribute { .bottom(self.subject.item) }
     
     /// centerY
     @inlinable
-    var centerY: AttributeY { .centerY(self.subject.item) }
+    var centerY: VAttribute { .centerY(self.subject.item) }
     
     /// lastBaseline
     @inlinable
-    var lastBaseline: AttributeY { .lastBaseline(self.subject.item) }
+    var lastBaseline: VAttribute { .lastBaseline(self.subject.item) }
     
     /// firstBaseline
     @inlinable
-    var firstBaseline: AttributeY { .firstBaseline(self.subject.item) }
+    var firstBaseline: VAttribute { .firstBaseline(self.subject.item) }
     
     #if os(iOS) || os(tvOS)
     /// topMargin
     @inlinable
-    var topMargin: AttributeY { .topMargin(self.subject.item) }
+    var topMargin: VAttribute { .topMargin(self.subject.item) }
     
     /// bottomMargin
     @inlinable
-    var bottomMargin: AttributeY { .bottomMargin(self.subject.item) }
+    var bottomMargin: VAttribute { .bottomMargin(self.subject.item) }
     
     /// centerYWithinMargins
     @inlinable
-    var centerYWithinMargins: AttributeY { .centerYWithinMargins(self.subject.item) }
+    var centerYWithinMargins: VAttribute { .centerYWithinMargins(self.subject.item) }
     #endif
     
-    //===========================================
-    // AttributeSize
-    //===========================================
-    //
+    // MARK: -
+    // MARK: SAttribute
     /// width
     @inlinable
-    var width: AttributeSize { .width(self.subject.item) }
+    var width: SAttribute { .width(self.subject.item) }
     
     /// height
     @inlinable
-    var height: AttributeSize { .height(self.subject.item) }
+    var height: SAttribute { .height(self.subject.item) }
 }

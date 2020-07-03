@@ -27,7 +27,7 @@ enum Debug {
     
     /// log (execute only in debug mode)
     ///
-    ///     "<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525111)>: "
+    ///     "<Driftwood.@ViewController#23.[make left].(UIView`MyView`:0x00007fc636525111)>: "
     ///
     static func log(_ location: Location, _ operation: Operation, _ item: Item, message: String) {
         Swift.assert({
@@ -44,8 +44,8 @@ enum Debug {
     
     /// debug prefix
     ///
-    ///     "Driftwood.@ViewController.swift#23.[make.left]"
-    ///     "Driftwood.[make.left]"
+    ///     "Driftwood.@ViewController#23.[make left]"
+    ///     "Driftwood.[make left]"
     ///
     static func prefix(_ location: Location?, _ operation: Operation) -> String {
         // Driftwood
@@ -80,7 +80,7 @@ enum Debug {
     /// description of Attribute
     static func description(for attribute: Attribute) -> String {
         switch attribute {
-        // AttributeX
+        // HAttribute
         case .left:                 return "left"
         case .right:                return "right"
         case .leading:              return "leading"
@@ -94,7 +94,7 @@ enum Debug {
         case .centerXWithinMargins: return "centerXWithinMargins"
             #endif
             
-        // AttributeY
+        // VAttribute
         case .top:                  return "top"
         case .bottom:               return "bottom"
         case .centerY:              return "centerY"
@@ -106,7 +106,7 @@ enum Debug {
         case .centerYWithinMargins: return "centerYWithinMargins"
             #endif
             
-        // AttributeSize
+        // SAttribute
         case .width:                return "width"
         case .height:               return "height"
             
@@ -149,7 +149,8 @@ extension Debug {
         
         /// description
         var description: String {
-            let fileName = self.file.components(separatedBy: "/").last ?? ""
+            var fileName = self.file.components(separatedBy: "/").last ?? ""
+            fileName = fileName.components(separatedBy: ".").first ?? ""
             return "@\(fileName)#\(self.line)"
         }
     }
@@ -167,9 +168,9 @@ extension Debug {
         /// description
         var description: String {
             switch self {
-            case .make(let attribute):          return "make.\(Debug.description(for: attribute))"
-            case .update(let attribute):        return "update.\(Debug.description(for: attribute))"
-            case .remove(let attribute):        return "remove.\(Debug.description(for: attribute))"
+            case .make(let attribute):          return "make \(Debug.description(for: attribute))"
+            case .update(let attribute):        return "update \(Debug.description(for: attribute))"
+            case .remove(let attribute):        return "remove \(Debug.description(for: attribute))"
             }
         }
     }

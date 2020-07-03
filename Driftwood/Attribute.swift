@@ -22,8 +22,8 @@
 //  SOFTWARE.
 
 
-/// AttributeX
-public enum AttributeX {
+/// Horizontal attribute
+public enum HAttribute {
     
     case superitem
     
@@ -51,8 +51,8 @@ public enum AttributeX {
 }
 
 
-/// AttributeY
-public enum AttributeY {
+/// Vertical attribute
+public enum VAttribute {
     
     case superitem
     
@@ -76,8 +76,8 @@ public enum AttributeY {
 }
 
 
-/// AttributeSize
-public enum AttributeSize {
+/// Size attribute
+public enum SAttribute {
     
     case width(Item)
     

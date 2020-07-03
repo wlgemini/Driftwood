@@ -33,7 +33,7 @@ final class Constraint: LayoutConstraint {
     
     /// description
     ///
-    ///     "<Driftwood.@ViewController.swift#23.[make.left].(UIView`MyView`:0x00007fc636525da0.left == UILabel`MyLabel`:0x00007fc636525111.right * 2 - 10 ^1500)>"
+    ///     "<Driftwood.@ViewController#23.[make left].(UIView`MyView`:0x00007fc636525da0.left == UILabel`MyLabel`:0x00007fc636525111.right * 2 - 10 ^1500)>"
     ///
     override var description: String {
         // <

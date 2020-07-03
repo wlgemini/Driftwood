@@ -25,146 +25,137 @@
 /// ConstraintMaker
 public struct ConstraintMaker {
     
-    //===========================================
-    // Make AttributeX
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Make horizontal constraint
     /// left
     @discardableResult
-    public func left(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .left, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func left(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .left, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     
     /// right
     @discardableResult
-    public func right(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .right, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func right(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .right, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     
     /// leading
     @discardableResult
-    public func leading(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .leading, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func leading(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .leading, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     
     /// trailing
     @discardableResult
-    public func trailing(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .trailing, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func trailing(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .trailing, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     
     /// centerX
     @discardableResult
-    public func centerX(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .centerX, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func centerX(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .centerX, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     
     #if os(iOS) || os(tvOS)
     /// leftMargin
     @discardableResult
-    public func leftMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .leftMargin, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func leftMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .leftMargin, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     
     /// rightMargin
     @discardableResult
-    public func rightMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .rightMargin, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func rightMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .rightMargin, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     
     /// leadingMargin
     @discardableResult
-    public func leadingMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .leadingMargin, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func leadingMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .leadingMargin, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     
     /// trailingMargin
     @discardableResult
-    public func trailingMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .trailingMargin, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func trailingMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .trailingMargin, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     
     /// centerXWithinMargins
     @discardableResult
-    public func centerXWithinMargins(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeX: AttributeX, priority: Priority = Preferences.priority) -> Self {
-        self._makeX(for: .centerXWithinMargins, constant: constant, by: relation, to: attributeX, priority: priority)
+    public func centerXWithinMargins(_ constant: CGFloat, by relation: Relation = Preferences.relation, to hAttribute: HAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .centerXWithinMargins, constant: constant, relation: relation, hAttribute: hAttribute, priority: priority)
     }
     #endif
     
-    //===========================================
-    // Make AttributeY
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Make vertical constraint
     /// top
     @discardableResult
-    public func top(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeY: AttributeY, priority: Priority = Preferences.priority) -> Self {
-        self._makeY(for: .top, constant: constant, by: relation, to: attributeY, priority: priority)
+    public func top(_ constant: CGFloat, by relation: Relation = Preferences.relation, to vAttribute: VAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .top, constant: constant, relation: relation, vAttribute: vAttribute, priority: priority)
     }
     
     /// bottom
     @discardableResult
-    public func bottom(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeY: AttributeY, priority: Priority = Preferences.priority) -> Self {
-        self._makeY(for: .bottom, constant: constant, by: relation, to: attributeY, priority: priority)
+    public func bottom(_ constant: CGFloat, by relation: Relation = Preferences.relation, to vAttribute: VAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .bottom, constant: constant, relation: relation, vAttribute: vAttribute, priority: priority)
     }
     
     /// centerY
     @discardableResult
-    public func centerY(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeY: AttributeY, priority: Priority = Preferences.priority) -> Self {
-        self._makeY(for: .centerY, constant: constant, by: relation, to: attributeY, priority: priority)
+    public func centerY(_ constant: CGFloat, by relation: Relation = Preferences.relation, to vAttribute: VAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .centerY, constant: constant, relation: relation, vAttribute: vAttribute, priority: priority)
     }
     
     /// lastBaseline
     @discardableResult
-    public func lastBaseline(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeY: AttributeY, priority: Priority = Preferences.priority) -> Self {
-        self._makeY(for: .lastBaseline, constant: constant, by: relation, to: attributeY, priority: priority)
+    public func lastBaseline(_ constant: CGFloat, by relation: Relation = Preferences.relation, to vAttribute: VAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .lastBaseline, constant: constant, relation: relation, vAttribute: vAttribute, priority: priority)
     }
     
     /// firstBaseline
     @discardableResult
-    public func firstBaseline(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeY: AttributeY, priority: Priority = Preferences.priority) -> Self {
-        self._makeY(for: .firstBaseline, constant: constant, by: relation, to: attributeY, priority: priority)
+    public func firstBaseline(_ constant: CGFloat, by relation: Relation = Preferences.relation, to vAttribute: VAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .firstBaseline, constant: constant, relation: relation, vAttribute: vAttribute, priority: priority)
     }
     
     #if os(iOS) || os(tvOS)
     /// topMargin
     @discardableResult
-    public func topMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeY: AttributeY, priority: Priority = Preferences.priority) -> Self {
-        self._makeY(for: .topMargin, constant: constant, by: relation, to: attributeY, priority: priority)
+    public func topMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to vAttribute: VAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .topMargin, constant: constant, relation: relation, vAttribute: vAttribute, priority: priority)
     }
     
     /// bottomMargin
     @discardableResult
-    public func bottomMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeY: AttributeY, priority: Priority = Preferences.priority) -> Self {
-        self._makeY(for: .bottomMargin, constant: constant, by: relation, to: attributeY, priority: priority)
+    public func bottomMargin(_ constant: CGFloat, by relation: Relation = Preferences.relation, to vAttribute: VAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .bottomMargin, constant: constant, relation: relation, vAttribute: vAttribute, priority: priority)
     }
     
     /// centerYWithinMargins
     @discardableResult
-    public func centerYWithinMargins(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeY: AttributeY, priority: Priority = Preferences.priority) -> Self {
-        self._makeY(for: .centerYWithinMargins, constant: constant, by: relation, to: attributeY, priority: priority)
+    public func centerYWithinMargins(_ constant: CGFloat, by relation: Relation = Preferences.relation, to vAttribute: VAttribute, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .centerYWithinMargins, constant: constant, relation: relation, vAttribute: vAttribute, priority: priority)
     }
     #endif
     
-    //===========================================
-    // Make AttributeSize
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Make size constraint
     /// width
     @discardableResult
-    public func width(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeSize: AttributeSize? = nil, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
-        self._makeSize(for: .width, constant: constant, by: relation, to: attributeSize, multiply: multiply, priority: priority)
+    public func width(_ constant: CGFloat, by relation: Relation = Preferences.relation, to sAttribute: SAttribute? = nil, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .width, constant: constant, relation: relation, sAttribute: sAttribute, multiply: multiply, priority: priority)
     }
     
     /// height
     @discardableResult
-    public func height(_ constant: CGFloat, by relation: Relation = Preferences.relation, to attributeSize: AttributeSize? = nil, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
-        self._makeSize(for: .height, constant: constant, by: relation, to: attributeSize, multiply: multiply, priority: priority)
+    public func height(_ constant: CGFloat, by relation: Relation = Preferences.relation, to sAttribute: SAttribute? = nil, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
+        self._make(attribute: .height, constant: constant, relation: relation, sAttribute: sAttribute, multiply: multiply, priority: priority)
     }
     
-    //===========================================
-    // Internal
-    //===========================================
-    //
+    // MARK: - Internal
     /// init
     init(_ ip: ItemPair, location: Debug.Location, labeled name: String?) {
         self._ip = ip
@@ -182,12 +173,9 @@ public struct ConstraintMaker {
         }
     }
     
-    //===========================================
-    // Private
-    //===========================================
-    //
-    /// make X-axis's constraint
-    private func _makeX(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeX: AttributeX, priority: Priority) -> Self {
+    // MARK: - Private
+    /// Make horizontal constraint
+    private func _make(attribute: Attribute, constant: CGFloat, relation: Relation, hAttribute: HAttribute, priority: Priority) -> Self {
         // 0.0 check is valid priority
         guard Priority.isValidPriority(priority) else {
             Debug.log(self._location, .make(attribute), self._ip.item, message: "Invalid priority with value (\(priority.rawValue)).")
@@ -200,10 +188,10 @@ public struct ConstraintMaker {
             return self
         }
         
-        // 1. retrieve (toItem & toAttribute) from attributeX
+        // 1. retrieve (toItem & toAttribute) from hAttribute
         let toAttribute: Attribute
         let toItem: Item
-        switch attributeX {
+        switch hAttribute {
         case .superitem:
             // check if there is an superview/owningView
             guard let superitem = self._ip.superitem else {
@@ -266,8 +254,8 @@ public struct ConstraintMaker {
         return self
     }
     
-    /// make Y-axis's constraint
-    private func _makeY(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeY: AttributeY, priority: Priority) -> Self {
+    /// Make vertical constraint
+    private func _make(attribute: Attribute, constant: CGFloat, relation: Relation, vAttribute: VAttribute, priority: Priority) -> Self {
         // 0.0 check is valid priority
         guard Priority.isValidPriority(priority) else {
             Debug.log(self._location, .make(attribute), self._ip.item, message: "Invalid priority with value (\(priority.rawValue)).")
@@ -280,10 +268,10 @@ public struct ConstraintMaker {
             return self
         }
         
-        // 1. retrieve (toItem & toAttribute) from attributeY
+        // 1. retrieve (toItem & toAttribute) from vAttribute
         let toAttribute: Attribute
         let toItem: Item
-        switch attributeY {
+        switch vAttribute {
         case .superitem:
             // check if there is an superview/owningView
             guard let superitem = self._ip.superitem else {
@@ -338,8 +326,8 @@ public struct ConstraintMaker {
         return self
     }
     
-    /// make Size's constraint
-    private func _makeSize(for attribute: Attribute, constant: CGFloat, by relation: Relation, to attributeSize: AttributeSize?, multiply: CGFloat, priority: Priority) -> Self {
+    /// Make size constraint
+    private func _make(attribute: Attribute, constant: CGFloat, relation: Relation, sAttribute: SAttribute?, multiply: CGFloat, priority: Priority) -> Self {
         // 0.0 check is valid priority
         guard Priority.isValidPriority(priority) else {
             Debug.log(self._location, .make(attribute), self._ip.item, message: "Invalid priority with value (\(priority.rawValue)).")
@@ -352,11 +340,11 @@ public struct ConstraintMaker {
             return self
         }
         
-        // 1. retrieve (toItem & toAttribute) from attributeSize
+        // 1. retrieve (toItem & toAttribute) from sAttribute
         var toAttribute: Attribute?
         var toItem: Item?
-        if let attrSize = attributeSize {
-            switch attrSize {
+        if let sAttr = sAttribute {
+            switch sAttr {
             case .width(let item):
                 toAttribute = .width
                 toItem = item

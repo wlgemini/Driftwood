@@ -25,10 +25,8 @@
 /// ConstraintMaker (Handy)
 public extension ConstraintMaker {
     
-    //===========================================
-    // Make AttributeX
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Make horizontal constraint
     /// left to superview
     @inlinable
     @discardableResult
@@ -101,10 +99,8 @@ public extension ConstraintMaker {
     }
     #endif
     
-    //===========================================
-    // Make AttributeY
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Make vertical constraint
     /// top to superview
     @inlinable
     @discardableResult
@@ -163,22 +159,20 @@ public extension ConstraintMaker {
     }
     #endif
     
-    //===========================================
-    // Make AttributeSize
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Make size constraint
     /// width
     @inlinable
     @discardableResult
-    func width(by relation: Relation = Preferences.relation, to attributeSize: AttributeSize, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
-        self.width(0.0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
+    func width(by relation: Relation = Preferences.relation, to sAttribute: SAttribute, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
+        self.width(0.0, by: relation, to: sAttribute, multiply: multiply, priority: priority)
     }
     
     /// height
     @inlinable
     @discardableResult
-    func height(by relation: Relation = Preferences.relation, to attributeSize: AttributeSize, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
-        self.height(0.0, by: relation, to: attributeSize, multiply: multiply, priority: priority)
+    func height(by relation: Relation = Preferences.relation, to sAttribute: SAttribute, multiply: CGFloat = Preferences.multiply, priority: Priority = Preferences.priority) -> Self {
+        self.height(0.0, by: relation, to: sAttribute, multiply: multiply, priority: priority)
     }
     
     /// size
@@ -190,10 +184,8 @@ public extension ConstraintMaker {
         return self
     }
     
-    //===========================================
-    // Make AttributeX & AttributeY
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Make horizontal & vertical constraint
     /// centerXY to superview
     @inlinable
     @discardableResult

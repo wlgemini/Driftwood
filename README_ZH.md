@@ -53,7 +53,7 @@ view1.dw.make().top(10, to: view2.dw.bottom)
 
 全部的`NSLayoutConstraint.Attribute`情况在Driftwood中对应关系如下表:
 
-| `X-axis Attribute property` | `X-axis Attribute function`  | `NSLayoutConstraint.Attribute` |
+| `Horizontal attribute property` | `Horizontal attribute function`  | `NSLayoutConstraint.Attribute` |
 | :-------------------------- | :--------------------------- | :----------------------------- |
 | `dw.left`                   | `dw.make().left()`           | `.left`                        |
 | `dw.right`                  | `dw.make().right()`          | `.right`                       |
@@ -65,7 +65,7 @@ view1.dw.make().top(10, to: view2.dw.bottom)
 | `dw.leadingMargin`          | `dw.make().leadingMargin()`  | `.leadingMargin`               |
 | `dw.trailingMargin`         | `dw.make().trailingMargin()` | `.trailingMargin`              |
 
-| `Y-axis Attribute property` | `Y-axis Attribute function`        | `NSLayoutConstraint.Attribute` |
+| `Vertical attribute property` | `Vertical attribute function`        | `NSLayoutConstraint.Attribute` |
 | :-------------------------- | :--------------------------------- | :----------------------------- |
 | `dw.top`                    | `dw.make().top()`                  | `.top`                         |
 | `dw.bottom`                 | `dw.make().bottom()`               | `.bottom`                      |
@@ -76,20 +76,20 @@ view1.dw.make().top(10, to: view2.dw.bottom)
 | `dw.bottomMargin`           | `dw.make().bottomMargin()`         | `.bottomMargin`                |
 | `dw.centerYWithinMargins`   | `dw.make().centerYWithinMargins()` | `.centerYWithinMargins`        |
 
-| `Size Attribute property` | `Size Attribute function` | `NSLayoutConstraint.Attribute` |
+| `Size attribute property` | `Size attribute function` | `NSLayoutConstraint.Attribute` |
 | :------------------------ | :------------------------ | :----------------------------- |
 | `dw.width`                | `dw.make().width()`       | `.width`                       |
 | `dw.height`               | `dw.make().height()`      | `.height`                      |
 
 ### Relation & Multiplier & Priority
 
-`Relation` & `Priority`在 `X-axis Attribute function` & `Y-axis Attribute function`中可用:
+`Relation` & `Priority` 在 `Horizontal attribute function` & `Vertical attribute function` 中可用:
 
 ```swift
 view.dw.make().left(100, by: .greaterThanOrEqual, priority: .defaultLow)
 ```
 
-`Relation` & `Multiplier` & `Priority`在 `Size Attribute function`中可用:
+`Relation` & `Multiplier` & `Priority` 在 `Size attribute function` 中可用:
 
 ```swift
 view.dw.make().width(100, by: .greaterThanOrEqual, multiply: 2, priority: .required)

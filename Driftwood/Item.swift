@@ -22,28 +22,44 @@
 //  SOFTWARE.
 
 
-/// ConstraintUpdater (Handy)
-public extension ConstraintUpdater {
+/// ItemPair
+public struct ItemPair {
     
-    // MARK: -
-    // MARK: Update horizontal & vertical constraint
-    /// centerXY
-    @inlinable
-    @discardableResult
-    func centerXY(offsets: CGPoint? = nil, priority: Priority? = nil) -> Self {
-        self.centerX(offsets?.x, priority: priority)
-        self.centerY(offsets?.y, priority: priority)
-        return self
+    /// item
+    public unowned(unsafe) let item: Item
+
+    /// superitem
+    public unowned(unsafe) let superitem: Item?
+    
+    
+}
+
+
+/// Item
+public protocol Item: AnyObject {}
+
+
+/// Item (Storage)
+extension Item {
+    
+    /// storage
+    var storage: Storage {
+        if let s = self._storage {
+            return s
+        } else {
+            let s = Storage()
+            self._storage = s
+            return s
+        }
     }
     
-    /// edge
-    @inlinable
-    @discardableResult
-    func edge(insets: EdgeInsets? = nil, priority: Priority? = nil) -> Self {
-        self.leading(insets?.left, priority: priority)
-        self.trailing(insets != nil ? -insets!.right : nil, priority: priority)
-        self.top(insets?.top, priority: priority)
-        self.bottom(insets != nil ? -insets!.bottom : nil, priority: priority)
-        return self
+    /// _storage
+    var _storage: Storage? {
+        get { objc_getAssociatedObject(self, &_storageKey) as? Storage }
+        set { objc_setAssociatedObject(self, &_storageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 }
+
+
+/// _storage Key
+private var _storageKey: Void?

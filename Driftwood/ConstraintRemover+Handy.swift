@@ -25,10 +25,8 @@
 /// ConstraintRemover (Handy)
 public extension ConstraintRemover {
     
-    //===========================================
-    // Remove AttributeSize
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Remove size constraint
     /// size
     @inlinable
     @discardableResult
@@ -38,10 +36,8 @@ public extension ConstraintRemover {
         return self
     }
     
-    //===========================================
-    // Make AttributeX & AttributeY
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Remove horizontal & vertical constraint
     /// centerXY
     @inlinable
     @discardableResult

@@ -25,146 +25,137 @@
 /// ConstraintUpdater
 public struct ConstraintUpdater {
     
-    //===========================================
-    // Update AttributeX
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Update horizontal constraint
     /// left
     @discardableResult
     public func left(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .left, constant: constant, priority: priority)
+        self._update(attribute: .left, constant: constant, priority: priority)
     }
     
     /// right
     @discardableResult
     public func right(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .right, constant: constant, priority: priority)
+        self._update(attribute: .right, constant: constant, priority: priority)
     }
     
     /// leading
     @discardableResult
     public func leading(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .leading, constant: constant, priority: priority)
+        self._update(attribute: .leading, constant: constant, priority: priority)
     }
     
     /// trailing
     @discardableResult
     public func trailing(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .trailing, constant: constant, priority: priority)
+        self._update(attribute: .trailing, constant: constant, priority: priority)
     }
     
     /// centerX
     @discardableResult
     public func centerX(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .centerX, constant: constant, priority: priority)
+        self._update(attribute: .centerX, constant: constant, priority: priority)
     }
     
     #if os(iOS) || os(tvOS)
     /// leftMargin
     @discardableResult
     public func leftMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .leftMargin, constant: constant, priority: priority)
+        self._update(attribute: .leftMargin, constant: constant, priority: priority)
     }
     
     /// rightMargin
     @discardableResult
     public func rightMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .rightMargin, constant: constant, priority: priority)
+        self._update(attribute: .rightMargin, constant: constant, priority: priority)
     }
     
     /// leadingMargin
     @discardableResult
     public func leadingMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .leadingMargin, constant: constant, priority: priority)
+        self._update(attribute: .leadingMargin, constant: constant, priority: priority)
     }
     
     /// trailingMargin
     @discardableResult
     public func trailingMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .trailingMargin, constant: constant, priority: priority)
+        self._update(attribute: .trailingMargin, constant: constant, priority: priority)
     }
     
     /// centerXWithinMargins
     @discardableResult
     public func centerXWithinMargins(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .centerXWithinMargins, constant: constant, priority: priority)
+        self._update(attribute: .centerXWithinMargins, constant: constant, priority: priority)
     }
     #endif
     
-    //===========================================
-    // Update AttributeY
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Update vertical constraint
     /// top
     @discardableResult
     public func top(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .top, constant: constant, priority: priority)
+        self._update(attribute: .top, constant: constant, priority: priority)
     }
     
     /// bottom
     @discardableResult
     public func bottom(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .bottom, constant: constant, priority: priority)
+        self._update(attribute: .bottom, constant: constant, priority: priority)
     }
     
     /// centerY
     @discardableResult
     public func centerY(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .centerY, constant: constant, priority: priority)
+        self._update(attribute: .centerY, constant: constant, priority: priority)
     }
     
     /// lastBaseline
     @discardableResult
     public func lastBaseline(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .lastBaseline, constant: constant, priority: priority)
+        self._update(attribute: .lastBaseline, constant: constant, priority: priority)
     }
     
     /// firstBaseline
     @discardableResult
     public func firstBaseline(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .firstBaseline, constant: constant, priority: priority)
+        self._update(attribute: .firstBaseline, constant: constant, priority: priority)
     }
     
     #if os(iOS) || os(tvOS)
     /// topMargin
     @discardableResult
     public func topMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .topMargin, constant: constant, priority: priority)
+        self._update(attribute: .topMargin, constant: constant, priority: priority)
     }
     
     /// bottomMargin
     @discardableResult
     public func bottomMargin(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .bottomMargin, constant: constant, priority: priority)
+        self._update(attribute: .bottomMargin, constant: constant, priority: priority)
     }
     
     /// centerYWithinMargins
     @discardableResult
     public func centerYWithinMargins(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .centerYWithinMargins, constant: constant, priority: priority)
+        self._update(attribute: .centerYWithinMargins, constant: constant, priority: priority)
     }
     #endif
     
-    //===========================================
-    // Update AttributeSize
-    //===========================================
-    //
+    // MARK: -
+    // MARK: Update size constraint
     /// width
     @discardableResult
     public func width(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .width, constant: constant, priority: priority)
+        self._update(attribute: .width, constant: constant, priority: priority)
     }
     
     /// height
     @discardableResult
     public func height(_ constant: CGFloat? = nil, priority: Priority? = nil) -> Self {
-        self._update(for: .height, constant: constant, priority: priority)
+        self._update(attribute: .height, constant: constant, priority: priority)
     }
     
-    //===========================================
-    // Internal
-    //===========================================
-    //
+    // MARK: - Internal
     /// init
     init(_ ip: ItemPair, location: Debug.Location, labeled name: String?) {
         self._ip = ip
@@ -177,13 +168,10 @@ public struct ConstraintUpdater {
         }
     }
     
-    //===========================================
-    // Private
-    //===========================================
-    //
+    // MARK: - Private
     /// update constraint
     @discardableResult
-    private func _update(for attribute: Attribute, constant: CGFloat?, priority: Priority?) -> Self {
+    private func _update(attribute: Attribute, constant: CGFloat?, priority: Priority?) -> Self {
         // 0.0 check if there was a constraint already installed by driftwood
         guard let con = self._storage.activeConstraint(for: attribute) else {
             Debug.log(self._location, .update(attribute), self._ip.item, message: "No constraint.")
