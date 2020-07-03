@@ -43,12 +43,12 @@ public struct ItemPair {
     }
     
     /// Backstore for item if any
-    static func anyStorage(for item: AnyObject) -> Storage? {
+    static func anyStorage(for item: Item) -> Storage? {
         objc_getAssociatedObject(item, &ItemPair._storageKey) as? Storage
     }
     
     /// Backstore for item
-    static func storage(for item: AnyObject) -> Storage {
+    static func storage(for item: Item) -> Storage {
         if let s = self.anyStorage(for: item) {
             return s
         } else {

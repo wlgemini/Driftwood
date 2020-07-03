@@ -62,18 +62,18 @@ enum Debug {
         return pre
     }
     
-    /// description of AnyObject
+    /// description of Item
     ///
     ///     "UIView`MyView`:0x00007fc636525111"
     ///     "UIView:0x00007fc636525111"
     ///
-    static func description(for obj: AnyObject) -> String {
-        var desc = "\(Swift.type(of: obj))"
+    static func description(for item: Item) -> String {
+        var desc = "\(Swift.type(of: item))"
         // using optional `Storage` to avoid unnecessary `Storage` object create.
-        if let labeledName = ItemPair.anyStorage(for: obj)?.labeledName {
+        if let labeledName = ItemPair.anyStorage(for: item)?.labeledName {
             desc += "`\(labeledName)`"
         }
-        desc += ":\(String(describing: Unmanaged.passUnretained(obj).toOpaque()))"
+        desc += ":\(String(describing: Unmanaged.passUnretained(item).toOpaque()))"
         return desc
     }
     

@@ -188,7 +188,7 @@ public struct ConstraintUpdater {
             
             // is safe to change
             guard Priority.isSafeToChangePriority(from: con.priority, to: priority) else {
-                Debug.log(self._location, .update(attribute), self._ip.item, message: "The priority change from/to `required` is not allowed.")
+                Debug.log(self._location, .update(attribute), self._ip.item, message: "Changing priority from/to `required` is not supported.")
                 return self
             }
         }
