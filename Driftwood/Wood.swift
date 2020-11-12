@@ -36,3 +36,14 @@ public struct Wood<Subject> {
         self.subject = subject
     }
 }
+
+
+/// StaticWood
+///
+/// For `dw` prefix wrapper
+public struct StaticWood<Subject> {
+    
+    // MARK: - Internal
+    /// init
+    init() {}
+}

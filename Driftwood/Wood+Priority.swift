@@ -36,7 +36,9 @@ extension Wood where Subject == Priority {
     /// Get a lower priority (aka: `current - value`), min to `1`
     public func lower(_ value: Float) -> Priority {
         let targetValue = self.subject.rawValue - abs(value)
-        if targetValue <= Priority.minOptional.rawValue {
+        if targetValue > Priority.maxOptional.rawValue {
+            return Priority.maxOptional
+        } else if targetValue < Priority.minOptional.rawValue {
             return Priority.minOptional
         } else {
             return Priority(rawValue: targetValue)
@@ -46,10 +48,23 @@ extension Wood where Subject == Priority {
     /// Get a higher priority (aka: `current + value`), max to `required - 1`
     public func higher(_ value: Float) -> Priority {
         let targetValue = self.subject.rawValue + abs(value)
-        if targetValue >= Priority.maxOptional.rawValue {
+        if targetValue > Priority.maxOptional.rawValue {
             return Priority.maxOptional
+        } else if targetValue < Priority.minOptional.rawValue {
+            return Priority.minOptional
         } else {
             return Priority(rawValue: targetValue)
         }
     }
+}
+
+
+/// StaticWood (Priority)
+extension StaticWood where Subject == Priority {
+    
+    /// Minimum optional priority
+    public var minOptional: Priority { Priority.minOptional }
+    
+    /// Maximum optional priority
+    public var maxOptional: Priority { Priority.maxOptional }
 }

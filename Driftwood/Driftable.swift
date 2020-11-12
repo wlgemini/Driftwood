@@ -31,3 +31,10 @@ public protocol Driftable {
     /// `dw` prefix
     var dw: Wood<Subject> { get }
 }
+
+
+public extension Driftable {
+    
+    /// static `dw` prefix
+    static var dw: StaticWood<Subject> { StaticWood<Subject>() }
+}
