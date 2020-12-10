@@ -25,6 +25,23 @@
 /// Storage
 final class Storage {
     
+    // MARK: Instantiation for item
+    /// Associated storage for item if any
+    static func anyStorage(for item: Item) -> Storage? {
+        objc_getAssociatedObject(item, &Self._associatedKey) as? Storage
+    }
+    
+    /// Associated storage for item
+    static func storage(for item: Item) -> Storage {
+        if let s = Self.anyStorage(for: item) {
+            return s
+        } else {
+            let s = Storage()
+            objc_setAssociatedObject(item, &Self._associatedKey, s, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            return s
+        }
+    }
+    
     // MARK: Debug
     /// labeled name for current Item
     var labeledName: String?
@@ -124,4 +141,10 @@ final class Storage {
     
     /// cached constraints (include active/deactive constraints)
     private var _cachedConstraints = [ConstraintKey: Constraint](minimumCapacity: 4)
+    
+    /// associated key
+    private static var _associatedKey: Void?
+    
+    /// init
+    private init() {}
 }

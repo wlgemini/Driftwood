@@ -25,9 +25,9 @@
 		7D04218024ADFAF7E7BC12EB63474A05 /* Priority+Safety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBED5592418CC41143615014D22651 /* Priority+Safety.swift */; };
 		8BB190FF10D0907A5640C8F6DD91157F /* ConstraintMaker+Handy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23DABE1E3CE635377032AC2AAB098A /* ConstraintMaker+Handy.swift */; };
 		933BA042CB2602D8C88513804B6C2F06 /* ConstraintRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0616B776B1905152212097D72776DD87 /* ConstraintRemover.swift */; };
-		9C0AC1BBC158F15C17DD040ABC7AEB6B /* ItemPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DB42C751792D27361FEDE7A0C5E70D /* ItemPair.swift */; };
+		9C0AC1BBC158F15C17DD040ABC7AEB6B /* ItemTuple2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DB42C751792D27361FEDE7A0C5E70D /* ItemTuple2.swift */; };
 		A5883A7E2F91CEAB58E1CEAF0E6B990B /* Driftable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D75A2D4A6841728CF4CA4735C2B1560 /* Driftable.swift */; };
-		AA24F39E4FC69A6EEEAAC5C02704DECE /* Wood+ItemPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01B39C732E6FB461EDF9E496C60269D /* Wood+ItemPair.swift */; };
+		AA24F39E4FC69A6EEEAAC5C02704DECE /* Wood+ItemTuple2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01B39C732E6FB461EDF9E496C60269D /* Wood+ItemTuple2.swift */; };
 		AA5079A6DC82669E7A1976894EAC152A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE02AEDB2B78D68DD54E813F7F4758E /* Storage.swift */; };
 		C8EA25958366D47FF414CBC46C1981C5 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814087E326B9D3541487622D4CA35F17 /* Debugging.swift */; };
 		DB44F45067C0EC16CAC57A8B896FDBB8 /* Pods-Driftwood_iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D3E6A42458D843195D8AF512B4EC92 /* Pods-Driftwood_iOS-dummy.m */; };
@@ -72,14 +72,14 @@
 		A7E1E169C5F8D972518FB153F0C54284 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Driftwood/Typealiases.swift; sourceTree = "<group>"; };
 		A8C238A9F30D3C7CFE93807AF3FB6E7A /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Driftwood/ConstraintMaker.swift; sourceTree = "<group>"; };
 		AD710C669E396101AB4E130800FEC7E7 /* libPods-Driftwood_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Driftwood_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9DB42C751792D27361FEDE7A0C5E70D /* ItemPair.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemPair.swift; path = Driftwood/ItemPair.swift; sourceTree = "<group>"; };
+		C9DB42C751792D27361FEDE7A0C5E70D /* ItemTuple2.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemTuple2.swift; path = Driftwood/ItemTuple2.swift; sourceTree = "<group>"; };
 		D2867193B0F2B1C0A3028FE2F14F8339 /* Pods-Driftwood_iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Driftwood_iOS-umbrella.h"; sourceTree = "<group>"; };
 		D45F14A7AD8DFEBF6AA5834400767B32 /* Driftable+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Driftable+.swift"; path = "Driftwood/Driftable+.swift"; sourceTree = "<group>"; };
 		D57BBFF42A671899212DB27FEDFD45A5 /* Wood+Priority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Wood+Priority.swift"; path = "Driftwood/Wood+Priority.swift"; sourceTree = "<group>"; };
 		D84361CD7BFCBB834692A55654EE236F /* Driftwood.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Driftwood.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DBFA9CA7E365CE64D7155FFE11D985AB /* Preferences.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Driftwood/Preferences.swift; sourceTree = "<group>"; };
 		DDC36094867D7EF64082CCC868EE51AA /* Pods-Driftwood_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Driftwood_iOS.release.xcconfig"; sourceTree = "<group>"; };
-		E01B39C732E6FB461EDF9E496C60269D /* Wood+ItemPair.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Wood+ItemPair.swift"; path = "Driftwood/Wood+ItemPair.swift"; sourceTree = "<group>"; };
+		E01B39C732E6FB461EDF9E496C60269D /* Wood+ItemTuple2.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Wood+ItemTuple2.swift"; path = "Driftwood/Wood+ItemTuple2.swift"; sourceTree = "<group>"; };
 		E821906FF87630DCA0B5FF5D72ABCC55 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Driftwood/Constraint.swift; sourceTree = "<group>"; };
 		F033812594E84EFD6BBBA810665FF6B7 /* ConstraintKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintKey.swift; path = Driftwood/ConstraintKey.swift; sourceTree = "<group>"; };
 		FFE02AEDB2B78D68DD54E813F7F4758E /* Storage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Storage.swift; path = Driftwood/Storage.swift; sourceTree = "<group>"; };
@@ -192,13 +192,13 @@
 				814087E326B9D3541487622D4CA35F17 /* Debugging.swift */,
 				1D75A2D4A6841728CF4CA4735C2B1560 /* Driftable.swift */,
 				D45F14A7AD8DFEBF6AA5834400767B32 /* Driftable+.swift */,
-				C9DB42C751792D27361FEDE7A0C5E70D /* ItemPair.swift */,
+				C9DB42C751792D27361FEDE7A0C5E70D /* ItemTuple2.swift */,
 				DBFA9CA7E365CE64D7155FFE11D985AB /* Preferences.swift */,
 				6FFBED5592418CC41143615014D22651 /* Priority+Safety.swift */,
 				FFE02AEDB2B78D68DD54E813F7F4758E /* Storage.swift */,
 				A7E1E169C5F8D972518FB153F0C54284 /* Typealiases.swift */,
 				13E79AA8CFCB28013B9E99F97988CADF /* Wood.swift */,
-				E01B39C732E6FB461EDF9E496C60269D /* Wood+ItemPair.swift */,
+				E01B39C732E6FB461EDF9E496C60269D /* Wood+ItemTuple2.swift */,
 				D57BBFF42A671899212DB27FEDFD45A5 /* Wood+Priority.swift */,
 				033A9EA6DE9F4544129A980D51FC1C4B /* Pod */,
 				201CBD33D83AEB9C4BCF8BD5706535F1 /* Support Files */,
@@ -346,12 +346,12 @@
 				4A9CB1D80EB07B7DA172A78B5F275285 /* Driftable+.swift in Sources */,
 				A5883A7E2F91CEAB58E1CEAF0E6B990B /* Driftable.swift in Sources */,
 				31C6BCC53AE3F7A38BA0FBBB8ED41309 /* Driftwood-dummy.m in Sources */,
-				9C0AC1BBC158F15C17DD040ABC7AEB6B /* ItemPair.swift in Sources */,
+				9C0AC1BBC158F15C17DD040ABC7AEB6B /* ItemTuple2.swift in Sources */,
 				0636C17411C0877833D71372EF85DF43 /* Preferences.swift in Sources */,
 				7D04218024ADFAF7E7BC12EB63474A05 /* Priority+Safety.swift in Sources */,
 				AA5079A6DC82669E7A1976894EAC152A /* Storage.swift in Sources */,
 				773168E014A4BE12F5571C09D572D84F /* Typealiases.swift in Sources */,
-				AA24F39E4FC69A6EEEAAC5C02704DECE /* Wood+ItemPair.swift in Sources */,
+				AA24F39E4FC69A6EEEAAC5C02704DECE /* Wood+ItemTuple2.swift in Sources */,
 				277093CC63D41B880A2F272C0A6104E5 /* Wood+Priority.swift in Sources */,
 				41E3166066B38FC261902B521D5EA509 /* Wood.swift in Sources */,
 			);

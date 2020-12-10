@@ -19,35 +19,43 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.vTop = self.view.createSubView()
-        self.vTop.dw.make().top(0).leading(0).trailing(0)
-        if #available(iOS 11.0, *) {
-            self.vTop.dw.make().bottom(0, to: self.view.safeAreaLayoutGuide.dw.top)
-        } else {
-            self.vTop.dw.make().height(20)
-        }
+        self.vTop.dw.make()
+            .top(0)
+            .leading(0)
+            .trailing(0)
+            .bottom(0, to: self.view.safeAreaLayoutGuide.dw.top)
         
         self.vBottom = self.view.createSubView()
-        self.vBottom.dw.make().bottom(0).leading(0).trailing(0)
-        if #available(iOS 11.0, *) {
-            self.vBottom.dw.make().top(0, to: self.view.safeAreaLayoutGuide.dw.bottom)
-        } else {
-            self.vBottom.dw.make().height(20)
-        }
+        self.vBottom.dw.make()
+            .bottom(0)
+            .leading(0)
+            .trailing(0)
+            .top(0, to: self.view.safeAreaLayoutGuide.dw.bottom)
+
         
         self.stkCenter = self.view.createSubView()
         self.stkCenter.axis = .vertical
         self.stkCenter.alignment = .fill
         self.stkCenter.distribution = .fill
-        self.stkCenter.dw.make(labeled: "Center").centerX(0).centerY(0).width(100)
+        self.stkCenter.dw
+            .setContentCompressionResistanceVerticalPriority(.required)
+            .setContentHuggingVerticalPriority(.required)
+        self.stkCenter.dw.make(labeled: "Center")
+            .centerX(0)
+            .centerY(0)
+            .width(100)
         
         self.vCenter0 = self.stkCenter.createArrangedSubview()
-        self.vCenter0.dw.make().height(50)
+        self.vCenter0.dw.make()
+            .height(50)
         
         self.vCenter1 = self.stkCenter.createArrangedSubview()
-        self.vCenter1.dw.make().height(100)
+        self.vCenter1.dw.make()
+            .height(100)
         
         self.vCenter2 = self.stkCenter.createArrangedSubview()
-        self.vCenter2.dw.make().height(150)
+        self.vCenter2.dw.make()
+            .height(150)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

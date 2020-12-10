@@ -22,49 +22,36 @@
 //  SOFTWARE.
 
 
-/// ItemPair
-public struct ItemPair {
+/// ItemTuple2
+public protocol ItemTuple2 {
     
-    /// item
-    public unowned(unsafe) let item: Item
+    /// First item type
+    associatedtype First: Item
+    
+    /// Second item type
+    associatedtype Second: Item
+    
+    /// item0
+    var first: First { get }
 
-    /// superitem
-    public unowned(unsafe) let superitem: Item?
+    /// item1
+    var second: Second? { get }
+}
+
+
+/// _ItemTuple2
+public struct _ItemTuple2<First: Item, Second: Item>: ItemTuple2 {
     
-    // MARK: - Internal
-    /// Backstore for item if any
-    var anyStorage: Storage? {
-        ItemPair.anyStorage(for: self.item)
-    }
+    /// item0
+    public unowned(unsafe) let first: First
+
+    /// item1
+    public unowned(unsafe) let second: Second?
     
-    /// Backstore for item
-    var storage: Storage {
-        ItemPair.storage(for: self.item)
-    }
-    
-    /// Backstore for item if any
-    static func anyStorage(for item: Item) -> Storage? {
-        objc_getAssociatedObject(item, &ItemPair._storageKey) as? Storage
-    }
-    
-    /// Backstore for item
-    static func storage(for item: Item) -> Storage {
-        if let s = self.anyStorage(for: item) {
-            return s
-        } else {
-            let s = Storage()
-            objc_setAssociatedObject(item, &ItemPair._storageKey, s, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            return s
-        }
-    }
-    
+    // MARK: Internal
     /// init
-    init(item: Item, superitem: Item?) {
-        self.item = item
-        self.superitem = superitem
+    init(first: First, second: Second?) {
+        self.first = first
+        self.second = second
     }
-    
-    // MARK: - Private
-    /// _storage Key
-    private static var _storageKey: Void?
 }

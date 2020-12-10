@@ -25,7 +25,7 @@
 /// View (Driftable)
 extension View: Driftable {
     
-    public var dw: Wood<ItemPair> { Wood(ItemPair(item: self, superitem: self.superview)) }
+    public var dw: Wood<_ItemTuple2<View, View>> { Wood(_ItemTuple2(first: self, second: self.superview)) }
 }
 
 
@@ -33,7 +33,7 @@ extension View: Driftable {
 @available(iOS 9.0, macOS 10.11, *)
 extension LayoutGuide: Driftable {
     
-    public var dw: Wood<ItemPair> { Wood(ItemPair(item: self, superitem: self.owningView)) }
+    public var dw: Wood<_ItemTuple2<LayoutGuide, View>> { Wood(_ItemTuple2(first: self, second: self.owningView)) }
 }
 
 

@@ -29,10 +29,10 @@ enum Debug {
     ///
     ///     "<Driftwood.@ViewController#23.[make left].(UIView`MyView`:0x00007fc636525111)>: "
     ///
-    static func log(_ location: Location, _ operation: Operation, _ item: Item, message: String) {
+    static func log(location: Location, operation: Operation, item: Item, message: String) {
         Swift.assert({
             var desc = "<"
-            desc += Self.prefix(location, operation)
+            desc += Self.prefix(location: location, operation: operation)
             desc += ".(\(Self.description(for: item)))"
             desc += ">"
             desc += ": "
@@ -47,7 +47,7 @@ enum Debug {
     ///     "Driftwood.@ViewController#23.[make left]"
     ///     "Driftwood.[make left]"
     ///
-    static func prefix(_ location: Location?, _ operation: Operation) -> String {
+    static func prefix(location: Location?, operation: Operation) -> String {
         // Driftwood
         var pre = "Driftwood"
         
@@ -70,7 +70,7 @@ enum Debug {
     static func description(for item: Item) -> String {
         var desc = "\(Swift.type(of: item))"
         // using optional `Storage` to avoid unnecessary `Storage` object create.
-        if let labeledName = ItemPair.anyStorage(for: item)?.labeledName {
+        if let labeledName = Storage.anyStorage(for: item)?.labeledName {
             desc += "`\(labeledName)`"
         }
         desc += ":\(String(describing: Unmanaged.passUnretained(item).toOpaque()))"

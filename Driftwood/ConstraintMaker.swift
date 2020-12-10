@@ -157,9 +157,10 @@ public struct ConstraintMaker {
     
     // MARK: - Internal
     /// init
-    init(_ ip: ItemPair, location: Debug.Location, labeled name: String?) {
-        self._ip = ip
-        self._storage = ip.storage
+    init(item: Item, superview: View?, location: Debug.Location, labeled name: String?) {
+        self._item = item
+        self._superview = superview
+        self._storage = Storage.storage(for: item)
         self._location = location
         
         // set label
@@ -168,7 +169,7 @@ public struct ConstraintMaker {
         }
         
         // set translatesAutoresizingMaskIntoConstraints on View.
-        if let view = self._ip.item as? View {
+        if let view = self._item as? View {
             view.translatesAutoresizingMaskIntoConstraints = Preferences.translatesAutoresizingMaskIntoConstraints
         }
     }
@@ -178,13 +179,13 @@ public struct ConstraintMaker {
     private func _make(attribute: Attribute, constant: CGFloat, relation: Relation, hAttribute: HAttribute, priority: Priority) -> Self {
         // 0.0 check is valid priority
         guard Priority.isValidPriority(priority) else {
-            Debug.log(self._location, .make(attribute), self._ip.item, message: "Invalid priority with value (\(priority.rawValue)).")
+            Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Invalid priority with value (\(priority.rawValue)).")
             return self
         }
         
         // 0.1 check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
-            Debug.log(self._location, .make(attribute), self._ip.item, message: "Duplicated constraint.")
+            Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Duplicated constraint.")
             return self
         }
         
@@ -192,14 +193,14 @@ public struct ConstraintMaker {
         let toAttribute: Attribute
         let toItem: Item
         switch hAttribute {
-        case .superitem:
-            // check if there is an superview/owningView
-            guard let superitem = self._ip.superitem else {
-                Debug.log(self._location, .make(attribute), self._ip.item, message: "No superview/owningView.")
+        case .superview:
+            // check if there is an superview
+            guard let superview = self._superview else {
+                Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "No superview/owningView.")
                 return self
             }
             toAttribute = attribute
-            toItem = superitem
+            toItem = superview
             
         case .left(let item):
             toAttribute = .left
@@ -245,7 +246,7 @@ public struct ConstraintMaker {
         }
         
         // 2. get cached constraint
-        let con = self._storage.constraint(item: self._ip.item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
+        let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 3. activate cached constraint
         self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
@@ -258,13 +259,13 @@ public struct ConstraintMaker {
     private func _make(attribute: Attribute, constant: CGFloat, relation: Relation, vAttribute: VAttribute, priority: Priority) -> Self {
         // 0.0 check is valid priority
         guard Priority.isValidPriority(priority) else {
-            Debug.log(self._location, .make(attribute), self._ip.item, message: "Invalid priority with value (\(priority.rawValue)).")
+            Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Invalid priority with value (\(priority.rawValue)).")
             return self
         }
         
         // 0.1 check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
-            Debug.log(self._location, .make(attribute), self._ip.item, message: "Duplicated constraint.")
+            Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Duplicated constraint.")
             return self
         }
         
@@ -272,14 +273,14 @@ public struct ConstraintMaker {
         let toAttribute: Attribute
         let toItem: Item
         switch vAttribute {
-        case .superitem:
-            // check if there is an superview/owningView
-            guard let superitem = self._ip.superitem else {
-                Debug.log(self._location, .make(attribute), self._ip.item, message: "No superview/owningView.")
+        case .superview:
+            // check if there is an superview
+            guard let superview = self._superview else {
+                Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "No superview/owningView.")
                 return self
             }
             toAttribute = attribute
-            toItem = superitem
+            toItem = superview
             
         case .top(let item):
             toAttribute = .top
@@ -317,7 +318,7 @@ public struct ConstraintMaker {
         }
         
         // 2. get cached constraint
-        let con = self._storage.constraint(item: self._ip.item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
+        let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute, multiply: 1.0, constant: constant, priority: priority)
         
         // 3. activate cached constraint
         self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
@@ -330,13 +331,13 @@ public struct ConstraintMaker {
     private func _make(attribute: Attribute, constant: CGFloat, relation: Relation, sAttribute: SAttribute?, multiply: CGFloat, priority: Priority) -> Self {
         // 0.0 check is valid priority
         guard Priority.isValidPriority(priority) else {
-            Debug.log(self._location, .make(attribute), self._ip.item, message: "Invalid priority with value (\(priority.rawValue)).")
+            Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Invalid priority with value (\(priority.rawValue)).")
             return self
         }
         
         // 0.1 check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
-            Debug.log(self._location, .make(attribute), self._ip.item, message: "Duplicated constraint.")
+            Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Duplicated constraint.")
             return self
         }
         
@@ -356,7 +357,7 @@ public struct ConstraintMaker {
         }
         
         // 2. get cached constraint
-        let con = self._storage.constraint(item: self._ip.item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
+        let con = self._storage.constraint(item: self._item, attribute: attribute, relation: relation, toItem: toItem, toAttribute: toAttribute ?? .notAnAttribute, multiply: multiply, constant: constant, priority: priority)
         
         // 3. activate cached constraint
         self._storage.activate(con, for: attribute, location: self._location, operation: .make(attribute))
@@ -365,12 +366,15 @@ public struct ConstraintMaker {
         return self
     }
     
-    /// ip
-    private let _ip: ItemPair
+    /// a `View/LayoutGuide`
+    private unowned(unsafe) let _item: Item
     
-    /// storage
+    /// a `View`
+    private unowned(unsafe) let _superview: View?
+    
+    /// a `Storage`
     private unowned(unsafe) let _storage: Storage
     
-    /// location
+    /// a `Location`
     private let _location: Debug.Location
 }

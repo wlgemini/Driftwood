@@ -157,9 +157,9 @@ public struct ConstraintUpdater {
     
     // MARK: - Internal
     /// init
-    init(_ ip: ItemPair, location: Debug.Location, labeled name: String?) {
-        self._ip = ip
-        self._storage = ip.storage
+    init(item: Item, location: Debug.Location, labeled name: String?) {
+        self._item = item
+        self._storage = Storage.storage(for: item)
         self._location = location
         
         // set label
@@ -174,7 +174,7 @@ public struct ConstraintUpdater {
     private func _update(attribute: Attribute, constant: CGFloat?, priority: Priority?) -> Self {
         // 0.0 check if there was a constraint already installed by driftwood
         guard let con = self._storage.activeConstraint(for: attribute) else {
-            Debug.log(self._location, .update(attribute), self._ip.item, message: "No constraint.")
+            Debug.log(location: self._location, operation: .update(attribute), item: self._item, message: "No constraint.")
             return self
         }
         
@@ -182,13 +182,13 @@ public struct ConstraintUpdater {
         if let priority = priority {
             // is valid
             guard Priority.isValidPriority(priority) else {
-                Debug.log(self._location, .update(attribute), self._ip.item, message: "Invalid priority with value (\(priority.rawValue)).")
+                Debug.log(location: self._location, operation: .update(attribute), item: self._item, message: "Invalid priority with value (\(priority.rawValue)).")
                 return self
             }
             
             // is safe to change
             guard Priority.isSafeToChangePriority(from: con.priority, to: priority) else {
-                Debug.log(self._location, .update(attribute), self._ip.item, message: "Changing priority from/to `required` is not supported.")
+                Debug.log(location: self._location, operation: .update(attribute), item: self._item, message: "Changing priority from/to `required` is not supported.")
                 return self
             }
         }
@@ -200,12 +200,12 @@ public struct ConstraintUpdater {
         return self
     }
     
-    /// ip
-    private let _ip: ItemPair
+    /// a `View/LayoutGuide`
+    private unowned(unsafe) let _item: Item
     
-    /// storage
+    /// a `Storage`
     private unowned(unsafe) let _storage: Storage
     
-    /// location
+    /// a `Location`
     private let _location: Debug.Location
 }

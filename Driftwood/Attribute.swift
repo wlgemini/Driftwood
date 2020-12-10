@@ -25,7 +25,7 @@
 /// Horizontal attribute
 public enum HAttribute {
     
-    case superitem
+    case superview
     
     case left(Item)
     
@@ -54,7 +54,7 @@ public enum HAttribute {
 /// Vertical attribute
 public enum VAttribute {
     
-    case superitem
+    case superview
     
     case top(Item)
     
