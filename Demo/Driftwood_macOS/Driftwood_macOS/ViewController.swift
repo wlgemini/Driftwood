@@ -14,7 +14,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.wantsLayer = true
-        
+        self.view.dw.make().edge(insets: NSEdgeInsetsZero)
         self.v1 = self.view.createSubView()
         self.v1.bezelColor = NSColor.random
         self.v1.dw.make(labeled: "v1").centerX(0).centerY(0).width(50).height(100)

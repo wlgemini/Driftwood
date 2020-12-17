@@ -40,10 +40,13 @@ public extension ConstraintUpdater {
     @inlinable
     @discardableResult
     func edge(insets: EdgeInsets? = nil, priority: Priority? = nil) -> Self {
-        self.leading(insets?.left, priority: priority)
-        self.trailing(insets != nil ? -insets!.right : nil, priority: priority)
+        var insets = insets
+        insets?.right.negate()
+        insets?.bottom.negate()
+        self.left(insets?.left, priority: priority)
+        self.right(insets?.right, priority: priority)
         self.top(insets?.top, priority: priority)
-        self.bottom(insets != nil ? -insets!.bottom : nil, priority: priority)
+        self.bottom(insets?.bottom, priority: priority)
         return self
     }
 }

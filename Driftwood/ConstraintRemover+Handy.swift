@@ -51,8 +51,8 @@ public extension ConstraintRemover {
     @inlinable
     @discardableResult
     func edge() -> Self {
-        self.leading()
-        self.trailing()
+        self.left()
+        self.right()
         self.top()
         self.bottom()
         return self

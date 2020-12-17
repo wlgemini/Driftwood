@@ -69,11 +69,11 @@ enum Debug {
     ///
     static func description(for item: Item) -> String {
         var desc = "\(Swift.type(of: item))"
-        // using optional `Storage` to avoid unnecessary `Storage` object create.
+        // using `Storage.anyStorage` to avoid unnecessary `Storage` object create.
         if let labeledName = Storage.anyStorage(for: item)?.labeledName {
             desc += "`\(labeledName)`"
         }
-        desc += ":\(String(describing: Unmanaged.passUnretained(item).toOpaque()))"
+        desc += ":\(String(format: "%p", UInt(bitPattern: ObjectIdentifier(item))))"
         return desc
     }
     
@@ -148,10 +148,12 @@ extension Debug {
         }
         
         /// description
+        ///
+        ///     "@ViewController#23"
+        ///
         var description: String {
-            var fileName = self.file.components(separatedBy: "/").last ?? ""
-            fileName = fileName.components(separatedBy: ".").first ?? ""
-            return "@\(fileName)#\(self.line)"
+            let fileName = self.file.split(separator: "/").last?.split(separator: ".").first ?? ""
+            return "@\(String(fileName))#\(self.line)"
         }
     }
     

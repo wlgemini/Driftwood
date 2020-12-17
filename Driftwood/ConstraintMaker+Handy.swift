@@ -208,8 +208,8 @@ public extension ConstraintMaker {
     @inlinable
     @discardableResult
     func edge(insets: EdgeInsets, by relation: Relation = Preferences.relation, priority: Priority = Preferences.priority) -> Self {
-        self.leading(insets.left, by: relation, to: .superview, priority: priority)
-        self.trailing(-insets.right, by: relation, to: .superview, priority: priority)
+        self.left(insets.left, by: relation, to: .superview, priority: priority)
+        self.right(-insets.right, by: relation, to: .superview, priority: priority)
         self.top(insets.top, by: relation, to: .superview, priority: priority)
         self.bottom(-insets.bottom, by: relation, to: .superview, priority: priority)
         return self
@@ -219,8 +219,8 @@ public extension ConstraintMaker {
     @inlinable
     @discardableResult
     func edge(insets: EdgeInsets, by relation: Relation = Preferences.relation, to item: Item, priority: Priority = Preferences.priority) -> Self {
-        self.leading(insets.left, by: relation, to: .leading(item), priority: priority)
-        self.trailing(-insets.right, by: relation, to: .trailing(item), priority: priority)
+        self.left(insets.left, by: relation, to: .left(item), priority: priority)
+        self.right(-insets.right, by: relation, to: .right(item), priority: priority)
         self.top(insets.top, by: relation, to: .top(item), priority: priority)
         self.bottom(-insets.bottom, by: relation, to: .bottom(item), priority: priority)
         return self
