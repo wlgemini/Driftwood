@@ -33,7 +33,7 @@ extension Priority {
     
     /// Check is valid priority
     ///
-    /// Priority can not lower than 1 or higher than required
+    /// Priorities must be greater than 0 and less than or equal to `.required`.
     static func isValidPriority(_ priority: Self) -> Bool {
         priority.rawValue >= Self.minOptional.rawValue && priority.rawValue <= Self.required.rawValue
     }

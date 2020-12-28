@@ -177,13 +177,19 @@ public struct ConstraintMaker {
     // MARK: - Private
     /// Make horizontal constraint
     private func _make(attribute: Attribute, constant: CGFloat, relation: Relation, hAttribute: HAttribute, multiply: CGFloat, priority: Priority) -> Self {
-        // 0.0 check is valid priority
+        // 0.0 check is valid multiplier (multiplier can't be 0 for HAttribute/VAttribute)
+        guard multiply != 0 else {
+            Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Multiplier can't be 0 for HAttribute/VAttribute.")
+            return self
+        }
+        
+        // 0.1 check is valid priority
         guard Priority.isValidPriority(priority) else {
             Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Invalid priority with value (\(priority.rawValue)).")
             return self
         }
         
-        // 0.1 check if there was a constraint already installed by driftwood
+        // 0.2 check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Duplicated constraint.")
             return self
@@ -257,13 +263,19 @@ public struct ConstraintMaker {
     
     /// Make vertical constraint
     private func _make(attribute: Attribute, constant: CGFloat, relation: Relation, vAttribute: VAttribute, multiply: CGFloat, priority: Priority) -> Self {
-        // 0.0 check is valid priority
+        // 0.0 check is valid multiplier (multiplier can't be 0 for HAttribute/VAttribute)
+        guard multiply != 0 else {
+            Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Multiplier can't be 0 for HAttribute/VAttribute.")
+            return self
+        }
+        
+        // 0.1 check is valid priority
         guard Priority.isValidPriority(priority) else {
             Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Invalid priority with value (\(priority.rawValue)).")
             return self
         }
         
-        // 0.1 check if there was a constraint already installed by driftwood
+        // 0.2 check if there was a constraint already installed by driftwood
         guard self._storage.activeConstraint(for: attribute) == nil else {
             Debug.log(location: self._location, operation: .make(attribute), item: self._item, message: "Duplicated constraint.")
             return self

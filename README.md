@@ -81,23 +81,11 @@ Full list of `NSLayoutConstraint.Attribute`:
 | `dw.width`                | `dw.make().width()`       | `.width`                       |
 | `dw.height`               | `dw.make().height()`      | `.height`                      |
 
-### Relation & Multiplier & Priority
+### Relation & Multiply & Priority
 
-`Relation` & `Priority` are available in `Horizontal attribute function` & `Vertical attribute function` :
-
-```swift
-view.dw.make().left(100, by: .greaterThanOrEqual, priority: .defaultLow)
-```
-
-`Relation` & `Multiplier` & `Priority` are available in `Size attribute function`:
-
-```swift
-view.dw.make().width(100, by: .greaterThanOrEqual, multiply: 2, priority: .required)
-```
-
--   `Relation`: default is `.equal`
--   `Multiplier`: default is `1`
--   `Priority`: default is `.required`
+-   `relation`: default is `.equal`
+-   `multiply`: default is `1`
+-   `priority`: default is `.required`
 
 ### dw.make()
 

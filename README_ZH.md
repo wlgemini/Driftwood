@@ -81,23 +81,11 @@ view1.dw.make().top(10, to: view2.dw.bottom)
 | `dw.width`                | `dw.make().width()`       | `.width`                       |
 | `dw.height`               | `dw.make().height()`      | `.height`                      |
 
-### Relation & Multiplier & Priority
+### Relation & Multiply & Priority
 
-`Relation` & `Priority` 在 `Horizontal attribute function` & `Vertical attribute function` 中可用:
-
-```swift
-view.dw.make().left(100, by: .greaterThanOrEqual, priority: .defaultLow)
-```
-
-`Relation` & `Multiplier` & `Priority` 在 `Size attribute function` 中可用:
-
-```swift
-view.dw.make().width(100, by: .greaterThanOrEqual, multiply: 2, priority: .required)
-```
-
--   `Relation`: 默认为`.equal`
--   `Multiplier`: 默认为 `1`
--   `Priority`: 默认为 `.required`
+-   `relation`: 默认为`.equal`
+-   `multiply`: 默认为 `1`
+-   `priority`: 默认为 `.required`
 
 ### dw.make()
 
