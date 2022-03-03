@@ -22,23 +22,36 @@
 //  SOFTWARE.
 
 
-/// View (Driftable)
-extension View: Driftable {
+/// __Tuple2
+public protocol __Tuple2 {
     
-    public var dw: Wood<_ItemTuple2<View, View>> { Wood(_ItemTuple2(first: self, second: self.superview)) }
+    /// First item type
+    associatedtype First: Item
+    
+    /// Second item type
+    associatedtype Second: Item
+    
+    /// first
+    var first: First { get }
+    
+    /// second
+    var second: Second? { get }
 }
 
 
-/// LayoutGuide (Driftable)
-@available(iOS 9.0, macOS 10.11, *)
-extension LayoutGuide: Driftable {
+/// _Tuple2
+public struct _Tuple2<First: Item, Second: Item>: __Tuple2 {
     
-    public var dw: Wood<_ItemTuple2<LayoutGuide, View>> { Wood(_ItemTuple2(first: self, second: self.owningView)) }
-}
+    /// first
+    public unowned(unsafe) let first: First
 
-
-/// Priority (Driftable)
-extension Priority: Driftable {
-
-    public var dw: Wood<Priority> { Wood(self) }
+    /// second
+    public unowned(unsafe) let second: Second?
+    
+    // MARK: Internal
+    /// init
+    init(first: First, second: Second?) {
+        self.first = first
+        self.second = second
+    }
 }

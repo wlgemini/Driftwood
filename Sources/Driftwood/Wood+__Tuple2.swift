@@ -23,7 +23,7 @@
 
 
 /// Wood (Make, Update, Remove constraint)
-public extension Wood where Subject: ItemTuple2, Subject.Second: View {
+public extension Wood where Subject: __Tuple2, Subject.Second: View {
     
     /// make
     func make(labeled name: String? = nil, file: String = #fileID, line: UInt = #line) -> ConstraintMaker {
@@ -53,8 +53,37 @@ public extension Wood where Subject: ItemTuple2, Subject.Second: View {
 }
 
 
+/// Wood (Make, Update, Remove constraint without argument `labeled:`)
+public extension Wood where Subject: __Tuple2, Subject.Second: View {
+    
+    /// make
+    @inlinable
+    func make(file: String = #fileID, line: UInt = #line) -> ConstraintMaker {
+        self.make(labeled: nil, file: file, line: line)
+    }
+    
+    /// update
+    @inlinable
+    func update(file: String = #fileID, line: UInt = #line) -> ConstraintUpdater {
+        self.update(labeled: nil, file: file, line: line)
+    }
+    
+    /// remove
+    @inlinable
+    func remove(file: String = #fileID, line: UInt = #line) -> ConstraintRemover {
+        self.remove(labeled: nil, file: file, line: line)
+    }
+    
+    /// remake
+    @inlinable
+    func remake(file: String = #fileID, line: UInt = #line) -> ConstraintMaker {
+        self.remake(labeled: nil, file: file, line: line)
+    }
+}
+
+
 /// Wood (Attribute)
-public extension Wood where Subject: ItemTuple2, Subject.Second: View {
+public extension Wood where Subject: __Tuple2, Subject.Second: View {
     
     // MARK: HAttribute
     /// left
@@ -146,7 +175,7 @@ public extension Wood where Subject: ItemTuple2, Subject.Second: View {
 
 
 /// Wood (ContentHugging/ContentCompressionResistance priority)
-public extension Wood where Subject: ItemTuple2, Subject.First: View, Subject.Second: View {
+public extension Wood where Subject: __Tuple2, Subject.First: View, Subject.Second: View {
     
     // MARK: Getter
     @inlinable

@@ -22,6 +22,9 @@
 //  SOFTWARE.
 
 
+import CoreGraphics
+
+
 /// ConstraintMaker
 public struct ConstraintMaker {
     

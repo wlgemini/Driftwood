@@ -22,6 +22,10 @@
 //  SOFTWARE.
 
 
+import ObjectiveC.runtime
+import CoreGraphics
+
+
 /// Storage
 final class Storage {
     

@@ -22,27 +22,23 @@
 //  SOFTWARE.
 
 
-/// Preferences
-public enum Preferences {}
-
-
-/// Preferences (Default settings for View)
-public extension Preferences {
+/// View (Driftable)
+extension View: Driftable {
     
-    /// translatesAutoresizingMaskIntoConstraints for View
-    static let translatesAutoresizingMaskIntoConstraints: Bool = false
+    public var dw: Wood<_Tuple2<View, View>> { Wood(_Tuple2(first: self, second: self.superview)) }
 }
 
 
-/// Preferences (Default settings for Constraint)
-public extension Preferences {
+/// LayoutGuide (Driftable)
+@available(iOS 9.0, macOS 10.11, *)
+extension LayoutGuide: Driftable {
     
-    /// relation
-    static let relation: Relation = .equal
-    
-    /// multiply
-    static let multiply: CGFloat = 1.0
-    
-    /// priority
-    static let priority: Priority = Priority.required
+    public var dw: Wood<_Tuple2<LayoutGuide, View>> { Wood(_Tuple2(first: self, second: self.owningView)) }
+}
+
+
+/// Priority (Driftable)
+extension Priority: Driftable {
+
+    public var dw: Wood<Priority> { Wood(self) }
 }

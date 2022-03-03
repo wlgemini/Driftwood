@@ -22,70 +22,30 @@
 //  SOFTWARE.
 
 
-#if os(iOS) || os(tvOS)
-import UIKit
+import CoreGraphics
 
 
-/// View
-public typealias View = UIView
+/// Preferences
+public enum Preferences {}
 
 
-/// LayoutGuide
-@available(iOS 9.0, *)
-public typealias LayoutGuide = UILayoutGuide
+/// Preferences (Default settings for View)
+public extension Preferences {
+    
+    /// translatesAutoresizingMaskIntoConstraints for View
+    static let translatesAutoresizingMaskIntoConstraints: Bool = false
+}
 
 
-/// LayoutConstraint
-typealias LayoutConstraint = NSLayoutConstraint
-
-
-/// Relation
-public typealias Relation = NSLayoutConstraint.Relation
-
-
-/// Priority
-public typealias Priority = UILayoutPriority
-
-
-/// Attribute
-typealias Attribute = NSLayoutConstraint.Attribute
-
-
-/// EdgeInsets
-public typealias EdgeInsets = UIEdgeInsets
-#else
-import AppKit
-
-
-/// View
-public typealias View = NSView
-
-
-/// LayoutGuide
-@available(macOS 10.11, *)
-public typealias LayoutGuide = NSLayoutGuide
-
-
-/// LayoutConstraint
-typealias LayoutConstraint = NSLayoutConstraint
-
-
-/// Relation
-public typealias Relation = NSLayoutConstraint.Relation
-
-
-/// Priority
-public typealias Priority = NSLayoutConstraint.Priority
-
-
-/// Attribute
-typealias Attribute = NSLayoutConstraint.Attribute
-
-
-/// EdgeInsets
-public typealias EdgeInsets = NSEdgeInsets
-#endif
-
-
-/// Item
-public typealias Item = AnyObject
+/// Preferences (Default settings for Constraint)
+public extension Preferences {
+    
+    /// relation
+    static let relation: Relation = .equal
+    
+    /// multiply
+    static let multiply: CGFloat = 1.0
+    
+    /// priority
+    static let priority: Priority = Priority.required
+}

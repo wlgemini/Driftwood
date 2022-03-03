@@ -22,36 +22,33 @@
 //  SOFTWARE.
 
 
-/// ItemTuple2
-public protocol ItemTuple2 {
-    
-    /// First item type
-    associatedtype First: Item
-    
-    /// Second item type
-    associatedtype Second: Item
-    
-    /// item0
-    var first: First { get }
-
-    /// item1
-    var second: Second? { get }
-}
+import CoreGraphics
 
 
-/// _ItemTuple2
-public struct _ItemTuple2<First: Item, Second: Item>: ItemTuple2 {
+/// ConstraintKey
+struct ConstraintKey: Hashable {
     
-    /// item0
-    public unowned(unsafe) let first: First
-
-    /// item1
-    public unowned(unsafe) let second: Second?
+    /// attribute
+    let attribute: Attribute
     
-    // MARK: Internal
+    /// Using `ObjectIdentifier` to avoid ARC: [Difference between using ObjectIdentifier() and '===' Operator](https://stackoverflow.com/questions/39587027/difference-between-using-objectidentifier-and-operator)
+    let toItem: ObjectIdentifier?
+    
+    /// toAttribute
+    let toAttribute: Attribute
+    
+    /// relation
+    let relation: Relation
+    
+    /// multiply
+    let multiply: CGFloat
+    
     /// init
-    init(first: First, second: Second?) {
-        self.first = first
-        self.second = second
+    init(attribute: Attribute, toItem: Item?, toAttribute: Attribute, relation: Relation, multiply: CGFloat) {
+        self.attribute = attribute
+        self.toItem = toItem.map(ObjectIdentifier.init)
+        self.toAttribute = toAttribute
+        self.relation = relation
+        self.multiply = multiply
     }
 }

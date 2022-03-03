@@ -22,6 +22,9 @@
 //  SOFTWARE.
 
 
+import CoreGraphics
+
+
 /// ConstraintUpdater
 public struct ConstraintUpdater {
     

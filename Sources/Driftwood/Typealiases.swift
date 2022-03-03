@@ -22,30 +22,71 @@
 //  SOFTWARE.
 
 
-/// ConstraintKey
-struct ConstraintKey: Hashable {
-    
-    /// attribute
-    let attribute: Attribute
-    
-    /// Using `ObjectIdentifier` to avoid ARC: [Difference between using ObjectIdentifier() and '===' Operator](https://stackoverflow.com/questions/39587027/difference-between-using-objectidentifier-and-operator)
-    let toItem: ObjectIdentifier?
-    
-    /// toAttribute
-    let toAttribute: Attribute
-    
-    /// relation
-    let relation: Relation
-    
-    /// multiply
-    let multiply: CGFloat
-    
-    /// init
-    init(attribute: Attribute, toItem: Item?, toAttribute: Attribute, relation: Relation, multiply: CGFloat) {
-        self.attribute = attribute
-        self.toItem = toItem.map(ObjectIdentifier.init)
-        self.toAttribute = toAttribute
-        self.relation = relation
-        self.multiply = multiply
-    }
-}
+#if os(iOS) || os(tvOS)
+import UIKit
+#else
+import AppKit
+#endif
+
+
+#if os(iOS) || os(tvOS)
+/// View
+public typealias View = UIView
+
+
+/// LayoutGuide
+@available(iOS 9.0, *)
+public typealias LayoutGuide = UILayoutGuide
+
+
+/// LayoutConstraint
+typealias LayoutConstraint = NSLayoutConstraint
+
+
+/// Relation
+public typealias Relation = NSLayoutConstraint.Relation
+
+
+/// Priority
+public typealias Priority = UILayoutPriority
+
+
+/// Attribute
+typealias Attribute = NSLayoutConstraint.Attribute
+
+
+/// EdgeInsets
+public typealias EdgeInsets = UIEdgeInsets
+#else
+/// View
+public typealias View = NSView
+
+
+/// LayoutGuide
+@available(macOS 10.11, *)
+public typealias LayoutGuide = NSLayoutGuide
+
+
+/// LayoutConstraint
+typealias LayoutConstraint = NSLayoutConstraint
+
+
+/// Relation
+public typealias Relation = NSLayoutConstraint.Relation
+
+
+/// Priority
+public typealias Priority = NSLayoutConstraint.Priority
+
+
+/// Attribute
+typealias Attribute = NSLayoutConstraint.Attribute
+
+
+/// EdgeInsets
+public typealias EdgeInsets = NSEdgeInsets
+#endif
+
+
+/// Item
+public typealias Item = AnyObject
