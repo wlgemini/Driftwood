@@ -166,10 +166,6 @@ If resulting `Unable to simultaneously satisfy constraints`, it will be logs lik
 
 You can download this repo to see more usage.
 
-## Author
-
-wlgemini, wangluguang@live.com
-
 ## License
 
 Driftwood is available under the MIT license. See the LICENSE file for more info.
