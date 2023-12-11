@@ -1,4 +1,4 @@
-![Driftwood](driftwood.png)
+<img src="driftwood.png" title="icon" width="480px">
 
 [![Driftwood CI](https://github.com/wlgemini/Driftwood/workflows/Driftwood%20CI/badge.svg)](https://github.com/wlgemini/Driftwood/actions)
 [![Version](https://img.shields.io/cocoapods/v/Driftwood.svg?style=flat)](https://cocoapods.org/pods/Driftwood)
