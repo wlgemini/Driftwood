@@ -9,18 +9,6 @@
 
 Driftwood是一个轻量的自动布局框架，用于iOS, tvOS和macOS。
 
-## Requirements
-
-- iOS 8.0+/macOS 10.11+/tvOS 9.0+
-- Swift 4.2+
-
-## Installation
-
-Driftwood可以用 [CocoaPods](https://cocoapods.org)接入，需要在你的Podfile文件中加入：
-```ruby
-pod 'Driftwood'
-```
-
 ## Usage
 
 Driftwood的使用很简单，你只需要简单几行代码就能完整的设置好约束。
@@ -169,9 +157,18 @@ view.dw.make(labeled: "MyView").left(0).left(0) // 给"MyView"添加了重复的
 
 你可以下载这个仓库来查看更多的使用方法。
 
-## Author
+## Requirements
 
-wlgemini, wangluguang@live.com
+- iOS 8.0+, macOS 10.11+, tvOS 9.0+
+- Swift 4.2+
+
+## Installation
+
+Driftwood is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
+
+```ruby
+pod 'Driftwood'
+```
 
 ## License
 
