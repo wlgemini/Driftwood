@@ -9,19 +9,6 @@ English|[中文](README_ZH.md)
 
 Driftwood is a DSL to make Auto Layout easy on iOS, tvOS and macOS.
 
-## Requirements
-
-- iOS 8.0+/macOS 10.11+/tvOS 9.0+
-- Swift 4.2+
-
-## Installation
-
-Driftwood is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
-
-```ruby
-pod 'Driftwood'
-```
-
 ## Usage
 
 Driftwood is easy to use, you can make full constraints satisfication in just a few code.
@@ -165,6 +152,19 @@ If resulting `Unable to simultaneously satisfy constraints`, it will be logs lik
 ## Demo
 
 You can download this repo to see more usage.
+
+## Requirements
+
+- iOS 8.0+, macOS 10.11+, tvOS 9.0+
+- Swift 4.2+
+
+## Installation
+
+Driftwood is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
+
+```ruby
+pod 'Driftwood'
+```
 
 ## License
 
