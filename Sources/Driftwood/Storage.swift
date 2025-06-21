@@ -23,7 +23,7 @@
 
 
 import ObjectiveC.runtime
-import CoreGraphics
+import Foundation
 
 
 /// Storage
@@ -51,6 +51,16 @@ final class Storage {
     var labeledName: String?
     
     // MARK: Constraint activate & update & deactivate
+    /// active constraints count
+    var activeConstraintsCount: Int {
+        self._activeConstraints.count
+    }
+    
+    /// cached constraints count
+    var cachedConstraints: Int {
+        self._cachedConstraints.count
+    }
+    
     /// active constraint installed by driftwood
     func activeConstraint(for key: Attribute) -> Constraint? {
         self._activeConstraints[key]

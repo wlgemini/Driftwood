@@ -20,6 +20,7 @@ let box = UIView()
 superview.addSubview(box)
 box.dw.make().left(0).top(0).right(0).bottom(0)
 ```
+
 Or another way:
 
 ```swift
@@ -40,39 +41,39 @@ view1.dw.make().top(10, to: view2.dw.bottom)
 
 Full list of `NSLayoutConstraint.Attribute`:
 
-| `Horizontal attribute property` | `Horizontal attribute function`  | `NSLayoutConstraint.Attribute` |
-| :-------------------------- | :--------------------------- | :----------------------------- |
-| `dw.left`                   | `dw.make().left()`           | `.left`                        |
-| `dw.right`                  | `dw.make().right()`          | `.right`                       |
-| `dw.leading`                | `dw.make().leading()`        | `.leading`                     |
-| `dw.trailing`               | `dw.make().trailing()`       | `.trailing`                    |
-| `dw.centerX`                | `dw.make().centerX()`        | `.centerX`                     |
-| `dw.leftMargin`             | `dw.make().leftMargin()`     | `.leftMargin`                  |
-| `dw.rightMargin`            | `dw.make().rightMargin()`    | `.rightMargin`                 |
-| `dw.leadingMargin`          | `dw.make().leadingMargin()`  | `.leadingMargin`               |
-| `dw.trailingMargin`         | `dw.make().trailingMargin()` | `.trailingMargin`              |
+| `NSLayoutConstraint.Attribute` | `Horizontal attribute property` | `Horizontal attribute function` |
+| :----------------------------- | :------------------------------ | :------------------------------ |
+| `.left`                        | `dw.left`                       | `dw.make().left()`              |
+| `.right`                       | `dw.right`                      | `dw.make().right()`             |
+| `.leading`                     | `dw.leading`                    | `dw.make().leading()`           |
+| `.trailing`                    | `dw.trailing`                   | `dw.make().trailing()`          |
+| `.centerX`                     | `dw.centerX`                    | `dw.make().centerX()`           |
+| `.leftMargin`                  | `dw.leftMargin`                 | `dw.make().leftMargin()`        |
+| `.rightMargin`                 | `dw.rightMargin`                | `dw.make().rightMargin()`       |
+| `.leadingMargin`               | `dw.leadingMargin`              | `dw.make().leadingMargin()`     |
+| `.trailingMargin`              | `dw.trailingMargin`             | `dw.make().trailingMargin()`    |
 
-| `Vertical attribute property` | `Vertical attribute function`        | `NSLayoutConstraint.Attribute` |
-| :-------------------------- | :--------------------------------- | :----------------------------- |
-| `dw.top`                    | `dw.make().top()`                  | `.top`                         |
-| `dw.bottom`                 | `dw.make().bottom()`               | `.bottom`                      |
-| `dw.centerY`                | `dw.make().centerY()`              | `.centerY`                     |
-| `dw.lastBaseline`           | `dw.make().lastBaseline()`         | `.lastBaseline`                |
-| `dw.firstBaseline`          | `dw.make().firstBaseline()`        | `.firstBaseline`               |
-| `dw.topMargin`              | `dw.make().topMargin()`            | `.topMargin`                   |
-| `dw.bottomMargin`           | `dw.make().bottomMargin()`         | `.bottomMargin`                |
-| `dw.centerYWithinMargins`   | `dw.make().centerYWithinMargins()` | `.centerYWithinMargins`        |
+| `NSLayoutConstraint.Attribute` | `Vertical attribute property` | `Vertical attribute function`      |
+| :----------------------------- | :---------------------------- | :--------------------------------- |
+| `.top`                         | `dw.top`                      | `dw.make().top()`                  |
+| `.bottom`                      | `dw.bottom`                   | `dw.make().bottom()`               |
+| `.centerY`                     | `dw.centerY`                  | `dw.make().centerY()`              |
+| `.lastBaseline`                | `dw.lastBaseline`             | `dw.make().lastBaseline()`         |
+| `.firstBaseline`               | `dw.firstBaseline`            | `dw.make().firstBaseline()`        |
+| `.topMargin`                   | `dw.topMargin`                | `dw.make().topMargin()`            |
+| `.bottomMargin`                | `dw.bottomMargin`             | `dw.make().bottomMargin()`         |
+| `.centerYWithinMargins`        | `dw.centerYWithinMargins`     | `dw.make().centerYWithinMargins()` |
 
-| `Size attribute property` | `Size attribute function` | `NSLayoutConstraint.Attribute` |
-| :------------------------ | :------------------------ | :----------------------------- |
-| `dw.width`                | `dw.make().width()`       | `.width`                       |
-| `dw.height`               | `dw.make().height()`      | `.height`                      |
+| `NSLayoutConstraint.Attribute` | `Size attribute property` | `Size attribute function` |
+| :----------------------------- | :------------------------ | :------------------------ |
+| `.width`                       | `dw.width`                | `dw.make().width()`       |
+| `.height`                      | `dw.height`               | `dw.make().height()`      |
 
 ### Relation & Multiply & Priority
 
--   `relation`: default is `.equal`
--   `multiply`: default is `1`
--   `priority`: default is `.required`
+- `relation`: default is `.equal`
+- `multiply`: default is `1`
+- `priority`: default is `.required`
 
 ### dw.make()
 
@@ -81,6 +82,7 @@ As you see above, you can use `dw.make()` to make full constraints easily.
 ### dw.update()
 
 You can use `dw.update()` to updating `constant` and `priority` value of a constraint.
+
 ```swift
 view1.dw.update().top(200)
 
@@ -113,6 +115,7 @@ view.dw.removeAll()
 ### LayoutGuide
 
 Driftwood can works with `LayoutGuide` easily.
+
 ```swift 
 let guide = UILayoutGuide()
 superview.addLayoutGuide(guide)
@@ -149,7 +152,7 @@ If resulting `Unable to simultaneously satisfy constraints`, it will be logs lik
 
 > NOTE: In release, Driftwood will not log debug info.
 
-## Demo
+## Example
 
 You can download this repo to see more usage.
 
@@ -160,10 +163,22 @@ You can download this repo to see more usage.
 
 ## Installation
 
-Driftwood is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
+### [CocoaPods](https://cocoapods.org)
+
+To install Driftwood, add the following line to your Podfile:
 
 ```ruby
 pod 'Driftwood'
+```
+
+### [Swift Package Manager](https://swift.org/package-manager/)
+
+To integrate Driftwood, add it to the dependencies value of your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/wlgemini/Driftwood.git", .upToNextMajor(from: "5.3.4"))
+]
 ```
 
 ## License

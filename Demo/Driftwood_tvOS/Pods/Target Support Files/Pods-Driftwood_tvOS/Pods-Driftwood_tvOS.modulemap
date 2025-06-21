@@ -1,6 +1,0 @@
-module Pods_Driftwood_tvOS {
-  umbrella header "Pods-Driftwood_tvOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

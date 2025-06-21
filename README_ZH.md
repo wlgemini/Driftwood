@@ -41,43 +41,43 @@ view1.dw.make().top(10, to: view2.dw.bottom)
 
 全部的`NSLayoutConstraint.Attribute`情况在Driftwood中对应关系如下表:
 
-| `Horizontal attribute property` | `Horizontal attribute function`  | `NSLayoutConstraint.Attribute` |
-| :-------------------------- | :--------------------------- | :----------------------------- |
-| `dw.left`                   | `dw.make().left()`           | `.left`                        |
-| `dw.right`                  | `dw.make().right()`          | `.right`                       |
-| `dw.leading`                | `dw.make().leading()`        | `.leading`                     |
-| `dw.trailing`               | `dw.make().trailing()`       | `.trailing`                    |
-| `dw.centerX`                | `dw.make().centerX()`        | `.centerX`                     |
-| `dw.leftMargin`             | `dw.make().leftMargin()`     | `.leftMargin`                  |
-| `dw.rightMargin`            | `dw.make().rightMargin()`    | `.rightMargin`                 |
-| `dw.leadingMargin`          | `dw.make().leadingMargin()`  | `.leadingMargin`               |
-| `dw.trailingMargin`         | `dw.make().trailingMargin()` | `.trailingMargin`              |
+| `NSLayoutConstraint.Attribute` | `Horizontal attribute property` | `Horizontal attribute function` |
+| :----------------------------- | :------------------------------ | :------------------------------ |
+| `.left`                        | `dw.left`                       | `dw.make().left()`              |
+| `.right`                       | `dw.right`                      | `dw.make().right()`             |
+| `.leading`                     | `dw.leading`                    | `dw.make().leading()`           |
+| `.trailing`                    | `dw.trailing`                   | `dw.make().trailing()`          |
+| `.centerX`                     | `dw.centerX`                    | `dw.make().centerX()`           |
+| `.leftMargin`                  | `dw.leftMargin`                 | `dw.make().leftMargin()`        |
+| `.rightMargin`                 | `dw.rightMargin`                | `dw.make().rightMargin()`       |
+| `.leadingMargin`               | `dw.leadingMargin`              | `dw.make().leadingMargin()`     |
+| `.trailingMargin`              | `dw.trailingMargin`             | `dw.make().trailingMargin()`    |
 
-| `Vertical attribute property` | `Vertical attribute function`        | `NSLayoutConstraint.Attribute` |
-| :-------------------------- | :--------------------------------- | :----------------------------- |
-| `dw.top`                    | `dw.make().top()`                  | `.top`                         |
-| `dw.bottom`                 | `dw.make().bottom()`               | `.bottom`                      |
-| `dw.centerY`                | `dw.make().centerY()`              | `.centerY`                     |
-| `dw.lastBaseline`           | `dw.make().lastBaseline()`         | `.lastBaseline`                |
-| `dw.firstBaseline`          | `dw.make().firstBaseline()`        | `.firstBaseline`               |
-| `dw.topMargin`              | `dw.make().topMargin()`            | `.topMargin`                   |
-| `dw.bottomMargin`           | `dw.make().bottomMargin()`         | `.bottomMargin`                |
-| `dw.centerYWithinMargins`   | `dw.make().centerYWithinMargins()` | `.centerYWithinMargins`        |
+| `NSLayoutConstraint.Attribute` | `Vertical attribute property` | `Vertical attribute function`      |
+| :----------------------------- | :---------------------------- | :--------------------------------- |
+| `.top`                         | `dw.top`                      | `dw.make().top()`                  |
+| `.bottom`                      | `dw.bottom`                   | `dw.make().bottom()`               |
+| `.centerY`                     | `dw.centerY`                  | `dw.make().centerY()`              |
+| `.lastBaseline`                | `dw.lastBaseline`             | `dw.make().lastBaseline()`         |
+| `.firstBaseline`               | `dw.firstBaseline`            | `dw.make().firstBaseline()`        |
+| `.topMargin`                   | `dw.topMargin`                | `dw.make().topMargin()`            |
+| `.bottomMargin`                | `dw.bottomMargin`             | `dw.make().bottomMargin()`         |
+| `.centerYWithinMargins`        | `dw.centerYWithinMargins`     | `dw.make().centerYWithinMargins()` |
 
-| `Size attribute property` | `Size attribute function` | `NSLayoutConstraint.Attribute` |
-| :------------------------ | :------------------------ | :----------------------------- |
-| `dw.width`                | `dw.make().width()`       | `.width`                       |
-| `dw.height`               | `dw.make().height()`      | `.height`                      |
+| `NSLayoutConstraint.Attribute` | `Size attribute property` | `Size attribute function` |
+| :----------------------------- | :------------------------ | :------------------------ |
+| `.width`                       | `dw.width`                | `dw.make().width()`       |
+| `.height`                      | `dw.height`               | `dw.make().height()`      |
 
 ### Relation & Multiply & Priority
 
--   `relation`: 默认为`.equal`
--   `multiply`: 默认为 `1`
--   `priority`: 默认为 `.required`
+- `relation`: 默认为`.equal`
+- `multiply`: 默认为 `1`
+- `priority`: 默认为 `.required`
 
 ### dw.make()
 
-就像在**Quick Start**中看到的，你可以使用`dw.make()`来设置完整的约束。
+就像在上面看到的，你可以使用`dw.make()`来设置完整的约束。
 
 ### dw.update()
 
@@ -164,10 +164,22 @@ view.dw.make(labeled: "MyView").left(0).left(0) // 给"MyView"添加了重复的
 
 ## Installation
 
-Driftwood is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
+### [CocoaPods](https://cocoapods.org)
+
+To install Driftwood, add the following line to your Podfile:
 
 ```ruby
 pod 'Driftwood'
+```
+
+### [Swift Package Manager](https://swift.org/package-manager/)
+
+To integrate Driftwood, add it to the dependencies value of your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/wlgemini/Driftwood.git", .upToNextMajor(from: "5.3.4"))
+]
 ```
 
 ## License

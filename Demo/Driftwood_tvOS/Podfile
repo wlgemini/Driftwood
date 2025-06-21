@@ -1,8 +1,0 @@
-# Uncomment the next line to define a global platform for your project
-platform :tvos, '9.0'
-
-target 'Driftwood_tvOS' do
-
-  pod 'Driftwood', :path => '../../'
-
-end

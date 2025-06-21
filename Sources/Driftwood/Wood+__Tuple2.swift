@@ -22,6 +22,13 @@
 //  SOFTWARE.
 
 
+#if os(iOS) || os(tvOS)
+import UIKit
+#else
+import AppKit
+#endif
+
+
 /// Wood (Make, Update, Remove constraint)
 public extension Wood where Subject: __Tuple2, Subject.Second: View {
     
