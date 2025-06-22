@@ -21,3 +21,4 @@ DerivedData
 
 # Swift PM
 .swiftpm/
+.build/

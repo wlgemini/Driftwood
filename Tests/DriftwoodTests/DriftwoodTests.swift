@@ -91,7 +91,6 @@ extension DriftwoodTests {
     @Test
     func storage() {
         let (v1, v2) = self.createSubview2()
-        
         let s1 = Storage.anyStorage(for: v1)
         let s2 = Storage.storage(for: v2)
         
@@ -106,7 +105,6 @@ extension DriftwoodTests {
         let v1 = self.createSubview()
         let s1 = Storage.storage(for: v1)
        
-        
         // label update
         #expect(s1.labeledName == nil)
         
@@ -373,15 +371,8 @@ extension DriftwoodTests {
         // removeAll
         v1.dw.removeAll()
         
-        #expect(
-            s1.activeConstraintsCount == 0,
-            "Storage1 activeConstraintsCount = 2"
-        )
-        
-        #expect(
-            s1.cachedConstraints == 4,
-            "Storage1 cachedConstraints = 4"
-        )
+        #expect(s1.activeConstraintsCount == 0)
+        #expect(s1.cachedConstraints == 4)
     }
     
     @Test
