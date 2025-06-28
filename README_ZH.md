@@ -1,9 +1,9 @@
 <img src="driftwood.png" title="icon" width="480px">
 
-[![Driftwood CI](https://github.com/wlgemini/Driftwood/workflows/Driftwood%20CI/badge.svg)](https://github.com/wlgemini/Driftwood/actions)
 [![Version](https://img.shields.io/cocoapods/v/Driftwood.svg?style=flat)](https://cocoapods.org/pods/Driftwood)
 [![License](https://img.shields.io/cocoapods/l/Driftwood.svg?style=flat)](https://cocoapods.org/pods/Driftwood)
 [![Platform](https://img.shields.io/cocoapods/p/Driftwood.svg?style=flat)](https://cocoapods.org/pods/Driftwood)
+[![Driftwood CI](https://img.shields.io/github/actions/workflow/status/wlgemini/Driftwood/swift_test.yml)](https://github.com/wlgemini/Driftwood/actions)
 
 [English](README.md)|中文
 
