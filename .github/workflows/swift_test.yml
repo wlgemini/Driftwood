@@ -6,19 +6,22 @@ name: Swift
 on: [push]
 
 jobs:
-  build:
-    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest]
-        swift: ["5.8"]
-    runs-on: ${{ matrix.os }}
+  test:
+    runs-on: macos-latest
     steps:
-      - uses: swift-actions/setup-swift@65540b95f51493d65f5e59e97dcef9629ddf11bf
-        with:
-          swift-version: ${{ matrix.swift }}
-      - uses: actions/checkout@v4
-      - name: Build
-        run: swift build
-      - name: Test
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up latest Xcode
+        # macos-latest always uses the latest stable Xcode, no need for explicit setup
+        run: |
+          echo "Using Xcode version:"
+          xcodebuild -version
+
+      - name: Set up latest Swift
+        run: |
+          echo "Swift version:"
+          swift --version
+
+      - name: Build and Test
         run: swift test
