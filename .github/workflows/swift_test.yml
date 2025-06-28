@@ -12,11 +12,11 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Set up latest Xcode
-        # macos-latest always uses the latest stable Xcode, no need for explicit setup
-        run: |
-          echo "Using Xcode version:"
-          xcodebuild -version
+      - name: Select latest Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.4' # 指定最新的Xcode版本号
+
 
       - name: Set up latest Swift
         run: |
